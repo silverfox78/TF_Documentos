@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "810642",
+    "ThreadId": "348682",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>We have a project which requires maintainig multiple releases at the same time and creating service packs and hotfixes for them. There's no problem with that. We released the first version to the clients in the past and now we're getting ready to release\r\n another version while other 2 future version are in development. We're using a branching strategy similar to the mature branching strategy.</p>\r\n<p>Now, my question is how can we merge between multiple release branches? Let's say we need to do a hotfix or service pack for version 1. We'd like to merge the same change to all other releases, e.g. version 1 and 2. We cannot so it using the main branch\r\n as it may already be used by future versions, e.g. version 3. So is there any other option apart from doing a baseless merge (which I would like to avoid if possible). Doing code changes in all branches is not possible because of the required effort.</p>\r\n<p>Thank you,</p>\r\n<p>Szymon</p>\r\n",
+    "PostedDate": "2012-03-14T22:12:01.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "810808",
+    "ThreadId": "348682",
+    "Html": "\r\n<div>I have two questions:</div>\r\n<div></div>\r\n<div>1. How many simulatneous releases do you intend to support?</div>\r\n<div></div>\r\n<div>2. How big and complicated are you willing to let hot fixes be before you reject issuing them as a hot fix and require users to upgrade to get the fix in a future version?</div>\r\n<div></div>\r\n<br>\r\n-- <br>\r\n<div>David Kreth Allen</div>\r\n<div>612-374-1119</div>\r\n<div><a href=\"http://codecontracts.info\" target=\"_blank\">http://codecontracts.info</a></div>\r\n<div></div>\r\n<div><font style=\"background-color:rgb(255,204,255)\">“Instead of complaining that the rose bush is full of thorns, be happy the thorn bush has roses.” -Proverb</font></div>\r\n<br>\r\n",
+    "PostedDate": "2012-03-15T05:51:14.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

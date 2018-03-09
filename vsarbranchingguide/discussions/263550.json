@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "635979",
+    "ThreadId": "263550",
+    "Html": "\r\n<p>We have a support library and some shipped artifacts based on .NET 1.1. The support library was reused in new components targeting .NET 4. At the moment I have a double set of csproj files based on a common set of .cs files targeting .NET frameworks 1.1\r\n and 4, respectively. We now wish to develop further on the support library, which involves migrating the .cs files to .NET 4. This will make the .NET 1.1 csproj files unable to build.</p>\r\n<p>I doubt that there will be support issues, but I still wish to retain the possibility to establish maintenance activity on the shipped .NET 1.1 product and support library.</p>\r\n<p>According to page 14 on the Q&amp;A Document on <a rel=\"nofollow\" href=\"http://tfsbranchingguideiii.codeplex.com/\">\r\nTFS Branching guide</a> it is possible to use labels for this purpose. I can, if situation requires, branch from a label.</p>\r\n<p>But then I read something that scares me a bit.</p>\r\n<blockquote>\r\n<p><em>Depending on the permissions granted to specific users, labels can be modified &ndash; files can be changed, added, removed from the label. While powerful in its own respect, labels need to be used with caution given that:</em></p>\r\n<ul>\r\n<li><em>Team Foundation Server does not retain history of changes made to the label.</em>\r\n</li><li><em>Given certain permissions, labels might be deleted or otherwise invalidated by changes, and there is no way of auditing those changes.</em>\r\n</li><li><em>There can be contention for a label name as label names must be unique throughout a specified scope</em>\r\n</li><li><em>Items deleted will not be available in a label.</em> </li></ul>\r\n</blockquote>\r\n<p>Does the bottom item mean that I must, for all foreseeable future, avoid deleting files requiring to build the .NET 1.1 version? Because part of this effort is the cleanup of double set of files. Or was the last item referring to some special administrator</p>\r\n",
+    "PostedDate": "2011-07-01T05:51:09.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "635997",
+    "ThreadId": "263550",
+    "Html": "<p>The caution on page 14 has to do with people thinking that a label can be used as a permanent *marker* for a point in time, such as marking a version of code released to a customer. Since labels are not ummutable, it is possible to label code and release the code to a customer. Then at a later point in time change the <strong>contents of the label. </strong>This is sometimes done on purpose, perhaps to fix a bug in released code, you might change a file and then modify the label so it <strong>contains </strong>this new version of this file.</p>\r\n<p>When changes are made to the contents of a label, such as deleting or adding files to a label, there is no history maintained of these changes. Unlike changes to a file where you can view a history of all changes to the file over time, you cannot view the history of all changes to a label over time. This is one reason why you should understand how labels work before relying on labels.</p>\r\n<p>From an <strong>auditor's </strong>perspective, they want the ability to recreate the state of source code as it was released to a customer. A preferred and more reliable way to do this is to create a release branch when you release code to the customer. Then make this release branch read-only to <strong>lock it down</strong>.</p>\r\n<p>There are some important changes to be aware of:</p>\r\n<ul>\r\n<li>In TFS 2010 the option to branch by label in the UI&nbsp;was&nbsp;missing in some pre-release versions of TFS 2010. For RTM, the UI now has branch by label restored. This change was the result of multiple changes in 2010 around branching.</li>\r\n<li>Branch by label was still available from the command line even when it *disappeared* from the UI.</li>\r\n<li>In TFS 2010, the decision to add deleted items to labels was intentional, and helps with many scenarios where a Get operation is performed to return to the state of the repository at the point in time which the items were labeled. </li>\r\n<li>The use of merge with labels is also greatly improved in TFS 2010 with deleted items in labels. </li>\r\n<li>In the future, we&nbsp;plan to&nbsp;improve how these labels are shown to users, and provide the option to hide the deleted items from view. Re</li>\r\n</ul>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>\r\n<p><a href=\"http://blogs.msdn.com/b/billheys\">http://blogs.msdn.com/b/billheys</a></p>",
+    "PostedDate": "2011-07-01T06:29:42.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "636012",
+    "ThreadId": "263550",
+    "Html": "<p>Thank you very much.</p>\r\n<p>I do think of label as a \"permanent marker for a point in time\".&nbsp;But&nbsp;as I read your response I understand that it is not pemanent in a \"tamper-proof\" sense from a regulatory/audit perspective.</p>\r\n<p>In my case, I find it unlikely that there will be any more activity on the old components, but I would like to&nbsp;retain the option of establishing the branch at a later time, which is basically the scenario described in the branching guide.</p>\r\n<p>I understand that labels aren't immutable or auditable, but from the text \"items deleted will not be available in a label\" I was afraid that&nbsp;checking in a&nbsp;delete action on baseline (delete key in ordinary file view within source control explorer and then check in) would actually cause the file to&nbsp;no longer be available even when getting on an old label.</p>\r\n<p>I understand from your response that this is not the case. Changes to the label content are explicit and not inadvertantly affected by the later activity, including file deletions,&nbsp;on the latest version.</p>",
+    "PostedDate": "2011-07-01T06:58:36.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "636015",
+    "ThreadId": "263550",
+    "Html": "<p>I agree with your conclusions. Thanks</p>\r\n<p>Bill Heys</p>",
+    "PostedDate": "2011-07-01T07:04:31.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,697 @@
+[
+  {
+    "Title": "Home",
+    "Id": "163394",
+    "ParentWikiTitle": "",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2009-05-24T12:01:16.247-07:00",
+    "FileAttachments": [
+      {
+        "Id": "aef22eaf-23b5-4eec-81b0-19c06a595ac6",
+        "FileName": "NewpnpheroA.jpg",
+        "DownloadUri": "./163394/aef22eaf-23b5-4eec-81b0-19c06a595ac6"
+      },
+      {
+        "Id": "50198217-ad96-4057-818c-23be4a419ce2",
+        "FileName": "TeamDevGuide.gif",
+        "DownloadUri": "./163394/50198217-ad96-4057-818c-23be4a419ce2"
+      }
+    ]
+  },
+  {
+    "Title": "Chapter 14 - MSF for Agile Software Development Projects",
+    "Id": "52847",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-09-06T14:21:49.483-07:00",
+    "FileAttachments": [
+      {
+        "Id": "fd9823da-ab70-45ef-aaae-d9b2e29718db",
+        "FileName": "Fig14.1.GIF",
+        "DownloadUri": "./52847/fd9823da-ab70-45ef-aaae-d9b2e29718db"
+      }
+    ]
+  },
+  {
+    "Title": "Chapter 1 - Introducing the Team Environment",
+    "Id": "52309",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-31T07:53:12.01-07:00",
+    "FileAttachments": [
+      {
+        "Id": "3d59e203-1b52-4108-9d17-3df36f0f1eda",
+        "FileName": "Fig1.1.GIF",
+        "DownloadUri": "./52309/3d59e203-1b52-4108-9d17-3df36f0f1eda"
+      },
+      {
+        "Id": "c925b378-90a2-400c-a1f4-487da8641589",
+        "FileName": "Fig1.2.GIF",
+        "DownloadUri": "./52309/c925b378-90a2-400c-a1f4-487da8641589"
+      },
+      {
+        "Id": "8e0a5534-19df-49f3-9976-9d991ea4da84",
+        "FileName": "Fig1.3.GIF",
+        "DownloadUri": "./52309/8e0a5534-19df-49f3-9976-9d991ea4da84"
+      }
+    ]
+  },
+  {
+    "Title": "Foreword By Brian Harry",
+    "Id": "52000",
+    "ParentWikiTitle": "Home",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-29T13:12:52.433-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Foreword By Rob Caron",
+    "Id": "51999",
+    "ParentWikiTitle": "Home",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-29T13:12:03.667-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Foreword By Jeff Beehler",
+    "Id": "51998",
+    "ParentWikiTitle": "Home",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-29T13:11:12.637-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Contributors",
+    "Id": "51087",
+    "ParentWikiTitle": "Home",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-22T12:17:30.76-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Practices at a Glance:   Source Control",
+    "Id": "50367",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-16T10:59:29.877-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Chapter 6 - Managing Source Control Dependencies in Visual Studio Team System",
+    "Id": "50366",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-16T10:58:01.26-07:00",
+    "FileAttachments": [
+      {
+        "Id": "08492097-7ff4-4302-b611-32aba552b883",
+        "FileName": "Fig6.1.GIF",
+        "DownloadUri": "./50366/08492097-7ff4-4302-b611-32aba552b883"
+      },
+      {
+        "Id": "1255aa57-899c-4114-980a-30c7f0735008",
+        "FileName": "Fig6.2.GIF",
+        "DownloadUri": "./50366/1255aa57-899c-4114-980a-30c7f0735008"
+      },
+      {
+        "Id": "5765bbca-2c5a-4351-9a26-4deab1a07eb7",
+        "FileName": "Fig6.3.GIF",
+        "DownloadUri": "./50366/5765bbca-2c5a-4351-9a26-4deab1a07eb7"
+      },
+      {
+        "Id": "b9e8208e-9902-43a3-b5b1-13c46f4af0cd",
+        "FileName": "Fig6.4.GIF",
+        "DownloadUri": "./50366/b9e8208e-9902-43a3-b5b1-13c46f4af0cd"
+      },
+      {
+        "Id": "ed26b2f3-cacb-4cbc-9bf3-351a19fdc1ea",
+        "FileName": "Fig6.5.GIF",
+        "DownloadUri": "./50366/ed26b2f3-cacb-4cbc-9bf3-351a19fdc1ea"
+      },
+      {
+        "Id": "a1fb9409-65ef-45a6-9e1e-ded91a7c409b",
+        "FileName": "Fig6.6.GIF",
+        "DownloadUri": "./50366/a1fb9409-65ef-45a6-9e1e-ded91a7c409b"
+      },
+      {
+        "Id": "c57e57d9-fba5-487b-be44-f93f77e7fc0c",
+        "FileName": "Fig6.7.GIF",
+        "DownloadUri": "./50366/c57e57d9-fba5-487b-be44-f93f77e7fc0c"
+      }
+    ]
+  },
+  {
+    "Title": "Chapter 10 - Large Project Considerations",
+    "Id": "50247",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-15T10:57:15.43-07:00",
+    "FileAttachments": [
+      {
+        "Id": "4a491904-39e2-4c35-9d3a-87c493fbc1ef",
+        "FileName": "Fig10.1.GIF",
+        "DownloadUri": "./50247/4a491904-39e2-4c35-9d3a-87c493fbc1ef"
+      },
+      {
+        "Id": "02aac497-fed8-4d4c-a200-db6138a9079c",
+        "FileName": "Fig10.2.GIF",
+        "DownloadUri": "./50247/02aac497-fed8-4d4c-a200-db6138a9079c"
+      }
+    ]
+  },
+  {
+    "Title": "Chapter 5 - Defining Your Branching and Merging Strategy",
+    "Id": "50246",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-15T10:54:04.71-07:00",
+    "FileAttachments": [
+      {
+        "Id": "ffbc61c0-9a72-46ca-bc23-31647aaa93a3",
+        "FileName": "Fig5.1.GIF",
+        "DownloadUri": "./50246/ffbc61c0-9a72-46ca-bc23-31647aaa93a3"
+      },
+      {
+        "Id": "6bbfea45-d6ed-421d-8aa2-53cdb0e7db95",
+        "FileName": "Fig5.2.GIF",
+        "DownloadUri": "./50246/6bbfea45-d6ed-421d-8aa2-53cdb0e7db95"
+      },
+      {
+        "Id": "91b1f527-29ac-4584-af58-86c5b76296ec",
+        "FileName": "Fig5.3.GIF",
+        "DownloadUri": "./50246/91b1f527-29ac-4584-af58-86c5b76296ec"
+      }
+    ]
+  },
+  {
+    "Title": "Questions and Answers:  Source Control",
+    "Id": "49022",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T15:12:33.88-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Introduction",
+    "Id": "49021",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T15:06:15.95-07:00",
+    "FileAttachments": [
+      {
+        "Id": "2aad3491-7ef4-4f38-9b66-a08fab936247",
+        "FileName": "Fig0.1.GIF",
+        "DownloadUri": "./49021/2aad3491-7ef4-4f38-9b66-a08fab936247"
+      },
+      {
+        "Id": "dc5ea616-3e9d-4588-b338-cc3b0456b0a9",
+        "FileName": "Fig0.2.GIF",
+        "DownloadUri": "./49021/dc5ea616-3e9d-4588-b338-cc3b0456b0a9"
+      }
+    ]
+  },
+  {
+    "Title": "Chapter 18 - What’s New in Team Foundation Server 2008",
+    "Id": "49017",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T14:46:42.913-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Team Foundation Server Resources",
+    "Id": "48993",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:35:53.27-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Structure Your Source Control Folders in Visual Studio Team Foundation Server",
+    "Id": "48992",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:35:39.753-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Structure Windows Applications in Visual Studio Team Foundation Server",
+    "Id": "48990",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:35:20.023-07:00",
+    "FileAttachments": [
+      {
+        "Id": "d07378da-9269-481f-89bd-45db9dd53250",
+        "FileName": "Windows1.GIF",
+        "DownloadUri": "./48990/d07378da-9269-481f-89bd-45db9dd53250"
+      },
+      {
+        "Id": "9eb9adda-980d-45c8-a3dc-2649ec113d9c",
+        "FileName": "Windows2.GIF",
+        "DownloadUri": "./48990/9eb9adda-980d-45c8-a3dc-2649ec113d9c"
+      },
+      {
+        "Id": "f9fc9e8d-3d1a-444e-92a2-6031e70e3490",
+        "FileName": "Windows.GIF",
+        "DownloadUri": "./48990/f9fc9e8d-3d1a-444e-92a2-6031e70e3490"
+      }
+    ]
+  },
+  {
+    "Title": "How To - Structure ASP.NET Applications in Visual Studio Team Foundation Server",
+    "Id": "48989",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:35:07.113-07:00",
+    "FileAttachments": [
+      {
+        "Id": "333092d2-bde9-4045-87f1-faaef5a77af1",
+        "FileName": "ASP.NET1.gif",
+        "DownloadUri": "./48989/333092d2-bde9-4045-87f1-faaef5a77af1"
+      },
+      {
+        "Id": "2413fc8e-4e82-4c3b-826f-65f94c60591a",
+        "FileName": "ASP.NET2.gif",
+        "DownloadUri": "./48989/2413fc8e-4e82-4c3b-826f-65f94c60591a"
+      },
+      {
+        "Id": "5c650adf-9294-4cd6-ae74-8fff45e738a8",
+        "FileName": "ASP.NET.gif",
+        "DownloadUri": "./48989/5c650adf-9294-4cd6-ae74-8fff45e738a8"
+      }
+    ]
+  },
+  {
+    "Title": "How To - Set Up a Scheduled Build in Visual Studio Team Foundation Server",
+    "Id": "48987",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:34:54.957-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Set Up a Continuous Integration Build in Visual Studio Team Foundation Server",
+    "Id": "48986",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:34:43.777-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Perform a Baseless Merge in Visual Studio Team Foundation Server",
+    "Id": "48985",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:34:29.613-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Migrate Source Code to Team Foundation Server from Visual Source Safe",
+    "Id": "48984",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:34:03.303-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Manage Projects in Visual Studio Team Foundation Server",
+    "Id": "48983",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:33:50.867-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Customize a Report in Visual Studio Team Foundation Server",
+    "Id": "48982",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:33:35.927-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Customize a Process Template in Visual Studio Team Foundation Server",
+    "Id": "48981",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:33:23.13-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Create Your Source Tree in Visual Studio Team Foundation Server",
+    "Id": "48979",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:33:11.013-07:00",
+    "FileAttachments": [
+      {
+        "Id": "11a2c52a-0b87-4e29-8fed-e32194a4ddff",
+        "FileName": "SourceTree.GIF",
+        "DownloadUri": "./48979/11a2c52a-0b87-4e29-8fed-e32194a4ddff"
+      },
+      {
+        "Id": "f1ae94d2-6702-4af9-97dc-ce7fd1d74c2d",
+        "FileName": "SourceTree1.GIF",
+        "DownloadUri": "./48979/f1ae94d2-6702-4af9-97dc-ce7fd1d74c2d"
+      }
+    ]
+  },
+  {
+    "Title": "How To - Create Custom Check-in Policies in Visual Studio Team Foundation Server",
+    "Id": "48978",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:32:58.937-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Create a Risk Over Time Report for Visual Studio Team Foundation Server",
+    "Id": "48977",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:32:47.203-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Create a Custom Report for Visual Studio Team Foundation Server",
+    "Id": "48976",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:32:34.717-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Automatically Run Code Analysis with Team Build in Visual Studio Team Foundation Server",
+    "Id": "48975",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:32:22.297-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "How To - Add a New Developer To Your Project in Visual Studio Team Foundation Server",
+    "Id": "48974",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:32:08.68-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Practices at a Glance:   Project Management",
+    "Id": "48972",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:31:27.073-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Practices at a Glance:   Reporting",
+    "Id": "48971",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:31:13.643-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Practices at a Glance:   Build",
+    "Id": "48969",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:30:32.883-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Guidelines:  Project Management",
+    "Id": "48968",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:30:17.93-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Guidelines:  Reporting",
+    "Id": "48967",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:30:05.373-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Guidelines:  Source Control",
+    "Id": "48966",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:29:11.54-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Guidelines:  Build",
+    "Id": "48965",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:28:54.603-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Chapter 17 - Providing Internet Access to Team Foundation Server",
+    "Id": "48963",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:28:28.063-07:00",
+    "FileAttachments": [
+      {
+        "Id": "a3d67f7e-15d9-4b85-8640-b46e1c6d5480",
+        "FileName": "Fig17.1.GIF",
+        "DownloadUri": "./48963/a3d67f7e-15d9-4b85-8640-b46e1c6d5480"
+      },
+      {
+        "Id": "512aa498-3411-4866-b8a2-0fe5b67ba350",
+        "FileName": "Fig17.2.GIF",
+        "DownloadUri": "./48963/512aa498-3411-4866-b8a2-0fe5b67ba350"
+      },
+      {
+        "Id": "96abcd93-fe33-4c4c-9f45-06c0bcbece2a",
+        "FileName": "Fig17.3.GIF",
+        "DownloadUri": "./48963/96abcd93-fe33-4c4c-9f45-06c0bcbece2a"
+      },
+      {
+        "Id": "544ecd9d-613a-4e2d-8501-92c270c4be87",
+        "FileName": "Fig17.4.GIF",
+        "DownloadUri": "./48963/544ecd9d-613a-4e2d-8501-92c270c4be87"
+      },
+      {
+        "Id": "350e1d4e-27a4-4697-b56d-64c305926a2f",
+        "FileName": "Fig17.5.GIF",
+        "DownloadUri": "./48963/350e1d4e-27a4-4697-b56d-64c305926a2f"
+      },
+      {
+        "Id": "380ee1a1-34dc-4458-b093-785f33a1f702",
+        "FileName": "Fig17.6.GIF",
+        "DownloadUri": "./48963/380ee1a1-34dc-4458-b093-785f33a1f702"
+      }
+    ]
+  },
+  {
+    "Title": "Chapter 16 - Installation and Deployment",
+    "Id": "48962",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:28:15.383-07:00",
+    "FileAttachments": [
+      {
+        "Id": "95925533-e403-49c5-ba62-17d18bf66d60",
+        "FileName": "Fig16.1.GIF",
+        "DownloadUri": "./48962/95925533-e403-49c5-ba62-17d18bf66d60"
+      },
+      {
+        "Id": "82e17097-57a8-4746-b138-5557f0c5a526",
+        "FileName": "Fig16.2.GIF",
+        "DownloadUri": "./48962/82e17097-57a8-4746-b138-5557f0c5a526"
+      },
+      {
+        "Id": "8c8fc0c7-21c5-46d2-b5fd-69bef3581a2e",
+        "FileName": "Fig16.3.GIF",
+        "DownloadUri": "./48962/8c8fc0c7-21c5-46d2-b5fd-69bef3581a2e"
+      },
+      {
+        "Id": "b76a66cf-c6cd-45b2-8c6a-659b3e748414",
+        "FileName": "Fig16.4.GIF",
+        "DownloadUri": "./48962/b76a66cf-c6cd-45b2-8c6a-659b3e748414"
+      },
+      {
+        "Id": "3950cec8-9063-4f33-af05-ec160746f240",
+        "FileName": "Fig16.5.GIF",
+        "DownloadUri": "./48962/3950cec8-9063-4f33-af05-ec160746f240"
+      },
+      {
+        "Id": "fd89c543-287a-417b-a2fc-52133ee7bdbd",
+        "FileName": "Fig16.6.GIF",
+        "DownloadUri": "./48962/fd89c543-287a-417b-a2fc-52133ee7bdbd"
+      }
+    ]
+  },
+  {
+    "Title": "Chapter 15 - Reporting Explained",
+    "Id": "48961",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:28:02.977-07:00",
+    "FileAttachments": [
+      {
+        "Id": "1ff9d606-0406-4efb-a175-637f741514be",
+        "FileName": "Fig15.1.GIF",
+        "DownloadUri": "./48961/1ff9d606-0406-4efb-a175-637f741514be"
+      }
+    ]
+  },
+  {
+    "Title": "Chapter 13 - Process Templates Explained",
+    "Id": "48959",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:27:37.493-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Chapter 12 - Work Items Explained",
+    "Id": "48958",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:27:24.183-07:00",
+    "FileAttachments": [
+      {
+        "Id": "7362e84f-b0af-48ea-822a-2bd316671cb0",
+        "FileName": "Fig12.1.GIF",
+        "DownloadUri": "./48958/7362e84f-b0af-48ea-822a-2bd316671cb0"
+      },
+      {
+        "Id": "f5c92007-0a56-40cb-8841-d1aa39c27d3e",
+        "FileName": "Fig12.2.GIF",
+        "DownloadUri": "./48958/f5c92007-0a56-40cb-8841-d1aa39c27d3e"
+      }
+    ]
+  },
+  {
+    "Title": "Chapter 11 - Project Management Explained",
+    "Id": "48957",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:27:12.823-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Chapter 9 - Setting Up Scheduled Builds with Team Build",
+    "Id": "48955",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:26:48.073-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Chapter 8 - Setting Up Continuous Integration with Team Build",
+    "Id": "48954",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:26:34.613-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Chapter 7 - Team Build Explained",
+    "Id": "48953",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:26:22.753-07:00",
+    "FileAttachments": [
+      {
+        "Id": "dc07b194-0a18-431b-80d3-eb660a0ded67",
+        "FileName": "Fig7.1.GIF",
+        "DownloadUri": "./48953/dc07b194-0a18-431b-80d3-eb660a0ded67"
+      }
+    ]
+  },
+  {
+    "Title": "Chapter 4 - Structuring Projects and Solutions in Team Foundation Source Control",
+    "Id": "48950",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:25:45.37-07:00",
+    "FileAttachments": []
+  },
+  {
+    "Title": "Chapter 3 - Structuring Projects and Solutions in Source Control",
+    "Id": "48949",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:25:33.247-07:00",
+    "FileAttachments": [
+      {
+        "Id": "543c10e0-180e-457f-adbd-4232e636c64e",
+        "FileName": "Fig3.1.GIF",
+        "DownloadUri": "./48949/543c10e0-180e-457f-adbd-4232e636c64e"
+      },
+      {
+        "Id": "6154613a-d459-46d9-b418-81da54bec122",
+        "FileName": "Fig3.2.GIF",
+        "DownloadUri": "./48949/6154613a-d459-46d9-b418-81da54bec122"
+      },
+      {
+        "Id": "57ac7f1f-5b92-4b73-824d-f351cec34101",
+        "FileName": "Fig3.3.GIF",
+        "DownloadUri": "./48949/57ac7f1f-5b92-4b73-824d-f351cec34101"
+      }
+    ]
+  },
+  {
+    "Title": "Chapter 2 - Team Foundation Server Architecture",
+    "Id": "48948",
+    "ParentWikiTitle": ".",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:25:21.387-07:00",
+    "FileAttachments": [
+      {
+        "Id": "c97e6453-ee43-46d4-be89-c5fc31d8ffbd",
+        "FileName": "Fig2.1.GIF",
+        "DownloadUri": "./48948/c97e6453-ee43-46d4-be89-c5fc31d8ffbd"
+      },
+      {
+        "Id": "97080aff-4a97-4e23-90ca-16e5b23967eb",
+        "FileName": "Fig2.2.GIF",
+        "DownloadUri": "./48948/97080aff-4a97-4e23-90ca-16e5b23967eb"
+      },
+      {
+        "Id": "f1091eb3-e533-4314-ade6-ad07b02be4c3",
+        "FileName": "Fig2.3.GIF",
+        "DownloadUri": "./48948/f1091eb3-e533-4314-ade6-ad07b02be4c3"
+      }
+    ]
+  },
+  {
+    "Title": ".",
+    "Id": "48942",
+    "ParentWikiTitle": "Home",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-08-06T09:07:13.12-07:00",
+    "FileAttachments": [
+      {
+        "Id": "1a4994cd-71a8-4834-92c6-127435ce3147",
+        "FileName": "TeamDevGuide.GIF",
+        "DownloadUri": "./48942/1a4994cd-71a8-4834-92c6-127435ce3147"
+      }
+    ]
+  },
+  {
+    "Title": "testpage",
+    "Id": "35675",
+    "ParentWikiTitle": "Home",
+    "FileExtension": "codeplexwiki",
+    "UpdatedDate": "2007-05-23T20:37:19.353-07:00",
+    "FileAttachments": [
+      {
+        "Id": "460eb416-cb4b-438a-91ee-a109b4349ebf",
+        "FileName": "TeamDevGuide.gif",
+        "DownloadUri": "./35675/460eb416-cb4b-438a-91ee-a109b4349ebf"
+      }
+    ]
+  }
+]

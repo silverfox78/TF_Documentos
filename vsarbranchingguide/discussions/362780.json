@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "860213",
+    "ThreadId": "362780",
+    "Html": "\r\n<p>We have a development team who mainly produce internal systems and so really only have to support a single release at any one time.&nbsp;</p>\r\n<p>We are following the basic branching plan in the VS2010 branching guide and this states:</p>\r\n<p><strong>Additional releases are supported by creating additional release branches for each product release. &nbsp;Each release branch is a child of MAIN and a peer to each other (e.g. release2.0 branch is peer to&nbsp;release3.0 and both are children of\r\n MAIN)</strong></p>\r\n<p>The quick start guide seems to suggest having a single release branch and labelling it each time you do a new release (the example in section&nbsp;Release 1.1 to Production is to merge main to release and '<strong>Finally label the &quot;Release&quot; branch as &quot;Release\r\n 1.1&quot; and complete the new&nbsp;release process (Go Live)</strong>'.</p>\r\n<p>My&nbsp;interpretation&nbsp;of this is that having one release branch and&nbsp;labeling&nbsp;this is acceptable, and if the need arises you can add additional release branches? Firstly is this assumption correct and&nbsp;secondarily&nbsp;what circumstances\r\n generally <span>necessitate this?&nbsp;</span>&nbsp;&nbsp;</p>\r\n<p>&nbsp;Many thanks.&nbsp;</p>\r\n",
+    "PostedDate": "2012-07-11T02:11:25.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "860263",
+    "ThreadId": "362780",
+    "Html": "<p>The simple labeling approach can certainly work in some cases. Yours may be one of those. But it is very simple.&nbsp;There are some pitfalls to assess. Here are two.</p>\r\n<p>First, if you read some of the other posts, you will see people caution you that labeling is not good if you need an authoritative snapshot since labels can be modified. If that concerns you, consider their advice.</p>\r\n<p>Second,&nbsp;one thing to watch&nbsp;with this simplified model is where you deploy your release from. Up until the time the new release is in production, you will want to reserve the right to make changes to the previous release because it is live. What you would NOT want to do is merge from dev to main, then to the release branch, then undertake a multi-week testing protocol with the new release in your release branch and no way to do hotfixes on the old release.&nbsp; That would be the wrong way to use the model. Instead, you would want to stabilize the new product and get it acceptance-tested and deployed from another branch (like Main). Then you could promote it (merge it) to the release branch at the time&nbsp;it is deployed.</p>\r\n<p>These two nuisances are just some of the reasons&nbsp;why some&nbsp;of us just make a separate release branch for each release. It's clean, it's simple, and it avoids lots of problems. The only reason I can imagine for NOT having separate branches would be if your source code is HUGE and you cannot afford the storage space of multiple releases, and you have lots of releases.</p>\r\n<p>But you certainly can use a shared release branch if you are aware of its limitations and they do not apply.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-07-11T05:36:16.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "862574",
+    "ThreadId": "362780",
+    "Html": "<p>With respect to Labeling vs Branches for release, I agree with David. Label contents can be changed and are not auditable. I had hoped to correct the scenario in the Branching Guidance (2010) so it no longer recommended labeling.&nbsp;</p>\r\n<p>With respect to space issues, TFS does not generally make full copies of files when branching. See my blog: <a href=\"http://blogs.msdn.com/b/billheys/archive/2011/05/05/how-tfs-stores-files-and-calculated-deltas-on-versioned-files.aspx\">http://blogs.msdn.com/b/billheys/archive/2011/05/05/how-tfs-stores-files-and-calculated-deltas-on-versioned-files.aspx</a></p>\r\n<p>Bill Heys, VS ALM Ranger</p>",
+    "PostedDate": "2012-07-12T16:19:51.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "865431",
+    "ThreadId": "362780",
+    "Html": "<p>Thank you for the feedback, I think the points about auditability and the release deployment are excellent ones. I shall revert to the multiple release branches.&nbsp;</p>\r\n<p>When several releases have taken place I was thinking I would need to delete the older release branches as they are no longer required and could cause confusion, is there any reason not to do this? Would I be better just locking them or using some other functionality?&nbsp;</p>",
+    "PostedDate": "2012-07-13T15:06:12.793-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "865575",
+    "ThreadId": "362780",
+    "Html": "<p>I would keep, at a minimum, the release branch(es) for each release version you need to suppport (in production). And I would keep them for as long as you need to service these releases (service packs, and&nbsp; /or hot fixes (bug fixes)). You should also understand the audit requirements for preserving released code (for example some organizations have a seven-year audit requirement), Having said this, if you have have reliable backup and recovery procedures, AND you are able to restore a prior version (and maybe upgrade to&nbsp;your current TFS environment)&nbsp;these \"release branches\" may not all NEED to be in the active TFS database.</p>\r\n<p>Consider a product you released three years ago but still needs to be supported for current customers, do you have everything you need checked into TFS - including third party or common code/DLLs, .NET Framework DLLs, etc? Can you recreate the developent environment from 3 or 5 years ago? If not you should have a well thought-out plan in place.</p>\r\n<p>Bill Heys&nbsp;</p>",
+    "PostedDate": "2012-07-13T17:20:44.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

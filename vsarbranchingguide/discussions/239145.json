@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "538860",
+    "ThreadId": "239145",
+    "Html": "\r\n<p>In the branching guide it is recommended that once a release goes live that release branch be made read only. &nbsp;From what I can find that is a simplification of what is required to make a branch read only. &nbsp;Is there any guidance on how to perform\r\n this task? &nbsp;What I have seen is a manual process for each security group of explicitly denying permissions. &nbsp;Is there a simpler way that I am overlooking?</p>\r\n<p>Thanks!</p>\r\n",
+    "PostedDate": "2010-12-21T10:39:33.53-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538876",
+    "ThreadId": "239145",
+    "Html": "\r\n<p>I think you nailed it. I have been waiting for somebody to post this question. As you note, there is no simple read-only property you can set. :(</p>\r\n<p>Regards,<br>\r\nBill Heys <br>\r\nVS ALM Ranger</p>\r\n",
+    "PostedDate": "2010-12-21T11:08:25.183-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706399",
+    "ThreadId": "239145",
+    "Html": "<p>You can do that by locking the branch. It will prevent users from code check-out and check-in.</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks,</p>\r\n<p>Suman</p>",
+    "PostedDate": "2011-12-02T04:15:43.9-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706808",
+    "ThreadId": "239145",
+    "Html": "<p>Bill, what do you typically recommend in this case? Do you set the Deny permission on all permissions for every project group? I have found what I thought was a clever way to do this but I want to get your opinion. I did the following:</p>\r\n<p>1. right-click the branch or folder in question, and choose Security</p>\r\n<p>2. Add Team Foundation Server Group \"Project Collection Valid Users\"</p>\r\n<p>3. Set deny on all items except Read and Manage permissions.</p>\r\n<p>Then EVERYONE in the project collection is locked out by clicking the deny settings in one place, one time. Having to change settings for multiple groups is error prone.&nbsp; And it is easily reversed by someone with sufficient authority. That reversal capability is great to prevent unintentional hassles. But since the setting can be changed back and forth indefinitely, auditors would have to view history and examine to ensure no changes were made after launch date, since an administrator could remove the Deny, make a change, and reapply the Deny.&nbsp; There wouold be no evidence of the security change, though there would be evidence of the code change.</p>",
+    "PostedDate": "2011-12-02T19:21:40.15-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706895",
+    "ThreadId": "239145",
+    "Html": "<p>David,</p>\r\n<p>I typically follow a process similar to yours. I am not too concerned about an administrator bypassing the intent of locking down a release branch. They will be cautioned that if this happens, their job will be posted shiortly thereafter.</p>\r\n<p>Bill</p>",
+    "PostedDate": "2011-12-03T05:21:38.953-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "938841",
+    "ThreadId": "402480",
+    "Html": "\r\n<p>We have an development branch called &quot;Active&quot; where we do most of our new development work. &nbsp;We were two-thirds of the way done with a large release, when the management team decided to put the release on hold indefinitely. &nbsp;How can I &quot;park&quot; these\r\n changes somewhere, but continue to use the Active branch for development? &nbsp;Then someday, bring these parked changed back into Active.</p>\r\n<p>What I'd like to do is rename &quot;Active&quot; to &quot;ProjectSomeDay&quot;, create a new Active branch from main, make &quot;ProjectSomeDay&quot; a child of the new Active branch and someday merge the changes from ProjectSomeDay into the current Active branch.</p>\r\n<p>Is this possible or is there a different way to handle this scenario?</p>\r\n",
+    "PostedDate": "2012-11-08T15:05:33.917-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

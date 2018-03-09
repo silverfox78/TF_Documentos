@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "43308",
+    "ThreadId": "13251",
+    "Html": "\r\nHello,<br /><br />I've found really helpful this Guide, now I see more clear a lot of aspect in Team Foundation Server.<br /><br />My question is if are there Iterations naming tips or conventions? or how microsft teams name the iterations. <br /><br />Since the iterations default in a new team project are Iteration 0, Iteration 1, Iteration 2.  These may not be descriptive.<br /><br />Thanks in advanced.<br /><br /><br /><br />",
+    "PostedDate": "2007-08-01T07:56:22.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "47795",
+    "ThreadId": "13251",
+    "Html": "\r\nOn the patterns &amp; practices team we use Iteration 1, Iteration 2, etc.  Some projects use Week 1, Week 2, etc. <br /><br />Its ok to be more descriptive if that works better for your team. Iteration naming, like area naming, is context specific and you should choose whatever works best for your team and causes the least amount of confusion.<br />",
+    "PostedDate": "2007-09-04T14:57:10.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

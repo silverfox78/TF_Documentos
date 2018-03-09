@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Feature branching from Dev has an incorrect FI to featurePOWER, this FI should be to featureMOD.",
+    "LastUpdatedDate": "2016-04-15T06:37:03.16-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2016-04-15T06:37:03.16-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Step 3.1 - From nothing to complexity or not - Incorrect FI",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 22242
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1017864",
+    "ThreadId": "437230",
+    "Html": "Is branching a good or even the best way to share assemblies, libraries and other blob assets between different team projects?\r<br />\n<br />\nI don't recall seeing this use case covered in the ranger guide.\r<br />\n<br />\nThere is an option that is not super well documented:<br />\n<ul>\n<li>\nImmediately convert source folder to branch (enabled visualizations)<br />\n</li>\n</ul>\nIt is the default but I'm not sure if it is relevant for blob assets.<br />\n",
+    "PostedDate": "2013-03-19T12:22:55.56-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1018421",
+    "ThreadId": "437230",
+    "Html": "Hi John,\r<br />\n<br />\nTake a look at the &quot;Advanced Version Control Guide&quot; document. There is a section titled &quot;Dependency Management Patterns&quot;. It goes through different scenarios of sharing source code, binaries, and 3rd party libraries.\r<br />\n<br />\nBranching vs Not branching comes down to how often the libraries and blob assets change. If they don't change that often, you may just want to create a folder for each version and reference or update them when needed. You need to create a dedicated team project for you shared assets.\r<br />\n<br />\nLet me know if you need more info. \r<br />\n<br />\nCheers,\r<br />\nAhmed<br />\n",
+    "PostedDate": "2013-03-20T10:58:49.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1019124",
+    "ThreadId": "437230",
+    "Html": "Hey all,\r<br />\n<br />\nThis is a huge topic area, take a look at the guide for pros/cons.  However also take a look at NuGet and NuGet package restore as a potential solution for dependency management which can in fact get you away from putting binaries in the tree to begin with.<br />\n",
+    "PostedDate": "2013-03-21T12:45:13.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

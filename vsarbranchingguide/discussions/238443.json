@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "536036",
+    "ThreadId": "238443",
+    "Html": "\r\n<p>Hi there, i have the same problem as this guy:&nbsp;<a href=\"http://tfsbranchingguideiii.codeplex.com/Thread/View.aspx?ThreadId=231992\">http://tfsbranchingguideiii.codeplex.com/Thread/View.aspx?ThreadId=231992</a></p>\r\n<p>Having a dev branch and when merging my web application the main branch will have the same web server mapping as my dev branch which not works of course.</p>\r\n<p>Any solution to this?</p>\r\n<p>&nbsp;</p>\r\n<p>Niclas</p>\r\n",
+    "PostedDate": "2010-12-15T02:51:07.047-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

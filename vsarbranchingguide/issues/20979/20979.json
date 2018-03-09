@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Posters have been re-vamped in v3.2 and we need to reset feedback. The diagrams mentioned herein have been replaced with new diagrams.",
+    "ClosedDate": "2015-03-17T08:22:01.313-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In the \"Version Control Cheat Sheet for TFVC and Git\" there are two pictures showing an example of Feature Isolation in TFVC and Git.\n\nThese images are misleading/confusing in my opinion as the Git example actually shows a \"Hybrid Development & Feature Isolation\" as described on slide 19 in \"TFS Version Control Images - Illustration Collection.pptx\"\n\nChanging one of the pictures so both pictures actually show the same thing would improve the cheat sheet.\n\nRotating the Git picture 90 degrees clockwise and then flip it horizontally would make it clearer that the merging and branching strategies are basically the same no matter which flavour of source control you use.",
+    "LastUpdatedDate": "2015-03-17T08:22:01.313-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2014-05-07T00:49:45.467-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cheat Sheet - Feature Isolation Branching Example",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 20979
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

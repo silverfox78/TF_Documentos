@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1234167",
+    "ThreadId": "542260",
+    "Html": "Hi\r<br />\n<br />\nHave joined a company newly and the team has developed one application in ASP.NET planned for one entity.\r<br />\n \r<br />\nNow this application has been rolled out to 5 other group entities and our team have created 5 databases, and 5 copies of the source for all these entities. There are difference in some of the features.\r<br />\n \r<br />\nCurrently we make changes in one code base , do the build and realease /deployment.\r<br />\n \r<br />\nNow we are planning to use TFS. We have the trial version of TFS.\r<br />\n \r<br />\nMy question is how do I structure my code in Source Safe.\r<br />\n \r<br />\n1) We want to have one code base with options to have specific exclusive code(feature) for some entities.\r<br />\n2) We must be able to develop new features and release it to say Company A, Company C and Company D.\r<br />\n3) We must be able to make a build and deploy the same with very less effort.\r<br />\n4) Any Bug fixed must be one time fix across entities.\r<br />\n<br />\nExample \r<br />\nCompany A may have feature 1,2,3,4 \r<br />\nCompany B may have 1,2,4,5 \r<br />\nCompany C may have 1,2,3,7\r<br />\n<br />\nAdded to this there is virtually no documentation available. Every thing is in the Head ;) / Human memory.\r<br />\n \r<br />\nWould Appreciate if some one has encountered the same problem and resolved it.\r<br />\nI was directed to this discussion fourm.\r<br />\n<br />\nI guess some one would have solved this problem using branching.\r<br />\n<br />\nWould Appreciate some help / suggestion.\r<br />\n<br />\nBest Regards\r<br />\nVadhi<br />\n",
+    "PostedDate": "2014-04-14T21:02:12.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234262",
+    "ThreadId": "542260",
+    "Html": "The burden on your team is proportional to the complexity of the your source management scheme. \r<br />\n<br />\nI'm sure someone has solved this with branching. That does not mean that branching is the best way to solve this. If you maintain different branches for each customer, it will be complex. \r<br />\n<br />\nThe simplest model would be to maintain one set of source code for all customers, and design it to be modular so you can enable/disable be either deploying different modules or using feature switches to enable/disable features. \r<br />\n<br />\nProbably the most important question is &quot;Why is there &quot;virtually no documentation available?&quot; Devising a complex branching scheme in an environment where people won't even document the customer's products in an orderly fashion is unlikely to make things turn out well. And the root cause of problems will not be a poor branching plan. Your problem will be the answer to that question. I suggest you discuss that with your team first and be realistic about what you find.<br />\n",
+    "PostedDate": "2014-04-15T04:50:38.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234555",
+    "ThreadId": "542260",
+    "Html": "Hi \r<br />\n<br />\nThanks for your reply.\r<br />\n<br />\nNow we are putting in place mechanism to document the application.\r<br />\nThis application is for a Brick and Morter company Whish is into fabrication.\r<br />\nThis application has a history of development and no doumentation in the past.\r<br />\n<br />\nI too think that Branching per say may not be needed but we must alter our code to expose some unique features to certain entities.\r<br />\nHaving done that we will have one code base that caters to all 5 entities.\r<br />\n<br />\nBest Regards\r<br />\nVadhi<br />\n",
+    "PostedDate": "2014-04-15T21:42:14.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1234692",
+    "ThreadId": "542260",
+    "Html": "It sounds like you are introducing many useful improvements there. I think you will be glad once you have that common code base. \r<br />\n<br />\nThere are many ways to achieve the flexibility you need between different customers.  Martin Fowler has a nice article on feature toggles and the various ways they are used. <a href=\"http://martinfowler.com/bliki/FeatureToggle.html\" rel=\"nofollow\">http://martinfowler.com/bliki/FeatureToggle.html</a>. His reference to &quot;business toggles&quot; seems relevant to you.  His article is light reading and very useful.\r<br />\n<br />\nThere are some really heavy concepts out there like software product lines. But at their root, all these are different ways to make software configurable so you can build in the known variations and switch them dynamically at build, delivery, or runtime, without having to change the code for each situation.  If you think about existing products like SAP, PeopleSoft, and Oracle EBS, they have all been built on a similar idea. \r<br />\n<br />\nWhile your customers must compromise by giving up personalized software packages, they get in return, a flexible product that is affordable. Most customers cannot afford to pay you what it would take to personally code all their variations. Either they pay too much or you get paid too little and you can't sustain your business.\r<br />\n<br />\nI would love to know what configuration approach you finally choose to fit your unique situation. Feel free to share that when your design settles down. I would enjoy hearing from you and others would benefit from your journey.<br />\n",
+    "PostedDate": "2014-04-16T06:19:59.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

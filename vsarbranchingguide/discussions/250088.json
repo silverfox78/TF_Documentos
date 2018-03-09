@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "582004",
+    "ThreadId": "250088",
+    "Html": "\r\n<p>Where do I get the virtual image from, so that I can start working on the HOL?</p>\r\n",
+    "PostedDate": "2011-03-17T04:22:16.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "582069",
+    "ThreadId": "250088",
+    "Html": "<p>You can take any virtual, for example <a href=\"http://blogs.msdn.com/b/briankel/archive/2010/06/25/now-available-visual-studio-2010-rtm-virtual-machine-with-sample-data-and-hands-on-labs.aspx\">Brian Keller&rsquo;s</a>, or physical machine that meets the prerequisites and setup the HOL environment. The use of a production machine is NOT recommended for the HOL environment.</p>\r\n<p>To setup your HOL environment, proceed as follows:</p>\r\n<ol>\r\n<li>Ensure the environment meets the prerequisites as outlined in the HOL manual</li>\r\n<li>Unzip the file <a href=\"http://tfsbranchingguideiii.codeplex.com/releases/38849/download/218235\">http://tfsbranchingguideiii.codeplex.com/releases/38849/download/218235</a> to c:\\. It creates a C:\\HOL directory, which contains the necessary bits and a setup script. If you change the drive or path, you will have to edit the setup script.</li>\r\n<li>Read the C:\\HOL\\Branching Guidance\\_README_FIRST.txt file and ensure the prerequisites are installed, i.e. TFS Power Tools, which you can find <a href=\"http://visualstudiogallery.msdn.microsoft.com/c255a1e4-04ba-4f68-8f4e-cd473d6b971f\">here</a>.</li>\r\n<li>Execute the PowerShell script C:\\HOL\\Branching Guidance\\HOLSetup\\SetupHOL.ps1, which will setup your HOL environment.</li>\r\n</ol>\r\n<p>You can now walk through the relevant HOLs.</p>",
+    "PostedDate": "2011-03-17T06:52:26.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

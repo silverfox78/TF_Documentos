@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1089381",
+    "ThreadId": "455804",
+    "Html": "Could someone offer some pros/cons of TFS 2012 File Time setting to Current (default) vs Checkin Time\r<br />\n<br />\nAlso, how would I see the modify date of the file vs the last time Get lastest version of the file which is that date?\r<br />\n<br />\nI found this.\r<br />\n<a href=\"http://osnabrugge.wordpress.com/2012/09/03/tfs-source-control-2012workspaces-part-2/\" rel=\"nofollow\">http://osnabrugge.wordpress.com/2012/09/03/tfs-source-control-2012workspaces-part-2/</a>\r<br />\nFile Time \r<br />\nThis setting is new in TFS 2012. The choice is Current (the default) or Check-in.\r<br />\nBe careful with this one. This setting sets the modified date of a file. If the setting is Current, on check-in the file keeps its modify date,When you choose Check-in, the file modify time is set to check-in time. So if you check-in files that you changed 3 days ago, the file time in TFS is now !<br />\n",
+    "PostedDate": "2013-09-06T16:47:29.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

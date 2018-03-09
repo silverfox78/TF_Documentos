@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1251259",
+    "ThreadId": "547072",
+    "Html": "Are you planning providing guidance for multi-trunk development. Where each product is build within it's own &quot;Main&quot; and dependencies are shared via NuGet. MS Research did a great analysis here: <a href=\"http://research.microsoft.com/apps/pubs/default.aspx?id=157290\" rel=\"nofollow\">http://research.microsoft.com/apps/pubs/default.aspx?id=157290</a>\r<br />\n<br />\nWe are currently thinking about a &quot;Main&quot; branch for each module and the framework and a &quot;Product Main&quot; that is nothing more than a composition of the NuGet packages from various sources pulled together and verified. This is still in the idea phase and a long way from implementation so I cannot share my experiences, but it's where we are looking.\r<br />\n<br />\nEven if people don't take it as far as we are thinking, I think that looking at multi-trunk would be beneficial for teams.\r<br />\n<br />\nThanks,\r<br />\nDave<br />\n",
+    "PostedDate": "2014-05-30T06:50:42.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1251746",
+    "ThreadId": "547072",
+    "Html": "This approach is of interest to us as well. <br />\n",
+    "PostedDate": "2014-06-01T14:08:00.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

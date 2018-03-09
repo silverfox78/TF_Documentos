@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1219739",
+    "ThreadId": "538098",
+    "Html": "Hi all,\r<br />\n<br />\nI am here to request an opinion / suggestion for a Branching Strategy we should implement in TFS.\r<br />\n<br />\n<strong>Current scenario:</strong><br />\n<ol>\n<li>We have a Dev branch, Defect fix branch and Release branch. </li>\n<li>Development for the normal requirements normally happen in the Dev branch and release from this branch normally happens once in a month or two.</li>\n<li>The urgent defect fixes normally happens in the Defect fix branch and there will be weekly releases from this branch.</li>\n<li>\nAs part of each release (Defect fix or normal requirements) we merge the changes from the respective branch to the Release branch and create a package from the Release Branch.<br />\n</li>\n</ol>\nNew requirement:\r<br />\nAs said earlier, we have a weekly defect fix release.\r<br />\nSay, we have changes for 5 defects in Defect fix branch.\r<br />\n4 among the 5 defect fix passed QA (1 defect fix failed at QA) and we want the changes of those 4 defect fixes only to be pushed to the Release branch.\r<br />\nPlease note that we have some RDL (SSRS) files also hence there is high chance that the changes made in the file modified for the QA failed defect may also contain the changes for the other QA passed defects also.\r<br />\n<br />\nCan somebody suggest whether this is achievable and if yes, what should be my strategy for this?<br />\n",
+    "PostedDate": "2014-03-05T21:17:55.79-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

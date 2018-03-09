@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "444972",
+    "ThreadId": "213178",
+    "Html": "<p>How does labels affect the source database size?</p>\r\n<p>One of my colleague say that creating labels or branches just save versions of&nbsp;the changed files alone and it has a map of the changes and not the exact file is saved.</p>\r\n<p>So if I create more and more branches and Labels will the TFS database explode of size.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-05-19T09:14:57.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444991",
+    "ThreadId": "213178",
+    "Html": "<p>The impact of labels on TFS database size is minimal.</p>\r\n<p>In Team Foundation, labels are different and more powerful than labels were in Visual Source Safe.&nbsp; In VSS,&nbsp;labels are for a single point in time, in TFS labels&nbsp;are able to have versions of each file in the label from different points in time.&nbsp;</p>\r\n<p>For example,&nbsp;if you label a build then find and fix some bugs you can&nbsp;change the labeled versions of a&nbsp;some of the&nbsp;files (to either&nbsp;exclude changes that introduced bugs or to include changes that fixed bugs.&nbsp;</p>\r\n<p>TFS&nbsp;labels, therefore, do not represent a point in time, but rather a collection of points in time.&nbsp; Having said this, the cost of applying a label to a set of changesets is minimal.</p>\r\n<p>The impact of adding branches is also minimal. Since TFS stores only &quot;diff&quot; information, when a file is changed, the entire file is not redundantly saved.</p>\r\n<p>Having said this, the real cost of branching is NOT in database size, but in the manual effort required to manage merges and resolve merge conflicts. For this reason, in our best practice guidance, we advise people to keep their branching structures simple, and to understand the cost and benefits of adding new branches.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-05-19T09:40:29.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

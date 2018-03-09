@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "509881",
+    "ThreadId": "231621",
+    "Html": "<p>I have an application that is tightly tied with the database level.&nbsp; This is because a large part of the business logic is housed in stored procedures.&nbsp; I am talking about 200 stored procedures.&nbsp; It seems logical to me to put the stored procedure and database schemas for the application along with the source code.&nbsp; Because as the application is changing often this requires changes to stored procedures or additional fields on tables, etc.&nbsp;</p>\r\n<p>I have a couple quesitons.&nbsp; Is there a mechanism in TFS that can attach to SQL Server to allow you to stored schema and stored procedures?&nbsp; If so, is there a mechanism in TFS that will allow me to tie the application source with the database source?</p>",
+    "PostedDate": "2010-10-20T05:00:08.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "510028",
+    "ThreadId": "231621",
+    "Html": "<p>I would recommend reading the VS ALM Rangers Visual Studio Database Guide. You can download it here:&nbsp;<a href=\"http://vsdatabaseguide.codeplex.com/\">http://vsdatabaseguide.codeplex.com/</a></p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-10-20T09:44:04.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "510042",
+    "ThreadId": "231621",
+    "Html": "<p>Is there a single location that has a list of all the guides?&nbsp; I have other questions that I may be able to find out the answers to without bugging you all.</p>",
+    "PostedDate": "2010-10-20T10:16:28.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "510055",
+    "ThreadId": "231621",
+    "Html": "<p>If you search on Codeplex for &quot;Visual Studio ALM Rangers&quot; you should get the complete list.</p>",
+    "PostedDate": "2010-10-20T10:33:13.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

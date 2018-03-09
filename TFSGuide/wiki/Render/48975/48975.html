@@ -1,0 +1,62 @@
+<div class="wikidoc"><h3>How To: Automatically Run Code Analysis with Team Build in Visual Studio Team Foundation Server</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Applies To</h3><ul><li>Microsoft&#174; Visual Studio&#174; 2005 Team Foundation Server (TFS)</li>
+<li>Microsoft Visual Studio Team System</li></ul>
+
+<h3>Summary</h3>This How To article walks you through the process of configuring Team Build to include code analysis as a build step. This will automatically run code analysis as part of your team build and will report the results of the analysis in the build results.<br />
+<h3>Contents</h3><ul><li>Objective</li>
+<li>Overview</li>
+<li>Summary of Steps</li>
+<li>Before You Begin</li>
+<li>Step 1 – Test the Build</li>
+<li>Step 2 – Turn On Code Analysis for the Build</li>
+<li>Step 3 – Test Code Analysis</li>
+<li>Additional Resources</li></ul>
+
+<h3>Objective</h3><ul><li>Run code analysis as part of the build in order to validate code quality.</li></ul>
+
+<h3>Overview</h3>Visual Studio Team System Team Build allows you to define build types for your project that enable a build server to compile your application and make it available on a network share. You can turn on code analysis for the team build so that each build automatically performs code analysis and reports the results to the build results report page. This How To article walks you through the process of configuring Team Build to include code analysis as a build step.<br />
+<h3>Summary of Steps</h3><ul><li>Step 1 – Test the Build</li>
+<li>Step 2 – Turn Code Analysis on for the Build</li>
+<li>Step 3 – Test Code Analysis</li></ul>
+
+<h3>Before You Begin</h3>Before you can turn on code analysis for Team Build, you must ensure you have the following pre-requisites in place:
+<ul><li>Your Team Foundation user ID must have permission to administer a build.  Ask you administrator if you are unsure of your user’s allowed permissions.</li>
+<li>A team build must already exist for your project. You can check this by looking at Team Build in the Visual Studio Team Explorer.</li></ul>
+
+<h3>Step 1 – Test the Build</h3>Start by testing the team build to make sure there are no problems before you turn on code analysis. You can do this by performing the following steps:
+<ol><li>In Visual Studio, open <b>Team Explorer</b> in Visual Studio </li>
+<li>Expand the node for your team project</li>
+<li>Expand the <b>Team Builds</b> node</li>
+<li>Right Click an existing team build and then select <b>Build Team Project</b></li>
+<li>Ensure the build has completed successfully.  If there are build breaks or the build is not able to complete, fix these errors before moving to the next step.</li></ol>
+
+<h3>Step 2 – Turn On Code Analysis for the Build</h3>Once you have verified that the build is working properly, you can turn on code analysis.  Use the following steps to turn on code analysis:
+<ol><li>Open <b>Source Control Explorer.</b></li>
+<li>In Source Control Explorer, expand your team project folder<b>.</b></li>
+<li>Expand the <b>TeamBuildTypes</b> folder.</li>
+<li>Select the team build folder for which you want to turn on code analysis.</li>
+<li>Check out <b>TFSBuild.proj</b> file from source control. You may need to perform a <b>Get Latest Version</b> operation on the folder first.</li>
+<li>In Source Control Explorer, double click <b>TFSBuild.Proj</b> to open it. </li>
+<li>If you want all projects to run code analysis, regardless of project settings, change the <b>&lt;RunCodeAnalysis&gt;</b> tag to <b>Always</b>.</li>
+<li>If you want to run code analysis on each project based on project settings, change the <b>&lt;RunCodeAnalysis&gt;</b> tag to <b>Default.</b></li>
+<li>If you are using per-project settings and want to turn on code analysis for a project:
+<ol><li>Open the solution in Visual Studio.</li>
+<li>In Solution Explorer, right click on the project<b>.</b></li>
+<li>Select <b>Properties.</b></li>
+<li>Click on <b>Code Analysis.</b></li>
+<li>Select the <b>Enable Code Analysis</b> check box<b>.</b></li>
+<li>Check out the .csproj file for the project from source control.</li>
+<li>Save the file by clicking the <b>save</b> icon in toolbar while properties window is displayed.</li>
+<li>Check the .csproj file for the project back into source control.</li></ol></li>
+<li>Save TFSBuild.proj and check it back into source control.</li></ol>
+
+<h3>Step 3 – Test Code Analysis</h3>Once you have turned on code analysis for a team build, you can test to make sure it is working properly.  Use the following steps to test code analysis for your build:
+<ol><li>In Team Explorer, right click the build type and then click <b>Build Team Project.</b></li>
+<li>When the build has completed, click the link to the build log</li>
+<li>You should see some code analysis warnings at the end of the build log. The warning IDs will start with “CA”, such as in the following examples:</li>
+<li>MSBUILD : warning : CA2209 : Microsoft.Usage : No valid permission requests were found for assembly &#39;HelloWorldTest&#39;. You should always specify the minimum security permissions using SecurityAction.RequestMinimum.</li>
+<li>MSBUILD : warning : CA2210 : Microsoft.Design : Sign &#39;HelloWorldTest&#39; with a strong name key.</li>
+<li>MSBUILD : warning : CA1014 : Microsoft.Design : &#39;HelloWorldTest&#39; should be marked with CLSCompliantAttribute and its value should be true.</li></ol>
+
+<h3>Additional Resources</h3><ul><li>For more information on code analysis tools, see “Guidelines for Using Code Analysis Tools” at <a href="http://msdn2.microsoft.com/en-us/library/ms182023(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms182023(VS.80).aspx</a> </li>
+<li>For more information on team builds, see “Overview of Team Foundation Build” at <a href="http://msdn2.microsoft.com/en-us/library/ms181710(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181710(VS.80).aspx</a></li></ul></div><div class="ClearBoth"></div>

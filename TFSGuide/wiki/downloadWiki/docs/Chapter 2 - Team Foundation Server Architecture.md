@@ -1,0 +1,97 @@
+### Chapter 2 - Team Foundation Server Architecture
+- _[J.D. Meier](http://blogs.msdn.com/jmeier), [Jason Taylor](http://jtaylorgoodlife.blogspot.com/), Alex Mackman, [Prashant Bansode](http://prashantbansode.blogspot.com/), [Kevin Jones](http://blogs.advantaje.com/blog/kevin/)_
+
+### Objectives
+* Describe Microsoft® Visual Studio® Team System (VSTS) and Team Foundation Server (TFS) architecture.
+* Identify the components that make up the client, application and data tiers.
+* Highlight the differences between a single-server and multi-server deployment.
+
+### Overview
+This chapter introduces you to TFS architecture and basic deployment topologies. TFS has a logical three-tiered architecture that includes a client tier, an application tier, and a data tier. TFS clients interact with the application tier through various Web services, and the application tier uses various Microsoft SQL Server™ databases in the data tier. 
+
+You can choose to install the application tier and data tier on the same physical server or on separate servers. Your choice depends largely on the size of your team. A single-server deployment works best for teams with fewer than 50 team members, but with a sufficiently powerful server can support up to 400 users. A dual-server deployment can scale up to around 2000 users.
+
+### How to Use This Chapter
+Use this chapter to learn about the core TFS components and how they interact with one another. By reading this chapter, you will also learn the purpose of each of these components and how they are most commonly deployed.
+
+If you are new to TFS, you should first read “Chapter 1 - Introducing the Team Environment”, to learn how development and test teams interact with TFS and use it to improve collaboration and the overall efficiency of their software development efforts.
+
+### Team Foundation Server Architecture
+TFS employs a logical three-tiered architecture, including _client_, _application_, and _data_ tiers. TFS clients interact with the application tier through various Web services; the application tier is in turn supported by various databases in the data tier. Figure 2.1 shows the components of each TFS tier as well as their interactions.
+
+![](Chapter 2 - Team Foundation Server Architecture_Fig2.1.GIF) 
+**_Figure 2.1** TFS Components and Tiers_
+
+#### Client Tier
+The client tier contains the following important components
+* **Team Foundation Server object model.** This is the public API used to interact with TFS. You can use the object model to create your own client-side applications that interact with TFS.
+* **Visual Studio Industry Partners (VSIP) components**. These are third-party tools, add-ins and languages for use within Visual Studio. 
+* **Microsoft Office integration**. This consists of a set of add-ins for Microsoft Office Excel® and Microsoft Office Project that enables you to query and update work items in the TFS Work Item Tracking database. This is particularly useful for project managers who already use these tools extensively.
+* **Command-line tools**. These are the tools that enable you to interact with TFS from the command line. The majority of these tools provide source control functionality and they are useful for automating repetitive tasks and for scheduling tasks.  
+* **Check-in policy framework**. This supports the check-in policy feature, which is an extensible mechanism that enables you to validate code during the check-in process. 
+
+#### Application Tier
+The application tier exposes the following ASP.NET Web services accessed by the client tier. These Web services are not intended for third-party integrators to program against, but are described here for completeness. Web services are grouped into the following collections:
+* Team Foundation Data Services
+* Team Foundation Integration Services
+
+##### Team Foundation Data Services
+This set of Web services is primarily concerned with manipulating data in the data tier. These services include:
+* **Version Control Web service**. The client tier uses this Web service to execute various TFS source control features and to interact with the source control database. 
+* **Work Item Tracking Web service**. The client tier uses this Web service to create, update and query work items in the Work Item Tracking database.
+* **Team Foundation Build Web service**. The client tier and the MSBuild framework use this Web service to execute build processes.
+##### Team Foundation Integration Services
+This set of Web services provides integration and automation functionality. These services do not interact with the data tier. The Team Foundation Integration services include:
+* **Registration Web service**. This service is used to register various other TFS services. It maintains information in a registration database. The information is used by the services to discover and determine how to interact with one another.  
+* **Security Web service**. This service consists of the Group Security Service and the Authorization Service. The Group Security Service is used to manage all TFS users and groups. The Authorization Service provides an access control system for TFS.  
+* **Linking Web service**. This service enables tools to establish loosely coupled relationships (or "links") between the data elements they hold. For example, the relationship between a defect work item and the source code that was changed to fix the defect is held by TFS using a link.
+* **Eventing Web service**. This service enables a tool or service to register event types. Users can subscribe to those events and receive notification through e-mail or by invocation of a Web service. For example, you can use a check-in event to trigger a continuous integration build.
+* **Classification Web service**. This service works together with the Linking Web service to enable TFS artifacts to be classified according to predefined taxonomies. This helps support cross-tool reporting even for artifacts that do not share a common taxonomy to organize their data. For example, if work items are normally organized by team, while tests are normally organized by component, you can also organize tests by team so that they can be reported alongside work items. 
+
+#### Data Tier
+TFS does not support direct access to data stored on the data tier from client applications. Instead, all requests for data must be made through the Web services on the application tier. The TFS data tier consists of the following data stores corresponding to data services on the application tier.
+* **Work item tracking.** This stores all the data related to work items.
+* **Version control.** This stores all the data related to source control.
+* **Team Foundation Build.** This stores all the information related to the TFS Team Build feature.
+* **Reporting warehouse**. This stores information related to all the TFS tools and features. The reporting warehouse simplifies the creation of reports that combine data from multiple tools.
+
+### Deployment Topology
+You can deploy TFS by using a variety of different topologies ranging from single-server installations to more complex multiple-server topologies. Regardless of which topology you use, you need to be aware of a number of key requirements.
+
+#### Key Requirements
+Regardless of your selected deployment topology:
+* You must install the application tier and the data tier in the same domain, although they can be on the same or separate server nodes. 
+* You must install TFS computers with Microsoft Windows Server™ 2003 with Service Pack 1 (SP1) or later. 
+* You must install all TFS application-tier Web services to the same server.
+* You must install single TFS instances on a single physical computer.
+* You cannot install more than one instance of TFS per physical server.
+* You cannot distribute TFS databases across multiple database servers. All projects must reside on one Team Foundation server group, and cannot be deployed across groups.
+* You cannot use an existing Microsoft SharePoint® Portal Server infrastructure to host the team project portal. Consider using a dedicated server to host TFS SharePoint portals.
+* You should not install TFS on a server configured as a domain controller because this is not supported.** 
+* For dual-server deployments, you must prepare some domain accounts to use when running TFS services. For example, you need to create accounts such as DOMAIN\TFSSERVICE and DOMAIN\TFSREPORTS.
+
+#### Single-Server Deployment
+A single-server deployment is the simplest topology and is appropriate for development teams or pilot projects with up to 400 users. With this approach, you install all of the application tier and data tier components on a single server and access them from the same domain.
+If you need to install test rig components for performance testing, you can install them on the server node or on one or more clients. Figure 2.2 shows the single-server topology.
+[Image:Fig2.2.GIF)(Image_Fig2.2.GIF) 
+**_Figure 2.2** Single Server Topology_
+
+#### Dual-Server Deployment
+The dual-server deployment topology is useful for large development teams in the range of 2000 users. In this deployment topology you install the application tier on a separate server node from the data tier. 
+You can install Team Foundation Build Services on the application tier, but you are recommended to set up one or more dedicated build servers for large teams. If your project needs performance testing, you can deploy the test rig (controller and agents) to additional sever nodes. Figure 2.3 shows the dual-server topology.
+[Image:Fig2.3.GIF)(Image_Fig2.3.GIF) 
+**_Figure 2.3** Dual Server Topology_
+
+### Summary
+Team Foundation Server architecture consists of three tiers: a client-tier, an application-tier and a data-tier. 
+
+* The client-tier contains client components such as Team Explorer in Visual Studio 2005, Microsoft Office integration, and command-line tools.
+* The application-tier contains components such as Team Foundation version control services, work item tracking services, and build services.
+* The data-tier contains the databases to store data necessary for work item tracking, version control, team build, and the reporting warehouse.
+
+TFS supports single-server and dual-server deployment topologies. In a single-server deployment the application-tier and data-tier are installed on the same machine. A single-server deployment is useful for smaller teams or when conducting pilot projects. In a dual-server deployment, the application-tier and data-tier are installed on separate servers. A dual-server deployment is useful for larger teams that need to scale to a large number of users.
+
+### Additional Resources
+* For more information about Team Foundation fundamentals, see “Team Foundation Server Fundamentals: A Look at the Capabilities and Architecture” at [http://msdn2.microsoft.com/en-us/library/ms364062(vs.80).aspx](http://msdn2.microsoft.com/en-us/library/ms364062(vs.80).aspx) 
+* For an overview of Team Foundation, see the Team Foundation production documentation on the Microsoft MSDN® Web site at [http://msdn2.microsoft.com/en-us/library/ms181232(vs.80).aspx](http://msdn2.microsoft.com/en-us/library/ms181232(vs.80).aspx) 
+* For more information about Team Foundation Server scalability limits, see “Team Foundation Server Capacity Planning” at [http://blogs.msdn.com/bharry/archive/2006/01/04/509314.aspx](http://blogs.msdn.com/bharry/archive/2006/01/04/509314.aspx)

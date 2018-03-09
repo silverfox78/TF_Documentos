@@ -1,0 +1,189 @@
+### How To: Migrate Source Code to Team Foundation Server from Visual Source Safe
+- _[J.D. Meier](http://blogs.msdn.com/jmeier), [Jason Taylor](http://jtaylorgoodlife.blogspot.com/), Alex Mackman, [Prashant Bansode](http://prashantbansode.blogspot.com/), [Kevin Jones](http://blogs.advantaje.com/blog/kevin/)_
+
+### Applies To
+* Microsoft® Visual Studio® 2005 Team Foundation Server (TFS) 
+* Microsoft Visual SourceSafe® (VSS)
+
+### Summary
+This How To article walks you through the process of migrating version-controlled source code from VSS to TFS by using the VSS converter tool. This tool allows you to migrate files, folders, version history, labels, and user information from a VSS database to a TFS source control database. Prior to migrating your source you need to back up and prepare your VSS source database.
+
+### Contents
+* Objectives
+* Overview
+* Before You Begin
+* Summary of Steps
+* Step 1 – Back Up Your VSS Database
+* Step 2 – Analyze Your VSS Database to Resolve Data Integrity Issues
+* Step 3 – Analyze Your Projects in VSS
+* Step 4 – Prepare to Migrate Your Projects
+* Step 5 – Migrate Your Projects
+* Additional Considerations
+* Additional Resources
+
+### Objectives
+* Learn how to analyze VSS projects and prepare for migration
+* Migrate VSS projects to TFS
+
+### Overview
+Team Foundation Server provides tools to help you migrate existing source maintained in a Visual Source Safe (VSS) database to TFS source control. TFS provides a VSSConverter tool that allows you to migrate files, folders, version history, labels, and user information. Using the VSSConverter tool is a two-stage process; first you use the tool to analyze your existing VSS database to identify potential problems, and then you use it to actually perform the migration.
+
+By following the steps outlined in this How To article, you should be able to successfully migrate your existing source code. The main issues that you are likely to encounter are due to some differences in the way TFS handles version control in comparison to VSS. For example, because TFS does not support sharing of files, shared files are migrated by copying the version of the file at the time sharing began to a destination folder. Also, because branching in VSS uses sharing, the migration of a branched file results in the file being copied to the destination folder in TFS source control. As TFS does not support pinning, to help you locate items in TFS source control that were previously pinned in your VSS database, the VSSConverter tool labels any file that was pinned with the “PINNED” label. 
+
+### Before You Begin
+To successfully perform the steps outlined in this How To article:
+* You must be logged in with an account that is a member of the Team Foundation Administrators group.
+* You must have the VSS 2005 client installed on the computer on which the converter is running. The converter stops with a warning if you are running an earlier version of VSS. You should also make sure that you use the VSS 2005 client **Analyze** command in the event that this command is able to detect issues that previous versions were not. The VSS database does not need to be a native VSS 2005 database.
+* You must have Microsoft SQL Server™ 2005 Express Edition installed and enabled on the computer on which the converter is running. The converter tool uses the local SQL Server instance as a temporary database during the conversion. SQL Server Express Edition is installed by default with Visual Studio 2005.
+* Make sure you gather your TFS domain name and the list of TFS user names as defined in your Microsoft Active Directory®.
+* Make sure you have your VSS administrator user name and password and your TFS project administrator username and password.
+
+### Summary of Steps
+* Step 1 – Back Up Your VSS Database
+* Step 2 – Analyze Your VSS Database to Resolve Data Integrity Issues
+* Step 3 – Analyze Your Projects in VSS
+* Step 4 – Prepare to Migrate Your Projects
+* Step 5 – Migrate Your Projects
+
+### Step 1 – Back Up Your VSS Database
+Prior to performing a migration, start by creating a backup copy of the VSS database you want to migrate. 
+
+* Ask all users to check in their files and then log off the VSS database. Ask the users to close both the Visual Studio Integrated Development Environment (IDE) and VSS Explorer. 
+**Important:** Checked-out files are not migrated to TFS.
+* Check that no one is currently logged into the database.
+* Make sure that no analyze jobs are scheduled to run against the database.
+* Copy the following folders (located beneath your VSS install directory) to your backup location:
+{{ \DATA
+   \Temp
+   \USERS }}
+* Copy the following files to your backup location:
+{{ User.txt
+ Srcsafe.ini }}
+By default, you can find these files in the following folder: \Program Files\Microsoft Visual Studio\VSS
+
+### Step 2 – Analyze Your VSS Database to Resolve Data Integrity Issues
+In this step, you use the Visual SourceSafe Analyze utility to locate and fix data integrity issues in the database. 
+
+* Open a Command prompt and run Analyze.exe to search for database corruption or database errors. Use the following command:
+
+{{ analyze "<sourcesafe data directory>" }}
+
+Use the **-I** option for unattended execution. This command reports potential problems.
+
+* If there are permissions problems, "unable to checkout files" errors, "losing checkout status" errors, or any other errors that refer to the Status.dat file or to the Rights.dat file, run the Ddconv.exe program or the Ddconvw.exe program. These programs update a VSS database from an older format to the current format. By default, these programs are installed in the \Admin subdirectory.
+
+### Step 3 – Analyze Your Projects in VSS
+In this step, you determine which projects you want to migrate and then run the TFS command-line tool VSSConverter.exe to analyze the VSS database for any potential issues that might cause migration problems.
+
+* Create an Extensible Markup Language (XML) settings file (named for example, ConversionSettings.xml) as follows:
+
+{{ <?xml version="1.0" encoding="utf-8"?>
+ <SourceControlConverter>
+    <ConverterSpecificSetting>
+      <Source name="VSS">
+            <VSSDatabase name="c:\VSSDatabase">
+            </VSSDatabase>
+      </Source>
+      <ProjectMap>
+        <Project Source="$/MyFirstProject"></Project>
+        <Project Source="$/MySecondProject"></Project>
+      </ProjectMap>
+    </ConverterSpecificSetting>
+ </SourceControlConverter> }}
+
+In the above example, **MyFirstProject** and **MySecondProject** represent the names of the project folders in VSS that you want to migrate. To migrate an entire VSS database, use **<Project Source="$/"></Project>**.
+
+* Run VSSConverter.exe passing in the **Analyze** switch, from a Visual Studio command prompt to analyze your projects:
+
+{{ VSSConverter Analyze ConversionSettings.xml }}
+
+When prompted, enter the Visual SourceSafe administrator password.
+
+* Examine the output report and identify any conversion errors. The conversion tool creates an output report named VSSAnalysisReport.xml.
+* Map VSS users to TFS users. The VSSConverter tool creates a UserMap.xml file that contains a list of all VSS users who performed at least one operation on the VSS database. Edit the UserMap.xml file and add your associated TFS usernames (Windows accounts). You must specify user names including the domain (MyDomain\MyUserName). The following example shows a Usermap.xml files that contains the VSS user accounts in the **From** attribute and the associated TFS usernames in the **To** attribute. 
+
+{{ <?xml version="1.0" encoding="utf-8" ?> 
+<UserMappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!-- 
+    This file is automatically created by VSS Converter. You can optionally use the file to map
+    a VSS user to a Team Foundation user. For example, <UserMap From="Jane" To="MyDomain\Janep"></UserMap> 
+    This mapping causes all actions logged by VSS user “Jane” to be changed to Team
+    Foundation user “MyDomain\Janep” during migration. 
+  --> 
+  <UserMap From="ADMIN" To="Contoso\Administrator" /> 
+  <UserMap From="Dave" To="Contoso\DaveM" /> 
+  <UserMap From="Chris" To="Contoso\ChrisP" /> 
+  <UserMap From="John" To="Contoso\JohnR" /> 
+</UserMappings> }}
+
+### Step 4 – Prepare to Migrate Your Projects
+In this step, you use the VSSConverter.exe tool to migrate your VSS projects.
+
+* Modify the ConversionSettings.xml file created in Step 3 adding  a new **<Settings>** element containing a **<TeamFoundationServer>** element as shown here:
+{{ <SourceControlConverter>
+   <ConverterSpecificSetting>
+   …
+   </ConverterSpecificSetting>
+   <Settings>
+     <TeamFoundationServer name="YourTFSServerName"  
+                        port="PortNumber" 
+                        protocol="http">
+     </TeamFoundationServer>
+        </Settings>
+….
+      </SourceControlConverter> }}
+
+Add the **<Settings>** element directly after **</ConverterSpecificSettings>** as a child element of **<SourceControlConverter>**.
+
+* Modify the ConversionSettings.xml file you created adding **Destination** attributes to the **<Project>** elements as shown below. Set the value of the **Destination** attributes to the folder location in your TFS Team project to which you want to migrate your files.
+
+{{ <?xml version="1.0" encoding="utf-8"?>
+ <SourceControlConverter>
+   <ConverterSpecificSetting>
+      <Source name="VSS">
+          <VSSDatabase name="c:\VSSDatabase">
+          </VSSDatabase>
+      </Source>
+      <ProjectMap>
+        <Project Source="$/MyFirstProject" 
+                 **Destination**="$/MyTeam_ProjectOne">
+        </Project>
+        <Project Source="$/MySecondProject"  
+                 **Destination**="$/MyTeam_ProjectTwo">
+        </Project>
+      </ProjectMap>
+   </ConverterSpecificSetting>
+   <Settings>
+     <TeamFoundationServer name="YourTFSServerName" 
+                           port="PortNumber" 
+                           protocol="http">
+     </TeamFoundationServer>
+   </Settings>
+ </SourceControlConverter> }}
+
+In the **<ProjectMap>** section, for each VSS folder that you are migrating, replace **MyFirstProject** with the source VSS folders and replace **MyTeam_ProjectOne** with the destination folders in TFS source control. Include a **<Project>** entry for all the folders that you want to migrate.
+
+### Step 5 – Migrate Your Projects
+Copy your VSS database to a local folder such as C:\VSSDatabases on the computer on which you want to run analysis and migration. Although you can migrate a VSS database to a shared folder on a remote computer, the migration takes much longer to finish.
+
+* At the command prompt, type the following.
+
+{{ VSSConverter Migrate Conversionsettings.xml }}
+
+* Enter **Y** to confirm the migration. When prompted, enter the password for the Visual SourceSafe admin user.
+
+### Additional Considerations
+If you used, sharing, branching or pinning in VSS you should be aware of the following issues. 
+
+* **Sharing**. Team Foundation Server does not support sharing of files. Shared files are migrated by copying the version of the file at the time sharing began to a destination folder. Any subsequent changes made to the shared file are replicated to both the shared and the original copies.
+* **Branching**. Because branching in VSS uses sharing, the migration of a branched file results in the file being copied to the destination folder in TFS source control. After the branch event, the changes to any branch are migrated to the respective copy in TFS source control.
+* **Pinning**. Team Foundation Server does not support pinning. To help you locate items in Team Foundation source control that were once pinned in the VSS database, the VSSConverter tool labels any file that was pinned with the “PINNED” label.
+
+For optimum performance (especially important for large VSS databases), run the conversion on your TFS server computer.
+
+### Additional Resources
+* For more information on how to prepare for migration, see [http://msdn2.microsoft.com/en-us/library/ms181246(en-us,vs.80).aspx](http://msdn2.microsoft.com/en-us/library/ms181246(en-us,vs.80).aspx) 
+* For more information on how to perform the migration, see [http://msdn2.microsoft.com/en-us/library/ms181247(VS.80).aspx](http://msdn2.microsoft.com/en-us/library/ms181247(VS.80).aspx) 
+* For more information on the limitations of the Visual SourceSafe converter, see [http://msdn2.microsoft.com/en-us/library/ms252491(VS.80).aspx](http://msdn2.microsoft.com/en-us/library/ms252491(VS.80).aspx) 
+* For more information about the VSS Analyze tool, see [http://msdn2.microsoft.com/en-us/library/ysxsfw4x.aspx](http://msdn2.microsoft.com/en-us/library/ysxsfw4x.aspx).
+* For more information about the VSSConverter migrate command, see [http://msdn2.microsoft.com/en-us/library/ms400685(VS.80).aspx](http://msdn2.microsoft.com/en-us/library/ms400685(VS.80).aspx)

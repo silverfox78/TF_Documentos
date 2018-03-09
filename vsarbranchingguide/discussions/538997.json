@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1222742",
+    "ThreadId": "538997",
+    "Html": "Hi there\r<br />\nI would like to try this tool but also I am interested in how to extend/combine the given branch plans. Is there a guide/tutorial on how to edit the *.branchplan files? \r<br />\nWhich tool is used to create branch plan images  in (AppData)\\Local\\Microsoft\\VisualStudio\\11.0\\Extensions.\\Branch Plans\\Basic? <br />\n",
+    "PostedDate": "2014-03-14T05:42:26.967-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1223087",
+    "ThreadId": "538997",
+    "Html": "There are links to videos and blog posts in <a href=\"http://aka.ms/treasure35\" rel=\"nofollow\">TOC – Quick Response Solutions</a> that take you through the process of customising an existing plan or adding a new one. The images for all the branch plans are in the guidance downloads in a PowerPoint file.<br />\n",
+    "PostedDate": "2014-03-15T08:41:47.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1223355",
+    "ThreadId": "538997",
+    "Html": "Willy, I think there is something wrong with the TOC link you posted. It goes to <a href=\"http://www.example.com\" rel=\"nofollow\">www.example.com</a><br />\n",
+    "PostedDate": "2014-03-16T17:12:46.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1223356",
+    "ThreadId": "538997",
+    "Html": "Thanks, the editor replaces the URL when you use the URL token ... fixed and will be more careful next time :)<br />\n",
+    "PostedDate": "2014-03-16T17:23:06.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

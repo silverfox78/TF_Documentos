@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2013-11-30T07:59:35.073-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "On page 11, there are Branch definitions for 'Production' and 'VNext' but these definitions are not shown in Figure 8.  In the scenario walkthrough on page 13, it would be very useful to understand how the reverse integrations from 'Dev' and 'Dev-1' are handled in Main (specifically when it comes time to release 'Dev' to Production and Main contains changes from 'Dev' and 'Dev-1', what is your strategy to only release 'Dev' changes and not 'Dev-1' changes... Are you using Labels?).",
+    "LastUpdatedDate": "2013-11-30T07:59:35.073-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2010-08-10T09:01:04.757-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "TFS Branching Guide - Scenarios 2.0 - Missing Content",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13957
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Dave,\r\nOne of my goals for the next release of the guidance is to clean up some of the inconsistencies in our various documents. I appreciate your input to this.\r\nDuring the development of the original Rangers Branching Guidance II, many people were contributing to this effort. As a result, some of the scenario approaches are somewhat different from the main guidance. These differences are sometimes minor, but also sometimes annoying (to me). I want to rewrite the scenarios so these discrepancies are resolved (or less evident)\r\n\r\nWith respect to you question of Dev, Dev-1, and Main. I have the following suggestion. Look for this to be a scenario in the next release!\r\nOur guidance is generally to have feature team branches (Dev, Dev-1) be full children of Main. My question would be, whey would both Dev and Dev-1 be merged (RI) to Main if they are not being released together? If Dev is being released, but Dev-1 is in a future release why not merge (RI) just Dev to Main until it is released. Following this, the next time Main is merged (FI) to Dev-1 the Dev feature and Dev-1 features will be integrated in the Dev-1 branch only (not in Dev or Main).\r\nLater, when Dev-1 is ready for release, it can me merged (RI) to Main, stabilized, and then released.\r\nWith respect to labels, I tend to use branches rather than labels to provide isolation. Labels are a useful way of *tagging* a branch as of a point in time or at the point of a milestone. I am not sure how the label helps to keep Dev and Dev-1 separate (isolated).\r\nDoes this satisfy your needs?\r\nRegards,\r\nBill Heys\r\nVS ALM Ranger\r\n",
+      "PostedDate": "2010-08-12T13:50:15.63-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Bill,\r\nThanks for the reply.  I agree with your merging approach from the development branches back to Main.  The dev teams will need to spend time to make sure the forward integrations from Main do not destabilize 'their' branch (this should be taken care of if the team has created tests to verify their branch).  As far as labels go it seems to make sense to label the Main branch each time the software is released to Production.  This provides a convenient marker for future branches.\r\nDave Comfort",
+      "PostedDate": "2010-08-13T05:48:15.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:42:53.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-11-30T07:59:35.073-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1245104",
+    "ThreadId": "545277",
+    "Html": "I like the clean simple layout of v3. It appears to have these elements<br />\n<ul>\n<li>Version Control Strategy Name</li>\n<li>Description </li>\n<li>Usage Scenarios</li>\n<li>\nConsiderations<br />\n</li>\n</ul>\nBut each time I read one, I find myself wanting to see two sections like<br />\n<ul>\n<li>Pros</li>\n<li>\nCons\r<br />\nOr advantages/disadvantages\r<br />\nOr Rewards/Risks<br />\n</li>\n</ul>\nI don't care the language. You get the idea. The usage scenarios hint at the advantages (where it might be an advantage to use.). The Considerations hint at the downsides. They tell you how to implement it sensibly. But I keep filling in the &quot;gotchas&quot; in my mind. \r<br />\n<br />\nI don't know whether this resonates with any of the developers. But if you find something like that seeking to leap out of your minds onto the screen, feel free to try it out and let's see if it adds  value while still preserving the clean and concise nature of v3. I, myself, am not skilled at concise :)<br />\n",
+    "PostedDate": "2014-05-13T20:19:57.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

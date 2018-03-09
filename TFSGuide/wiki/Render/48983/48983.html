@@ -1,0 +1,180 @@
+<div class="wikidoc"><h3>How To: Manage Projects in Visual Studio Team Foundation Server</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Applies To</h3><ul><li>Microsoft&#174; Visual Studio&#174; 2005 Team Foundation Server (TFS)</li>
+<li>Microsoft Visual Studio Team System (VSTS)</li></ul>
+
+<h3>Summary</h3>This How To article walks you through the process of initiating new software development projects by creating and configuring new team projects based on a selected template and shows you how to use TFS tools to manage, control and monitor the ongoing software development processes throughout the software development lifecycle.<br />
+<h3>Contents</h3><ul><li>Objective</li>
+<li>Overview</li>
+<li>Summary of Steps</li>
+<li>Before You Begin</li>
+<li>Step 1 – Choose a Process Template</li>
+<li>Step 2 – Create a Team Project</li>
+<li>Step 3 – Create Security Groups (Optional)</li>
+<li>Step 4 – Add Team Members in Team Foundation Server </li>
+<li>Step 5 – Determine Your Iteration Cycle</li>
+<li>Step 6 – Capture Your Project Scenarios in TFS</li>
+<li>Step 7 – Identify the Scenarios for the Iteration</li>
+<li>Step 8 – Define Your  Quality of Service Requirements</li>
+<li>Step 9 – Plan Your Iteration</li>
+<li>Step 10 – Monitor Progress</li>
+<li>Area and Iteration Consideration</li>
+<li>Additional Resources</li></ul>
+
+<h3>Objective</h3><ul><li>Learn how to create team projects in TFS</li>
+<li>Learn how to manage projects in TFS</li></ul>
+
+<h3>Overview</h3>Visual Studio Team System provides tools and reports to help project managers control and support the entire software development life cycle in a unified and centralized manner. By controlling the software process directly through VSTS and a centralized database shared by all team members, team communication is improved, and handoffs required between team members are automated. In addition using reports driven from the TFS data warehouse makes it much easier to monitor and track project progress.<br /><br />This How To article walks you through the process of managing a team project from the first steps of creating and configuring a new project and then through the steps required to monitor the progress of an ongoing project.<br />
+<h3>Summary of Steps</h3><ul><li>Step 1 – Choose a Process Template</li>
+<li>Step 2 – Create a Team Project</li>
+<li>Step 3 – Create Security Groups (Optional)</li>
+<li>Step 4 – Add Team Members in Team Foundation Server </li>
+<li>Step 5 – Determine Your Iteration Cycle</li>
+<li>Step 6 – Capture Your Project Scenarios in TFS</li>
+<li>Step 7 – Identify the Scenarios for the Iteration</li>
+<li>Step 8 – Define Your Quality of Service Requirements</li>
+<li>Step 9 – Plan Your Iteration</li>
+<li>Step 10 – Monitor Progress.</li></ul>
+
+<h3>Before You Begin</h3>Before you start creating a new team project, you should gather the following information:<br />
+<ul><li><b>The process you want to use for the project</b>. The process you want to use to manage your project determines the template you should select when creating a new team project. It also helps you evaluate the degree to which you should customize the supplied templates. If you favor an agile style of project execution, start by selecting the Microsoft Solutions Framework (MSF) for Agile Software Development (MSF Agile) template and then consider any customizations you might need. </li>
+<li><b>The project name</b>. Give careful consideration to the naming convention that you use for the team projects you create. Make sure that your project names are sufficiently unique and use names that enable other people to easily find the project. Some organizations use project codes as part of their names, while others might use a combination of department and project title.</li>
+<li><b>Source control structure</b>. Consider whether you need to start with an empty source control tree or whether your project should be based on existing source code. Evaluate an appropriate source control structure based on your code and branching needs. For more information, see “How To: Structure Your Source Control Folders in Visual Studio Team Foundation Server.”</li></ul>
+
+<h3>Step 1 – Choose a Process Template</h3>Start by selecting your process template. Consider the process you would like to follow for your project and then examine the different features provided by each of the two templates supplied by TFS (see below). Features to evaluate include work item definitions (do they provide sufficient fields for your needs?), document templates, workflows, check in policies, and reports.<br /><br />TFS provides following two process templates:<br />
+<ul><li><b>MSF for Agile Software Development (MSF Agile)</b> – This is a lightweight process for small and informal software projects. It is based on scenarios and context-driven actions and is both project-centric and team member (people)-centric.</li>
+<li><b>MSF for CMMI&#174; Process Improvement (MSF CMMI)</b> – This is designed for more mature software projects. It extends MSF Agile by providing support for auditing, verification, and formal processes. It relies on process and conformance to process and is organization-centric. </li></ul>
+<br />If required you can customize the supplied process templates to align them more closely with your processes. For more information about customizing the process templates see “How To: Customize a Process Template in Visual Studio Team Foundation Server”. <br /><br />The remainder of this How To article, assumes that you have selected the MSF Agile process** template.<br />
+<h3>Step 2 – Create a Team Project</h3>After you have selected the template you want to use, you are ready to create a new team project. To create a new team project:<br />
+<ol><li>Ensure that Visual Studio is connected to a TFS instance.</li>
+<li>In <b>Team Explorer,</b> right click the server node and then click <b>New Team Project…</b></li>
+<li>On the first page of the New Project Creation Wizard, enter the name of your team project and then click <b>Next</b>.</li>
+<li>On the <b>Select a Process Template</b> page, from the drop-down list, select the process template you chose in Step 1. For this example, choose the <b>MSF for Agile Software Development –v4.0</b> process template and then click <b>Next</b>.</li>
+<li>On the <b>Specify the Settings for the Project Portal</b> page, enter the name and description for the team project portal and then click <b>Next</b>. The name you supply here is used to build the Microsoft Windows SharePoint&#174; Services Web site for your project portal.</li>
+<li>On the <b>Specify Source Control Settings</b> page, select <b>Create an empty source control folder</b> and then click <b>Next</b>.</li>
+<li>On the <b>Confirm Team Project Settings</b> page, review the settings and then click <b>Finish</b>.  </li></ol>
+<br />This creates a team project on the TFS server based on the MSF Agile process template.<br />
+<h3>Step 3 – Create Security Groups (Optional)</h3>When you create a project in TFS, four default groups are created for that project regardless of your choice of process template. By default, each of these groups has a predefined set of permissions that govern what members of those groups are authorized to do. The four groups are:<br />
+<ul><li>Project Administrator</li>
+<li>Contributor</li>
+<li>Reader</li>
+<li>Build Services. </li></ul>
+<br />You can create security groups for your team project to better meet your organization’s security requirements. Creating a security group is an efficient way to grant a specific set of permissions to a group of users on your team project. Make sure that you allow only the minimum permissions necessary for the group, and add only those users or groups who must belong to this new team project group.<br /><br />To perform this procedure, you must be a member of the <b>Project Administrators</b> group although you do not need to be a Microsoft Windows&#174; administrator.<br />
+<ol><li>In Team Explorer, select the team project for which you want to create a group.</li>
+<li>On the <b>Team</b> menu, point to <b>Team Project Settings</b>, and then click <b>Group Membership</b>.</li>
+<li>In the <b>Project Groups</b> dialog box, click <b>New</b>.</li>
+<li>In the <b>Create New Team Foundation Server Group</b> dialog box, in the <b>Group name</b> box, type the name for the team project group.</li>
+<li>In the <b>Description</b> box, type a description for the group.</li>
+<li>Click <b>OK</b> and then <b>Close</b>.</li></ol>
+<br /><br />After you have created a team project group, give the group the appropriate permissions, and add members to the group. By default, a team project group is created without any permission granted.<br />
+<h3>Step 4 – Add Team Members in Team Foundation Server</h3>In this step, you identify the resources that will be working on the project and their roles, and then assign these team members to TFS. You can add users to existing team project groups or server-level groups. You must also add members to groups that you create. To perform this procedure, you must be a member of the <b>Team Foundation Administrators</b> group.<br />
+<ol><li>In Team Explorer, select your team project.</li>
+<li>On the <b>Team</b> menu, point to <b>Team Project Settings</b>, and then click <b>Group Membership</b>  -Or- To add users to a server-level group, point to <b>Team Foundation Server Settings</b>, and then click <b>Group Membership</b>.</li>
+<li>In the <b>Project Groups</b> dialog box, select the group to which you want to add users, and then click <b>Properties</b>.</li>
+<li>In the <b>Team Foundation Server Group Properties</b> dialog box, on the <b>Members</b> tab, under <b>Add member</b>, select <b>Windows User or Group</b>.</li>
+<li>Click <b>Add</b>.</li>
+<li>In the <b>Select Users or Groups</b> dialog box, under <b>Enter the object names to select</b>, enter the domain name and alias of the users you want to add in the following format:</li></ol>
+<br /><b>domain\username</b> <br /><br />To add more than one user at a time, separate the entries with a semicolon (;).
+<ol><li>Click <b>OK</b> twice** and then** click <b>Close</b>. </li></ol>
+
+<h3>Step 5 – Determine Your Iteration Cycle</h3><i>Iterations</i> are fixed-length chunks of periods in which you plan, schedule, and perform work. All components of the software development lifecycle - from requirements definition through analysis, design, development, coding, and testing - are grouped into these iterations, which typically last anywhere from 2 to 6 weeks.<br /><br />In this step you determine the iteration cycle for your project. The important points to keep in mind while determining the iteration cycle are:<br />
+<ul><li>The iteration cycle should be long enough to get substantial work done, and should cover at least a few scenarios </li>
+<li>The iteration cycle should be short enough to be flexible to accommodate changes and changing priorities.</li></ul>
+<br />The length of your iteration cycle will depend upon the size and complexity of your project. In practice, two-week iteration cycle works for most projects.<br />
+<h3>Step 6 – Capture Your Project Scenarios in TFS</h3>In this step, you capture your project scenarios in TFS so that you can plan better execution of your project and track its progress.<br />
+<ol><li>Create a project back log (PBL) document from inputs provided by various stake holders, including customers, business analysts, end users and product managers. The PBL is generally a Microsoft Office Word document designed mainly to capture requirements.</li>
+<li>Use the PBL as input and scope out various scenarios for your project.</li>
+<li>You can create all the scenarios at the start of the first iteration or you can create scenarios as you move through iterations. To gain a complete picture of your project and to help track progress, you are recommended that you capture all your scenarios upfront.</li></ol>
+<br /><b>To create a scenario in a project that uses the MSF Agile process template</b>.
+<ol><li>In <b>Team Explorer,</b> expand the project node and then right-click on the <b>Work Items</b> folder.</li>
+<li>Point to <b>Add Work Item</b> and then click <b>Scenario.</b></li>
+<li>On the <b>New Scenario</b> page, enter the details for the Scenario. </li>
+<li>Save your new scenario. </li>
+<li>Repeat the preceding steps for all scenarios that you have identified for the project.</li></ol>
+
+<h3>Step 7 – Identify the Scenarios for the Iteration</h3>In this step, you identify the scenarios to be worked on during a specific iteration. You repeat this step for each iteration cycle.<br />
+<ol><li>Identify the scenarios to be worked on during a specific iteration, based on inputs from the project stakeholders and your feature priorities.</li>
+<li>Assign these scenarios to the iteration </li></ol>
+<br /><b>To retrieve work items and assign them to a specific iteration:</b>
+<ol><li>Expand the <b>Work Items</b> folder, expand the <b>Team Queries</b> folder, and then double-click the <b>All Scenarios</b> query to display all the scenarios in your project.</li>
+<li>Double-click the scenario you want to work on in the current iteration.</li>
+<li>Change the <b>Iteration</b> to the current iteration path and then click the save icon.</li>
+<li>Repeat the preceding steps for all identified scenarios.</li></ol>
+
+<h3>Step 8 – Define Your Quality of Service Requirements</h3>In this step, you define your Quality of Service (QoS) requirements for each of the scenarios to be worked on during the iteration cycle. You repeat this step for each iteration cycle. This helps define the acceptance criteria for the scenario. The inputs for the QoS requirements come from project goals and requirements and specification documentation, if available.<br />
+<ol><li>Right-click on the <b>Work Items</b> folder of your project, and point to <b>Add Work Item,</b> and then click <b>Quality of Service Requirements</b>.</li>
+<li>In the <b>New Quality of Service Requirements</b> page, add the following details 
+<ol><li>Set the <b>Type</b> to an appropriate value such as Performance, Scalability, Stress or Security. </li>
+<li>Set the <b>Iteration</b> to the current iteration cycle.</li>
+<li>From the <b>Links</b> tab, link the QoS to a specific scenario, for easier traceability. </li></ol></li>
+<li>Save the new QoS requirement.</li>
+<li>Create one QoS requirements for each discipline or type of quality requirements, bearing in mind that each scenario can have multiple QoS requirements.</li>
+<li>Make sure you create QoS requirements for all of the scenarios in a specific iteration cycle.</li></ol>
+<br /><b>Important</b> – You can break down the QoS requirements into test tasks later. <br />
+<h3>Step 9 – Plan Your Iteration</h3>In this step you plan for the iteration by breaking down the scenarios, QoS requirements, and other work items into tasks, estimating effort for each task and assigning the tasks to the relevant team members. You repeat this step for each iteration cycle.<br />
+<h4>Developer Tasks</h4><ol><li>Break down the chosen scenarios into developer stories</li>
+<li>Subdivide the developer stories into developer tasks.</li>
+<li>Capture developer tasks in TFS as task work items.
+<ol><li>In Team Explorer, under your project node, right-click the <b>Work Items</b> folder, point to <b>Add Work Item</b> and then click <b>Task</b>.</li>
+<li>In the <b>New Task</b> page, add the following details
+<ol><li>Set <b>Discipline</b> to <b>Development</b>.</li>
+<li>Set* Iteration* to the current iteration cycle.</li>
+<li>On the <b>Links</b> tab link the task to the specific scenario for easier traceability.</li>
+<li>On the New Task Page, along with the description you can capture the acceptance criteria for the task, which can determine if the task is completed successfully.</li>
+<li>Set the <b>Assigned to</b> field to the developer who will be working on the task.</li></ol></li>
+<li>Save the new task.</li>
+<li>Repeat the above steps for all the identified tasks.</li></ol></li>
+<li>Repeat the above steps for all the identified scenarios for the iteration.</li></ol>
+
+<h4>Test Tasks</h4><ol><li>Break down the QoS requirements for the identified scenario into test cases.</li>
+<li>Divide the test cases into test tasks, these test tasks are captured in TFS as task work items.
+<ol><li>In Team Explorer, under your project node, right-click the <b>Work Items</b> folder, point to <b>Add Work Item</b> and then click <b>Task</b>.</li>
+<li>In the <b>New Task</b> page, add the following details
+<ol><li>Set* Discipline* to <b>Test</b>.</li>
+<li>Set* Iteration* to the current iteration cycle.</li>
+<li>On the <b>Links</b> tab link the task to the specific QoS requirements for easier traceability.</li>
+<li>On the New Task page, along with the description you can capture the acceptance criteria for the task, which can determine if the task is completed successfully.</li>
+<li>Set the <b>Assigned to</b> field to the tester who will be working on the task.</li></ol></li>
+<li>Save the new task.</li>
+<li>Repeat the above steps for all the identified tasks.</li></ol></li>
+<li>Repeat the above steps for all the QoS requirements for the iteration</li></ol>
+
+<h4>Others</h4><ol><li>Capture any relevant tasks for the iteration for other disciplines – such as Architecture, Release Management, Project Management and Requirements - which needs to be tracked. </li>
+<li>Link each of these tasks to the appropriate scenario for easier traceability. </li></ol>
+<br />For large projects that contain a huge number of work items, you can use the Microsoft Office Excel&#174; integration feature to create work items in an Excel spread sheet and then upload it to TFS. For more information see “Working with Work Item Lists in Microsoft Excel” at <a href="http://msdn2.microsoft.com/en-us/library/ms181694(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181694(VS.80).aspx</a> <br /><br />For large projects that contain a large number of resources, you can use the integration feature in Microsoft Office Project to track the work items and balance task assignment. For more information see “Working with Work Items in Microsoft Project” at <a href="http://msdn2.microsoft.com/en-us/library/ms244368(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms244368(VS.80).aspx</a> <br />
+<h3>Step 10 – Monitor Progress</h3>Each process template includes a set of reports that you can use to track project status and health.  Below are the default reports that you can use to monitor progress:<br />
+<h4>Bugs</h4>The bug related reports enable you to see the kind of bugs being generated and fixed and to spot trends. The following bug related reports are available:<br />
+<ul><li><b>Bugs by Priority</b>. Are the correct bugs being found? This report shows you the rate of high priority bugs found vs. low priority. This report is both of the supplied process templates.</li>
+<li><b>Bug Rates</b>. How effectively are bugs being found, fixed and closed? This report shows trends over time for new bugs, bug backlogs, and bug resolution. This report is available in both of the supplied process templates.</li></ul>
+
+<h4>Release Management</h4>Release management reports enable you to judge how close your software is to being fit for release. The following release management reports are available:<br />
+<ul><li><b>Actual Quality versus Planned Velocity</b>. How many scenarios can be completed before quality is unacceptable? This report presents the relationship, for each iteration, of estimated size to overall quality. This report is available in both process templates.</li>
+<li><b>Builds</b>. What is the quality of a build? This report provides a list of available builds including build quality and other detailed information. This report is available in MSF for CMMI Process Improvement.</li>
+<li><b>Quality Indicators</b>. What is the quality of the software? This report collects test results, bugs code coverage and code churn into a single report to track project health. This report is available in MSF Agile and MSF CMMI.</li>
+<li><b>Velocity</b>. How quickly is the team completing work? This report shows how quickly the team is completing planned work and show rates of change from day to day. This report is available in MSF Agile and MSF CMMI.</li>
+<li><b>Scenario Details</b>. What scenarios are we building the application against? This report provides information on each scenario including completion status, risks and testing progress.</li></ul>
+
+<h4>Testing</h4>Testing reports enable you to monitor the effectiveness and progress of your testing. The following test reports are available:<br />
+<ul><li><b>Regressions</b>. What tests passed at one point but are now failing? This report shows a list of all the tests that passed previously and now are failing. This report is available in MSF CMMI.</li>
+<li><b>Requirements Test History</b>. How well tested are my scenarios and requirements? This report shows the progress of testing against defined scenarios and requirements. This report is available in MSF CMMI.</li>
+<li><b>Test Failure Without Active Bug</b>. Are there bugs to track every known defect? This report shows any tests that have failed and are not associated with an open bug. This report is available in MSF CMMI.</li>
+<li><b>Test Passing With Open Bug</b>. Is the bug list up to date and consistent with application quality? This report shows stale bugs for which tests are now passing. This report is available in MSF CMMI.</li>
+<li><b>Load Test Summary</b>. What are the results of load testing on application performance? This report shows test results for load testing on your application. This report is available in MSF Agile.</li></ul>
+
+<h4>Work Items</h4>Work item reports enable you to assess the current state of your project and current project progress. The following work item reports are available.<br />
+<ul><li><b>Open Issues and Blocked Work Items Trend</b>. How many open issues remain? This report shows the remaining open issues as well as the trend toward resolving them. This report is available in MSF CMMI.</li>
+<li><b>Reactivations</b>. How many work items are being reactivated? This report shows work items that have been resolved or closed prematurely. This report is available in MSF Agile and MSF CMMI.</li>
+<li><b>Related Work Items</b>. What work items are dependent on other work items? This report shows a list of work items that are linked to other work items so you trace dependencies. This report is available in MSF CMMI.</li>
+<li><b>Remaining Work</b>. How much work is left to be done and when will it be completed? This report shows work remaining, resolved and closed over time.  Projecting remaining work trends forward can enable you to predict the point at which you will be code complete. This report is available in MSF Agile and MSF CMMI.</li>
+<li><b>Triage</b>. What work items need to be triaged? This report shows every work item that is still in the proposed state. This report is available in MSF CMMI.</li>
+<li><b>Unplanned Work</b>. How much unplanned work is there? This report charts total work versus remaining work and distinguishes planned from unplanned. This report is available in MSF Agile and MSF CMMI.</li>
+<li><b>Work Items</b>. What are the active work items? This report lists every active work item. This report is available in MSF CMMI.</li>
+<li><b>Work Items by Owner</b>. How much work is assigned to each member of the team? This report shows work items per team member. This report is available in MSF CMMI.</li>
+<li><b>Work Items by State</b>. How many active, resolved and closed work items are there? This report lists work items organized by state. This report is available in MSF CMMI.</li></ul>
+ 
+<h3>Area and Iteration Consideration</h3>Keep in mind the following key considerations related to areas and iterations<br />
+<ul><li>Areas are used to organize work in your team project; for example, you could organize your project work into areas such as a UI area, an Application area, and a Database area. You can assign scenarios and work items to the specific areas. Areas are used to group work items for queries and reports. You can start with a single root-level area and later as your project matures you can create areas once you need them.</li></ul>
+
+<ul><li>Iterations are used to define how many times the team will repeat a particular set of major activities (such as planning, development and testing) during the course of application development. Iterations are used to group work items and therefore impact work item creation, work item queries, and reporting. </li></ul>
+
+<h3>Additional Resources</h3><ul><li>For more information on using Microsoft Office Excel spreadsheets with work items, see “Working with Work Item Lists in Microsoft Excel” at <a href="http://msdn2.microsoft.com/en-us/library/ms181694(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181694(VS.80).aspx</a></li>
+<li>For more information on using Microsoft Office Project to track work items and balance task assignment, see “Working with Work Items in Microsoft Project” at <a href="http://msdn2.microsoft.com/en-us/library/ms244368(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms244368(VS.80).aspx</a></li></ul></div><div class="ClearBoth"></div>

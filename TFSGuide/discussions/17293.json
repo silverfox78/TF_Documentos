@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "56310",
+    "ThreadId": "17293",
+    "Html": "\r\nHi, I have been unable to find guidance on the following scenario:<br />Some of our projects are using telerik controls. We are using the branching from a common team project approach for third-party dependencies. The files that are required to use these controls is a number of binaries plus a RadControls folder that needs to be in the root folder of the web application. We have tried branching the files in the SharedBinaries and SharedSource folder and adding the folder as a link to the web app but that cannot be done. So we are currently branching the binaries to the SharedBinaries folder and the Source folder directly into the web app project folder. We are working off a previous project so we just copied the project and have not added it to source control but the branch is in the project folder. Is this OK? When we add the project to source control, will it know that the RadControls folder in the project is already in source control? Or, is there a better approach??<br /><br />Thanks,<br /><br />Les<br />",
+    "PostedDate": "2007-11-02T06:27:33.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "56311",
+    "ThreadId": "17293",
+    "Html": "\r\nThis would also come up when trying to share javascript files and other such source code.<br />",
+    "PostedDate": "2007-11-02T06:28:30.073-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

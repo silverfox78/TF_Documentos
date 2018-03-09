@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I need to know how to generate reports for my project using Team foundation server... When creating reports i always end up at a certain point. dont know wht to do from there. I am sending u the snapshots from  what i saw in guide and wht i am getting .\n \nSee , i cant find the Metadata under the build. ..  plz help me with this one",
+    "LastUpdatedDate": "2013-02-21T16:44:22.137-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "TFSGuide",
+    "ReportedDate": "2008-06-03T05:13:09.363-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "help me with generating reports",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10285
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1026,
+      "FileName": "myimage.JPG",
+      "DownloadUrl": ".\\1026"
+    },
+    {
+      "FileId": 1027,
+      "FileName": "problem.gif",
+      "DownloadUrl": ".\\1027"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "this is wht actually it shud be i guess.",
+      "PostedDate": "2008-06-03T05:13:46.957-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-06-03T05:13:47.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "help me plzz",
+      "PostedDate": "2008-06-04T01:45:52.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "i got the solution... the OlapData cube wasnt executed thats why metadata wasnt  showing there",
+      "PostedDate": "2008-06-17T00:25:28.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:44:22.137-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "850053",
+    "ThreadId": "359906",
+    "Html": "\r\n<p>Let's take the following scenario. For the current sprint there are 10 user stores and a dev gets to work on one or multiple stories (sequentially of course).</p>\r\n<p>There are 2 branches:</p>\r\n<ul>\r\n<li>Dev, where all the work happen, multiple checkins per day, per user story, changesset come in&nbsp;from all the dev in a random sequnce, but a changeset contain always code related to one user story; consequently this is a very unstable branch (in a sense\r\n that user stories are incomplete and integration issues can happen quite often. This code is deployed to one environment Dev\r\n</li><li>Main, where completed user stories are expected to be brought in and ussually the code is stable.&nbsp;This branch is release to a&nbsp;Test environment\r\n</li></ul>\r\n<p>The process in place&nbsp;here&nbsp;is as follows: <br>\r\nWhen a few user stories are ready, they should&nbsp;be tested by QA team, and approved by a project manager and then deployed to&nbsp;Test environment. QA team will do a quick test again mostly to avoid integration issues and then the&nbsp;UA team will do their\r\n test here. At the end of the sprint there is also a chance that a user story or two beeing withdrawn from the release; various reasons, even top to bottom decisions</p>\r\n<p>So my problem here is how the reverse integration should be done having in mind all that was said above? I cannnot merge back the Dev as the latest version and on a perioadically basis;&nbsp;That's because&nbsp;there might be changesets related to user stories\r\n not approved yet, and it's only an approval that should start a reverse integration. I can do cherry picking and move only the required changesets back into main, but I know from experience after a while it becomes very hard to contain.&nbsp;And based on a\r\n similar constraint enforced in Dev I would also like to have the changesets in Main branch related to one feature at a time, so they can be rolled back later.</p>\r\n<p>Anyone has suggesstions about how to tackle this?</p>\r\n<p>Thanks in advance<br>\r\nIulian</p>\r\n",
+    "PostedDate": "2012-06-17T09:24:01.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "850089",
+    "ThreadId": "359906",
+    "Html": "<p>What is best varies widely on the situation. For example, some software can allow for feature switches. I would recomment you read Martin Fowler's article at ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<a href=\"http://martinfowler.com/bliki/FeatureToggle.html\">http://martinfowler.com/bliki/FeatureToggle.html</a>. You design and build so features can be turned on and off as approved. So the only burden of the programmer here is to ensure that anything checked in does not break the compile or test of existing features. But you can reverse integrate (RI) from Dev to Main with impunity because you use configuaration to enable/disable features after release.&nbsp; This is a great technique for many reasons.</p>\r\n<p>In some situations it might be hard to apply feature sets. In these cases, you can have a branch per feature. Or to minimize branches, perhaps only a branch per each feature where approval is uncertain.&nbsp; Then you can RI the approved features and keep the others in their branches.</p>\r\n<p>I've spoken with leaders of highly mature and skilled agile teams at Microsoft that simply checkin directly to main. Their product is designed and built in such a way that they don't check in stuff that is not good enough for production.&nbsp; I'm not suggesting this for you, unless your team is highly disciplined and uses high test and build automation (CI). But I mention it to make you aware of what is possible in some situations.</p>",
+    "PostedDate": "2012-06-17T12:10:50.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "850120",
+    "ThreadId": "359906",
+    "Html": "\r\n<p>Thanks David. It seems that using features switches seem a good option.</p>\r\n",
+    "PostedDate": "2012-06-17T16:14:29.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "871219",
+    "ThreadId": "359906",
+    "Html": "<p>I wholeheartedly agree with David's excellent advice (as usual). Feature switches are generally a useful alternative to selective merging (of only completed/approved for release) features.</p>\r\n<p>In my view, feature switches are best employed for new features (by simply hiding then from the UI at a high level). But consider what happens when you change an existing feature. Let's suggest this change involves several interface changes. For example, the old (current) version of the feature involves the UI calling one or more server components (in the domain layer)&nbsp;followed by calling one or more components/stored procedures in the data layer.</p>\r\n<p>Now you need to change the feature to pass a new piece of data from the&nbsp;UI all the way to the data layer. This would entail changing all the service call(s) between the UI and the data layer (the interfaces as well as the underlying components). Versioning interfaces is not a simple task, In theory, you need to support all permutations and combination that are currently being used (in production, or in pending features). Managoing this with feature switches will be VERY&nbsp;complex. You essentially need a feature switch for each service/data call to enable or disable the old or new version of the interface. Couple this with the real possibilty that two pending features may have conflicting versions of the same interface(s). This could be a switch nightmare in your production code. Remember, once your feature are all completed/approved for release, you should remove these feature switches from ALL your production code.</p>\r\n<p>Regards,</p>\r\n<p>Bill Heys, VS ALM Ranger&nbsp;</p>",
+    "PostedDate": "2012-07-17T14:06:13.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "873918",
+    "ThreadId": "359906",
+    "Html": "<p>Yeap, I realized that too :-( Meanwhile I am struggling to bring in a better planning for the next release and to avoid cherry picking and rolling back features as much as possible. I was looking at the feature branches option too, but the matter of fact is the features are not that big and separate from each other, ussually it's a new form or changing existing ones, adding some process that should run at a click of the button and it doesn't seem right to create branches for them. Plus the devs seem to resist any significative changes in their routine too. I don't know, still trying to find my a way around these things.</p>\r\n<p>Thanks<br />Iulian</p>",
+    "PostedDate": "2012-07-18T09:19:10.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "874565",
+    "ThreadId": "359906",
+    "Html": "<p>I would also caution you against using cherry-picking for selectively releasing&nbsp;features while holding other features out of the release.</p>\r\n<p>I blogged on this challenge a while back: <a href=\"http://blogs.msdn.com/b/billheys/archive/2011/01/19/branching-sprint-is-done-some-features-are-not.aspx\">http://blogs.msdn.com/b/billheys/archive/2011/01/19/branching-sprint-is-done-some-features-are-not.aspx</a><br /><a href=\"http://blogs.msdn.com/b/billheys/archive/2011/01/19/what-is-a-cherry-pick-merge-and-why-do-you-recommend-against-them.aspx\">http://blogs.msdn.com/b/billheys/archive/2011/01/19/what-is-a-cherry-pick-merge-and-why-do-you-recommend-against-them.aspx</a></p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-07-18T13:46:50.253-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "930824",
+    "ThreadId": "359906",
+    "Html": "<p>You could use the \"<a href=\"http://blogs.msdn.com/b/slange/archive/2012/07/11/vs-tfs-2012-tidbits-merging-changes-by-work-item.aspx\">Track Work Item</a>\" feature to see what changesets are related to a specific user-story and then merge only those changesets. I believe that drag-and-drop merging is supported from this view. Of course, this does not eliminate the challenges of cherry-picking that have been mentioned by the others.</p>",
+    "PostedDate": "2012-10-22T23:30:04.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

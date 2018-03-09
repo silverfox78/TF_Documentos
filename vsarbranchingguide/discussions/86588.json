@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "293473",
+    "ThreadId": "86588",
+    "Html": "<p>Hi,</p>\r\n<p>First of all congratulations on an excellent product!!!</p>\r\n<p>Regarding the Prerequisites section of the HOL_Quick_Start_Basic_Branch_Plan_2010_v1.pdf file, can you please provide links for the following two:</p>\r\n<p>-'<span style=\"font-size:x-small\">The Quick Start assumes you are using the Microsoft-provided Virtual PC image that has been pre-configured to support this walkthrough. If not, you will need to perform the tasks described in the Team Development Setup.doc file.'</span></p>\r\n<p><span style=\"font-size:x-small\">About me. I am currently trying out the beta 2 releases on a trial win server 2008 r2 enterprise. I would really like to have access to the project collection as generated for this document. I have some questions regaring the setup of releases, including the mature branch, which I hope could be seen more clearly from this. If not I may have some more questions for you:)</span></p>\r\n<p><span style=\"font-size:x-small\">Rgds,</span></p>\r\n<p><span style=\"font-size:x-small\">OJ</span></p>",
+    "PostedDate": "2010-02-20T00:48:44.45-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "306277",
+    "ThreadId": "86588",
+    "Html": "<p>Thanks for your positive feedback. It is appreciated by the entire team.</p>\r\n<p>As to your questions:</p>\r\n<ul>\r\n<li>Assuming you have a working environment running VS 2010 and TFS 2010, you should be able to complete the lab without much additional setup. You can either define a new user with the name&nbsp;from the lab manual&nbsp;(<strong>Michaf</strong>/<strong>Michael Affronti (PM)</strong> and <a href=\"mailto:P@ssw0rd\"><strong>P@ssw0rd</strong></a><strong>), </strong>or you can use any user you may already have defined with the appropriate local and TFS permissions. In our case, Michael Afffronti is given a Project Administrat role within TFS. The Team Project used in the lab is created as part of the Lab.</li>\r\n<li>I don't think I can easily give you access to the Project Collection for the Mature Branch plan, but I would be more than happy to answer any questions you may have regarding setting up release branches. The Mature Branch plan is really just an extension of the Advanced Branch plan in the Guidance, and was intended to illustrate how the branch tree might appear after two or more releases.</li>\r\n</ul>\r\n<p>Regards,<br>Bill Heys<br>VS ALM&nbsp;Ranger</p>",
+    "PostedDate": "2010-02-20T09:04:14.807-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "311027",
+    "ThreadId": "86588",
+    "Html": "<p>Thanks for your quick reply!</p>\r\n<p>I was wondering if the refferred to Microsoft-provided Virtual PC image was basen on the rc or on the beta 2 version, and if perhaps the project collection as shown in the figures was installed with this special virtual image. I am not able to google up any such virtual pc image, except the by now old beta 2...</p>\r\n<p>As to my follow up question, please refer to the TFS_Branching_Guide_Main_2010_v1.pdf dokument,&nbsp;<strong><span style=\"font-size:xx-small\">Figure 19. Mature Branch Plan - Folder and Branch Structure</span></strong>, Servicing folder.&nbsp;And the TFS_Branching_Guide_Scenarios_2010_v1.pdf,&nbsp;<strong><span style=\"font-size:xx-small\">Figure 9. Scenario Source Structure</span></strong>, Production folder. Sorry I am not able to paste them in here..</p>\r\n<p>Can you&nbsp;please detail how this structures should&nbsp;look like given a scenario where there are multiple releases, hotfixes and servicepacks created and concurrent development on releases, servicepacks and hotfixes should be allowed. Regarding fig 19, why is there no V1.0?</p>\r\n<p>Also, is it not 'allowed' to pass on parts of a servicepack or hotfix between say&nbsp;version V1 and V2?&nbsp;I hope to avoid concurrent dev on multiple releases, but it would be interesting to know.&nbsp;</p>\r\n<p>Regards,</p>\r\n<p>OJ</p>\r\n<p><strong></strong>&nbsp;</p>\r\n<p><strong><span style=\"font-size:xx-small\">&nbsp;</span></strong></p>",
+    "PostedDate": "2010-02-20T16:30:44.333-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "312869",
+    "ThreadId": "86588",
+    "Html": "<p>OJ,</p>\r\n<p>The Rangers Branching Quick Start lab was orignally written for the Ranger Branching Guidance II, and was used with a VPC for VS 2008 and TFS 2008. With the pending release of VS 2010, and TFS 2010, I attempted to update this lab for TFS 2010. There were a number of pre-defined Team Projects defined in the VS 2008 VPC image we used with this lab, as well as several predefined users assigned to certain roles in TFS.</p>\r\n<p>There are server TFS VPC images available to download from <a href=\"http://www.microsoft.com/downloads\">www.microsoft.com/downloads</a>. When I have a chance, I will take a look at these images to see if any of the VS 2010 images contain the same (or similar) Team Projects that were in the TFS 2008 image. In any event, it is easy, to get a vanilla environment up and running given a few simple steps listed in my earler response,above.</p>\r\n<p>With respect to the branching plans in the Rangers Branching guidance 2010, I created separate Team Projects for each type of Branching Plan, basic, standard, advanced, and mature. As such they will not exist in any of the VPC images that can be downloaded from microsoft.com. Nevertheless, they are fairly easy to create.</p>\r\n<p>We also wrote an extensive Hands-on-lab (HOL) to accompany the branching guidance. We use this lab internally at one of our conferences, and have devleoped a VPC specifically for the Rangers HOL labs developed for this conference. I don't think the VPC will be available externally, but the HOL lab manuals will contain setup instructions to show people how to recreate the Team Projects, Users, etc. required for a particular HOL.</p>\r\n<p>I will be uploading the Branching Lab for 2010 to this codeplex site shortly, once it passes internal review.&nbsp; It is much more comprehensive than the Quick Start lab, and guides people through the process of creating Dev and Release branch plans, along with showing where and how dev features, hotfixes, and service packs are implemented.</p>\r\n<p>I will respond to the second part of you question shortly.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-20T18:25:59.89-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363162",
+    "ThreadId": "86588",
+    "Html": "<p>Bill,</p>\r\n<p>Thank you for your answer. Looking forward to the extensive HOL and your ans to my second question.</p>\r\n<p>Rgds,</p>\r\n<p>OJ</p>",
+    "PostedDate": "2010-02-23T06:32:24.56-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363317",
+    "ThreadId": "86588",
+    "Html": "OJ,\r\nI just uploaded the DEVHOL204 Hands On Lab that accompanies the Branching Guidance 2010\r\nRegards,\r\nBill Heys\r\nVS ALM Ranger",
+    "PostedDate": "2010-02-23T11:28:23.487-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363326",
+    "ThreadId": "86588",
+    "Html": "<p>&gt;&gt;In answer to your question regarding fig 19, why is there no V1.0?</p>\r\n<p>The diagrams depict a V1 Release - this could also have been named V1.0. They are one and the same.</p>\r\n<p>&gt;&gt;Also, is it not 'allowed' to pass on parts of a servicepack or hotfix between say&nbsp;version V1 and V2?&nbsp;I hope to avoid concurrent dev on multiple releases, but it would be interesting to know.&nbsp;</p>\r\n<p>There are times when you want to make a hotfix in V1 and have it merged into V2. There are various ways to do this. One way would be to merge the hotfix (RI) back to Main, and have it be part of *future* release branches. I note *future* release branches, because once you branch for release, and open MAIN and DEV branches for vNext development, you would not want to merge (FI) from Main down to an existing release branch.</p>\r\n<p>If you wanted to simply bring a single hotfix forward from V1 to V2 (where both release branches already exists, you might consider doing a baseless merge from V1 to V2. Depending on what your are bringing forward, the baseless merge might bring over latest version or might cherry pick a specific changeset(s).</p>\r\n<p>Same answer with regard to Service Pack changes.</p>\r\n<p>I am not sure of your remaining question: &quot;Can you&nbsp;please detail how this structures should&nbsp;look like given a scenario where there are multiple releases, hotfixes and servicepacks created and concurrent development on releases, servicepacks and hotfixes should be allowed.&quot;</p>\r\n<p>The mature branch plan is designed to show multiple releases (perhaps not with concurrent development). If you need more in this area, I will try to create a branch plan for you and post it on my blog.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-02-23T11:58:35.043-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363603",
+    "ThreadId": "86588",
+    "Html": "<p>Bill,</p>\r\n<p>Thanks again for your quick reply.</p>\r\n<p>&gt;&gt;The mature branch plan is designed to show multiple releases (perhaps not with concurrent development). If you need more in this area, I will try to create a branch plan for you and post it on my blog.</p>\r\n<p>This is what I am searching for and it will be great if you can do this.</p>\r\n<p>First as I feel the same stuff is missing from the DEVHOL204 and advanced branching document (ref fig 43): There you have three branches V1 Hotfix, V1 ServicePack and V1 Release. How do you remember each release from this, by labelling? I was expecting to&nbsp;see read only branches created from each shipped version,&nbsp;named perhaps Release - V1.0.0, V1.0.1, V1.1.0, V1.1.1, V1.1.2, etc.</p>\r\n<p>Mature branching: I am expecting to see the same read only branches. But also (with ref to fix 19 in the TFS_Branching_Guide_Main_2010_v1.pdf), where are the read only shipped releases and where are the work made? I think it would be 'cleaner' to move (or perhaps copy if the V1 branches is ment to be the&nbsp;overall latest&nbsp;version?)&nbsp;the two branches V1 Hotfix, V1 Release into a subfolder V1.0 and leave the V1 ServicePack where it is. Also, and I am sure the answer to this will differ depending on the goal here, which code paths between branches are the recommended ones.</p>\r\n<p>Rgds,</p>\r\n<p>OJ</p>",
+    "PostedDate": "2010-02-24T02:38:46.033-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363617",
+    "ThreadId": "86588",
+    "Html": "<p>OJ,</p>\r\n<p>When you branch a new version for release, in the advanced (and mature) plan, you will create three new branches for the release at the same time. These are MAIN -&gt; SP, SP -&gt; Hotfix, and Hotfix -&gt; Release. So when you ship V1.0, you would make the V1.0 Release branch read only.&nbsp;</p>\r\n<p>We don't necessarily&nbsp;treat *each* hot fix or service pack this way, although you certainly could. In theory, after shipping V1.0 Release, you could be shipping hotfixes (one or more) to fix specific customer issues. Often we would reuse the same hotfix branch for multiple hotfixes, shipping each hotfix as a patch rather than full release.</p>\r\n<p>You might roll-up these hotfixes to be part of a more fully-test service pack (e.g. V1.1)&nbsp;(doing a merge RI) from hotfix to sp. After fully testing the Service pack, you would release it to your customers (again as a patch). At this point, you could create a new Service Pack branch (e.g. v1.2) and hotfix branch (v1.2). In doing this, the previous SP branch (V1.1) would remain in the state when it was released.</p>\r\n<p>You would not necessarily create a new release branch for these minor hotfixes or service packs, although there is no reason why you can't if you so desire.</p>\r\n<p>As for *moving* branches into different folders after they are created.. this is likely to cause more problems than it solves. I would recommend planning your branch hiearchy and folder structure at the outset, and put the branches into their desired folders as they are created.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-02-24T03:05:37.873-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363619",
+    "ThreadId": "86588",
+    "Html": "<p>OJ,</p>\r\n<p>Another possibility.. when you ship a service pack (e.g. V1.1), you might create a release branch (SP v1.1&nbsp;-&gt; Hotfix v1.1&nbsp;-&gt; Release v.1.). This could open up the SP v1.1 branch for SP v1.2 work. This might be a better alternative to creating an entirely new branch for SP v1.2, since in doing so, you might be bringing vNext changes down from Main.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-02-24T03:13:08.603-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "408696",
+    "ThreadId": "86588",
+    "Html": "<p>Hi again,</p>\r\n<p>Sorry for beeing such a nag:)</p>\r\n<p>Given that the following branch relationship allows for RI only:</p>\r\n<p>MAIN -&gt; SP, SP -&gt; Hotfix, and Hotfix -&gt; Release</p>\r\n<p>Where or how (in what branch)&nbsp;to ensure a stable RI merge (of hotfox or whatever) downto Main?</p>\r\n<p>The moment a release is locked down the Dev and hence Main work continues and should not be merged with these releases, and hence there is no good way to merge changes. Given the additional existence of&nbsp;multiple maintenance branches and the need to merge between these complicates things further, but the essence is the same. Main or some other common ancestor cannot be FI merged and tested and ensured stable&nbsp;prior to beeing RI'ed back. To me there seems to be a need for an&nbsp;additional intermediate branch (child of Main that allows for RI and FI with Main) that is common to all releases and/or possibly separate for each release branch. This will enable a stable merge downto Main, and possibly assist with good merge paths between Release 1, 2 branches etc. ???</p>\r\n<p>MAIN -&gt;main, main-&gt; SP, SP -&gt; Hotfix, and Hotfix -&gt; Release1</p>\r\n<p>MAIN -&gt;main, main-&gt; SP, SP -&gt; Hotfix, and Hotfix -&gt; Release2</p>\r\n<p>or</p>\r\n<p>MAIN -&gt;main1, main1-&gt; SP, SP -&gt; Hotfix, and Hotfix -&gt; Release1</p>\r\n<p>MAIN -&gt;main2, main2-&gt; SP, SP -&gt; Hotfix, and Hotfix -&gt; Release2</p>\r\n<p>or a combination of both (?usefull?)</p>\r\n<p>MAIN -&gt;main, main -&gt;main1, main1-&gt; SP, SP -&gt; Hotfix, and Hotfix -&gt; Release1</p>\r\n<p>MAIN -&gt;main, main -&gt;main2, main2-&gt; SP, SP -&gt; Hotfix, and Hotfix -&gt; Release2</p>\r\n<p>Rgds,</p>\r\n<p>OJ</p>",
+    "PostedDate": "2010-02-26T07:45:36.91-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "408867",
+    "ThreadId": "86588",
+    "Html": "<p>I am not sure I understand all of your question.</p>\r\n<p>&gt;&gt;Where or how (in what branch)&nbsp;to ensure a stable RI merge (of hotfox or whatever) downto Main?</p>\r\n<p>When you branch MAIN for release (e.g. V1.0 Release which is now vCurrent), you branch MAIN to V1.0 SP, branch V1.0 SP to V1.0 Hotfix, and branch V1.0 Hotfix to V1.0 Release (which can be made read-only after shipping)</p>\r\n<p>After release, if you need to fix a bug or issue in V1.0 Release, you would do this in V1.0 Hotfix, and issue a patch the customer(s) who are affected (think if KB patches for Windows)</p>\r\n<p>If you want this hotfix to be part of the next V1.0 Service Pack (V1.1), you would merge it up (RI) to V1.0 SP ... later after you accumulate a certain number of hot fixes and thoroughly test them.. you could release V1.0 SP 1. You could merge these up to MAIN (RI).</p>\r\n<p>You would not bring MAIN (vNext or V2.0) down into to Release until you are ready to release vNEXT (e.g. V2.0 Release).</p>\r\n<p>You stabilize vNext in MAIN prior to release and fix bugs in vNext in either the Dev branches or Main.</p>\r\n<p>MAIN, therefore is the stable branch. Changes can come into MAIN from two directions (RI from DEV only after DEV reaches a milestone and passes quality gates, and RI from a SP branch only when the SP branch is ready to ship and passes quality gates.</p>\r\n<p>Having said all this, I don't understand your digrams above:</p>\r\n<p>&nbsp;&gt;&gt;MAIN -&gt;main, main-&gt; SP, SP -&gt; Hotfix, and Hotfix -&gt; Release1 (what is the difference between MAIN and main, and what is the -&gt; relationship trying to show?)</p>\r\n<p>I would not advocate a MAIN, main, main1, main2 branch structure.</p>\r\n<p>In the Advanced plan:</p>\r\n<p>when you release V1: MAIN -&gt; SP V1.0 -&gt; HF V1.0 -&gt; RELEASE V1.0 (this is now vCurrent, and V2.0 is vNEXT). Main and Dev are now opened up for vNext</p>\r\n<p>later when you release V2: MAIN -&gt; SP V2.0 -&gt; HF V2.0 -&gt; RELEASE V2.0 (this is now vCurrent, and V3.0 is vNEXT). Main and Dev are now opened up for vNext</p>\r\n<p>I don't understand this statement:</p>\r\n<p>&gt;&gt;To me there seems to be a need for an&nbsp;additional intermediate branch (child of Main that allows for RI and FI with Main) that is common to all releases and/or possibly separate for each release branch. This will enable a stable merge downto Main, and possibly assist with good merge paths between Release 1, 2 branches etc. ???</p>\r\n<p>The challenge with adding an entirely new level in the branch plan is that you may negatively impact code velocity by introducing an order of magnitude of merge and merge confilct resolution. It would be helpful when you talk about merging (&quot;merge down to Main&quot;), if you would talk about RI vs FI rather than up or down, and describe both the source and target of the merge (eg. merge (RI) V1.0 SP to Main). It becomes to confusing to follow when the details are omitted.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-26T08:13:56.103-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "409698",
+    "ThreadId": "86588",
+    "Html": "<p>My concern was that a (RI) merge from a stable (V1.0) SP to a stable Main could still make the resulting merged Main unstable, something that should be avoided. I take it I was wrong, and thats fine.</p>\r\n<p>I am unsure of the meaning of vNext, vNEXT&nbsp;and vCurrent, are they names of branches or what are they?</p>\r\n<p>Thanks for your time and goodbye for now.</p>\r\n<p>OJ</p>",
+    "PostedDate": "2010-02-26T10:24:18.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "409814",
+    "ThreadId": "86588",
+    "Html": "<p>vNext and VNEXT are one and the same. vNext is the next version under development</p>\r\n<p>vCurrent is the latest released version (e.g. 1.0). When you release a new version (e.g. 2.0), vNext is the next version (e.g. 3.0) and vCurrent is now 2.0.</p>\r\n<p>While you develop v1.0, it is vNext, and there is no vCurrent</p>\r\n<p>When you release v1.0, vCurrent is v1.0 and you begin development of vNext (eg.v2.0)</p>\r\n<p>When you release v2.0, vCurrent is V2.0 and you begin development of vNext (eg.v3.0)</p>\r\n<p>I don't mean to imply that merging a SP (RI) back to Main would NOT cause some instability. But it should be fairly controlled, since the code in Main should be stable and the code in SP should be stable, and you are simply&nbsp;stabilizing the integration of the two.</p>\r\n<p>The alternatives to merging (RI) an SP branch back to Main, in my opinion are not pretty.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-02-26T10:45:31.497-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

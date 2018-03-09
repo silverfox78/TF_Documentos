@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1478038",
+    "ThreadId": "656104",
+    "Html": "I come from Spanish community and I am trying to understand what are &quot;builds for branches&quot; as in page 11 is said: <em>&quot;It can be helpful to name builds for branches&quot;</em>\r<br />\nI know what a build is (compiling source code, right?) and what a branche is (isolation of source code in TF, right?), but what is a &quot;<strong>build for branch</strong>&quot;? A <em>branch for a build</em> has more sense to me.\r<br />\nThis confusion can be due to my language. So I hope someone can understand and help me. Thanks.<br />\n",
+    "PostedDate": "2016-07-04T12:12:58.787-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1478041",
+    "ThreadId": "656104",
+    "Html": "Your assumption was correct I think, that this is just a language issue. Let me try to help. Keep in mind there can be many different ways to use branches. I will give just one illustration. But you can do things differently.\r<br />\n<br />\nAssume we have 2 branches:\r<br />\nMAIN\r<br />\nDEV\r<br />\n<br />\nAssume we have 3 environments:\r<br />\nTest\r<br />\nPreProduction\r<br />\nProduction\r<br />\n<br />\nAssume we have a workflow like this:\r<br />\nDevelopers work in 2-week sprints. During the sprint, developers check in changes that are being developed into the DEV branch.  There is a build for the DEV branch that is triggered on every check-in. It compiles the code and runs unit tests.   We name it &quot;Product X DEV CI&quot; to make it obvious to everyone that this build is associated with code in the DEV branch.  The &quot;CI&quot; indicates &quot;Continuous Integration&quot; to indicated it is triggered on every check-in.  We have a second build on the DEV branch, named &quot;Product X DEV Nightly.&quot; Every night at midnight, ththise Build on the DEV branch builds the software on the DEV branch, and releases the results to a Test environment.\r<br />\nOnce the Sprint is over, QA staff and customers review the resulting software. If it passes QA and User Acceptance testing, developers merge the code into the MAIN branch, and check it into the MAIN Branch. There is a build for the MAIN branch that triggers automatically. We name it &quot;Product X MAIN Nightly&quot;  to clearly indicate this build is for code in the MAIN branch. Every night, a release is automatically generated for whatever is in the MAIN branch, deploying to PreProduction. There, further, more stable testing can occur.\r<br />\n<br />\nFinally, when all is OK, you can manually trigger a release on the MAIN branch to production. You need a release definition for that, but not necessarily a special build. \r<br />\n<br />\nNotice in this story that we name the builds on the Dev branch for the branch of code they are building. Example: &quot;Product X  DEV CI&quot; or &quot;Product X DEV Nightly.&quot; We are naming the build for the branch, just as described in the words you copied from the manual.\r<br />\n<br />\nYou could flip the words around and say you have &quot;one branch for each build.&quot;  But thatimplies that the build is chosen first, then we make a branch to match it. In contrast,, I would recommend you first design your development workflow, and design branches to support it, and finally, design builds to support CI and your release strategy.  Also, as illustrated, we may often have more than one build on a particular branch.  But it would be unusual to have more than one branch in a build.\r<br />\n<br />\nTo say &quot;we name branches for builds&quot; is sort of like saying &quot;we name children for their birth certificates.&quot; Actually, we name the children first, then we name the birth certificates to match the children. Similarly, we first decide on our branch strategy. Then we name our builds for our branches.   <br />\n",
+    "PostedDate": "2016-07-04T12:50:14.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2016-07-04T13:09:59.19-07:00"
+  },
+  {
+    "Id": "1478043",
+    "ThreadId": "656104",
+    "Html": "Here is a simpler reply. focused on the grammar.\r<br />\n&quot;It can be helpful to name builds for branches&quot;\r<br />\ncould be written like this\r<br />\n&quot;It can be helpful to name builds with names that indicate the branch of code that is the source of the build.&quot;<br />\n",
+    "PostedDate": "2016-07-04T12:53:27.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2016-07-04T13:09:53.807-07:00"
+  },
+  {
+    "Id": "1478044",
+    "ThreadId": "656104",
+    "Html": "Thank you so much David for taking your time to help me. Your answer is crystal clear to me now.<br />\n",
+    "PostedDate": "2016-07-04T13:09:39.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,77 @@
+!!! How To: Automatically Run Code Analysis with Team Build in Visual Studio Team Foundation Server
+- _[url:J.D. Meier|http://blogs.msdn.com/jmeier], [url:Jason Taylor|http://jtaylorgoodlife.blogspot.com/], Alex Mackman, [url:Prashant Bansode|http://prashantbansode.blogspot.com/], [url:Kevin Jones|http://blogs.advantaje.com/blog/kevin/]_
+
+!!! Applies To
+* Microsoft® Visual Studio® 2005 Team Foundation Server (TFS)
+* Microsoft Visual Studio Team System
+
+!!! Summary
+This How To article walks you through the process of configuring Team Build to include code analysis as a build step. This will automatically run code analysis as part of your team build and will report the results of the analysis in the build results.
+
+!!! Contents
+* Objective
+* Overview
+* Summary of Steps
+* Before You Begin
+* Step 1 – Test the Build
+* Step 2 – Turn On Code Analysis for the Build
+* Step 3 – Test Code Analysis
+* Additional Resources
+
+!!! Objective
+* Run code analysis as part of the build in order to validate code quality.
+
+!!! Overview
+Visual Studio Team System Team Build allows you to define build types for your project that enable a build server to compile your application and make it available on a network share. You can turn on code analysis for the team build so that each build automatically performs code analysis and reports the results to the build results report page. This How To article walks you through the process of configuring Team Build to include code analysis as a build step.
+
+!!! Summary of Steps
+* Step 1 – Test the Build
+* Step 2 – Turn Code Analysis on for the Build
+* Step 3 – Test Code Analysis
+
+!!! Before You Begin
+Before you can turn on code analysis for Team Build, you must ensure you have the following pre-requisites in place:
+* Your Team Foundation user ID must have permission to administer a build.  Ask you administrator if you are unsure of your user’s allowed permissions.
+* A team build must already exist for your project. You can check this by looking at Team Build in the Visual Studio Team Explorer.
+
+!!! Step 1 – Test the Build
+Start by testing the team build to make sure there are no problems before you turn on code analysis. You can do this by performing the following steps:
+# In Visual Studio, open *Team Explorer* in Visual Studio 
+# Expand the node for your team project
+# Expand the *Team Builds* node
+# Right Click an existing team build and then select *Build Team Project*
+# Ensure the build has completed successfully.  If there are build breaks or the build is not able to complete, fix these errors before moving to the next step.
+
+!!! Step 2 – Turn On Code Analysis for the Build
+Once you have verified that the build is working properly, you can turn on code analysis.  Use the following steps to turn on code analysis:
+# Open *Source Control Explorer.*
+# In Source Control Explorer, expand your team project folder*.*
+# Expand the *TeamBuildTypes* folder.
+# Select the team build folder for which you want to turn on code analysis.
+# Check out *TFSBuild.proj* file from source control. You may need to perform a *Get Latest Version* operation on the folder first.
+# In Source Control Explorer, double click *TFSBuild.Proj* to open it. 
+# If you want all projects to run code analysis, regardless of project settings, change the *<RunCodeAnalysis>* tag to *Always*.
+# If you want to run code analysis on each project based on project settings, change the *<RunCodeAnalysis>* tag to *Default.*
+# If you are using per-project settings and want to turn on code analysis for a project:
+## Open the solution in Visual Studio.
+## In Solution Explorer, right click on the project*.*
+## Select *Properties.*
+## Click on *Code Analysis.*
+## Select the *Enable Code Analysis* check box*.*
+## Check out the .csproj file for the project from source control.
+## Save the file by clicking the *save* icon in toolbar while properties window is displayed.
+## Check the .csproj file for the project back into source control.
+# Save TFSBuild.proj and check it back into source control.
+
+!!! Step 3 – Test Code Analysis
+Once you have turned on code analysis for a team build, you can test to make sure it is working properly.  Use the following steps to test code analysis for your build:
+# In Team Explorer, right click the build type and then click *Build Team Project.*
+# When the build has completed, click the link to the build log
+# You should see some code analysis warnings at the end of the build log. The warning IDs will start with “CA”, such as in the following examples:
+* MSBUILD : warning : CA2209 : Microsoft.Usage : No valid permission requests were found for assembly 'HelloWorldTest'. You should always specify the minimum security permissions using SecurityAction.RequestMinimum.
+* MSBUILD : warning : CA2210 : Microsoft.Design : Sign 'HelloWorldTest' with a strong name key.
+* MSBUILD : warning : CA1014 : Microsoft.Design : 'HelloWorldTest' should be marked with CLSCompliantAttribute and its value should be true.
+
+!!! Additional Resources
+* For more information on code analysis tools, see “Guidelines for Using Code Analysis Tools” at [url:http://msdn2.microsoft.com/en-us/library/ms182023(VS.80).aspx] 
+* For more information on team builds, see “Overview of Team Foundation Build” at [url:http://msdn2.microsoft.com/en-us/library/ms181710(VS.80).aspx]

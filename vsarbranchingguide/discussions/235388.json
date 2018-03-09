@@ -1,0 +1,202 @@
+[
+  {
+    "Id": "524572",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I am new to TFS completely so these will be pretty simplistic questions&nbsp;I assume. I have read over (but not completely understood) HOL_Quick_Start_Basic_Branch_Plan_2010_v1.pdf and &nbsp;TFS_Branching_Guide_Main_2010_v1.pdf. Currently our shop is uses\r\n the following branching strategy:</p>\r\n<p>- Main Branch&nbsp;(equivalent to your release in the documentation) <br>\r\n-- Integration Branch (equivalent to Main in the documentation)<br>\r\n--- Private Group (equivalent to your &quot;Development Folder&quot;)<br>\r\n----joe_prvt (joe's private branch)<br>\r\n----sally_prvt (sally's private branch)</p>\r\n<p>I am hoping there is someone out there that can possibly confirm my assumptions on the &quot;Basic Branch Plan&quot;. I want to stay as close as possible to the guidelines in our first pass at TFS. I can always make it more complicated.<br>\r\n<br>\r\nQuestions:<br>\r\n1. I assume my current branching strategy is pretty much exactly the same as the Basic Branch Plan. Please advise if I am mistaken.</p>\r\n<p>2. In the Basic branch plan I only see 1 branch called &quot;Development&quot; in the Development folder. I assume this is just for example purposes. Specifically, if I have 10 developers, each developer would have thier own development branch (like my current strategy)&nbsp;under\r\n the Development folder. Is that the idea for the Basic plan? or is the&nbsp;recommendation that each individual developer branch would be a child of the Developer&nbsp;branch; therefore,&nbsp;they would need to first RI to Devleopment then RI&nbsp;Main (and\r\n then RI release).</p>\r\n<p>Thanks!</p>\r\n",
+    "PostedDate": "2010-11-19T14:54:31.73-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "524576",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>I am not sure your branch structure is *exactly* the same as the Basic Branch plan. We recommend against having an integration&nbsp; branch between Main branch and the Feature branches (your private branches).</p>\r\n<p>I am not sure why each developer needs their own private branch. Typically a team will share the same development branch. Workspaces provide the isolation between developers on the same team. It becomes much more difficult to get changes from one developer\r\n to another. When they are working in the same branch, they simply need to check-in changes. But if they are in separate branches, you need to check-in,build, test, merge to the integration layer, build, test, and merge to the second developer, etc.</p>\r\n<p>If you move to the basic branch plan, you would only have a single development branch shared by multiple developers.</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n",
+    "PostedDate": "2010-11-19T15:08:46.007-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "524597",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Thanks for the fast reply.</p>\r\n<p>I think I am getting what is meant by the Development branch based on your explanation&nbsp;Also&nbsp;I know my process does not scale to 100 developers or probably much less than that but we only have 10 right now.&nbsp;I think what I am missing is&nbsp;If\r\n I follow the basic guidless the way I'm reading it. If I lose the developers computer, I'm out those changes they did not check in right?</p>\r\n<p>Some Background.<br>\r\nI'm using ClearCase right now, the issue is this with private branches (aka Development branches from the basic branch plan). So I'm working at from that viewpoint. Its one repository to rule them all philosiphy right now. We dont create a branch for a feature.\r\n For developer to developer&nbsp;changes, one developer can merge thier code with anothers very simply in clearcase by just merging what they want from that developer. They are in charge of thier own branch so they can do as much shenninigans as&nbsp;they want\r\n in there.&nbsp;I can always delete it.&nbsp;In my example if Joe needs a file from sally but she has not yet merged to main he can just merge that file from her branch he does not have to wait until it goes to main.</p>\r\n<p>For us each developer needs to be able to do what they need to do, but they cannot leave code on their computer over night or for any lenght of time it will not get backed up. Some are not located on site thus I cannot enforce a backup locally of thier desktop.\r\n They check in thier changes to the server on thier private branch and that gets persisted on the server and then backed up.&nbsp;I dont know how TFS handles this. If having one development branch means developers make changes and leave they are only on their\r\n computer until they checkin then I guess that is the answer I was looking for, this will not work.&nbsp;&nbsp;So in that case &nbsp;I have to create a branch under the development folder for each developer. so they can check in safely without worrying about&nbsp;effecting\r\n other peoples work with incomplete classes.&nbsp;Our day to day process is:</p>\r\n<p>1. Developer&nbsp;Joe works on thier own dev&nbsp;branch. When they pass tests they can RI to main<br>\r\n2. After they pass tests on main they can check in changes to main<br>\r\n3. Developer Sally wants joes changes. she does a FI from main to her branch</p>\r\n<p>In this manner no developer can break someone elses code by simply checking in something incomplete&nbsp;to thier private branch but yet it gets saved and backup at the server. I'm not saying this is the great system it just covers our bases in a simple\r\n way. If we lose a computer, we jsut get a new one and they have all thier changes in minutes.</p>\r\n<p>My assumption is that as soon as a developer checks in thier changes on the Development branch in TFS then and only then it is persisted on the server. Then of course its available to anyone using the Development branch when the select &quot;Get Lastest Version&quot;\r\n on that branch. Is this correct?&nbsp;What I have to avoid is someone not&nbsp;checking in their changes because its incomplete&nbsp;and thus not on the server. Then&nbsp;if someone spills coffe on their box in the morning we don't lose thier changes because\r\n of this. That is why I have created a private branch for each person it solved this issue simply.&nbsp;I do see this idea of &quot;Shelving&quot; but I dont know what that means., do shelves get stored on the server? You also mentioned &quot;Workspaces&quot; is this something\r\n that gets persisted on the TFS server itself&nbsp;including all thier code changes?&nbsp;</p>\r\n<p>You noted on having something between main and feature branchs I'm not sure i understand.&nbsp;I dont see where in the Development branch feature branches come in to play from the documentation on Basic Branch Plan. So I'm assuming they are the same thing?\r\n<br>\r\n<br>\r\nIn my example i think I'm confusing terminology. In my example my integration is the exact same thing as Main. There is nothing between Integration (Main in TSF)&nbsp;and private (ie. Development in TFS).&nbsp; The only difference I thought was how I handle\r\n the &quot;Development Branch&quot;. For me each developer has a branch for the Basic Branch plan all developers share 1 thus are constantly able to affect eachothers work.<br>\r\n<br>\r\nTFS&nbsp;to My branch mapping terminology in format of TFS&nbsp;= My terminology<br>\r\nRelease = Main<br>\r\nMain = integration<br>\r\nDevelopment/Feature = private</p>\r\n<p>&nbsp;</p>\r\n<p>thanks again!</p>\r\n",
+    "PostedDate": "2010-11-19T16:15:44.477-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "524607",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>I think there are a number of misconceptions here.</p>\r\n<p>First, if devleopers have their own *private* branch, this does not protect you from losing their computer. Any changes that are not checked in (or shelved) are lost. Branches are server-based, and workspaces are client based. For this reason I generally\r\n recommend that developers check-in their changes on a daily basis (or perhaps shelve them).</p>\r\n<p>I typically work with more formal team structures, with several developers participating on a team. As such developers all tend to be working on the same feature and check their changes in daily. Of course changes that are checked in should not break the\r\n build for other developers. This is often why I recommend gated check-ins for developers (the code is built first, and check-in can only happen if the build succeeds)</p>\r\n<p>We also have (but do not recommend) the ability to do baseless merges. This might be one way to get changes from one developer to another without going through the main branch. There are a lot of potential issues with baseless merges so we don't recommend\r\n them as a general process. Suffice it to say that many many organizations are doing team development this way with TFS - quite satisfactorily.</p>\r\n<p>Maybe my terminology for private branch is workspace. When a developer wants to share changes to one or more files with another.. they check them in. Voila - no merging. The second developer can check them out.</p>\r\n<p>Consider using shelvesets as an alternative to private branches.</p>\r\n<p>The biggest problem with private branches is it increases merges and merge conflicts. What if two developers are working on the same file. It sometimes can become a nightmare to resolve conflicting changes.</p>\r\n<p>[more later]</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n",
+    "PostedDate": "2010-11-19T16:53:42.923-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525033",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Bill,</p>\r\n<p>I think I'm almost there on the Basic Branch plan. Your explanations are helping alot. For simplicity I think i understand now compeletely where my branchs map to the basic branch plan. Release is indeed same as my main, Main is the same and my integraton,\r\n and Development really where I have deviated. Its the same as my private branches except there is only one in the basic plan where I have 1 per developer. Going foward I think its easier if I ask questions then uing only the TFS terminology. Thank you for\r\n your detailed guidance on this. I will help me move forward with some confidence.</p>\r\n<p>I totally agree on the merge conflicts that can (and do) occur when getting files between developers, this does happen from time to time with our approach, however&nbsp;perhaps maybe ClearCase is better than TFS at&nbsp;handling this (but I highly doubt\r\n it) or&nbsp;projects are very small compared to most.&nbsp;We work on the same file all the time. That is acutally part of the problem. If&nbsp;a developer is working on a large refactoring (2-3days)&nbsp;in the past they would just have no other choice than\r\n to leave it checked out on&nbsp;until they were done with the changes and could reintegrate to the development branch.&nbsp;&nbsp; We have lost days of work&nbsp;in the past only&nbsp;handful of times in the single development branch senario, but to me thats\r\n too many. Thus we created a process that everyone could follow simply (no new concepts) and that could be montiored without complex rules or management overhead. That being each develop at the end of each day must check in their changes. Since they all had\r\n thier own development branch they never had to worry about effecting eachothers&nbsp;work. This saved us alot of time in terms of productivtiey, no one thinks twice about checking in their changes to thier own branch.</p>\r\n<p>I think part of my problem is that is the our process as worked well for&nbsp;us, so there is a don't change what isn't broke thought.&nbsp;I'm trying to ignore my fears about changing the process and just try something a little different. I think it comes\r\n done to one thing. How do I get my developers changes each day&nbsp;on the server without introducing a branch? The process has to be&nbsp;simple and built into TFS (I dont want to&nbsp;introduce a&nbsp;second tool).&nbsp;I think the trouble for me here is\r\n we just have not experienced any issues with merging from our individual development branches to Main. In fact in many cases it saves alot of time for us because our Main is always stable. Anyway, I think my choices are:</p>\r\n<p>1. Keep the same process as I have now because I now know TFS can support this. Side effect is that developers have to merge to main (each one) so it woudl not incur any more time then we are already spending.</p>\r\n<p>2. Move to the new model and try once again a single branch (which had not worked in the past due only to lost changes) and use Shelvesets (assuming they are saved on the server)</p>\r\n<p>I guess Given what you have noted thus far, it seems as a worst case senario to make my transition to TFS from ClearCase smooth I&nbsp;could have a development branch for each developer and still stay somewhat pure with respect to thoughts behind the&nbsp;main\r\n and release branches as they are identical to my current process but better. I really like the Read-only Release idea. In the past I have only used Labels.</p>\r\n<p>I'm going to do some research on Shelvesets and see if that will work and report back to this discussion. Thanks for the lead. However in the midterm if I could ask one more question? Is TFS bad at deleting branches meaning does it leave the data in source\r\n code database that is not visible to the user even though I deleted the branch. For example, can I delete&nbsp;a branch and its entire history permantely from the database?</p>\r\n<p>BTW I'm personally I'm quite impressed and thankful at&nbsp;the work that was done creating the Branch guidance document. Whoever did that work in documenting that I give&nbsp;a huge thanks to, without this I would have been&nbsp;quite lost.</p>\r\n<p>Cheers<br>\r\n<br>\r\n</p>\r\n",
+    "PostedDate": "2010-11-21T13:11:31.7-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525037",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Hmmm Shelvesets just might work!!! I'm reveiwing the guideance here -&gt;</p>\r\n<p><a href=\"http://msdn.microsoft.com/en-us/library/ms181403(VS.80).aspx\">http://msdn.microsoft.com/en-us/library/ms181403(VS.80).aspx</a></p>\r\n<p>One more question or assumption I guess. I assume 2 developers can check out the same file off the Development Branch right? In ClearCase there is the idea of resevered or unserved meaning if you reserve it no one else can check it out, but if you check\r\n out unreserved, other developers can canout that same file.</p>\r\n",
+    "PostedDate": "2010-11-21T13:26:55.75-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525044",
+    "ThreadId": "235388",
+    "Html": "\r\n<div>\r\n<p><span style=\"font-size:11.0pt; font-family:\">In VS is called locking… I believe.</span></p>\r\n<p><span style=\"font-size:11.0pt; font-family:\"></span></p>\r\n<p><span style=\"font-size:11.0pt; font-family:\"></span></p>\r\n<p><span style=\"font-size:11.0pt; font-family:\"></span></p>\r\n<div>\r\n<div style=\"border:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0in 0in 0in\">\r\n<p><b><span style=\"font-size:10.0pt; font-family:\">From:</span></b><span style=\"font-size:10.0pt; font-family:\"> el3max [mailto:notifications@codeplex.com]\r\n<br>\r\n<b>Sent:</b> Sunday, November 21, 2010 1:27 PM<br>\r\n<b>To:</b> Ramon Aldana Borjes<br>\r\n<b>Subject:</b> Re: Basic Branch Plan [TFSBranchingGuideIII:235388]</span></p>\r\n</div>\r\n</div>\r\n<p></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">From: el3max</span></p>\r\n<div id=\"x_x_ThreadNotificationPostBody\" style=\"margin-bottom:24.0pt\">\r\n<p><span style=\"font-size:9.0pt; font-family:\">Hmmm Shelvesets just might work!!! I'm reveiwing the guideance here -&gt;</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\"><a href=\"http://msdn.microsoft.com/en-us/library/ms181403(VS.80).aspx\">http://msdn.microsoft.com/en-us/library/ms181403(VS.80).aspx</a></span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">One more question or assumption I guess. I assume 2 developers can check out the same file off the Development Branch right? In ClearCase there is the idea of resevered or unserved meaning if you reserve it now\r\n one else can check it out, but if you unserve the checkout, other developers can.</span></p>\r\n</div>\r\n<div id=\"x_x_ThreadNotificationFooter\" style=\"border:none; border-top:solid #CCCCCC 1.0pt; padding:0in 0in 0in 0in\">\r\n<p><span style=\"font-size:9.0pt; font-family:\">Read the <a href=\"http://tfsbranchingguideiii.codeplex.com/Thread/View.aspx?ThreadId=235388&ANCHOR#Post525037\">\r\nfull discussion online</a>.</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">To add a post to this discussion, reply to this email (<a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com@discussions.codeplex.com?subject=[TFSBranchingGuideIII:235388]\">TFSBranchingGuideIII@discussions.codeplex.com@discussions.codeplex.com</a>)</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">To start a new discussion for this project, email\r\n<a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com@discussions.codeplex.com\">\r\nTFSBranchingGuideIII@discussions.codeplex.com@discussions.codeplex.com</a></span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://tfsbranchingguideiii.codeplex.com/subscriptions/thread/project/edit\">\r\nunsubscribe or change your settings</a> on codePlex.com.</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at codeplex.com</span></p>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2010-11-21T13:42:50.78-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525103",
+    "ThreadId": "235388",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>el3max wrote:</strong><br>\r\n<p>Hmmm Shelvesets just might work!!! I'm reveiwing the guideance here -&gt;</p>\r\n<p><a href=\"http://msdn.microsoft.com/en-us/library/ms181403(VS.80).aspx\">http://msdn.microsoft.com/en-us/library/ms181403(VS.80).aspx</a></p>\r\n<p>One more question or assumption I guess. I assume 2 developers can check out the same file off the Development Branch right? In ClearCase there is the idea of resevered or unserved meaning if you reserve it no one else can check it out, but if you check\r\n out unreserved, other developers can canout that same file.</p>\r\n</blockquote>\r\n<p>&nbsp;In TFS, you have the choice of allowing two or more devleopers to check out the same file simultaneously from the same branch (this is called multiple checkout). Or you enforce exclusive checkout to prevent a second developer from checking out a file\r\n that is currently checked out.</p>\r\n",
+    "PostedDate": "2010-11-21T17:04:24.447-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525104",
+    "ThreadId": "235388",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>el3max wrote:</strong><br>\r\n<p>Bill,</p>\r\n<p>I think I'm almost there on the Basic Branch plan. Your explanations are helping alot. For simplicity I think i understand now compeletely where my branchs map to the basic branch plan. Release is indeed same as my main, Main is the same and my integraton,\r\n and Development really where I have deviated. Its the same as my private branches except there is only one in the basic plan where I have 1 per developer. Going foward I think its easier if I ask questions then uing only the TFS terminology. Thank you for\r\n your detailed guidance on this. I will help me move forward with some confidence.</p>\r\n<p>I totally agree on the merge conflicts that can (and do) occur when getting files between developers, this does happen from time to time with our approach, however&nbsp;perhaps maybe ClearCase is better than TFS at&nbsp;handling this (but I highly doubt\r\n it) or&nbsp;projects are very small compared to most.&nbsp;We work on the same file all the time. That is acutally part of the problem. If&nbsp;a developer is working on a large refactoring (2-3days)&nbsp;in the past they would just have no other choice than\r\n to leave it checked out on&nbsp;until they were done with the changes and could reintegrate to the development branch.&nbsp;&nbsp; We have lost days of work&nbsp;in the past only&nbsp;handful of times in the single development branch senario, but to me thats\r\n too many. Thus we created a process that everyone could follow simply (no new concepts) and that could be montiored without complex rules or management overhead. That being each develop at the end of each day must check in their changes. Since they all had\r\n thier own development branch they never had to worry about effecting eachothers&nbsp;work. This saved us alot of time in terms of productivtiey, no one thinks twice about checking in their changes to thier own branch.</p>\r\n<p>I think part of my problem is that is the our process as worked well for&nbsp;us, so there is a don't change what isn't broke thought.&nbsp;I'm trying to ignore my fears about changing the process and just try something a little different. I think it comes\r\n done to one thing. How do I get my developers changes each day&nbsp;on the server without introducing a branch? The process has to be&nbsp;simple and built into TFS (I dont want to&nbsp;introduce a&nbsp;second tool).&nbsp;I think the trouble for me here is\r\n we just have not experienced any issues with merging from our individual development branches to Main. In fact in many cases it saves alot of time for us because our Main is always stable. Anyway, I think my choices are:</p>\r\n<p>1. Keep the same process as I have now because I now know TFS can support this. Side effect is that developers have to merge to main (each one) so it woudl not incur any more time then we are already spending.</p>\r\n<p>2. Move to the new model and try once again a single branch (which had not worked in the past due only to lost changes) and use Shelvesets (assuming they are saved on the server)</p>\r\n<p>I guess Given what you have noted thus far, it seems as a worst case senario to make my transition to TFS from ClearCase smooth I&nbsp;could have a development branch for each developer and still stay somewhat pure with respect to thoughts behind the&nbsp;main\r\n and release branches as they are identical to my current process but better. I really like the Read-only Release idea. In the past I hav</p>\r\n<p>e only used Labels.</p>\r\n<p>I'm going to do some research on Shelvesets and see if that will work and report back to this discussion. Thanks for the lead. However in the midterm if I could ask one more question? Is TFS bad at deleting branches meaning does it leave the data in source\r\n code database that is not visible to the user even though I deleted the branch. For example, can I delete&nbsp;a branch and its entire history permantely from the database?</p>\r\n<p>BTW I'm personally I'm quite impressed and thankful at&nbsp;the work that was done creating the Branch guidance document. Whoever did that work in documenting that I give&nbsp;a huge thanks to, without this I would have been&nbsp;quite lost.</p>\r\n<p>Cheers<br>\r\n<br>\r\n</p>\r\n</blockquote>\r\n<p>&nbsp;Thanks for your great feedback. I am glad you find this helpful.</p>\r\n<p>In TFS you can delete a branch and / or destroy the branch (destroy wil remove the history)</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n",
+    "PostedDate": "2010-11-21T17:07:18.9-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525123",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Bill,</p>\r\n<p>Ok looks like Shelvesets will work thanks again for that. This is almost too perfect...something has to be wrong :)</p>\r\n<p>I'm going to try to give it a go with a single Dev branch and see what happens. Worst case I cab always create more dev branches.</p>\r\n<p>I do have one last question. If I make my release branch read-only after a FI from main. How do I make bug fixes on it? In the basic plan is the idea make the bug fixes in main and then create a new release branch?</p>\r\n<p>Thanks&nbsp;<a id=\"x_ctl00_ctl00_MasterContent_Content_PostRepeater_ctl12_UserNameLink\" href=\"http://www.codeplex.com/site/users/view/eduardo7095\">eduardo7095</a>&nbsp;and Bill for answering the question about locking a checkout exclusive.</p>\r\n",
+    "PostedDate": "2010-11-21T19:37:49.423-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525130",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>If you need to make hot fixes, you might want to consider the standard or advanced plan.</p>\r\n<p>When you are ready to release, branch Main to a Servicing (Hot Fix branch) and then branch Servicing to Release and make Release read-only.</p>\r\n<p>Post Release, you can make bug fixes to the Servicing branch and then RI them to Main.</p>\r\n<p>You don't want to make bug fixes in Main, since at some point it will have vNext code (assuming Release is vCurrent)</p>\r\n<p>Bill Heys<br>\r\nVS ALM Ranger</p>\r\n",
+    "PostedDate": "2010-11-21T20:17:59.64-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525337",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Thanks!</p>\r\n<p>For now I think I'm set wish me luck. I'm sure I will have 1 or 2 more questions but this is definitely enough to get started.</p>\r\n<p>Thanks again for all your recommendations and guidance, it was greatly appretiated and was a tremedous help. I'm really not sure what I would have done without all this information.</p>\r\n<p>Cheers!</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-11-22T07:55:25.603-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525457",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Ok so It didnt take long until I ran into trouble</p>\r\n<p>I'm following the TFS_Branching_Guide_Main_2010_v1.pdf and I'm trying to create the folder structure as laid out. Here is what I did</p>\r\n<p>1. Added a Team Project called Base</p>\r\n<p>2. When navigated to source control in Team explorer server\\collection\\base</p>\r\n<p>3. double clicked on source control</p>\r\n<p>4. Added a new folder called &quot;Main&quot; under base</p>\r\n<p>5. Right clicked on Base and selected &quot;Check in Pending Changes...&quot;</p>\r\n<p>6. Right clicked on Main and selected &quot;Convert to Branch&quot;</p>\r\n<p>7. Right click on Main select &quot;Branching and Merging&quot; -&gt; View Heirarchy</p>\r\n<p>8. Right clicked on Main select &quot;Branch&quot;</p>\r\n<p>9,. Added Dev Branch</p>\r\n<p>10. Went back to source control explorer and tried to Create Dev folder. It would not let me add a &nbsp;&quot;Dev&quot; fodler where I can put Dev branch under like in the guidance because it says Item Name already exists in source control.</p>\r\n<p>What am i doing wrong.</p>\r\n",
+    "PostedDate": "2010-11-22T11:36:13.643-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525461",
+    "ThreadId": "235388",
+    "Html": "\r\n<div>\r\n<p><span style=\"font-size:11.0pt; font-family:\">If you will have a dev folder, you have to create the dev folder first then create (branch) from main into that folder to get a Dev branch.</span></p>\r\n<p><span style=\"font-size:11.0pt; font-family:\">You’ll end up with a ‘Dev’ branch in a Dev folder</span></p>\r\n<p><span style=\"font-size:11.0pt; font-family:\"></span></p>\r\n<p><span style=\"font-size:11.0pt; font-family:\"></span></p>\r\n<p><span style=\"font-size:11.0pt; font-family:\"></span></p>\r\n<div>\r\n<div style=\"border:none; border-top:solid #B5C4DF 1.0pt; padding:3.0pt 0in 0in 0in\">\r\n<p><b><span style=\"font-size:10.0pt; font-family:\">From:</span></b><span style=\"font-size:10.0pt; font-family:\"> el3max [mailto:notifications@codeplex.com]\r\n<br>\r\n<b>Sent:</b> Monday, November 22, 2010 11:36 AM<br>\r\n<b>To:</b> Ramon Aldana Borjes<br>\r\n<b>Subject:</b> Re: Basic Branch Plan [TFSBranchingGuideIII:235388]</span></p>\r\n</div>\r\n</div>\r\n<p></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">From: el3max</span></p>\r\n<div id=\"x_x_ThreadNotificationPostBody\" style=\"margin-bottom:24.0pt\">\r\n<p><span style=\"font-size:9.0pt; font-family:\">Ok so It didnt take long until I ran into trouble</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">I'm following the TFS_Branching_Guide_Main_2010_v1.pdf and I'm trying to create the folder structure as laid out. Here is what I did</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">1. Added a Team Project called Base</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">2. When navigated to source control in Team explorer server\\collection\\base</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">3. double clicked on source control</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">4. Added a new folder called &quot;Main&quot; under base</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">5. Right clicked on Main and selected &quot;Convert to Branch&quot;</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">6. Right click on Main select &quot;Branching and Merging&quot; -&gt; View Heirarchy</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">7. Right clicked on Main select &quot;Branch&quot;</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">8,. Added Dev Branch</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">9. Went back to source control explorer and tried to Create Dev folder. It woudl not let me as &quot;Dev&quot; already exists as a branch</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">What am i doing wrong.</span></p>\r\n</div>\r\n<div id=\"x_x_ThreadNotificationFooter\" style=\"border:none; border-top:solid #CCCCCC 1.0pt; padding:0in 0in 0in 0in\">\r\n<p><span style=\"font-size:9.0pt; font-family:\">Read the <a href=\"http://tfsbranchingguideiii.codeplex.com/Thread/View.aspx?ThreadId=235388&ANCHOR#Post525457\">\r\nfull discussion online</a>.</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">To add a post to this discussion, reply to this email (<a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com@discussions.codeplex.com?subject=[TFSBranchingGuideIII:235388]\">TFSBranchingGuideIII@discussions.codeplex.com@discussions.codeplex.com</a>)</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">To start a new discussion for this project, email\r\n<a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com@discussions.codeplex.com\">\r\nTFSBranchingGuideIII@discussions.codeplex.com@discussions.codeplex.com</a></span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://tfsbranchingguideiii.codeplex.com/subscriptions/thread/project/edit\">\r\nunsubscribe or change your settings</a> on codePlex.com.</span></p>\r\n<p><span style=\"font-size:9.0pt; font-family:\">Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at codeplex.com</span></p>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2010-11-22T11:41:20.74-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525466",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Thanks that did it!!!</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-11-22T11:44:20.3-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "525474",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>To further explain</p>\r\n<p>If you have a folder named Main under Team Project Test ... it would be $\\Test\\Main</p>\r\n<p>You can convert the Main folder to a branch.. it would still be $\\Test\\Main</p>\r\n<p>You can branch Main to Development (without first creating a folder for the Dev branch)... $\\Test\\Main -&gt; $\\Test\\DevFolder\\DevBranch&nbsp; .. in this example it would first create the folder DevFolder and then put the branch DevBranch inside this folder.</p>\r\n<p>You could also create the DevFolder in advance of doing the branch (or have multiple branches inside this folder. You could now branch $\\Test\\Main -&gt; $\\Test\\DevFolder\\DevBranch2</p>\r\n<p>You can have multiple branches inside a folder as long as you do not have a branch nested inside another branch (in TFS2010 when I talk about branch, I am talking about branch objects, not branched folders)</p>\r\n<p>So if you have a branch, DevBranch under a folder Devfolder you cannot convert DevFolder to a branch - it would violate the nested branch restriction.</p>\r\n<p>You also could not branch a new branch under DevBranch (e.g. branch $\\Test\\DevFolder\\DevBranch -&gt; $\\Test\\DevFolder\\DevBranch\\DevBranch3</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-11-22T11:53:49.193-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "531818",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>Just wanted to check back in after I got everything up and running. Using the Basic Branch plan as described now for a couple weeks. Went through a merge with and without conflicts. Works Great!!!</p>\r\n<p>Thanks again for all your help. All of your recommendations and guidance were quite a tremendous help in getting started with TFS branching. I could not have moved so quickly from ClearCase without it. I cannot thank all people that helped me here enough.</p>\r\n<p>Cheers!</p>\r\n",
+    "PostedDate": "2010-12-06T09:01:05.077-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "531824",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Thanks for you feedback. I am glad you found the guidance (and discussion list) helpful.</p>\r\n<p>Feel free to ask questions in the future.</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n",
+    "PostedDate": "2010-12-06T09:17:36.76-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "532227",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Bill,</p>\r\n<p>I have&nbsp;on the followingexcerpt&nbsp;from an above response.....</p>\r\n<p><em>You can branch Main to Development (without first creating a folder for the Dev branch)... $\\Test\\Main -&gt; $\\Test\\DevFolder\\DevBranch&nbsp; .. in this example it would first create the folder DevFolder and then put the branch DevBranch inside this\r\n folder.</em></p>\r\n<p>How do you recomend dealing with reference paths to say common shared files that exist in another TFS project. Lets say I had a '$\\Common\\Binaries' with assemblies that are relatively referenced by code in the $\\Test\\Main\\ folder, now when I branch to $\\Test\\DevFolder\\DevBranch,\r\n my relative references back to 'Binaries'&nbsp;is now incorrect.</p>\r\n<p>Would you use an extra dummy placeholder folder on main something like this $\\Test\\Placeholder\\Main. I don't like branching to $\\Test\\DevBranch1 and $\\Test\\DevBranch2 to make relative paths work. Am I going about this totally wrong?</p>\r\n<p>Manys thanks for your great support and help here.</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-07T04:46:11.933-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "532240",
+    "ThreadId": "235388",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>wheys wrote:</strong><br>\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n&nbsp;In TFS, you have the choice of allowing two or more devleopers to check out the same file simultaneously from the same branch (this is called multiple checkout). Or you enforce exclusive checkout to prevent a second developer from checking out a file\r\n that is currently checked out.</blockquote>\r\n</blockquote>\r\n<p>Does this apply to a single branch or does it extend to enforce single check-out across all branches for a file?</p>\r\n<p>- Antoni</p>\r\n",
+    "PostedDate": "2010-12-07T05:16:04.323-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "532268",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>The option Bill is talking about is&nbsp;multiple checkout and when enabled it is enabled across the entire team project source control. See this screen shot for how to enable it:</p>\r\n<p><img src=\"http://i.imgur.com/iT0DT.jpg\" alt=\"\"></p>\r\n",
+    "PostedDate": "2010-12-07T06:24:54.25-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "532519",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Thanks Allen,</p>\r\n<p>Nicely illustrated!</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n",
+    "PostedDate": "2010-12-07T14:00:49.463-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "532755",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>@Allen</p>\r\n<p>If I understand you correctly TFS makes no distinction between a single branch and the whole 'depot' when it comes to parallel check-out, its an all or nothing option.</p>\r\n<p>Which is a serious flaw if that is the case because there are files that should never be checked-out in parallel and there are files that never should be checked-out in parallel on a single branch.</p>\r\n",
+    "PostedDate": "2010-12-08T01:40:01.483-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "532900",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>Tekkie. I agree that it would be nice if there was a distinction between multiple checkout on a single branch or the whole respository. However there is an easy solution use your locking properly.</p>\r\n<p><img src=\"http://i.imgur.com/QLB7F.jpg\" alt=\"\"></p>\r\n",
+    "PostedDate": "2010-12-08T07:25:22.29-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "532924",
+    "ThreadId": "235388",
+    "Html": "\r\n<p>I'd call it a workaround, because it relies on the person doing the checkout to do the right thing and as we all know people make mistakes, which in the case of files that should not be modified in parallel can be very costly. ;)</p>\r\n<p>This is one of those things that a tool has to enforce on users as its something that people tend to forget. :(</p>\r\n",
+    "PostedDate": "2010-12-08T07:55:33.857-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

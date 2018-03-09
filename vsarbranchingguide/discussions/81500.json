@@ -1,0 +1,98 @@
+[
+  {
+    "Id": "279758",
+    "ThreadId": "81500",
+    "Html": "<p>Thank you and the rest of the VSTS Rangers for putting out the latest VSTS 2010 Branching Guidance and Virtualization Guidance.</p>\r\n<p>I wanted to pose a question on branching and the VSTS 2010 Tools.</p>\r\n<p>I posted this question on the forums. Hopefully you can read this and answer</p>\r\n<p>1) why the VSTS 2010 branch &amp; merge tools not support merging from DEV To Main and doesn't show Main as a valid Target Branch in the merge wizard.&nbsp; (Forum post below has more details)</p>\r\n<p>2) Why a new subfolder in a Dev Branch not become a child of the Main branch when merged to Main.</p>\r\n<p>http://social.msdn.microsoft.com/Forums/en-US/tfsversioncontrol/thread/c8fe8ac4-d685-4ca0-bb9e-382f31a006f7</p>\r\n<p>Thank you for your time,</p>\r\n<p>Regards,</p>\r\n<p>Michael Dang</p>\r\n<p>Seismic Micro-Technology, Inc.</p>\r\n<p>Configuration Management Lead</p>",
+    "PostedDate": "2010-01-20T15:20:21.557-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "279779",
+    "ThreadId": "81500",
+    "Html": "<p>Michael.</p>\r\n<p>To answer question 1 -</p>\r\n<ul>\r\n<li>In VS 2010, there is a new icon for a branch that is different from the icon for a folder. Can you confirm that Main and Dev are both branches?</li>\r\n<li>What is the merge relationship between Main and Dev (View the branch hierarchy). Main should be a parent of Dev. If this is not the case it would explain why you cannot merge from Dev to Main. Only branches with a direct parent/child relationship can be merged in the UI.</li>\r\n</ul>\r\n<p>To answer question 2 -</p>\r\n<ul>\r\n<li>When you created a new sub folder in the Dev Branch, make sure you check-in this change before doing the merge from Dev to Main. </li>\r\n<li>After a successful merge, this new sub folder should also appear under the Main branch.</li>\r\n</ul>\r\n<p>I hope this helps. Feel free to ask more questions.</p>\r\n<p>Regards,<br>Bill Heys<br>VS Ranger</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-20T17:02:44.907-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "279780",
+    "ThreadId": "81500",
+    "Html": "<p>Michael,</p>\r\n<p>Make sure your workspace mappings include the complete source tree for the team project.</p>\r\n<p>Regards,</p>\r\n<p>Bill Heys</p>",
+    "PostedDate": "2010-01-20T17:05:10.75-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "279793",
+    "ThreadId": "81500",
+    "Html": "<p>Michael,</p>\r\n<p>One final thought. In VSTS 2008, it was difficult in Source Control Explorer to distinguish between folders, subfolders, container folder, and branches. The icon for everything looked like a folder.&nbsp; It therefore is challenging sometimes in VSTS 2008 to figure out which of these is a parent branch or a child branch. It should be easier in VS 2010 to see this distinction in VS 2010, since Branches are now a first-class object and are visually distinguished from folders.</p>\r\n<p>In VS 2008, if you branched $\\TeamProject\\Main\\Src to $\\TeamProject\\Dev, Main would not be the parent branch of Dev. Rather Main\\Src would be the parent to Dev. You should branch $\\TeamProject\\Main to $\\TeamProject\\Dev OR branch $\\TeamProject\\Main\\Src to $\\TeamProject\\Dev\\Src to keep things consistent.</p>\r\n<p>Regards,<br>Bill Heys<br>VS Ranger</p>",
+    "PostedDate": "2010-01-20T17:47:17.973-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "280101",
+    "ThreadId": "81500",
+    "Html": "<p>Hi Bill,</p>\r\n<p>Thanks for replying.&nbsp; To answer your questions:</p>\r\n<p>Yes, in VSTS 2010 I can confirm that both Main and Dev are branches and the branch hierarchy diagram indicates Dev is a child of Main.&nbsp; The icons of the Main &amp; Dev folders are the new branch icons introduced in VSTS 2010.</p>\r\n<p>Yes, I did check-in the new subfolder into Dev then I merged to Main by label.&nbsp; However, the merged subfolder is now a child of Dev.&nbsp; This is the Properties for the new subfolder when viewing the Branches tab.</p>\r\n<p>&nbsp;&nbsp;&nbsp; $/TeamProject/Dev/Subfolder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; add</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $/TeamProject/Main/Subfolder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; merge,branch&nbsp; 480</p>\r\n<p>&nbsp;</p>\r\n<p>I have the entire team project workspace mapped to a folder.&nbsp; SCC Folder: $/TeamProject&nbsp;&nbsp;&nbsp; Local Folder: D:\\Workspace\\SourceCode\\MyCollection\\TeamProject</p>\r\n<p>In regards to your third post.&nbsp; Yes, I did branch from $/TeamProject/Main to $/TeamProject/Dev.&nbsp;</p>\r\n<p>Why is the VSTS 2008/2010 tool acting in this behaviour?&nbsp; Common in a DEV branch development, there are new folders that eventually would be merged to the Parent Main branch when ready.&nbsp; My expected result would be that the new merged folder to Main becomes the parent.&nbsp;&nbsp;</p>\r\n<p>Could you replicate this scenario?&nbsp; Maybe its just me.&nbsp;</p>\r\n<p>Mike</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-21T08:52:14.577-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "280109",
+    "ThreadId": "81500",
+    "Html": "<p>Mike,</p>\r\n<p>I will attempt to reproduce this. In the meantime, if you could try to give me the steps I should follow to repro it and any error messages you get, it would help.</p>\r\n<p>Thanks,<br>Bill Heys<br>VS Ranger</p>",
+    "PostedDate": "2010-01-21T09:04:36.347-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "280234",
+    "ThreadId": "81500",
+    "Html": "<p>Bill,</p>\r\n<p>Hope these repro steps are good enough.&nbsp; There are no real error messages.</p>\r\n<p>&nbsp;</p>\r\n<p>1. Set workspace mapping of root team project.&nbsp;&nbsp; Source Control Folder: $/TeamProject&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Local Folder: D:\\Workspace\\TeamProject</p>\r\n<p>2. Create new folder and Check-in SCC folder $/TeamProject/Main</p>\r\n<p>3. Select folder $/TeamProject/Main and Branch from Version by &quot;Latest Version&quot;.&nbsp; Target Branch Name: $/TeamProject/Dev</p>\r\n<p>4. Check-in new $/TeamProject/Dev branch into SCC</p>\r\n<p>5. View the branch hierarchy to ensure Main is the parent of Dev</p>\r\n<p>6. Create new folder and Check-in SCC folder $/TeamProject/Dev/NewFolder</p>\r\n<p>7. Add and check-in a new file into $/TeamProject/Dev/NewFolder (Optional Step)</p>\r\n<p>a. The Merge Problem of a new folder in a child branch</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i. Right Click and Merge $/TeamProject/Dev/NewFolder</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In Source Control Wizard the Source branch is $/TeamProject/Dev/NewFolder AND the target branch dropdown is empty. Despite the $/TeamProject/Dev branch is a child of $/TeamProject/Main the target branch dropdown is empty.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ii. Right Click and Merge $/TeamProject/Dev</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In Source Control Wizard the Source branch is $/TeamProject/Dev AND the target branch dropdown has $/TeamProject/Main</p>\r\n<p>8. To get around merge problem merge by one of two following methods and Check-in:</p>\r\n<p>&nbsp;&nbsp;&nbsp; a. Label $/TeamProject/Dev/NewFolder including the root ($/TeamProject/Dev) in the label</p>\r\n<p>&nbsp;&nbsp;&nbsp;OR&nbsp;</p>\r\n<p>&nbsp;&nbsp; b. Changeset including the root and undo any other miscellaneous pending changes. Only the $/TeamProject/Main/NewFolder should be in the pending changes list</p>\r\n<p>9. After checkin right click on $/TeamProject/Main/NewFolder and select Properties. Select Branches tab. The $/TeamProject/Main/NewFolder is a child of the DEV branch.</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks</p>\r\n<p>&nbsp;</p>\r\n<p>Mike</p>",
+    "PostedDate": "2010-01-21T12:59:32.99-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "280257",
+    "ThreadId": "81500",
+    "Html": "<p>Mike,</p>\r\n<p>I was able to repro this without a problem</p>\r\n<p>Before step 3, I converted Main to a Branch (VS 2010)</p>\r\n<p>On step 7a. The NewFolder is a sub-folder of the branch $/TeamProject/Dev). Dev is the Branch. So on the merge, you should right-click on Dev. to do the merge</p>\r\n<p>This explains why you get now target branches in the dropdown. You do not need to do step 7.a.i. You should only do step 7.a.ii</p>\r\n<p>When you do this merge, the subfolder should merge into Main.</p>\r\n<p>In my view, done properly (merge branches not folders), you should not have to do step 8.</p>\r\n<p>If you do this, you have a very convoluted branch hierarchy - Main is a parent of Dev, but Main/NewFolder is a child of Dev. - I don't think you want this.</p>\r\n<p>Regards,<br>Bill Heys<br>VS Ranger</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-21T13:45:32.217-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "280266",
+    "ThreadId": "81500",
+    "Html": "<p>Mike,</p>\r\n<p>My repro was as follows (VS 2010, but should work as well in 2008)</p>\r\n<p>1. Create new team project (MikesTeamProject)<br>2. Create workspace mappings $/MikesTeamProject -&gt; c:/MikesTeamProject<br>3. Make this the active workspace<br>4. Add a folder MAIN to MikesTeamProject<br>5. Checkin pending changes<br>6. Convert folder MAIN to a branch (VS 2010 only)<br>7. Branch Main -&gt; Dev<br>8. Get Latest (Dev)<br>9. Under Dev branch, add new sub-folder NewFolder<br>10. Checkin Pending Changes (Dev) (note at this point DEV is a branch, and NewFolder is a subfolder under DEV; Main has no subfolders<br>11. Right-click on DEV and merge to Main<br>12. Check-in pending changes to Main (at this point NewFolder is also under Main)</p>\r\n<p>The same steps are used for VS 2008 except you may need to do a check-in after doing a branch, and you would not convert folders to branches (since branch as a distinct object is introduced in VS 2010.</p>\r\n<p>Regards,<br>Bill Heys<br>VS Ranger</p>",
+    "PostedDate": "2010-01-21T14:00:23.687-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "280280",
+    "ThreadId": "81500",
+    "Html": "<p>Bill,</p>\r\n<p>Followed your steps.&nbsp; Yes, the NewFolder is under Main.</p>\r\n<p>Could you in your repro right click on $/TeamProject/Main/NewFolder and select Properties. Select Branches tab.</p>\r\n<p>Under Branches my result is this.&nbsp; Is this correct? Is this what is expected?</p>\r\n<p>$/TeamProject/Dev/MyNewfolder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; add</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $/TeamProject/Main/MyNewfolder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; merge,branch&nbsp;&nbsp;&nbsp;&nbsp; 547</p>\r\n<p>&nbsp;</p>\r\n<p>If this is what is expected I have to accept that anything added into Dev and Merged to Main will always be a child of DEV.</p>\r\n<p>Mike</p>",
+    "PostedDate": "2010-01-21T15:02:42.717-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "280331",
+    "ThreadId": "81500",
+    "Html": "<p>In this example, you have two branches DEV and MAIN. NewFolder is a folder under each of these branches.</p>\r\n<p>In VS2010, when you view the properties of a branch you see something very different than when you view the properties of a folder.</p>\r\n<p>When you are on the branch tab of the properties for a folder it is showing you somewhat of a history of that folder. In your case it was added initially to the Dev branch and then was merged into the Main branch on changeset 547.</p>\r\n<p>This tab is not showing you a hierarchical relationship between branches. Therefore this is not showing you any parent/child relationships.</p>\r\n<p>Regards,<br>Bill Heys<br>VS Ranger</p>",
+    "PostedDate": "2010-01-21T18:02:48.777-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "280719",
+    "ThreadId": "81500",
+    "Html": "<p>Bill,</p>\r\n<p>Thanks for clarifying and helping!&nbsp; You Rock!</p>\r\n<p>&nbsp;</p>\r\n<p>mike</p>",
+    "PostedDate": "2010-01-22T12:06:54.58-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

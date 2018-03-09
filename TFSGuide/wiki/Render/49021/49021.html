@@ -1,0 +1,123 @@
+<div class="wikidoc"><h3>Introduction</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br /><br />This guide shows you how to get the most out of Visual Studio 2005 Team Foundation Server to help improve the effectiveness of your team-based software development. Whether you are already using Team Foundation Server or adopting from scratch, you’ll find guidance and insights you can tailor for your specific scenarios.  <br /><br />The information in this guide is based on practices learned from customer feedback and product support, as well as experience from the field and in the trenches. The guidance is task-based and presented in the following parts. <br />
+<ul><li><b>Part I, “Fundamentals,”</b> gives you a quick overview of team development with Team Foundation Server. You’ll see the big picture in terms of your software development environment, including the development and test environment. You’ll also learn the basic architecture of Team Foundation Server. </li>
+<li><b>Part II, “Source Control,”</b> shows you how to structure your source code and manage dependencies. It also shows you how to determine a branching and merging strategy if you need isolation for your development efforts.**  </li>
+<li><b>Part III, “Builds,”</b> shows you how to set up team builds, how to produce continuous integration builds for your development team, and how to drop scheduled builds to your test team. It also discusses common problems and how to work around them.</li>
+<li><b>Part IV, “Large Project Considerations,”</b> show you additional considerations you need to deal with when working with large projects.</li>
+<li><b>Part V, “Project Management,”</b> shows you how to use Team Foundation Server work items, areas and iterations to streamline your development process regardless of what project management approach you use.</li>
+<li><b>Part VI, “Process Templates,”</b> shows you how to get the most out of the process templates and process guidance that is supplied with Team Foundation Server out of the box. It also shows how you can customize the process templates, and make modifications to work items and workflow to map to the software engineering process your team is already using.</li>
+<li><b>Part VII, “Reporting,”</b> shows you how all of the other Team Foundation Server components integrate their data store into a common reporting mechanism. You’ll learn how to use the default reports as well as how to build your own custom reports.</li>
+<li><b>Part VIII, “Setting Up and Maintaining the Team Environment,”</b> removes the mystery from Team Foundation Server deployment. You’ll learn how to choose between a single server and multiple server deployment. You’ll also learn how to support remote development teams and how to maximize Team Foundation Server performance.</li>
+<li><b>Part IX, “Visual Studio Team System 2008 Team Foundation Server”,</b> shows the changes that are coming in the next version of Team Foundation Server. You’ll learn what new features are planned as well as what features are going to be significantly improved. Some of the changes impact the guidance we give elsewhere in this guide, so use this section to improve your Team Foundation Server upgrade planning. </li></ul>
+
+<h3>Team Development</h3>There are many elements, processes, and roles that combine to enable successful team-based software development projects.  This guide focuses on: 
+<ul><li>The development process </li>
+<li>The build process</li>
+<li>The project management process</li></ul>
+<br />The following diagram illustrates the relationship between typical software development processes relating to team development and how Team Foundation Server can be leveraged to provide horizontal foundational support for these initiatives.<br /> <br /><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=TFSGuide&DownloadId=16794" alt="Fig0.1.GIF" title="Fig0.1.GIF" /><br />
+<h4>Scope of This Guide</h4>This guide is focused on deploying Team Foundation Server and using it effectively for source control, build automation, work item management, and process management.<br /><br />The following diagram outlines a sample logical implementation of Team Foundation Server as it relates to the roles most common to the software engineering and development lifecycle.<br /><br /><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=TFSGuide&DownloadId=16795" alt="Fig0.2.GIF" title="Fig0.2.GIF" /> <br />
+<h3>Why We Wrote This Guide</h3>From our own experience with Team Foundation Server and through conversations with customers and Microsoft employees who work in the field, we determined there was demand for a guide that would show how to use Team Foundation in the real world. While there is information in the product documentation, in blog posts and in forums, there has been no single place to find proven practices for the effective use of Team Foundation Server in the context of a development project under real world constraints. <br />
+<h3>Who Should Read This Guide</h3>This guide is targeted at providing individuals involved in the software development process with the resources, patterns and practices for creating an effective team development environment.  The following are examples of roles that would benefit from this guidance:
+<ul><li>A development team that wants to adopt Team Foundation.</li>
+<li>A project manager looking to get the most out of Team Foundation, with regard to managing projects and development efforts, providing status of software development initiatives and providing feedback to business stakeholders.</li>
+<li>Interested parties investigating the use of Team Foundation but don’t know how well it would work for their development scenarios and team constraints.</li>
+<li>Individuals tasked with planning a deployment and installing Team Foundation. </li></ul>
+
+<h3>How To Use This Guide</h3>The guide is divided into parts based on the order we see most teams think about and adopt Team Foundation.  If you are in the process of adopting Team Foundation you’ll probably want to read the entire guide from start to finish. If you are interested in using Team Foundation for a particular use, such as Source Control or Team Build, you can restrict your reading to just those sections.  Use the main chapters to learn concepts and guiding principles. Use the appendix of “Guidelines”, “Practices”, “How To” articles and “Questions and Answers” to dive into implementation details.  This separation allows you to understand the topics first and then dive into details as you see fit.<br />
+<h3>Organization of This Guide</h3>You can read this guide from end to end, or you can read the chapters you need for your job.<br />
+<h4>Parts</h4>The guide is divided into nine parts:
+<ul><li>Part I, Fundamentals</li>
+<li>Part II, Source Control</li>
+<li>Part III, Builds</li>
+<li>Part IV, Large Project Considerations</li>
+<li>Part V, Project Management</li>
+<li>Part VI, Process Guidance</li>
+<li>Part VII, Reporting</li>
+<li>Part VIII, Setting Up and Maintaining the Team Environment</li>
+<li>Part IX, Visual Studio Team System 2008 Team Foundation Server</li></ul>
+<br /><b>Part I, Fundamentals</b>
+<ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%201%20-%20Introducing%20the%20Team%20Environment&referringTitle=Introduction">Chapter 1 - Introducing the Team Environment</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%202%20-%20Team%20Foundation%20Server%20Architecture&referringTitle=Introduction">Chapter 2 - Team Foundation Server Architecture</a></li></ul>
+<br /><b>Part II, Source Control</b>
+<ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%203%20-%20Structuring%20Projects%20and%20Solutions%20in%20Source%20Control&referringTitle=Introduction">Chapter 3 - Structuring Projects and Solutions in Source Control</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%204%20-%20Structuring%20Projects%20and%20Solutions%20in%20Team%20Foundation%20Source%20Control&referringTitle=Introduction">Chapter 4 - Structuring Projects and Solutions in Team Foundation Source Control</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%205%20-%20Defining%20Your%20Branching%20and%20Merging%20Strategy&referringTitle=Introduction">Chapter 5 - Defining Your Branching and Merging Strategy</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%206%20-%20Managing%20Source%20Control%20Dependencies%20in%20Visual%20Studio%20Team%20System&referringTitle=Introduction">Chapter 6 - Managing Source Control Dependencies in Visual Studio Team System</a></li></ul>
+<br /><b>Part III, Builds</b>
+<ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%207%20-%20Team%20Build%20Explained&referringTitle=Introduction">Chapter 7 - Team Build Explained</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%208%20-%20Setting%20Up%20Continuous%20Integration%20with%20Team%20Build&referringTitle=Introduction">Chapter 8 - Setting Up Continuous Integration with Team Build</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%209%20-%20Setting%20Up%20Scheduled%20Builds%20with%20Team%20Build&referringTitle=Introduction">Chapter 9 - Setting Up Scheduled Builds with Team Build</a></li></ul>
+<br /><b>Part IV, Large Project Considerations</b>
+<ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%2010%20-%20Large%20Project%20Considerations&referringTitle=Introduction">Chapter 10 - Large Project Considerations</a></li></ul>
+<br /><b>Part V, Project Management</b>
+<ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%2011%20-%20Project%20Management%20Explained&referringTitle=Introduction">Chapter 11 - Project Management Explained</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%2012%20-%20Work%20Items%20Explained&referringTitle=Introduction">Chapter 12 - Work Items Explained</a></li></ul>
+<br /><b>Part VI, Process Templates</b>
+<ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%2013%20-%20Process%20Templates%20Explained&referringTitle=Introduction">Chapter 13 - Process Templates Explained</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%2014%20-%20MSF%20for%20Agile%20Software%20Development%20Projects&referringTitle=Introduction">Chapter 14 - MSF for Agile Software Development Projects</a></li></ul>
+<br /><b>Part VII, Reporting</b>
+<ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%2015%20-%20Reporting%20Explained&referringTitle=Introduction">Chapter 15 - Reporting Explained</a></li></ul>
+<br /><b>Part VIII, Setting Up and Maintaining the Team Environment</b>
+<ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%2016%20-%20Installation%20and%20Deployment&referringTitle=Introduction">Chapter 16 - Team Foundation Server Deployment</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%2017%20-%20Providing%20Internet%20Access%20to%20Team%20Foundation%20Server&referringTitle=Introduction">Chapter 17 - Providing Internet Access to Team Foundation Server</a></li></ul>
+<br /><b>Part IX, Visual Studio Team System 2008 Team Foundation Server</b>
+<ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Chapter%2018%20-%20What%e2%80%99s%20New%20in%20Team%20Foundation%20Server%202008&referringTitle=Introduction">Chapter 18 - What&#39;s New in Visual Studio Team System 2008 Team Foundation Server</a></li></ul>
+
+<h4>Guidelines</h4><ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Guidelines%3a%20%20Build&referringTitle=Introduction">Guidelines&#58;  Team Build</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Guidelines%3a%20%20Source%20Control&referringTitle=Introduction">Guidelines&#58;  Source Control</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Guidelines%3a%20%20Reporting&referringTitle=Introduction">Guidelines&#58;  Reporting</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Guidelines%3a%20%20Project%20Management&referringTitle=Introduction">Guidelines&#58;  Project Management</a></li></ul>
+
+<h4>Practices</h4><ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Practices%20at%20a%20Glance%3a%20%20%20Build&referringTitle=Introduction">Practices at a Glance&#58;  Team Build</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Practices%20at%20a%20Glance%3a%20%20%20Source%20Control&referringTitle=Introduction">Practices at a Glance&#58;   Source Control</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Practices%20at%20a%20Glance%3a%20%20%20Reporting&referringTitle=Introduction">Practices at a Glance&#58;   Reporting</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=Practices%20at%20a%20Glance%3a%20%20%20Project%20Management&referringTitle=Introduction">Practices at a Glance&#58;   Project Management</a></li></ul>
+
+<h4>Questions and Answers</h4><ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Questions%20and%20Answers%3a%20%20Source%20Control&referringTitle=Introduction">Questions and Answers&#58;  Source Control</a></li></ul>
+
+<h4>Resources</h4><ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=Team%20Foundation%20Server%20Resources&referringTitle=Introduction">Team Foundation Server Resources</a></li></ul>
+
+<h4>“How To” Articles</h4><ul><li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Add%20a%20New%20Developer%20To%20Your%20Project%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Add a New Developer To Your Project in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Automatically%20Run%20Code%20Analysis%20with%20Team%20Build%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Automatically Run Code Analysis with Team Build in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Create%20a%20Custom%20Report%20for%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Create a Custom Report for Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Create%20a%20Risk%20Over%20Time%20Report%20for%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Create a Risk Over Time Report for Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Create%20Custom%20Check-in%20Policies%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Create Custom Check-in Policies in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Create%20Your%20Source%20Tree%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Create Your Source Tree in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Customize%20a%20Process%20Template%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Customize a Process Template in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Customize%20a%20Report%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Customize a Report in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Manage%20Projects%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Manage Projects in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Migrate%20Source%20Code%20to%20Team%20Foundation%20Server%20from%20Visual%20Source%20Safe&referringTitle=Introduction">How To - Migrate Source Code to Team Foundation Server from Visual Source Safe</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Perform%20a%20Baseless%20Merge%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Perform a Baseless Merge in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Set%20Up%20a%20Continuous%20Integration%20Build%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Set Up a Continuous Integration Build in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Set%20Up%20a%20Scheduled%20Build%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Set Up a Scheduled Build in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Structure%20ASP.NET%20Applications%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Structure ASP.NET Applications in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Structure%20Windows%20Applications%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Structure Windows Applications in Visual Studio Team Foundation Server</a></li>
+<li><a href="https://tfsguide.codeplex.com/wikipage?title=How%20To%20-%20Structure%20Your%20Source%20Control%20Folders%20in%20Visual%20Studio%20Team%20Foundation%20Server&referringTitle=Introduction">How To - Structure Your Source Control Folders in Visual Studio Team Foundation Server</a></li></ul>
+
+<h3>Feedback and Support</h3>We have made every effort to ensure the accuracy of this guide and its companion content.<br />
+<h4>Feedback on the Guide</h4>If you have comments on this guide, send e-mail to<br /> <a href="mailto:TFSguide@microsoft.com">TFSguide@microsoft.com</a> <br /><br />We are particularly interested in feedback regarding the following: 
+<ul><li>Technical issues specific to recommendations </li>
+<li>Usefulness and usability issues </li></ul>
+
+<h4>Technical Support</h4>Technical support for the Microsoft products and technologies referenced in this guide is provided by Microsoft Product Support Services (PSS). For product support information, please visit the Microsoft Product Support Web site at <a href="http://support.microsoft.com/">http://support.microsoft.com/</a> .<br />
+<h4>Community Support</h4>MSDN Newsgroups: <a href="http://forums.microsoft.com/MSDN/default.aspx?ForumGroupID=5&amp;SiteID=1">http://forums.microsoft.com/MSDN/default.aspx?ForumGroupID=5&amp;SiteID=1</a> <br /><br /><table><tr><th><b>Forum</b>	</th><th><b>Address</b></th></tr>
+<tr><th>Team Foundation Server - General	</th><th><a href="http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=22&amp;SiteID=1">http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=22&amp;SiteID=1</a></th></tr>
+<tr><th>Team Foundation Server - Setup	</th><th><a href="http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=68&amp;SiteID=1">http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=68&amp;SiteID=1</a></th></tr>
+<tr><th>Team Foundation Server - Administration	</th><th><a href="http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=477&amp;SiteID=1">http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=477&amp;SiteID=1</a></th></tr>
+<tr><th>Team Foundation Server - Build Automation	</th><th><a href="http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=481&amp;SiteID=1">http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=481&amp;SiteID=1</a></th></tr>
+<tr><th>Team Foundation Server - Power Toys	</th><th><a href="http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=930&amp;SiteID=1">http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=930&amp;SiteID=1</a></th></tr>
+<tr><th>Team Foundation Server - Process Templates	</th><th><a href="http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=482&amp;SiteID=1">http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=482&amp;SiteID=1</a> </th></tr>
+<tr><th>Team Foundation Server - Reporting &amp; Warehouse	</th><th><a href="http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=480&amp;SiteID=1">http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=480&amp;SiteID=1</a></th></tr>
+<tr><th>Team Foundation Server - Team System Web Access	</th><th><a href="http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=1466&amp;SiteID=1">http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=1466&amp;SiteID=1</a></th></tr>
+<tr><th>Team Foundation Server - Version Control	</th><th><a href="http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=478&amp;SiteID=1">http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=478&amp;SiteID=1</a></th></tr>
+<tr><th>Team Foundation Server - Work Item Tracking	</th><th><a href="http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=479&amp;SiteID=1">http://forums.microsoft.com/MSDN/ShowForum.aspx?ForumID=479&amp;SiteID=1</a></th></tr></table><br />
+<h3>The Team Who Brought You This Guide</h3>This guide was created by the following team members:
+<ul><li><b>J.D. Meier</b></li>
+<li><b>Jason Taylor</b></li>
+<li><b>Alex Mackman</b></li>
+<li><b>Prashant Bansode</b></li>
+<li><b>Kevin Jones</b></li></ul>
+
+<h3>Contributors and Reviewers</h3><ul><li><b>External Contributors/Reviewers</b>.  David P. Romig, Sr; Dennis Rea; Eugene Zakhareyev; Leon Langleyben; Martin Woodward; Michael Rummier; Miguel Mendoza ; Mike Fourie; Quang Tran; Sarit Tamir; Tushar More; Vaughn Hughes</li>
+<li><b>Microsoft Contributors / Reviewers</b>.  Aaron Hallberg; Ahmed Salijee; Ajay Sudan; Ajoy Krishnamoorthy; Alan Ridlehoover; Alik Levin; Ameya Bhatawdekar; Bijan Javidi; Bill Essary; Brett Keown; Brian Harry; Brian Moor; Brian Keller; Buck Hodges; Burt Harris; Conor Morrison; David Caufield; David Lemphers; Doug Neumann; Edward Jezierski; Eric Blanchet; Eric Charran; Graham Barry; Gregg Boer; Grigori Melnik; Janet Williams Hepler; Jeff Beehler; Jose Parra; Julie MacAller; Ken Perilman; Lenny Fenster; Marc Kuperstein; Mario Rodriguez; Matthew Mitrik; Michael Puleio; Nobuyuki Akama; Paul Goring; Pete Coupland; Peter Provost; Granville (Randy) Miller; Rob Caron; Robert Horvick; Rohit Sharma; Ryley Taketa; Sajee Mathew; Siddharth Bhatia; Tom Hollander; Tom Marsh; Venky Veeraraghavan</li></ul>
+
+<h3>Tell Us About Your Success</h3>If this guide helps you, we would like to know. Tell us by writing a short summary of the problems you faced and how this guide helped you out. Submit your summary to:<br /><a href="mailto:MyStory@Microsoft.com">MyStory@Microsoft.com</a></div><div class="ClearBoth"></div>

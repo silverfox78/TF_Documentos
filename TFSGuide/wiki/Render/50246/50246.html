@@ -1,0 +1,152 @@
+<div class="wikidoc"><h3>Chapter 5 - Defining Your Branching and Merging Strategy </h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Objectives</h3><ul><li>Know when and when not to branch.</li>
+<li>Choose a branching and merging strategy for your project.</li>
+<li>Describe how normal branching strategy needs to be adapted to support very large teams.</li>
+<li>Identify appropriate folder structures for different branching scenarios.</li></ul>
+
+<h3>Overview</h3>This chapter introduces branching and merging strategies for a range of common scenarios. Usually, you need branches to support either releases or parallel development.<br /><br />For many simple scenarios, you do not need to branch and labeling your builds is sufficient. For example, by using labels you can re-create a build at any point in the future or find out which versions of a source file were used to create a particular build. You should consider branching if you need isolation for parallel teams, either to work on separate but overlapping features or to support a release. <br />
+<h3>How to Use This Chapter</h3>Use this chapter to learn when and when not to branch. If you decide that branching is appropriate for your situation, use this chapter to learn how to branch and merge effectively. <br /><br />If you want an overview of branching and merging, then read the chapter from start to finish to learn about the different strategies for branching and the different scenarios where branching is appropriate. If you are interested in a particular scenario, go directly to the relevant section. To gain the greatest benefits from this chapter, you should:
+<ul><li><b>Use the scenarios list</b>. Use the scenarios list to locate the scenario closest to your own. Read the recommendations to create a branched folder structure appropriate for your needs.</li>
+<li><b>Use the companion guidance</b>. Refer to the** branching and merging guidelines in “Source Control Guidelines” in this guide for a summary of branching and merging guidelines.</li></ul>
+
+<h3>Scenarios for Branching and Merging</h3>The following are examples of scenarios where you might need to create branches and perform merges:
+<ul><li>If you are having regular problems with broken builds, you should create a development branch to isolate parallel development efforts.</li>
+<li>If you have features that are causing stability issues, or teams causing stability issues among each other, create separate feature or team branches beneath a development container folder in source control. </li></ul>
+<br />Do not branch unless it becomes necessary for your development team. Branching introduces additional source tree maintenance and merging tasks. Most development teams such as those building line of business applications, working on short release cycles do not need to branch. Development teams working on longer release cycles such as Independent Software Vendors (ISVs) building packaged applications are more likely to need branching as part of the development process.<br /><br />If you have one stream of development, or are performing incremental and continuous releases, you might not need to create branches unless you frequently experience breaking changes that are destabilizing your development efforts.<br />
+<h3>Common Scenarios in Practice</h3>The following are the most common branching scenarios:
+<ul><li><b>Scenario 1 – No Branches.</b> Your team works only from the main source tree. In this case, you do not create branches and you do not need isolation. This scenario is generally for small or medium size teams that do not require isolation for teams or for features, and do not need the isolation for releases.</li>
+<li><b>Scenario 2 – Branch for Release.</b> Your team creates branches to support an ongoing release. This is the next most common case where you need to create a branch to stabilize for a release. In this case, your team creates a branch before release time to stabilize the release and then merges changes from the release branch back into the main source tree after the software is released.</li>
+<li><b>Scenario 3</b> – <b>Branch for Maintenance.</b> Your team creates a branch to maintain an old build.** In this case, you create a branch for your maintenance efforts, so that you do not destabilize your current production builds. You may or may not merge changes from the maintenance branch back into the main tree. For example, you might work on a quick fix for a subset of customers that you do not want to include in the main build.</li>
+<li><b>Scenario 4 – Branch for Feature.</b> Your team creates branches based on features. In this case, you create a development branch, perform work in the development branch, and then merge back into your main source tree. You can create separate branches for work on specific features to be completed in parallel.</li>
+<li><b>Scenario 5 – Branch for Team</b>. You branch to isolate sub-teams so they can work without being subject to breaking changes, or can work in parallel towards unique milestones.</li></ul>
+<br />You may encounter one or more of these scenarios. Use these scenarios as a reference point to see what guidance may or may not apply to you.<br />
+<h3>Example Folders and Their Purpose</h3>The following folders are examples of folders you might create in Microsoft&#174; Visual Studio&#174; Team Foundation Server (TFS) source control when structuring your source tree for branching and merging scenarios.
+<ul><li><b>Development</b> is branched from <b>Main</b> and used to isolate active development. Development branches may be temporary, in order to develop risky changes without impacting <b>Main</b>.</li>
+<li><b>Main</b> contains your main source tree. Changes from other branches are integrated here.</li>
+<li><b>Releases</b> contains branches you have already shipped but now need to maintain for customers. This provides isolation from the active development occurring in your development branch. It also contains a current release branch which is** branched from <b>Main</b> and contains the version you are currently locking down prior to release. You work in this branch to prepare your software for release, while others continue to work in the <b>Development</b> branch working on new features.</li></ul>
+<br />The following sections show the use of branching in each of the preceding scenarios with concrete examples.<br />
+<h3>Scenario 1 – No Branches</h3>This scenario generally applies to smaller teams for whom isolated development is not a concern. By labeling builds, you are able to retrieve the source corresponding to a particular build. There is no need to introduce branching complexity because you can work directly from <b>Main</b> folder. The following is a view depicting the no-branch scenario:<br /><pre>
+My Team Project
+	Main
+		Source
+</pre>
+<h3>Scenario 2 – Branch for Release</h3>In this scenario your team creates a branch to stabilize the release and then merges the release branch back into the main source tree after the software is released. The following is a view showing branching for releases:<br /><pre>
+My Team Project
+	Main 				? Main integration branch
+		Source
+	Releases
+		Release 1 		? Release branch 
+			Source
+</pre><br />
+<h3>Scenario 3 – Branch for Maintenance</h3>In this scenario, you create a branch for your maintenance efforts, so that you do not destabilize your current production builds. The following is a view showing maintenance branches. This is very similar to branch for release, however at this point the branch is maintained over time in order to support the release:<br /><pre>
+My Team Project
+	Main 					?Main integration branch
+		Source
+	Releases 				?Maintenance branch container
+		Release 1 			?Maintenance branch
+			Source	
+			Other Asset Folders	
+		Release 2 			? Maintenance branch
+			Source
+			Other Asset Folders	
+</pre>
+<h3>Scenario 4 – Branch for Feature</h3>In this scenario, you create a development branch, perform work in that branch, and then merge your work back into your main source tree. You organize your development branches based on product features. The following is a physical view showing branching for feature development:<br /><pre>
+My Team Project
+	Development 				? Isolated development branch container
+		Feature A 			? Feature branch	
+			Source
+		Feature B 			? Feature branch
+			Source
+		Feature C 			? Feature branch
+			Source
+	Main 					? Main Integration branch
+		Source
+</pre>
+<h3>Scenario 5 – Branch for Team</h3>This scenario is similar to the preceding branch-by-feature scenario, except that you organize your development branches according to sub-team rather than product feature. There might be a one-to-one correspondence between team and feature, but in some cases a team might work on multiple features. The following is a physical view showing branching for sub-team development:<br /><pre>
+My Team Project
+	Development 				? Isolated development branch container
+		Team 1				? Team branch
+			Feature A 		? Isolated branch for development
+				Source
+			Feature B 		? Isolated branch for development
+				Source
+		Team 2				? Team branch
+			Feature A 		? Isolated branch for development
+				Source
+			Feature B 		? Isolated branch for development
+				Source
+	Main 					? Main Integration branch
+		Source
+</pre>
+<h3>Logical Structure</h3>The logical structure consists of the parent/child relationships for each branch. This may be different from the physical structure you can see in the Source Control Explorer. For example, in the preceding physical structure, <b>Development</b> and <b>Main</b> appear to be peers, when <b>Development</b> is actually a child of <b>Main</b>. <br /><br />Figure 5.1 shows an example of a logical relationship and how branches and merges flow through the structure. <br /><br /><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=TFSGuide&DownloadId=16699" alt="Fig5.1.GIF" title="Fig5.1.GIF" />  <br /><br /><b><i>Figure 5.1</b> Logical Relationship Showing Branch and Merge Flow</i><br />
+<h3>Release Scenario</h3>Figure 5.2 shows a typical timeline when branching for a release:  <br /><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=TFSGuide&DownloadId=16700" alt="Fig5.2.GIF" title="Fig5.2.GIF" /> <br /><b><i>Figure 5.2</b> Branching for Release Timeline</i><br /><br />The sequence of events is as follows:
+<ol><li>The <b>Release 1</b> branch is created from <b>Main</b> once the release is ready to be locked down.</li>
+<li>Periodic merges into <b>Main</b> ensure bug fixes from the release are moved into the main integration branch.</li>
+<li>The release build is labeled in the <b>RTM</b> branch and merged back into <b>Main</b>.</li>
+<li>A service pack, SP1, is released. The build is labeled and changes are merged into <b>Main</b>.</li>
+<li>The <b>Release 1</b> branch lives on in support of SP1 and to enable future service packs.</li></ol>
+<br />This process repeats for future releases.<br /><br /><b>Note:</b> Successful use of release branches requires you to identify which branch the fix should be applied to before implementing it. If you release a fix as a hotfix or service pack, you should make the change first on the appropriate <b>Release</b> branch, and then merge it into <b>Main</b> to ensure it gets applied to future releases.<br />
+<h3>Isolated Development Scenario</h3>Figure 5.3 shows a typical timeline when branching for development isolation.<br /><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=TFSGuide&DownloadId=16701" alt="Fig5.3.GIF" title="Fig5.3.GIF" /> <br /><b>Figure 5.3 <i></b>Branching for Development Isolation TimeLine</i><br /><br />The sequence of events is as follows:
+<ol><li>A feature branch is created to isolate development for Feature A.</li>
+<li>A feature branch is created to isolate development for Feature B.</li>
+<li>Each team merges its changes into <b>Main</b> as feature milestones are completed, so that they can be integrated into the main build and picked up by other teams.</li>
+<li>On a periodic schedule, each team merges the latest changes from <b>Main</b> in order to remain synchronized with the work of other teams and to reduce the number of conflicts per merge.</li>
+<li>When the feature is complete, the changes are fully merged back to <b>Main</b> and the feature branch is removed.</li></ol>
+
+<h3>Branching Considerations</h3>When branching, consider the following:
+<ul><li>Do not branch unless your development team needs to work on the same set of files concurrently. If you are unsure about this, you can label a build and create a branch from that build at a later point. Merging branches can be time consuming and complex, especially if there are significant changes between them.</li>
+<li>Structure your branch trees so that you only need to merge along the hierarchy (up and down the branch tree) rather than across the hierarchy. Branching across the hierarchy requires that you use a baseless merge, which requires more manual conflict resolution.</li>
+<li>The branch hierarchy is based on the branch parent and branch child, which may be different than the physical structure of the source code on disk. When planning your merges, keep in mind the logical branch structure rather than the physical structure on disk.</li>
+<li>Do not branch too deeply. Because it takes time to execute each merge and resolve conflicts, a deep branching structure can mean that changes in a child branch may take a very long time to propagate to the main branch. This can negatively impact project schedules and increase the time to fix bugs.</li>
+<li>Branch at a high-level and include configuration and source files.</li>
+<li>Evolve your branching structure over time.</li>
+<li>Merging requires one or more developers to execute the merge and resolve conflicts. The merged source must be thoroughly tested because it is not uncommon to make bad merge decisions that can destabilize the build.</li>
+<li>Merging across the branch hierarchy is especially difficult and requires you to manually handle many conflicts that could otherwise be handled automatically.</li></ul>
+<br />The decision whether to create a branch can be reduced to whether the cost of merging conflicts in real time is higher than the overhead cost of merging conflicts between branches. <br />
+<h3>Large Project Considerations</h3>Large development teams with long development cycles are likely to distinguish themselves from smaller teams in the following ways:
+<ul><li>They require a more complex branching and merging structure. </li>
+<li>They are more likely to manage dependencies across solutions and team projects.</li>
+<li>They are more likely to maintain multiple builds for components and teams.</li></ul>
+<br />Large teams are likely to branch both by team and by feature and are also more likely to have one or more branches designed to integrate external dependencies. Because the branching structure is deeper there is more lag between a change in a development branch and merging that change into the main integration branch. For this reason, you should carefully consider your merging strategy when creating branches. <br /><br />For example, consider the following when determining whether your merges will be scheduled or event driven:   
+<ul><li>Reverse integration, such as merging from the development branch to the main branch, may be based on an event, such as a feature milestone being completed, or scheduled in order to integrate code from multiple branches at particular points in time.  Whether it is based on a milestone or scheduled often, it is driven by a combination of the phase of the software development cycle and the methodology used.</li>
+<li>Forward integration, such as merging from the main branch to a development branch, occurs when a child branch is ready to accept the latest code that has been integrated into a parent branch.  Frequent forward integrations into development branches are a best practice.  Keeping the code base more closely synchronized across branches will help you discover bugs that occur when components are integrated together.</li></ul>
+<br /><br />Rationalize your branch/merge strategy with the frequency with which you want to produce builds. A deeper branching structure results in more time to merge from child branches to the main integration branch. Symptoms of this causing a problem for your development team include:
+<ul><li>Broken builds where the fix takes too long to propagate up to the main integration branch.</li>
+<li>Missed milestones because features take too long to propagate up to the main branch.</li>
+<li>Large amounts of time are spent merging changes between various branches.</li></ul>
+<br />If this becomes a problem for your team, consider reducing the depth of your branching structure. <br /><br />The following is an example of a complex branching structure:<br />
+<ul><li><b>My Team Project</b>
+<ul><li><b>Development</b> – Container to isolate active development branches
+<ul><li><b>Feature A</b> – Isolated branch for development
+<ul><li><b>Source</b></li></ul></li>
+<li><b>Feature B</b> – Isolated branch for development
+<ul><li><b>Source</b></li></ul></li></ul></li>
+<li><b>Main</b> – Main integration and build branch. All changes come together here.
+<ul><li><b>Source</b></li>
+<li><b>Other Asset Folders</b></li></ul></li>
+<li><b>Releases</b> – Container for current release and maintenance branches
+<ul><li><b>Release 2</b>– Active maintenance branch
+<ul><li><b>Source</b></li>
+<li><b>Other Asset Folders</b></li></ul></li>
+<li><b>Release 3</b> – Active maintenance branch
+<ul><li><b>Source</b> </li>
+<li><b>Other Asset Folders</b></li></ul></li>
+<li><b>Release 4 –</b> Branch containing the code currently being locked down to release
+<ul><li><b>Source</b> </li>
+<li><b>Other Asset Folders</b></li></ul></li></ul></li>
+<li><b>Safe Keeping</b>
+<ul><li><b>Release 1</b> – Old release in safe keeping
+<ul><li><b>Source</b></li>
+<li><b>Other Asset Folders</b></li></ul></li></ul></li></ul></li></ul>
+<br />This structure includes:
+<ul><li>Feature branches for multiple teams to work in isolation.</li>
+<li>A main branch to gather changes by all teams as well as bug fixes from the release branches.</li>
+<li>A release branch used to lockdown the current release.</li>
+<li>A maintenance branch for an old release that is being actively maintained and supported.</li>
+<li>Safekeeping branches for older releases that are no longer being maintained.</li></ul>
+
+<h3>Summary</h3>Branches are usually created to lock down a release, to maintain a previous release, or to support isolated parallel development. You should not branch unless you have good reason to do so.<br /><br />When creating branches, you should logically structure your branch trees so that you only need to merge along the hierarchy (up and down the branch tree) rather than across the hierarchy. Merging across the hierarchy is time-consuming and error-prone.<br /><br />For large teams, the branching structure is deeper, so you should be prepared for more lag time between a change occurring in a development branch and that change being merged back into the main integration branch.<br />
+<h3>Additional Resources</h3><ul><li>For an introduction to branching and merging, see “Branching and Merging Primer” at <a href="http://msdn2.microsoft.com/en-us/library/aa730834(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/aa730834(VS.80).aspx</a> </li>
+<li>For more information about branching, see “How to: Branch Files and Folders” at <a href="http://msdn2.microsoft.com/en-us/library/ms181425(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181425(VS.80).aspx</a></li>
+<li>For more information about merging, see “How to: Merge Files and Folders” at <a href="http://msdn2.microsoft.com/en-us/library/ms181428(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181428(VS.80).aspx</a></li>
+<li>For additional descriptions of how to branch and merge in Visual Studio 2005, see “Branching and Merging Team Foundation Source Control” at <a href="http://msdn2.microsoft.com/en-us/library/ms181423(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181423(VS.80).aspx</a></li></ul></div><div class="ClearBoth"></div>

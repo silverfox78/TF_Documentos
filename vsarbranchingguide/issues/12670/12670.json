@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "redundant now",
+    "ClosedDate": "2013-11-30T07:57:30.197-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\n \nin the file [TFS Branching Guide - Scenarios 2.0.pdf] in page 9 the following text\n \n\"Dev - child branches of main where developers work on the current on future versions on the product.\"\n \ni think has an error and must be\n \n\"Dev - child branches of main where developers work on the current or future versions on the product.\"\n \nRegards",
+    "LastUpdatedDate": "2013-11-30T07:57:30.197-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2010-04-13T09:37:15.703-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "TFS Branching Guide - Scenarios 2.0 - Typo",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12670
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Thanks for adding this issue.\r\nI will be working on refreshing the guidance soon. \r\nThe scenarios document will be one of my main focus areas.\r\nRegards,\r\nBill Heys\r\nVS ALM Ranger",
+      "PostedDate": "2010-08-12T13:52:06.467-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:42:53.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-11-30T07:57:30.197-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

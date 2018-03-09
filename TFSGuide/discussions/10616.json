@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "34373",
+    "ThreadId": "10616",
+    "Html": "\r\nI appreciate the great guidance you have provided. Would it be possible for you to release the Visio diagrams you used for the \"Fundamentals\" section so that we could tailor them to our particular environment and use these for internal documentation?<br /><br />Thanks and once again, Great Job!<br />",
+    "PostedDate": "2007-05-23T12:20:40.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "47389",
+    "ThreadId": "10616",
+    "Html": "\r\nAbsolutely! We'll clean them up and post all the visio diagrams for the guide in the next couple of days. Stay tuned.<br />",
+    "PostedDate": "2007-08-31T08:11:10.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "48156",
+    "ThreadId": "10616",
+    "Html": "\r\nThe diagrams have been posted here - http://www.codeplex.com/TFSGuide/Release/ProjectReleases.aspx?ReleaseId=6919<br /><br />Hope this helps!<br />",
+    "PostedDate": "2007-09-06T17:18:03.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "48583",
+    "ThreadId": "10616",
+    "Html": "\r\nAm I missing something? the link points to the Guide (PDF document).<br />",
+    "PostedDate": "2007-09-10T07:52:56.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "48884",
+    "ThreadId": "10616",
+    "Html": "\r\nHi,<br />Same problem here. The link does not work!!<br />",
+    "PostedDate": "2007-09-12T03:12:08.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "49166",
+    "ThreadId": "10616",
+    "Html": "\r\nSame here, the page of that link doesn't show any file to download.<br /><br />BTW, just scan through few chapters(particular Part II: Source Control), it is a great content and like the sample server/client folder structure. Good work. <br />",
+    "PostedDate": "2007-09-13T13:57:13.22-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "49953",
+    "ThreadId": "10616",
+    "Html": "\r\nYeah, link still not working....?<br />",
+    "PostedDate": "2007-09-19T14:20:29.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "49970",
+    "ThreadId": "10616",
+    "Html": "\r\nSorry about that! The release was created but not made visible.  Try the same link again and it should work now:<br /><a href=\"http://www.codeplex.com/TFSGuide/Release/ProjectReleases.aspx?ReleaseId=6919\" class=\"externalLink\">http://www.codeplex.com/TFSGuide/Release/ProjectReleases.aspx?ReleaseId=6919<span class=\"externalLinkIcon\" style=\"font-family:Consolas, Courier New, Courier, Monospace;\"></span></a><br />",
+    "PostedDate": "2007-09-19T18:20:56.5-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "49978",
+    "ThreadId": "10616",
+    "Html": "\r\nHi,<br />I still can't download the Visio.. please assist<br />",
+    "PostedDate": "2007-09-19T20:25:29.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "50028",
+    "ThreadId": "10616",
+    "Html": "\r\nIt has 37 downloads, so I know somebody is getting it :). What are you seeing when you try to download?<br />",
+    "PostedDate": "2007-09-20T07:05:27.157-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

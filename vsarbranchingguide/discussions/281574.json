@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "706333",
+    "ThreadId": "281574",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>Is it possible to setup Visual Studio 2010 or Team Foundation Server 2010 to do an automatic merge from Main to Development branch(es) for example when a build in a development branch completes? I know merge conflicts can occur, so an alert or something\r\n to remind the developer to merge is also an acceptable solution.</p>\r\n<p>The problem I have now is, that sometimes the Forward Integration merge is forgotten, so changes in the Main branch can be overwritten with old code when the Development branch is merged with Main (Reverse Integration)</p>\r\n<p>&nbsp;</p>\r\n<p>I hope someone can help or point me in the right direction! :-)</p>\r\n<p>&nbsp;</p>\r\n<p>/Soren</p>\r\n",
+    "PostedDate": "2011-12-02T01:43:57.577-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706398",
+    "ThreadId": "281574",
+    "Html": "<p>I am not a fan of the concept of automatic merges. It seems you have several issues to address:</p>\r\n<ul>\r\n<li>As part of the Reverse Integration process, all individuals responsible for merging the Development branch with Main (RI) should be told (or trained) to do a merge first from Main to Development (FI). If you find that developers are not properly following the correct process, perhaps you need to assign responsibility for merging to a tech lead who will follow the correct procedures.</li>\r\n<li>In the scenario you describe, there should be merge conflicts (changes to the same files in both the development branch and the main branch. It seems that in addition to not doing a merge from Main to Development prior to the merge from Development to Main, developers are likely resolving these conflicts incorrectly. Developers should not simply take the source from the development branch when they resolve such conflicts. </li>\r\n<li>I don't think an automatic merge is possible in your scenario since, by definition, merge conflicts will need to be resolved manually during the course of the merge</li>\r\n<li>Any developer that does not follow correct procedures when merging development to main, will likely not pay attention to alerts or email reminders </li>\r\n</ul>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-12-02T04:14:40.133-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "778076",
+    "ThreadId": "281574",
+    "Html": "<p>I think I may have read something on here that may help with your issue.&nbsp; See if the link below helps.</p>\r\n<p>&nbsp;</p>\r\n<p><a href=\"http://vsarbranchingguide.codeplex.com/discussions/260433\">http://vsarbranchingguide.codeplex.com/discussions/260433</a></p>",
+    "PostedDate": "2012-02-18T14:39:40.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

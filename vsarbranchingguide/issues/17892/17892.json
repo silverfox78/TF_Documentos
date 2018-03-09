@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "redundant now",
+    "ClosedDate": "2013-11-30T08:08:32.59-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This diagram on page 45 shows the hotfix being created in the read-only release branch, not the hotfix branch.",
+    "LastUpdatedDate": "2013-11-30T08:08:32.59-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2012-04-20T14:47:23.937-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error in Advanced Plan Diagram",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17892
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

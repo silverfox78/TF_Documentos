@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "569537",
+    "ThreadId": "246891",
+    "Html": "\r\n<p>I was sure that branching by workspace version means branching a local version to a new branch. Isn't this true?</p>\r\n<p>But in my environment I'm experiencing an opposite behavior. I have a folder with sources wich are in checked out states. I made a branch with &quot;version type&quot; equals &quot;workspace version&quot; and got a new branch. But this new branch contains sources not from my\r\n local folder but of server versions.</p>\r\n<p>Do I understand &quot;branching by workspace version&quot; incorrectly or something wrong with my environment?</p>\r\n",
+    "PostedDate": "2011-02-21T03:53:45.1-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "569693",
+    "ThreadId": "246891",
+    "Html": "<p>What version of Visual Studio are you using? What version of TFS?&nbsp; Are you doing this branch from the UI (Source Code Explorer), or CommandLine (TF.exe)?</p>\r\n<p>Regards,<br />Bill Heys<br />Visual Studio 2010 ALM Ranger<br /><a href=\"http://blogs.msdn.com/b/billheys\">http://blogs.msdn.com/b/billheys</a></p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-02-21T09:18:06.613-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "569705",
+    "ThreadId": "246891",
+    "Html": "<p>Server is TFS2008. Clients are VS2008 and VS2010 both with the same result. I'm doing branching from UI.</p>\r\n<p>Actually I've found a workaroung - http://stackoverflow.com/questions/3728318/branch-from-local-workspace</p>",
+    "PostedDate": "2011-02-21T09:45:40.067-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

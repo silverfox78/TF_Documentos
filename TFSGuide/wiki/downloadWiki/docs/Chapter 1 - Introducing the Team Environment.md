@@ -1,0 +1,88 @@
+### Chapter 1 - Introducing the Team Environment
+- _[J.D. Meier](http://blogs.msdn.com/jmeier), [Jason Taylor](http://jtaylorgoodlife.blogspot.com/), Alex Mackman, [Prashant Bansode](http://prashantbansode.blogspot.com/), [Kevin Jones](http://blogs.advantaje.com/blog/kevin/)_
+
+### Objectives
+* Describe how Microsoft® Visual Studio® Team Foundation Server supports the software development lifecycle.
+* Describe how a typical development team uses Team Foundation Server.
+* Describe how a typical test team uses Team Foundation Server.
+* Describe the development and test team’s physical environment.
+
+### Overview
+This chapter describes how Team Foundation Server (TFS) and Microsoft Visual Studio Team System (VSTS) are used in a team-based software development environment. It introduces the core features of TFS and VSTS and describes the workflow between development and test teams during a software development project. Because TFS integrates source control, work tracking, reporting, project management and an automated build process, it enables a development team to work together more effectively.
+
+A successful team-based software development project has many processes that must work together smoothly to ensure an efficient working environment. The core processes include:
+* Development 
+* Test
+* Build
+* Deployment 
+* Release
+
+This chapter introduces you to typical functions that the development and test teams can perform with TFS and describes how you can use TFS to manage the workflow to support efficient collaboration across teams. 
+
+### How to Use This Chapter
+Use this chapter to learn how TFS is designed to support the software development lifecycle. By reading this chapter, you will also learn about the TFS workflow and how TFS enables you to improve team collaboration. 
+
+For more detailed information about TFS architecture and the TFS core components, see “Chapter 2 - Team Foundation Server Architecture.”
+
+### Logical Workflow of Team Foundation Server
+TFS enables a development team to store code in a centrally managed source code repository. You can create builds from this repository by using the build server and you can then distribute these builds to your test team.
+
+Figure 1.1 shows the logical workflow of TFS and how the development and test environments are connected. 
+ 
+![](Chapter 1 - Introducing the Team Environment_Fig1.1.GIF)
+**_Figure 1.1** Team Foundation Server Logical Workflow_
+
+The test team picks up builds from a drop location and runs them through its testing environment by performing a combination of manual and automated tests. Test results are stored by TFS and are used to provide feedback on the build quality. The test team can also create work items and bugs (a specific type of work item) on which the development team needs to take action. These work items allow the test team to track the work of the development team.
+
+### Logical Workflow of Development, Test, and Production Environments
+In larger organizations with multiple development teams, each development team maintains a separate TFS including separate source code repositories and team build servers. Figure 1.2 shows an example of the logical workflow that results from two development teams delivering application builds to an integration test team. 
+
+![](Chapter 1 - Introducing the Team Environment_Fig1.2.GIF) 
+**_Figure 1.2** Logical Workflow Showing Two Development Teams and an Integration Test Team_
+
+Each development team delivers scheduled builds to a drop point such as a network share. These builds are picked up by the test team and tested to measure the quality of the build. When test quality gates are passed the applications are deployed to a staging server for final checks and user acceptance before ultimately being deployed to a production server.
+
+#### Development Processes
+Developers perform a number of key interactions with TFS throughout the duration of a software development project. For example, as a developer you interact with TFS in the following ways:
+* You access bugs and task work items from TFS to determine what work you need to do. For example, work items might have been assigned by your project manager, by another developer, or by the test team.
+* You use the VSTS Source Control Explorer to access the TFS source control repository and pull the latest source code into a local workspace or your development computer.
+* After performing the work identified by the work item, you check your code back into the source control database.
+* The check-in event might trigger a continuous integration build that uses Team Build.
+* If the build fails a new work item is created to track the build break. 
+
+#### Test Processes
+As a member of a test team, you might interact with TFS in the following ways:
+* You pick up the output of a scheduled build from a specific drop location.
+* You perform manual and automated testing including security testing, performance testing, and Web testing by using various VSTS tools. 
+* You upload the results from the tests to the TFS Test Result database for future reference.
+* You log bugs identified by your testing into TFS as new work items. 
+* You resolve open bugs as fixed, after testing on the latest build.        
+
+### Development and Test Physical Environments 
+The size and number of computers associated with your development and test environments varies depending upon the size of your teams and projects. Figure 1.3 shows a typical development and test physical environment.
+
+![](Chapter 1 - Introducing the Team Environment_Fig1.3.GIF) 
+**_Figure 1.3** Development and Test Physical Environment_
+
+#### Development Environment
+The development environment supports your development and build processes. The development environment contains the following computers:
+* A Team Foundation Server. 
+* A build server.
+* A server to store the drops from the build server. 
+* Developer workstations. 
+
+If your development team accesses TFS remotely, or you have a particularly large team that causes performance issues on your central TFS server, you can also set up a TFS proxy to help improve performance.
+
+#### Test Environment 
+The test environment consists of one or more test workstations with Visual Studio Team Edition for Software Testers installed. This is used to manage the test life cycle and to perform functional testing, system testing, security testing, performance testing, and Web testing. Team members use TFS to manage work items, bugs, and test results.
+
+The test environment might also include Visual Studio Team Test Load for performance testing.  
+
+### Summary
+VSTS and TFS are designed to support the software development life cycle by integrating various aspects of software development such as source control, work tracking, reporting, project management, and automated build process. 
+
+TFS plays a vital role in collaboration between the test and development teams. A development team interacts with TFS throughout the development cycle, accessing bugs and work items to determine what work needs to be done and accessing source control to enable development. A test team interacts with TFS to run tests, upload test results, and log bugs.
+
+### Additional Resources
+* For more information on TFS fundamentals, see “Team Foundation Server Fundamentals: A Look at the Capabilities and Architecture” at  [http://msdn2.microsoft.com/en-us/library/ms364062(vs.80).aspx](http://msdn2.microsoft.com/en-us/library/ms364062(vs.80).aspx) 
+* For an overview of Team Foundation, see the Team Foundation production documentation on the Microsoft MSDN® Web site at [http://msdn2.microsoft.com/en-us/library/ms181232(vs.80).aspx](http://msdn2.microsoft.com/en-us/library/ms181232(vs.80).aspx)

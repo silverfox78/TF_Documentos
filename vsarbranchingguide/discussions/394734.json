@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "909507",
+    "ThreadId": "394734",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I'm implementing a branching scenario in our TFS project. Here is the basic plan :</p>\r\n<p>Dev &lt;-&gt; Patch &lt;-&gt; Hotfixes</p>\r\n<p>Dev is branched to a &quot;Patch&quot; branch each major(X.X.0.0). A designated &quot;Patch&quot; branch contains all the patches versions (..X.0)&nbsp;for the associated major. Finally I can branch &quot;Patch&quot; from one of its version to create a hotfix (...X).</p>\r\n<p>It seems to work well for 95% of my needs but sometimes I have to create a hotfix which contains changes of some previous hotfixes. With my scenario I&nbsp; can't easily do that. Is there any possibility or is it some bizarre need :) ?</p>\r\n",
+    "PostedDate": "2012-09-07T02:03:52.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "909671",
+    "ThreadId": "394734",
+    "Html": "<p>Which branch is your trunk? Is it what you label as Dev? &nbsp;The trunk or main branch would be the root of all other branches, and the place to which you do reverse integrations.</p>\r\n<p>Do you ever do reverse integrations to capture the fixes represented by your hot fixes?&nbsp;</p>",
+    "PostedDate": "2012-09-07T08:44:56.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "909720",
+    "ThreadId": "394734",
+    "Html": "<p>Yes \"Dev\" is my trunk ans is the root of all other branches. A hotfix is always RI in \"Patch\" and then in \"Dev\".</p>\r\n<p>I was thinking of a cumulative branch of hotfixes for each version of patch and then branch it to actually make a patch, but I couldn't select particular hotfixes to make a \"mix\".</p>\r\n<p>From what I read a hotfix is, most of the time, targetting one customer but how do you allow them to install several hotfixes without losing changes from previous one (like Microsoft's KB).&nbsp;</p>",
+    "PostedDate": "2012-09-07T10:38:03.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "909731",
+    "ThreadId": "394734",
+    "Html": "<p>I am confused. You say you Reverse Integrate(RI) all hotfixes back to Patch. So Patch accumulates every hotfix. But you say you cannot get previous hotfixes in subsequent ones. If you are doing RI from each Hotfix back to Patch and Dev, then when you make a branch from Patch for a future hotfix, it should have all previous hot fixes. &nbsp;Are you doing RI for every hotfix or not? Is your branch design a proposed theoretical one or one you have been actually using it for some time?&nbsp;</p>\r\n<p>Also, I am not clear on your hotfix approach. Are you sending the customer an entire package of the product with a special fix embedded in it? Or a piece of add-on code that will modify a base installation. Those are drastically different approaches and the final result of all this depends on the answer to both of these questions: whether you RI hot fixes, and how you deploy them.</p>\r\n<p>If you reveal a little about your underlying technology platform (like WIndows Forms vs ASP.Net web forms, etc...) it may help.</p>",
+    "PostedDate": "2012-09-07T11:00:15.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "909742",
+    "ThreadId": "394734",
+    "Html": "<p>Thanks for your help and I'll try to explain the best I can our process. First of all our branch design is quite theoretical at the moment.</p>\r\n<p>Then yes, every hotfix is RI in the \"Patch\" branch in its current version (we may have 4 or 5 patch version of a major). When I make a hotfix I can only branch \"Patch\" from the version to fix. Let say<strong> 5.2.3.1 is a hotfix</strong> of 5.2.3.0 (this is our non-standard way of versionning), this fix is then RI in \"Patch\" (which can be in developpement for 5.2.4.0 or further). I'd like to be able to make other fixes with changes of 5.2.3.1 but I can't branch \"Patch\" from its latest version for obvious reasons.</p>\r\n<p>Our project is based on ASP .NET web forms and consists of several DLL and other ressources. We aren't always sending a complete new setup of the software but it may happen for easy replacement.</p>",
+    "PostedDate": "2012-09-07T11:25:54.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "909828",
+    "ThreadId": "394734",
+    "Html": "\r\n<div>I suggest you look at the &quot;Branching and Merging Guide.pdf&quot; in the download and closely study the Standard and Advanced plans. It sounds as if one of them would serve you well. Keep in mind that you can usually change your branching strategy if it does\r\n not work for you. You can also try them out in a sandbox if you are really nervous.\r\n</div>\r\n<div><br>\r\n</div>\r\n<div>On Fri, Sep 7, 2012 at 1:25 PM, msauvaget <span dir=\"ltr\">&lt;<a href=\"mailto:notifications@codeplex.com\" target=\"_blank\">notifications@codeplex.com</a>&gt;</span> wrote:<br>\r\n<blockquote style=\"margin:0px 0px 0px 0.8ex; padding-left:1ex; border-left-color:rgb(204,204,204); border-left-width:1px; border-left-style:solid\">\r\n<div>\r\n<p>From: msauvaget</p>\r\n<div>\r\n<p>Thanks for your help and I'll try to explain the best I can our process. First of all our branch design is quite theoretical at the moment.</p>\r\n<p>Then yes, every hotfix is RI in the &quot;Patch&quot; branch in its current version (we may have 4 or 5 patch version of a major). When I make a hotfix I can only branch &quot;Patch&quot; from the version to fix. Let say<strong> 5.2.3.1 is a hotfix</strong> of 5.2.3.0 (this\r\n is our non-standard way of versionning), this fix is then RI in &quot;Patch&quot; (which can be in developpement for 5.2.4.0 or further). I'd like to be able to make other fixes with changes of 5.2.3.1 but I can't branch &quot;Patch&quot; from its latest version for obvious reasons.</p>\r\n<p>Our project is based on ASP .NET web forms and consists of several DLL and other ressources. We aren't always sending a complete new setup of the software but it may happen for easy replacement.</p>\r\n</div>\r\n<div>\r\n<div>\r\n<p>Read the <a href=\"http://vsarbranchingguide.codeplex.com/discussions/394734#post909742\" target=\"_blank\">\r\nfull discussion online</a>.</p>\r\n<p>To add a post to this discussion, reply to this email (<a href=\"mailto:vsarbranchingguide@discussions.codeplex.com?subject=[vsarbranchingguide:394734]\" target=\"_blank\">vsarbranchingguide@discussions.codeplex.com</a>)</p>\r\n<p>To start a new discussion for this project, email <a href=\"mailto:vsarbranchingguide@discussions.codeplex.com\" target=\"_blank\">\r\nvsarbranchingguide@discussions.codeplex.com</a></p>\r\n<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://vsarbranchingguide.codeplex.com/subscriptions/thread/project/edit\" target=\"_blank\">\r\nunsubscribe or change your settings</a> on codePlex.com.</p>\r\n<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at\r\n<a href=\"http://codeplex.com\" target=\"_blank\">codeplex.com</a></p>\r\n</div>\r\n</div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n<br>\r\n<br clear=\"all\">\r\n<br>\r\n-- <br>\r\n<div>David Kreth Allen</div>\r\n<div>612-374-1119</div>\r\n<div><font style=\"background-color:rgb(255,204,255)\"></font></div>\r\n<br>\r\n",
+    "PostedDate": "2012-09-07T16:03:09.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

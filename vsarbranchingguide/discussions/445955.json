@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "1052635",
+    "ThreadId": "445955",
+    "Html": "Hi all,\r<br />\n<br />\nIn TFS I understanding there is the branching and the labeling but it also seems with TFS that it's too much information or risky, respectively. \r<br />\n<br />\nAssuming we have a multiple applications comprised in 1 team foundation collection (TKC) and they total comprise 2000 artifacts:\r<br />\n<br />\nIf we have a project that let's say only changes 6 of those 2000 artifacts and 2 developers working them:<br />\n<ul>\n<li>Creating a branch works BUT it branches off the main and thereby makes a copy of the 2000 artifacts so the 6 can be changed and isolated.  That would utilize a lof of unnecessary space for changing just 6 artifacts BUT it would work.</li>\n<li>\nCreating a label works BUT labels are free-form text and meaning each developer could label it with a different name. <br />\n</li>\n</ul>\nA code-promotion type branching model sounds reasonable off the Main to QA and release for stabilization but what is the best method to isolate and identify the changes to those 6 artifacts in this example? \r<br />\n<br />\nIf there was a way to promote and identify without a label (due to the risk) that is ideal but I am not seeing it with TFS nor did I with VSS.\r<br />\n<br />\nAny assistance and inforamtion on this would be greatly appreciated. <br />\n",
+    "PostedDate": "2013-06-04T07:04:04.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1052859",
+    "ThreadId": "445955",
+    "Html": "\r\n<div dir=\"ltr\">\r\n<div style=\"\">First, it's important to understand the facts about TFS branching and disk storage. If you have a trunk (MAIN) with 2,000 artifacts, and you branch it all, very little extra space is used on the server. However, when a developer gets latest on\r\n that branch, they will have a local copy. So their local disk space gets used. But that is not normally a problem. It is only if you change some of the files that space is made for the changed copy. The algorithm used varies depending on the change.</div>\r\n<div style=\"\"><br>\r\n</div>\r\n<div style=\"\">If the 2,000 artifacts represent several different applications, and they are independent, then you might make each of them a trunk and branch off of them. That reduces local disk use since you only need to download the project you are working\r\n on.</div>\r\n<div><br>\r\n</div>\r\nI would encourage you to skim the entire branching guide that is available in the downloads section of this project. It has some great information that will help you see alternatives. When you see something of interest, you can slow down and study it carefully.\r\n<div><br>\r\n</div>\r\n</div>\r\n<div><br>\r\n<br>\r\n<div></div>\r\n</div>\r\n",
+    "PostedDate": "2013-06-04T17:44:30.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1057932",
+    "ThreadId": "445955",
+    "Html": "Hi Davidkallen,\r<br />\n<br />\nSo sorry about the delay. \r<br />\n<br />\nYes, I believe it's not taking much space on the server as I believe that is just the meta stored on there. However, you are correct and that's what I'm getting at. If a developer is getting out the latest on a branch they are getting everything and probably 99.9% of that they will not even use. If they are working simultaneously on 2 branched projects and they need to keep the branches isolated they would then need to get the latest on the other project as well which means they would get all that yet again and 99.9% of those they would not use either. So, yes, you are correct in that it's not taking much space on the server but rather on the local copy. \r<br />\n<br />\nI see what you're saying on if the applications are independent and all making each of them a trunk (or main). That would be 1 TKC per application would it not or all in the same collection just a different heirachy structure per application? However, the release would entail everything for each of those trunk's. \r<br />\n<br />\nI am looking through several different documentation sets and PDF's. All great information but little to point a finger at and say I really need to look at this and take a deep-dive into. \r<br />\n<br />\nThat's sort of why I am posting the question. \r<br />\n<br />\nThanks,<br />\n",
+    "PostedDate": "2013-06-17T14:07:07.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1057967",
+    "ThreadId": "445955",
+    "Html": "How much disk space is consumed by the entire collection of 2,000 artifacts? It should be easy to obtain by looking at your development machine.<br />\n",
+    "PostedDate": "2013-06-17T17:00:13.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1057980",
+    "ThreadId": "445955",
+    "Html": "We are currently using SVN. But yep, familiar with how to get the size on the development machine or local machine.\r<br />\n<br />\nThe 2,000 artifacts was just an example and very close to the disk size but here are the numbers:<br />\n<ul>\n<li>Size: 2 GB</li>\n<li>Artifacts: 17,890</li>\n<li>\nFolders: 1,400<br />\n</li>\n</ul>\nNow, that is for 1 project. For instance, I am currently involved in 3 and each on it's own branch off the main/trunk. So that's about 6 GB in disk space. 53,670 artifacts, 4,200 folders. \r<br />\n<br />\nIt took a good 15 minutes to download locally for each one of those branches. As may know, SVN downlaods the file and meta for the .svn to track each artifact. Much like TFS would  with it's local workspaces. (TFS 2012 with the predominant local workspace.)\r<br />\n<br />\nThe really sad thing, is on 1 project I had a total of 10 artifact changed, the 2nd - about 22, the 3rd - 2. \r<br />\n<br />\nI want to come up with a plan to not require a download of all that yet keep the identification of each project and artifacts comprising the project for isolation merges. So, that if let's say the release upcoming was initially scheduled for the 3 projects turned out in the midst of system testing that only 2 of those 3 were going to go in; I need to be able to remove the 1 of those identified to NOT go in and remove all the elements. Yielding the system and only those 2, rebuilding and having those in just system test. \r<br />\n<br />\nI thought about the use of version labels. That would avoid the need of branches and all BUT labels in TFS and in VSS are risky as the reason: they are free-form text on the name which means one developer could label something &quot;Test&quot; and the other developer labeling it &quot;test&quot; (really meaning &quot;Test&quot;).  I have used things like PVCS which had the promotion group that was staticly named which enforced consistency and they had the version label as well that was not static. However it was somewhat slow, a little outdated and did not integrate well with VS as TFS does, and work with a fully integrated bug tracking and build aspect as well and the other features of TFS. \r<br />\n<br />\nI have figured a way to remove about 2,000 of the 17,900 which comprise common elements like the DAL and Placeholder logic as well as other &quot;common&quot; items. I would put them in a separate tree structure on the same TKC and using the builds for a reference.  As well, the projects downloaded would use a reference to the static locations as well.  That would require the &quot;common&quot; to be downloaded onces into the workspace and each project having a reference to that workspace.  However, that still leaves about 15,900. By the way, not of those artifacts in the 3 projects are touching the common anyway. \r<br />\n<br />\nI'm sorry about all the detail. Just wanted to do my best to explain what I'm dealing with and what I'm trying to avoid in the use with TFS. Again, I haven't really found any good information on any of the materials and documents that outlines a good way of dealing with something like this.\r<br />\n<br />\nAny information, ideas, suggestions you have would be greatly appreciated.\r<br />\n<br />\nThanks! <br />\n",
+    "PostedDate": "2013-06-17T18:04:59.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1057984",
+    "ThreadId": "445955",
+    "Html": "\r\n<div dir=\"ltr\">\r\n<div>\r\n<div>\r\n<div style=\"\">How often do you create a branch?</div>\r\n</div>\r\n</div>\r\n<div style=\"\"><br>\r\n</div>\r\n<div style=\"\">As a reference for performance, it takes me only 7 minutes to download a complete new branch with 2 GB and 27,000 files. And my source code is on the internet in the Microsoft TFS cloud service. So if you are getting 15 minutes, you may have network\r\n or server issues.\r\n<div><br>\r\n</div>\r\n<div>But regardless, I admit that is an annoying delay. But you only have to do that once, when a branch is created.. Later, during development, when you get latest version, it should be much quicker for just changes.\r\n</div>\r\n<div><br>\r\n</div>\r\n<div>At work, we only branch once a month. So waiting 10 minutes once a month for a developer is not a problem. You just go get a drink of water, or go to a meeting. And you are done when you return. How often do you branch? That is the key to how big an issue\r\n this is in real life. </div>\r\n<div><br>\r\n<div>\r\n<div></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2013-06-17T18:47:04.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1058000",
+    "ThreadId": "445955",
+    "Html": "Whenever we create a new project we have it on a branch. So, how often really is based on how many projects we have going on that is scheduled for a release. You could associate it to a feature branch as that is essentially what they are. Then the SYSTEST will be overwritten by merges to it and then a release branch is created per release. \r<br />\n<br />\nI could have sworn is takes me about 15 minutes then again, I am doing other things at the same time too which I'm sure that could slow things down as well. I have a an adequate pipe of about 40 MB/SEC taking into account VPN, obviously faster without. That's just me though and we have others who are geographically separated. \r<br />\n<br />\nI could only imagine it would be quicker on the changes as your just dealing with the local workspace or changes that are identified with that; just like with SVN. The merges would be the same. \r<br />\n<br />\nI just keep thinking there has to be a better way and not have to deal with the 15 minutes or what have you. I mean it only makes sense. If I have 17,890 files or you have 27,000 files each one is not being touched and only some are. Why not just get them once and create a branch based on just the needed artifacts (with the option to add or remove)? That option or possibility does not exist does it? I have never seen in documentation that mentioned it.  \r<br />\n",
+    "PostedDate": "2013-06-17T20:20:37.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1058006",
+    "ThreadId": "445955",
+    "Html": "\r\n<div dir=\"ltr\">no. I've not seen anything about creating a branch on just specific artifacts.\r\n<div><br>\r\n</div>\r\n<div>But here is an idea. I just tried it. Make a full branch of all 17,890 files. It only takes a few seconds, right? Because it just makes pointers on the server. Then if you know you want to just change 3 files, get latest on just the files you want, at\r\n the time you want them. Just in time editing. Then change them. Of course, that makes no sense if they are normal .Net projects because you want the solution and project files and all supporting files or you cannot build. But if you want to build the solution\r\n then you want the whole thing so I don't see the point in what you are trying to do in the first place. BUt if you really just want to touch 3 files out of thousands, you can get just those files. Nobody says you must get latest on all of them.<br>\r\n<div><br>\r\n</div>\r\n<div>As a radical idea, I know TFS and Visual Studio support GIT now. It is a totally different paradigm. If you and your team are willing to learn a totally new approach to version control, it might be a better. But I cannot say as I have zero experience using\r\n it.\r\n<div><br>\r\n</div>\r\n<div style=\"\"><br>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n<div><br>\r\n<br>\r\n<div></div>\r\n</div>\r\n",
+    "PostedDate": "2013-06-17T20:47:04.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1058009",
+    "ThreadId": "445955",
+    "Html": "If you are using .NET you must get all of them because like you said, the solution and the project files for a build. \r<br />\n<br />\nHowever, actually they are .NET files and makes perfect sense if you get the common items 1 time and 1 time for all the projects, maybe per release, and put it in your workspace. This is essentially the baseline version or the version of the last release. You obviously branch from the main and then you get the 3 files from the branch and do a get latest off of those and have the workspace of the branch be the same as the workspace for baseline.<br />\n\r<br />\nThe references of the projects in the .sln would all have to be in your workplace.  You even do an MKLINK to make a symbolic link to make the referencing easlier with the .sln.\r<br />\n<br />\nThat may actually work-out, kinda thinking and typing here. \r<br />\n<br />\nOne that situation would have 1 hit on time to take the 10 minutes to get that latest from the common and 1 for all the projects. Then after that you still have the branch and if you only need to modify those 3 files. Then you have only those 3 files from the branch in your workspace. \r<br />\n<br />\nYou can still build and compile the .NET using those 3 changed versions. The other projects would use the same baseline version in the workspace but hmmm...wouldn't isolate like the Project 1, Project 2, etc because those change from each Project would go into the base the the projects really aren't isolated, per say. It would be like a unit test system test. \r<br />\n<br />\nLet me think about this...there are pro's and con's. \r<br />\n<br />\nI will play with this tomorrow. I will let you know the outcome. \r<br />\n<br />\nThanks for the dicussion davidkallan. It has me thinking. \r<br />\n<br />\nAgain, I'll let you know how that works out or if it is even within reason considering. \r<br />\n<br />\nThanks! <br />\n",
+    "PostedDate": "2013-06-17T21:26:31.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

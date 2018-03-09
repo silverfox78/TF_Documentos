@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "572245",
+    "ThreadId": "247598",
+    "Html": "\r\n<p>We're trying to setup a standard for how to do branching and find the guidance very helpful.</p>\r\n<p>Some of our exiting projects clearly need the Advanced or maybe even the Mature branch plans, but most are relatively simple and can get by with Basic or Standard.&nbsp;&nbsp;When we start a new project we're not usually sure if we're going to need all of\r\n the Advanced stuff so we'd like to setup the project with the Basic plan to start and only grow it into Standard or Advanced if we really need to.</p>\r\n<p>The guidance document (page 5) says:</p>\r\n<p style=\"padding-left:30px\">The elements of these plans are additive; starting with the Basic plan will allow you to transition to the Standard plan if your product or branching requirements become more complex.</p>\r\n<p>How do you do that?</p>\r\n<p>If I've been using the Basic plan for a while, but find I need to do a ServicePack how do I &quot;transition&quot; to the Standard plan?&nbsp; Do I rename my Release branch to ServicePack and then create a new Release Branch from it?&nbsp; Most of my experiences with\r\n renaming a branch have been bad -- things tend to break.&nbsp; Or do I need to do some branch reparenting, magic?&nbsp; Or do I declare the current Release branch as historical releases mark it read only and create the ServicePack branch from the last changeset\r\n that went into the old release branch and then create the new Release branch from it?</p>\r\n<p>If this is covered in the docs please feel free to respond RTFM, but please point out the doc and page I should be looking at -- I haven't found it yet.</p>\r\n<p>thanks<br>\r\nPerry</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-02-25T09:53:30.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "572266",
+    "ThreadId": "247598",
+    "Html": "<p>Perry,</p>\r\n<p>My recommendation would be to follow your last option: \"declare the current Release branch as historical releases mark it read only and create the ServicePack branch from the last changeset that went into the old release branch and then create the new Release branch from it\"</p>\r\n<p>Like you have seen nothing but problems arise from renaming. Periodically I get cases referred to me from Premier support where things don't seem to be working correctly (merging issues, upgrade issues from 2008 to 2010, and so on). Almost everyone of these cases has a *hidden* rename issue. Or the user deleted a file and added a different one with the same name. I don't *think* you will have a problem if you follow option one and rename Release to Service Pack and branch a new Release from it (just don't use exactly the same name as the old banch :), maybe use RTM instead)&nbsp;. So I suppose you will be ok following that course of action. Most of the rename issues I have seen have been on the development side. I think 2010 handles these situations better so I wouldn't be overly concerned. Renaming in and of itself might not be bad. But renaming and then reusing the old name might be something to avoid.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-02-25T10:41:00.557-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "572276",
+    "ThreadId": "247598",
+    "Html": "<p>Or alternatively for the current release, leave the name of the Release branch as is and branch a new RTM branch from it. Then *treat* the Release branch as a Service Pack branch. Then starting with the next release go back to a more intuitve naming (Service Pack, Release).</p>\r\n<p>Regards,<br />Bill Heys</p>",
+    "PostedDate": "2011-02-25T10:50:47.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

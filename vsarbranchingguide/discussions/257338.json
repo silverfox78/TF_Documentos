@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "611542",
+    "ThreadId": "257338",
+    "Html": "\r\n<p>Hi, I am completely new to branching and am trying to figure out how to apply the basic branch plan to an existing solution. &nbsp;We have one solution file containing 11 projects, a mixture of web application, shared class libraries, web services, database\r\n projects etc...</p>\r\n<p>The structure is as follows:</p>\r\n<p>&gt;Solution<br>\r\n&nbsp;-ClassLibrary1<br>\r\n&nbsp;-WebProject<br>\r\n&nbsp;-WebService1<br>\r\n&nbsp;-ClassLibrary2<br>\r\n&nbsp;-DatabaseProject1<br>\r\n&nbsp;-DatabaseProject2<br>\r\n&nbsp;-WebService2</p>\r\n<p>The main project I would like to add branching to (at least to start with) is the web project and i want to know exactly how to structure things, and where to create the branch.</p>\r\n<p>Should I branch at the WebProject folder level, which also&nbsp;contains&nbsp;the project file? Do I then need to add this new branch to the solution? Wouldn't this give a naming conflict?</p>\r\n<p>Should I create a sub-folder for 'Main' and move all of my&nbsp;existing&nbsp;code in to this and then branch from there in to other sub folders? &nbsp;How would this affect my folder structure when I deploy the web project (I don't want a 'Main'/'Release'\r\n folder created when I deploy to my production web server.</p>\r\n<p>Sorry if this is really basic, but it hasn't quite 'clicked' with me how I should get this started.</p>\r\n<p>Thanks in advance,</p>\r\n<p>Ian</p>\r\n",
+    "PostedDate": "2011-05-12T03:31:45.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "612582",
+    "ThreadId": "257338",
+    "Html": "<p>Since I don't know how much you already understand about TFS / Team Projects / Branching, etc. Let me start with some basics.</p>\r\n<ul>\r\n<li>Start by creating a Team Project to contain all of the eleven (11) projects in your solution. For discussion purposes, I will call this TeamProject1 ($/TeamProject1). </li>\r\n<li>Create a workspace mapping for this Team Project. (Map $/TeamProject1 to a local folder on your workstation (for example c:/ws/TeamProject1)</li>\r\n<li>Next, create a folder called Main&nbsp;in the Team Project. ($TeamProject1/Main) - this will be the folder that contains your MAIN branch.</li>\r\n<li>Next create a folder called Development (at the same level as Main) ($TeamProject1/Development)) - this will be the folder that contains your Development branch(es)</li>\r\n<li>Next create a folder called Release (at the same level as Main and Development) ($TeamProject1/Release)&nbsp; - this will be the folder that contains your Release branch(es)</li>\r\n<li>Check-in all pending changes</li>\r\n<li>Next, inside the folder Main, create another folder, Main ($/TeamProject1/Main/Main).&nbsp; </li>\r\n<li>Check-in all pending changes</li>\r\n<li>Convert this (second Main)&nbsp;folder to a first-class branch (MAIN)</li>\r\n<li>Under the MAIN branch create a folder to hold your source code ($/TeamProject1/Main/MAIN/Src)</li>\r\n<li>Create a folder for you solution, for discussion purposes, I will call this Solution1 ($/TeamProject1/Main/MAIN/Src/Solution1)</li>\r\n<li>Put your solution file (Solution1.sln) under this folder</li>\r\n<li>Each of your projects will be in folders under the Solution1 folder (for example $/TeamProject1/Main/MAIN/Src/Solution1/ClassLibrary1 will contain ClassLibrary1.csproj and $/TeamProject1/Main/MAIN/Src/Solution1/ClassLibrary2 will contain ClassLibrary2.csproj)</li>\r\n<li>When you branch (for example to create a development branch) you would branch $/TeamProject1/Main/MAIN -&gt; $/TeamProject1/Development/DEV1). </li>\r\n<li>After branching you will see all of the folders and source code files under the MAIN branch are now also under the DEV1 branch (for example, you will now see $/TeamProject1/Development/DEV1/Src/Solution1/WebProject, etc)</li>\r\n</ul>\r\n<p>Since your solution is contained in a folder under the branch (MAIN or DEV1), you could build and deploy your solution and it would not deploy its containing folders/branches)</p>\r\n<p>I hope this helps,</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-05-13T13:45:30.67-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "613333",
+    "ThreadId": "257338",
+    "Html": "<p>Hi Bill, thanks for the comprehensive reply. &nbsp;I have not tried this but I think I&nbsp;understand&nbsp;what you are suggesting - we'll soon see :-)</p>\r\n<p>In the layout you are suggesting above, when I create a branch, i.e. to create a development branch, I would be branching the entire solution, is that correct? &nbsp;In our setup it is mainly the web project/class library that is getting worked on and the other projects are fairly stable, would creating a branch of the whole solution be overkill if I am, for example, only updating the web project?</p>\r\n<p>Thanks again for your assistance.</p>\r\n<p>Ian</p>",
+    "PostedDate": "2011-05-16T06:16:20.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "613359",
+    "ThreadId": "257338",
+    "Html": "<p>&nbsp;</p>\r\n<p><span style=\"font-family: 'Segoe UI','sans-serif';\">I would be inclined to branch all of the code for the solution, and not simply for individual projects. This will ensure that if you do need, at some point, to make changes to other parts of the solutions, it will stay in sync.</span></p>\r\n<p><span><span style=\"font-family: 'Segoe UI','sans-serif';\">There is minimal overhead to branching &ndash; until such time as you make changes: <a href=\"http://blogs.msdn.com/b/billheys/archive/2011/05/05/how-tfs-stores-files-and-calculated-deltas-on-versioned-files.aspx\">http://blogs.msdn.com/b/billheys/archive/2011/05/05/how-tfs-stores-files-and-calculated-deltas-on-versioned-files.aspx</a> </span></span></p>\r\n<p><span>&nbsp;Regards,<br />Bill Heys<br />VS ALM Ranger</span></p>",
+    "PostedDate": "2011-05-16T07:07:32.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "613418",
+    "ThreadId": "257338",
+    "Html": "<p>Thanks Bill,</p>\r\n<p>I have given this a go and the structure has worked in such that my solution loads up under my dev branch, so I can now see how this goes in practice.</p>\r\n<p>Thanks,</p>\r\n<p>Ian</p>",
+    "PostedDate": "2011-05-16T09:15:31.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1105381",
+    "ThreadId": "257338",
+    "Html": "<blockquote>\nWhy do we need to have two Main folders? Can't we branch from the top level main folder? I'm referring to $/TeamProject1/Main/MAIN<br />\n</blockquote>\n",
+    "PostedDate": "2013-10-09T02:54:08.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1105428",
+    "ThreadId": "257338",
+    "Html": "This is actually not two folders named &quot;Main&quot;. Rather this a is true branch &quot;MAIN&quot; which  has been created in a folder, &quot;Main&quot;.  There is a technical reason for doing this, rather than having the &quot;MAIN&quot; branch located directly under the Team Project. Primarily this had to do with relative project references.<br />\n",
+    "PostedDate": "2013-10-09T05:33:29.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

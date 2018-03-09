@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1316250",
+    "ThreadId": "570571",
+    "Html": "I have a few questions about the Code promotion plan. <br />\n<br />\n1) How do you maintain good code quality in this branching plan?<br />\n<br />\n2) After a deployment is done from the production plan, is it best practice to delete the production branch or retire the branch ?<br />\n<br />\nAnother major challenge we face with our chosen branching plan is that we want one of the branches (maybe the production) to be a reflection of what is in our live environment. Is this possible with the code promotion plan?<br />\n<br />\n3) Can concurrent QA testing occur for different deployments in the QA branch without having to create a new branch?<br />\n<br />\n4) Is it worth creating a branching plan if we do not run any BVTs?<br />\n",
+    "PostedDate": "2014-10-24T06:01:37.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

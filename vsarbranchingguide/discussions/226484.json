@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "490751",
+    "ThreadId": "226484",
+    "Html": "<p>Hi all,</p>\r\n<p>after reading the TFS Branching Guide and comparing it to our (homegrown) branching concept, I wonder how bug fixes that take place on a hotfix branch (for V1) are merged to a newer release (V2), such that no regressions occur.</p>\r\n<p>I understand that if V2 does not exist yet at the time the hotfix is created, the fix would be eventually merged to MAIN, and thus automatically become part of V2 at the time of creating the new release branch - so far so good. However, if both V1 and V2 have already been released, and the hotfix is applied on V1, how does the fix become part of V2?</p>\r\n<p>Thanks for your ideas!</p>",
+    "PostedDate": "2010-09-08T09:34:08.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "490778",
+    "ThreadId": "226484",
+    "Html": "<p>In your scenario,&nbsp;you have released V1 (vCurrent - 1) &nbsp;and V2 (vCurrent) of a product, and presumably you are working on V3 (vNext) in devlopment. You identify a bug in V1 in production. You need to fix this bug, in V1 and V2 in production, as well as V3 in development.</p>\r\n<p>Baseded on the nature of the bug, you decide you need to make this same fix in production for V2 and also in development for V3. Since the Main branch and the Development branches have moved on for vNext development, you cannot fix the bug in the development branch and merge it into the V1 or V2 production. Doing this would risk bringing more than just this change down into the V1 and V2 Production (Release) branches.</p>\r\n<p>My recommendation is to make this change a hotfix servicing branch for the version where the bug is initially identified (in your scenario in V1 hotifx). To get this change into the V2 production release, you have a couple of choices. You cannot merge the change into Main and then do a full merge down into V2 Release (or V2 Hotfix) for the reason described above. You&nbsp; might condsider doing a&nbsp; *cherry pick* of the affected&nbsp;changeset(s), and merge them from the&nbsp;V1 Hotfix branch directly into the V2 Hotfix branch. Alternatively, depending on the magnitude of the changes, you could simply modify the source in both branches (V1 hotfix and V2 hotfix) simultaneously.&nbsp; Cherry picking a changeset from V1 Hotfix to V2 Hotfix will probably require a command-line baseless merge, since there typically is no merge relationship between these two branches in the normal circumstance.</p>\r\n<p>As you note, the change will probably be merged back to the Main branch (probably from the V2 Hotfix branch. From there it will be merged from Main to the Development branch(es) on the next good build of Main (or after more thorough testing of the change in Main). In this way the fix will become part of V3 (vNext).</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-09-08T10:17:21.637-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "491695",
+    "ThreadId": "226484",
+    "Html": "<p>Hi Bill,</p>\r\n<p>thank you for your answer, it's exactly what I was looking for!</p>\r\n<p>Unfortunately, as you correctly note, I'm left with two equally unpleasant choices:</p>\r\n<p>1.) do a command-line baseless merge aka. &quot;cherry picking&quot; from V1 to V2;</p>\r\n<p>2.) fix the bug manually in every released version (duh!).</p>\r\n<p>We're about to migrate from Subversion to TFS, and I honestly don't want to propose either option as the new &quot;bugfix propagation concept&quot; to my 20+ developers... Honestly, I wonder how others are dealing with this issue (I was assuming that supporting multiple older releases is what every software development company needs to deal with).</p>\r\n<p>Any thoughts?</p>\r\n<p>Regards,<br>Stefan</p>",
+    "PostedDate": "2010-09-10T02:56:09.67-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "934328",
+    "ThreadId": "226484",
+    "Html": "<p>Stefan, how does Bill's guidance compare to what you were doing previously?</p>",
+    "PostedDate": "2012-10-30T10:47:00.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

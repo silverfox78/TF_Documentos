@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "492908",
+    "ThreadId": "227056",
+    "Html": "<p>Say I have the following two branches (main is parent to Release1.0</p>\r\n<p>$/Project1/Main/Documentation</p>\r\n<p>$/Project1/Release1.0/Documentation</p>\r\n<p>I add a file, a folder or any number of objects to the Release1.0 branch.&nbsp;&nbsp; Those changes I never want to get to the Main branch.&nbsp; Is there a way I can exclude them from consideration when mergeing?&nbsp;&nbsp; I still want all other files to merge accordingly.&nbsp;&nbsp; I just want to exlude a subset.</p>",
+    "PostedDate": "2010-09-13T10:28:16.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "509662",
+    "ThreadId": "227056",
+    "Html": "<p>Have you looked into cloaking. It may be possible to cloak the documetation folder in your workspace. I think it will then be possible to merge Release 1.0 back to Main without including the documentation. I haven't tried it, however.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-10-19T16:07:28.947-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "509678",
+    "ThreadId": "227056",
+    "Html": "<p>Cloaking works on the client side and regardless of cloaked folders the merge will still do a get of the cloaked folders and or fail the merge. My recommendation would be to use labels and remove the contents from the labels...and do the merge via the command line...until we have merge by label back in the product when TFS 2010 SP1 ships mid next year.</p>",
+    "PostedDate": "2010-10-19T16:37:01.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

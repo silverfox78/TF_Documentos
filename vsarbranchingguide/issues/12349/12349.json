@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "redundant now",
+    "ClosedDate": "2013-11-30T07:56:06.067-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I read this out of the 2010 Branching Guidance. \n \nPlease post your scenarios not covered below to the community section associated with this document at http://www.codeplex.com/TFSBranchingGuideII . \n \nShould it be http://www.codeplex.com/TFSBranchingGuideIII\nSubmitted directly to Willy-Peter Schaub",
+    "LastUpdatedDate": "2013-11-30T07:56:06.067-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2010-03-29T08:35:44.41-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "Branching Guidance Main Document - Type",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12349
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

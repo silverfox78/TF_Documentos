@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "695620",
+    "ThreadId": "278790",
+    "Html": "\r\n<p>Hi all,</p>\r\n<p>We have a single client with only a single release in production at a given time.&nbsp; We are using the standard branch plan with service branches and read only release branches created when we deploy a release to production.</p>\r\n<p>My question: given that we only have a single release in production at a given time is there any need to have both a service\r\n<span style=\"text-decoration:underline\"><em><strong>and </strong></em></span>release branch?&nbsp; Can we just apply our fixes to the release branch and build/deploy from it?</p>\r\n<p>&nbsp;</p>\r\n<p>thanks</p>\r\n<p>Don</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-11-08T17:59:42.047-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "695624",
+    "ThreadId": "278790",
+    "Html": "<p>When do you need both a service AND a release branch? When you need both a read-only copy of the code you released (for auditing or legal purposes, for example) and when you need to do post-release servicing (such as hot fixes and / or service packs). If you do not need a read-only archive copy of your major release, then you might consider combining the service and release branch into one. On the other hand why not have both. The overhead is minimal. I did a blog on this a few months ago. How frequently do you issue a new release?</p>\r\n<p>Regards,</p>\r\n<p>Bill Heys<br />VS ALM Ranger</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-11-08T18:07:30.14-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "695625",
+    "ThreadId": "278790",
+    "Html": "<p>Bill, thanks for the quick reply - very much appreciated.</p>\r\n<p>We do a release to production about one every two months.&nbsp;On average we probably do one or two hotfixes to a release.&nbsp; We do not have a legal requirement, although it would be nice for auditing purposes.&nbsp; Can you point me to your blog?</p>\r\n<p>On a related note - in the standard branch setup, once a release branch is created and made read only its it ever updated with any hotfixes from the service branch, or is the release branch a true point in time copy of that production release?</p>\r\n<p>&nbsp;</p>\r\n<p>thanks</p>\r\n<p>Don</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-11-08T18:20:21.753-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "695628",
+    "ThreadId": "278790",
+    "Html": "<p>My blog on this: <a href=\"http://blogs.msdn.com/b/billheys/archive/2011/05/05/how-tfs-stores-files-and-calculated-deltas-on-versioned-files.aspx\">http://blogs.msdn.com/b/billheys/archive/2011/05/05/how-tfs-stores-files-and-calculated-deltas-on-versioned-files.aspx</a></p>\r\n<p>When you make a release branch read-only, the intent is that it NEVER gets updated. Making it read-only is the most reliable way of preserving a branch at a point in time. Labels in TFS are NOT immutable. You can change the contents of a label at some point in the future.</p>\r\n<p>Regards,</p>\r\n<p>Bill</p>",
+    "PostedDate": "2011-11-08T18:25:26.4-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

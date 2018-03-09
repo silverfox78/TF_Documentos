@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "246573",
+    "ThreadId": "72229",
+    "Html": "<p>Hello,</p>\r\n<p>I would like to know if is correct Database&nbsp;scripts in Source folder of folders structure</p>\r\n<hr>\r\n<p>Main</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Source</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MyApp1</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MyDatabaseSchema&nbsp; &lt;--- <span style=\"color:#0000ff\">Is this correct ?</span></p>\r\n<p>\r\n<p><span style=\"color:#0000ff\">\r\n<hr>\r\n<p>&nbsp;</p>\r\n</span><span style=\"color:#000000\">Or where should the database scripts be set?</span></p>\r\n</p>\r\n<p><span style=\"color:#000000\">Thanks in advanced for your feedback</span></p>",
+    "PostedDate": "2009-10-16T08:07:16.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

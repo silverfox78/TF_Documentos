@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "539618",
+    "ThreadId": "239331",
+    "Html": "\r\n<p>I work at what is, for all practical purposes, a dot com. We have a single production website that all of our customers use.&nbsp; We have been working in TFS 2010 for a few months now and would like to optimize our branching strategy to remove some of our\r\n pain points with merges and releases. I have been reading the branching docs and, maybe I misunderstand things but I'm not sure what strategy best implements what we are trying to do. Let me breifly describe our setup and see what pointers you have:</p>\r\n<ol>\r\n<li>We do monthly production releases. Those releases consist of the entirety of the site.\r\n</li><li>Unlike a typical agile shop, those releases vary in scope. For instance :\r\n<ol>\r\n<li>We have&nbsp; couple of developers working on an immediate need hot fix. </li><li>we have many developers and testers actively working on our minor release going out next month (January).&nbsp;\r\n</li><li>Due to the scope no one has started working on the February release yet. </li><li>We also have quite a few developers and testers actively working on a relatively large release going out in March. In addition to local workstation builds, there are Dev and QA environments set up for these folks to use.\r\n</li></ol>\r\n</li><li>In addition to local workstation testing we have separate development integration environments and QA environments for each actively developed release.\r\n</li><li>We have a compile-once model where the release gets compiled and put into our dev environment and then, rather than re-compile, we repackage the binaries with config files updated for the new environment. We use the tfs deployer project to handle this based\r\n on build quality changes. </li><li>We have multiple feature teams (3 right now, will be going to 7 soon) working on different aspects of our product. I'm thinking of creating feature branches to allow them to isolate their work until its ready for regression testing.\r\n</li><li>Currently we have 3 branches - we have named them &quot;Future&quot;, &quot;Next&quot; and &quot;Current&quot; We do forward integration every successful dev build and reverse integration whenever a release goes into production.&nbsp;\r\n</li><li>Occasionally we create a feature branch for releases that can't go right into the future branch due to active development going on in future.\r\n</li></ol>\r\n<p>Things aren't extremely screwed up we are just wondering if there is a better model to handle our process. Any advice you could give would be great.</p>\r\n",
+    "PostedDate": "2010-12-22T15:26:26.07-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "539663",
+    "ThreadId": "239331",
+    "Html": "\r\n<p>Have you read the branching guidance? There are many approaches outlined in the guidance that might improve your process.</p>\r\n<p>Perhaps you can help me better understand your branching strategy if you could map your three branches into one of the plans described in the guidance.</p>\r\n<p>What are the relationships between your Future, Next, and Current branches. Why would you forward integrate between these three branches on every dev build if they are, in fact, separate development versions?</p>\r\n<p>In which branch do you make hot fixes (Current?)</p>\r\n<p>Does your *Current* branch map to the *Release* branch in our basic plan?</p>\r\n<p>Does your *Next* branch map to the *Development* branch in our basic plan?</p>\r\n<p>Do you have a Main branch for stabilizing the next release?</p>\r\n<p>Regards,<br>\r\nBill Heys <br>\r\nVS ALM Ranger</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-22T17:12:30.82-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "539676",
+    "ThreadId": "239331",
+    "Html": "\r\n<p>I read the guidance scenarios although this was recently. We had a TFS consultant in who set the branching up although he had some issues with how we work and I'm not sure that we ever had anything either of us could agree on. here is how things break down\r\n for us:</p>\r\n<ol>\r\n<li>Current would be where we make hot fixes </li><li>Next is active development for next months release. developers check their code in there, we have a CI build running.\r\n</li><li>Future&nbsp; is active development for the release after that. </li><li>Any additional releases are managed in feature branches </li></ol>\r\n<p>I get that this doesn't seem to fit any of the scenarios but I'm really not sure how to implement something that would fit what we are doing.</p>\r\n<p>As far as forward integrations go, my understanding is that forward should happen quite frequently as long as you are reasonably comfortable with the quality of the code being merged and reverse integrations happen less frequently - basically when releases\r\n are delivered. Maybe I have the terms reversed.&nbsp;</p>\r\n<p>Here is what I don't get about the main branch - my understanding is code isnt checked directly into it,&nbsp; it only happens via merges. Given that we never really saw what, given our development model, the purpose would be to it. For us, when the code\r\n gets compiled for dev a build number is assigned to that release and those artifacts are re-used all the way up to production. Also our work items are updated with that build number so that our business side folks can determine what build a bug or enhancement\r\n was completed in and whether or not that build has made it past qa testing.&nbsp; so its not like we would recompile the code for the QA environment based on a merge. Its kind of an audit point for us.</p>\r\n",
+    "PostedDate": "2010-12-22T18:04:28.457-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "539689",
+    "ThreadId": "239331",
+    "Html": "\r\n<p>Thanks for this information. I still would like to better understand the branch relationships. If you are doing forward and reverse integrations, you must have a parent / child relationship between branches. For example in our guidance, Main is the parent\r\n ot each of Development branches and is also the parent of the Release branches. Main is our stabilization branch, where the next release is stabilized before it is released. Again it sounds like Current = Release and Next = Development. There are many benefits\r\n to having Main. In our branching plan, if you have multiple Development branches (Feature Branches) they would all be children of a common branch (Main). These development branches would, therefore, be siblings of each other. Code is developed and checked-in\r\n to the Feature branch(es) - with CI builds. At some point the code in a Feature branch reaches a state where it passes quality gates and is ready to either release or share with other Feature teams. To integrate Feature1 Team with Feature2 Team, since these\r\n are siblings, you would merge Feature1 to Main (RI), and then merge it to the other Feature Team(s) (FI). While development proceeds in the various feature teams, Main can be uised to stablize the code that has been shared (or deemed ready to release). You\r\n should be doing daily builds in Main with Forward Integration from Main to Development branch(es) on each good build in Main. You would deploy the code from Main to the QA environment for testing. Main, therefore, allows development to proceeed in the Development\r\n branch(es) while it is stabilized in Main. A given Development branch may not always be in a state that it is ready for deployment to QA - it might not be stable at certain points in time. But Main should be more stable and capable of being deployed to QA\r\n at any time. When the code in Main is ready to be released (passes quality gates) it is branched to Release (your Current).</p>\r\n<p>If you don't have Main, then <span style=\"color:#0000ff\">what would be the common parent to your various development branches</span>. How would you integrate changes from one feature team to another, without doing baseless merges. Where do you test this\r\n integration?</p>\r\n<p>If you don't have Main, then what would be the common parent to your Release branch(es). Many organizations need to support multiple releases (vCurrent and vCurrent -1). Then need to be able to ship hot fixes and / or Service Packs for one, two, and sometimes\r\n more releases in production. I realize that this is not your model - you only have one release in production. But that simply means you are a simplification of a model that supports one or more production releases. I prefer a model that works for both the\r\n simple and the complex case. The basic branch plan achieves that, I believe.</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-22T18:40:42.163-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "539728",
+    "ThreadId": "239331",
+    "Html": "\r\n<p>On your statement &quot;. I realize that this is not your model - you only have one release in production.&quot; yes that's true but we do have a kind of strange situation below production. Right now QA is testing 3 software releases at the same time. They are testing\r\n some hot fixes that are going to be dropped into prod in a week or so (maybe, it just might end up getting shoved into next months release, you know how it goes). They are testing next months release which is largely a collection of low-level enhancements\r\n and bug fixes. They are also beginning to test code releases from the quite large release going in in March. Oddly enough, what they\r\n<strong>aren't </strong>testing yet is the February release because the scope is so small development hasn't even started yet.</p>\r\n<p>The whole thing is sort of a strange compromise of our need to drive innovation fairly rapidly to market new customers while coping with an overall customer base (Large Banks, fortune 500 companies) that, once they get on, would prefer we not have that much\r\n change&nbsp; because it means a fairly large training effort on their part. That is, unless, of course, its their bug fix which they want yesterday :)</p>\r\n",
+    "PostedDate": "2010-12-22T21:06:18.247-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "539953",
+    "ThreadId": "239331",
+    "Html": "\r\n<p>I think I have something that works for us, this is my idea let me know if you see any issues with it.</p>\r\n<p>&nbsp;</p>\r\n<ol>\r\n<li>Scrap the current branch structure </li><li>Implement a standard branch scenario with dev branches broken down by release and feature team to allow them to make changes to multiple releases at the same time.\r\n</li><li>Reverse integration happens from a dev branch to main when regression testing starts.&nbsp;\r\n</li><li>Reverse integration from main to service pack and Release branches for hot fix purposes when a full release has been pushed to production.\r\n</li><li>Builds for the dev branches would be optimized for quick turnaround, building only the projects they are working on.\r\n</li><li>Integration builds would be full builds. These would be the ones we would track for audit purposes.&nbsp;\r\n</li><li>Code would be reverse integrated </li></ol>\r\n",
+    "PostedDate": "2010-12-23T08:40:49.177-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "549707",
+    "ThreadId": "239331",
+    "Html": "\r\n<p>This blog may give you some insight as to my recommended approach:</p>\r\n<p><a href=\"http://blogs.msdn.com/b/billheys/archive/2011/01/14/parallel-feature-teams-working-on-multiple-releases-in-development-monthly-releases-to-production.aspx\">http://blogs.msdn.com/b/billheys/archive/2011/01/14/parallel-feature-teams-working-on-multiple-releases-in-development-monthly-releases-to-production.aspx</a></p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger<br>\r\n<a href=\"http://blogs.msdn.com/b/billheys\">http://blogs.msdn.com/b/billheys</a></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-01-14T18:26:05.19-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550594",
+    "ThreadId": "239331",
+    "Html": "\r\n<p>Thanks for all your help on this. I am proposing this to our dev manager and I expect we will be adopting it.</p>\r\n",
+    "PostedDate": "2011-01-17T08:01:42.53-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

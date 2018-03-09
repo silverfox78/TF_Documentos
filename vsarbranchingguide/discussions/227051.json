@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "492882",
+    "ThreadId": "227051",
+    "Html": "<p>I have a scenario I was hoping you could provide some guidance on.&nbsp;&nbsp; I have the following folder in my Main branch</p>\r\n<p>&nbsp;$/Project1/Main/Framework/Installation</p>\r\n<p>It then branches to a release like the following</p>\r\n<p>$/Project1/Release1.0/Framework/Instalaltion</p>\r\n<p>Mainline moves the code to</p>\r\n<p>﻿$/Project1/Main/Framework/Deployment</p>\r\n<p>However the underlying files are pretty close to the same structure.&nbsp;&nbsp; If I makes changes in the Release1.0 branch is there any way for me to get TFS to recognize that they have moved to the &quot;Deployment&quot; folder in Main?&nbsp; So when I RI back to&nbsp;Main it will put the changes in the&nbsp;&quot;Deployment&quot; folder.&nbsp;&nbsp;Or will TFS never know that those two locations are effectivly the same?&nbsp; I feel I must also state that there is more than just one folder in the branch.</p>\r\n<p>Thanks</p>",
+    "PostedDate": "2010-09-13T09:55:27.12-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "492893",
+    "ThreadId": "227051",
+    "Html": "<p>What version of TFS are you using.</p>\r\n<p>If I correctly understand what you have done, you have moved code in the Main branch from one folder to another. I believe this effectively deletes the files from the source folder of the move (Installation) and adds the files to the target folder of the move (Deployment). TFS will not automatically recognize that the files have moved from one folder to another and *adjust* automatically. I don't think TFS will ever know that these folders are the same (unless you did a rename rather than a move).</p>\r\n<p>I should also caution you that one of the biggest headaches I have encountered is around file renaming, and / or file deletes and adds with the same name.&nbsp;This especially challenging in TFS 2008, but also&nbsp;manifests issues when&nbsp;migrating from TFS 2008 to TFS 2010,</p>\r\n<p>Would it have been better to rename the Installation folder to Deployment (perhaps in both the main as well as the release branches)?</p>\r\n<p>Regards,<br>Bill Heys <br>VS ALM Ranger</p>",
+    "PostedDate": "2010-09-13T10:20:09.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "492900",
+    "ThreadId": "227051",
+    "Html": "<p>Sorry this was TFS2010.&nbsp;&nbsp; I had used the &quot;Move&quot; command.&nbsp; At first I didnt think it worked but upon further investigation it seems that TFS keeps track of that move in main and this does work.&nbsp;&nbsp; Provided you use the &quot;Move&quot; command and not simply delete and re-add.&nbsp;</p>",
+    "PostedDate": "2010-09-13T10:23:50.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "492909",
+    "ThreadId": "227051",
+    "Html": "<p>Yes.. given that you did a move with TFS 2010 it should know what happened.</p>\r\n<p>Thanks for your response.</p>\r\n<p>Regards,<br>Bill Heys</p>",
+    "PostedDate": "2010-09-13T10:28:43.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

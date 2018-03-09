@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1245110",
+    "ThreadId": "545279",
+    "Html": "Page\t<br />\n18\t<br />\nwhere a branch needs “cherry-picked” for<br />\nshould be<br />\nwhere a branch needs <strong><em>to be</em></strong> “cherry-picked” for<br />\n\t<br />\n35\t<br />\nprojects or braches in production!<br />\nshould be<br />\nprojects or <strong><em>branches</em></strong> in production!<br />\n",
+    "PostedDate": "2014-05-13T20:49:47.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1348778",
+    "ThreadId": "545279",
+    "Html": "Also, on Page 12 under &quot;Dev (Development)&quot;, bullet point 2:\r<br />\n<br />\n&quot;We must be base a DEV branch...&quot;\r<br />\nshould be \r<br />\n&quot;We must base a DEV branch...&quot;<br />\n",
+    "PostedDate": "2015-02-03T15:28:11.823-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1348949",
+    "ThreadId": "545279",
+    "Html": "Thanks for the edits, which I applied to the latest documentation. It will be shipped together with the v3.1 update.<br />\n",
+    "PostedDate": "2015-02-04T06:54:11.607-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

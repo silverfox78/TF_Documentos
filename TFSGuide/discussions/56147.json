@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "189611",
+    "ThreadId": "56147",
+    "Html": "<p>&nbsp;</p>\r\n<div>\r\n<p>Dear All<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I have one question about TFS 2005. I have installed TFS2005 on one machine and Project Server 2007 is installed on another machine. Now I can access the Project Server 2007 from TFS 2005 Project. Now my question is that can we add the project plan in Project Management node which are visible in this node. Currently when I&nbsp;open the Project plan from this node then it open empty plan and after that I can access my plan against this project. I want to add my plan in this node which save on Project Server 2007. Any one know about it please let me know. <br><br><br>Thanks.</p>\r\n<hr>\r\nSoftware Configuration Management Engineer</div>",
+    "PostedDate": "2009-05-13T00:14:00.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

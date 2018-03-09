@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "504168",
+    "ThreadId": "230136",
+    "Html": "<p>In the advance scenario it says:</p>\r\n<p>&nbsp;</p>\r\n<pre>RELEASE tree (i.e. SP, HOTFIX, and RELEASE) are branched from MAIN at the same time to create MAINSPHOTFIXRELEASE parent/child relationship.\r\n\r\nCheck-in based on which release the change applies to (e.g. Hotfixes are checked into the HOTFIX branch).\r\n\r\nChanges in HOTFIX and SP branches merge one-way through intermediate branches to MAIN (HOTFIXSPMAIN).</pre>\r\n<p>I am confused...&nbsp;if the Release branch is created at the same time as the HF branch, before any changes are made to the HF branch and there is no merging allowed from HF branch to Release how do the changes checked into the HF branch get to the Release branch for building the release?</p>",
+    "PostedDate": "2010-10-08T03:31:03.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "504206",
+    "ThreadId": "230136",
+    "Html": "<div class=WordSection1><p class=MsoNormal>Hello Kevin,</p><p class=MsoNormal>I’ve tried in so many analogies to explain my team this concept but with no luck <span style=\"font-family:Wingdings\">J</span></p><p class=MsoNormal>I’ll share it with you here in hopes of practicing my convincing/explanation technic!</p><p class=MsoNormal> </p><p class=MsoNormal>HF, SP, Release branches are all “release” vehicles.</p><p class=MsoNormal>Maybe, Release is the overloaded term here. Maybe if you call them SP,HF,RTM then you can appreciate that RTM is to deploy the v.NEXT as it was at RTM time.</p><p class=MsoNormal>From SP you will <b>release</b> (see, no worries about using the term here) Service Packs and form HF you would <b>release</b> Hot Fixes.</p><p class=MsoNormal>Another idea with this branch strategy is that SP,HF,RTM trees are short lived until the v.NEXT from Main releases at which point you create a NEW tree.</p><p class=MsoNormal>But, before your v.Next happens the tree structure allows you to NOT miss HF fixes because they will have to be delivered to SP before reaching MAIN, hence SP will contain the HF.</p><p class=MsoNormal> </p><p class=MsoNormal> </p><p class=MsoNormal>MAIN ---------------------------------------------------------------------<span style=\"font-family:Wingdings\">à</span></p><p class=MsoNormal>                |            ^           ^        ^                     ^            ^</p><p class=MsoNormal>                V            |          |         |                      |             |</p><p class=MsoNormal>SP           -------------------------------------------------<span style=\"font-family:Wingdings\">à</span></p><p class=MsoNormal>                |            ^         ^     </p><p class=MsoNormal>                V           |        |        |</p><p class=MsoNormal>HF           ------------------------<span style=\"font-family:Wingdings\">à</span></p><p class=MsoNormal>                |        ^</p><p class=MsoNormal>                V        |  </p><p class=MsoNormal>RTM       ---*--<span style=\"font-family:Wingdings\">à</span></p><p class=MsoNormal> </p><p class=MsoNormal>The * depicts a showstopper before your RTM bits went out</p><p class=MsoNormal> </p><p class=MsoNormal>- hth,</p><p class=MsoNormal>Ramon</p></div>",
+    "PostedDate": "2010-10-08T05:21:47.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "504522",
+    "ThreadId": "230136",
+    "Html": "<p>Kevin,</p>\r\n<p>You are correct that the ServicePack, Hotfix, and Release (RTM) branches are all created at the same time. The timing is key. Only when the code is *Ready to Release (RTM)*, should you create this set of Release branches. Once shipped, many will make the lowest level branch (Release or RTM) read-only to preserve the state of the code that was released. The Service Pack and Hotfix branches are for servicing the code after release. Any hotfixes or Service Packs are typically shipped from the branch in which the changes are made. They are oftern merged back to the Main branch so the fixes will be part of v.Next. But you don't want to merge hotfixes and / or Service Packs down to the Release (RTM) branch.</p>\r\n<p>Regards,<br>Bill Heys <br>VS ALM Ranger</p>",
+    "PostedDate": "2010-10-08T14:01:14.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

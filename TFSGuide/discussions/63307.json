@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "215218",
+    "ThreadId": "63307",
+    "Html": "<p>We have a large code base in TFS with several labeled versions. We&nbsp;added a new folder to our TFS structure&nbsp;at the root.&nbsp; Now it seams we are unable to retrieve the versions labeled prior to adding this new folder.&nbsp;</p>\r\n<p>Should we still be able to get using our &quot;old&quot; labels? - old meaning before we added the new folder?</p>\r\n<p>Is there something we should have done to &quot;update&quot; the labels?</p>\r\n<p>Thanks</p>\r\n<p>Jess</p>\r\n<p><strong>&nbsp;</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-23T03:59:37.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

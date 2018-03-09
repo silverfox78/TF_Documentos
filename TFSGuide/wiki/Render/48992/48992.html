@@ -1,0 +1,191 @@
+<div class="wikidoc"><h3>How To: Structure Your Source Control Folders in Team Foundation Server</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Applies To</h3><ul><li>Microsoft&#174; Visual Studio&#174; 2005 Team Foundation Server (TFS)</li>
+<li>Microsoft Visual Studio Team System (VSTS)</li></ul>
+
+<h3>Summary</h3>This How To article walks you through the process of structuring your folders in TFS. The recommendations in this article were created using lessons learned in practice by Microsoft teams as well as Microsoft customers in the field. The folder structure presented here is a starting point; more important than the structure is the rationale behind it. Use the rationale to help evaluate an appropriate folder structure and folder-naming convention for your own scenario.<br />
+<h3>Contents</h3><ul><li>Objectives</li>
+<li>Overview</li>
+<li>Summary of Steps</li>
+<li>Step 1 – Create a Workspace Mapping</li>
+<li>Step 2 – Create Your Main Folder</li>
+<li>Step 3 – Create Folders for Your Project Artifacts</li>
+<li>Step 4 – Add Your Solution to Your Source Tree</li>
+<li>Step 5 – Create a Branched Development Folder for Isolation (Optional)</li>
+<li>Step 6 – Create a Releases Folder for Release Builds Isolation (Optional)</li>
+<li>Additional Resources</li></ul>
+
+<h3>Objectives</h3><ul><li>Learn how to create a workspace mapping.</li>
+<li>Learn how to structure and name your source control folders.</li>
+<li>Learn how branching effects your source structure.</li></ul>
+
+<h3>Overview</h3>This How To article shows you how to build an appropriate source control folder structure that you can use with most common project types. The folder structure presented in this article uses three top level folders:<br />
+<ul><li><b>Main</b>. This is the main root folder that acts as a container folder for your main source tree, together with accompanying project artifacts such as design documentation, scripts, and test cases. The <b>Main</b> folder also contains your Visual Studio Solution (.sln) files.</li>
+<li><b>Development</b>. This is an optional root-level folder that you can use if you need to create isolation for features or teams development. This folder is created by branching from <b>Main</b>.</li>
+<li><b>Releases</b>. This is an optional root-level folder for released builds that you need to isolate; for example for ongoing maintenance of a particular release. </li></ul>
+<br />The folder structure presented in this article is summarized here:<br /><pre>
+*/Main* 					? Can contain solution (.sln) files
+							     for solutions that span projects	
+/Source
+		/MyApp1				? Contains MyApp1.sln file 
+			/Source			? Contain folder for all source
+				/ClassLibrary1	? Contains ClassLibrary1.csproj 
+				/MyApp1Web 	? Contains Default.aspx
+/Build						? Contains build output (binaries)
+	/Docs					? Contains product docs etc
+	/Tests					? Container for tests
+
+*/Development*
+	/FeatureBranch1
+		/Source
+			/MyApp1
+				/Source
+					/MyApp1Web
+					/ClassLibrary1
+	/FeatureBranch2
+
+/*Releases*
+/Release1
+	/Source
+			/MyApp1
+				/Source
+					/MyApp1Web
+					/ClassLibrary1
+/Release 1.1
+/Release 1.2
+</pre><br />Remember that this folder structure is only a starting point with a suggested set of folder names. More important than the structure and naming convention is the rationale behind them and the purposes of the different folders. For more information about the rationale behind this structure, see “Chapter 5 – Defining Your Branching and Merging Strategy.”<br />
+<h3>Summary of Steps</h3><ul><li>Step 1 – Create a Workspace Mapping</li>
+<li>Step 2 – Create Your <b>Main</b> Folder</li>
+<li>Step 3 – Create Folders for Your Project Artifacts</li>
+<li>Step 4 – Add Your Solution to Your Source Tree</li>
+<li>Step 5 – Create a Branched <b>Development</b> Folder for Isolation (Optional)</li>
+<li>Step 6 – Create a <b>Releases</b> Folder for Release Builds Isolation (Optional)</li></ul>
+
+<h3>Step 1 – Create a Workspace Mapping</h3>In this initial step you create a workspace mapping to define the mapping between the folder structure on the TFS server and client. You need to do this so that you can create a source tree structure. You first create the source tree structure in your workspace and then perform a check-in to your TFS server.<br /><br />You can create a workspace mapping in one of two ways:<br />
+<ul><li><b>Set the workspace mapping explicitly</b> </li>
+<li><b>Perform a Get operation on your team project.</b></li></ul>
+<br /><b>To set a workspace mapping explicitly</b>
+<ol><li>In Visual Studio, on the <b>File</b> menu, point to <b>Source Control</b> and then click <b>Workspaces</b>.</li>
+<li>In the <b>Manage Workspaces</b> dialog box, select your computer name and then click <b>Edit</b>.</li>
+<li>In the <b>Edit Workspace</b> dialog box, in the <b>Working folders</b> list, click <b>Click here to enter a new working folder</b>. </li>
+<li>Click the ellipsis (<b>…</b>) button, select your team project (for example <b>MyTeamProject1</b>), and then click <b>OK</b>.</li>
+<li>Click the local folder cell to display another ellipsis button.</li>
+<li>Click the ellipsis button beneath <b>Local Folder</b> and then browse to and select the local folder on your development computer where you want to locate your team project; for example, C:\DevProjects\MyTeamProject1. </li>
+<li>Click <b>OK</b> twice to close the <b>Edit Workspace</b> dialog box<b>.</b> </li>
+<li>Click <b>OK</b> in response to the Microsoft Visual Studio message box that informs you than one or more working folders have changed.</li>
+<li>Click <b>Close</b> to close the <b>Manage</b> <b>Workspaces</b> dialog box.</li></ol>
+  <br /><b>To perform a Get operation on your team project</b>
+<ol><li>In <b>Team Explorer</b>, expand your team project node; for example, <b>MyTeamProject1</b>.</li>
+<li>Double-click <b>Source Control</b> beneath your team project.</li>
+<li>In <b>Source Control Explorer</b>, right-click the root folder <b>MyTeamProject1</b> and then click <b>Get Latest Version</b>.  </li>
+<li>In the <b>Browse For Folder</b> dialog box, select your local path (for example, C:\DevProjects\MyTeamProject1) and then click <b>OK</b>. This maps the team project root folder within TFS to a local path on your computer.</li></ol>
+
+<h3>Step 2 – Create Your Main Folder</h3>In this step, you create a new root folder named <b>Main</b> in your Team Project source control. You use the <b>Main</b> folder as a root-level container folder for your source and other project artifacts. You can also use the <b>Main</b> folder to store any Visual Studio solution (.sln) files that span multiple projects. Solution files are also maintained in their own application folders lower in the tree structure.<br /><br /><b>To create a Main folder:</b>
+<ol><li>In Team Explorer, expand your team project and then double-click <b>Source Control</b>.</li>
+<li>In Source Control Explorer, select your Team Project root folder.</li>
+<li>Right-click in the right-hand pane and then click <b>New Folder</b>.</li>
+<li>Type <b>Main</b> and then press ENTER.</li></ol>
+
+<h3>Step 3 – Create Folders for Your Project Artifacts</h3>In this step, you create folders beneath <b>Main</b> to hold your main source code tree and accompanying artifacts such as builds, documentation, script files and tests as shown below:<br /><pre>
+*/Main*
+	/Build
+	/Docs
+	/Source
+	/Tests </pre>}<br /><br /><b>To create folders for your project assets:</b>
+<ol><li>Expand your team project and then in the left pane of Source Control Explorer, select the <b>Main</b> folder.</li>
+<li>Right-click in the right pane, click <b>New Folder</b>, type <b>Build</b> and then press ENTER.</li>
+<li>Repeat step 2 to create the remaining folders beneath <b>Main</b>.</li></ol>
+
+<h3>Step 4 – Add Your Solution to Your Source Tree</h3>In this step, you add your Visual Studio solution (.sln), project (.vsproj, .vbproj) and source files to your source tree in TFS source control. <br /><br />Because you have mapped your root node to C:\DevProjects\MyTeamProject1 in Step 1, make sure the client folder structure and project structure are synchronized. Your solution (.sln) file should be at the following location:<br />C:\DevProjects\MyTeamProject1\Main\Source\MyApp1<br /><br />The actual project-related files for MyApp1Web and ClassLibrary1 components should be at the following location:<br />C:\DevProjects\MyTeamProject1\Main\Source\MyApp1\Source<br /><br /><b>To add the solution to your source tree:</b>
+<ol><li>Open your solution in Visual Studio.</li>
+<li>In Solution Explorer, right-click your solution and then click <b>Add Solution to Source Control</b>. Because you have already established a workspace mapping in Step 1, the solution is added at this point. </li>
+<li>Make sure that the correct <b>Local Workspace</b> is selected. This should be the same workspace that you used while creating your folder structure in TFS source control. </li>
+<li>Click <b>OK</b> to add your solution to source control.</li></ol>
+<br />You source control folder structure should resemble the following:<br /><pre>
+*/Main*
+	/Source
+		/MyApp1
+			/Source
+				/MyApp1Web
+				/ClassLibrary1
+/Build
+	/Docs
+	/Tests
+</pre><br /><br />For more information about how to setup an appropriate client-side folder structure, see:
+<ul><li>How To – Structure Windows Applications in Visual Studio Team Foundation Server.</li>
+<li>How To – Structure ASP.NET Applications in Visual Studio Team Foundation Server.</li></ul>
+
+<h4>Creating a Folder Structure When a Project Has Unit Tests</h4>If your project also includes unit tests, consider creating the following folder structure to store your unit tests separate from your main source folder:<br /><pre>
+*/Main*
+	/Source
+		/MyApp1
+			/Source
+				/MyApp1Web
+				/ClassLibrary1
+	*		/UnitTests*
+/Build
+	/Docs
+	/Tests </pre><br />
+<h3>Step 5 – Create a Branched Development Folder for Isolation (Optional)</h3>If you need to isolate for features or teams, consider creating a <b>Development</b> folder by branching from the <b>Main</b> folder. Note that if you do so, you must check any pending changes before you can branch.<br /><br />To create a branched <b>Development</b> folder:<br />
+<ol><li>Create a root level <b>Development</b> folder (as a sibling of <b>Main</b>).</li>
+<li>Create a sub folder named <b>FeatureBranch1</b>.</li>
+<li>Select the $/TeamProject/Main/Source folder, right-click the folder, and then click <b>Branch</b>. <b>Note</b>: If <b>Branch</b> is grayed out, make sure you have checked in any pending changes.</li>
+<li>In the <b>Branch</b> dialog box, click <b>Browse,</b> select MyTeamProject/Development/FeatureBranch1, and then click <b>OK</b>.</li>
+<li>Click <b>OK</b> to create the branch.</li>
+<li>Check-in your pending changes to push them to the server.</li></ol>
+<br />Your new folder structure in source control should resemble the following example: <br /><pre>
+*/Development*
+	*/FeatureBranch1*
+		*/Source*
+			/MyApp1
+				/Source
+					/MyApp1Web
+					/ClassLibrary1
+	*/FeatureBranch2*
+
+*/Main*
+	*/Source*
+		/MyApp1
+			/Source
+				/MyApp1Web
+				/ClassLibrary1
+	/Build
+	/Docs
+	/Source
+	/Tests
+</pre><br />
+<h3>Step 6 – Create a Releases Folder for Release Builds Isolation (Optional)</h3>If you need to perform maintenance on a previously released build, while continuing development, consider isolating the maintenance work by creating a <b>Releases</b> folder. Beneath this folder you can create multiple sub folders, one per release.<br /><br /><b>To create a branched Releases folder:</b>
+<ol><li>Create a root-level <b>Releases</b> folder (as a sibling of <b>Main</b> and <b>Development</b>).</li>
+<li>Create a sub folder named <b>Release1</b>.</li>
+<li>Select the $/TeamProject/Development/Source folder, right-click the folder and then click <b>Branch</b>. <b>Note</b>: If <b>Branch</b> is grayed out, make sure you have checked in any pending changes.</li>
+<li>In the <b>Branch</b> dialog box, click <b>Browse</b> select $/TeamProject/Maintenance/Release1, and then click <b>OK</b>.</li>
+<li>In the <b>Branch from version</b> section, in the <b>By</b> list box, click <b>Label</b> and enter a label name in the <b>Label</b> text box.** To find a label, click the browse button with the ellipses (<b>…</b>) next to the <b>Label</b> text box.</li>
+<li>Click <b>OK</b> to create the branch.</li></ol>
+<br />Your new folder structure in source control should resemble the following example one shown here.<br /><pre>
+*/Main*
+	*/Source*
+		/MyApp1
+			/Source
+				/MyApp1Web
+				/ClassLibrary1
+	/Build
+	/Docs
+	/Source
+	/Tests
+
+*/Releases*
+	/Release1
+		/Source
+			/MyApp1
+				/Source
+					/MyApp1Web
+					/ClassLibrary1
+	/Release 1.1
+	/Release 1.2
+
+</pre><br />
+<h3>Additional Considerations</h3>Keep in mind the following key considerations when structuring your source control folders in TFS:
+<ul><li>Do not branch unless you need to. You can label releases and branch at a later time if you need isolation.</li>
+<li>The above folder structure is ideally suited to scenarios where your project consists of one Visual Studio solution (.sln) file containing all of your project files. In this scenario, the <b>Main</b> folder contains the .sln file and you have one subfolder for each project file (.vsproj, .vbproj). In the above example project folders are represented by MyApp1, MyApp2 etc. You can also use the above approach for a single project file; for example, if you use a single project, with no solution file.</li>
+<li>For multiple-solution scenarios, you can locate multiple .sln files in the <b>Main</b> folder.</li></ul>
+
+<h3>Additional Resources</h3><ul><li>For more information on creating a workspace, see “How To: Create a Workspace” at <a href="http://msdn2.microsoft.com/en-us/library/ms181384(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181384(VS.80).aspx</a></li></ul></div><div class="ClearBoth"></div>

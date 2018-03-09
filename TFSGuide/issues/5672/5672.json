@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In page 20 \"You resolve existing bugs, if the latest build fixes previously logged bugs\"\n \nshouldn't be \"You close existing bugs, if the latest build fixes previously logged bugs\" or \"You close existing bugs, if the latest build fixes previously closed\" bugs ???",
+    "LastUpdatedDate": "2013-02-21T16:44:22.74-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "TFSGuide",
+    "ReportedDate": "2007-08-28T10:51:04.92-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Minor glitch in page 20",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 5672
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Thanks for pointing out this problem. I've changed the wording so that it is easier to understand:       \"You resolve open bugs as fixed, after testing on the latest build.\"\r\n\r\nThis fix will be in the next pdf version we publish and is also changed in the online version of this chapter - http://www.codeplex.com/TFSGuide/Wiki/View.aspx?title=Chapter%201%20-%20Introducing%20the%20Team%20Environment",
+      "PostedDate": "2007-08-31T07:53:17.803-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:44:22.74-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

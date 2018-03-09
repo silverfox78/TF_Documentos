@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "616645",
+    "ThreadId": "258609",
+    "Html": "\r\n<p>How should I RI changes when working with:<br>\r\n<br>\r\n3 parallel branches (two project-branches, resulting in a seperate release).</p>\r\n<p>Dev1 = Project with total timespan of 1&#43; years &nbsp;(releases v3.0)<br>\r\nDev2 = Feature release 4 weeks timespan (releases v2.1)<br>\r\nHotFix1 = Hotfixes on current production version (v2.0)</p>\r\n<p>Using the Concurrent Hotfix, Servicepack, Dev branch-plan.</p>\r\n<p>What we want:</p>\r\n<p>- Do hotfix-releases on the current production version (v2.0) (Without consulting with projectteams which greatly slows things down)<br>\r\n- Do feature releases in parallel with long running projects (not merging these features directly into the Dev1 branch, while this is seen as a serious project-risk etc etc.)<br>\r\n- Release V2.1 somewhere in the next quarter.<br>\r\n- Release V3.0 somewhere in the next two years</p>\r\n<p>What's not really clear to me:</p>\r\n<p>- How to go about when releasing features on our produkt when other projectteams (long running projects) see these features as added risk to there project/test plans.<br>\r\n- Should I frequently RI my project changes into MAIN (even if project runs for 1&#43; years)<br>\r\n- How should I create a new featurebranch from MAIN while there are allready several RI's from other running DEV branches. (Branch by what ???)<br>\r\n- New features of our software allways result in heavy discussions with other (isolated) projectteams. While they see them as added risk and they allways want a complete change-freeze<br>\r\nwhile their projects run. Only hotfixes are allowed. This is because new features will be integrated into their dev-branches because these will be live way before the project will go live.&nbsp;</p>\r\n<p>&nbsp;We work in a development team, using TFS2010 en VS1010.&nbsp;</p>\r\n<p>Please advice,</p>\r\n",
+    "PostedDate": "2011-05-23T02:49:06.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "616780",
+    "ThreadId": "258609",
+    "Html": "<p>I have created a blog with suggested answers to your questions.</p>\r\n<p><a href=\"http://bit.ly/miWnMB\">http://bit.ly/miWnMB</a></p>\r\n<p>Feel free to post additional questions here or on the blog.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-05-23T07:43:26.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

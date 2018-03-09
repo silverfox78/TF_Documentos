@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "802229",
+    "ThreadId": "346465",
+    "Html": "\r\n<p>TFS 2010 Branching Advice<br>\r\n<br>\r\n<br>\r\nHere&rsquo;s our scenario...<br>\r\n<br>\r\nWe took our complete code base out of VSS, created a main branch in TFS, and put all our code into this main branch.&nbsp; We then branched MAIN to a development branch and did a full build of all our code from MAIN.&nbsp; We started testing the full build\r\n from MAIN and, when bugs were found, the bug fixes were made in DEV.&nbsp; For each bug fix, the code was merged back into MAIN and a build was done out of MAIN.<br>\r\n<br>\r\nFinally, after iterations of testing and fixes, we were ready for a release to production.&nbsp; The production release was from MAIN (both the initial build, as well as all the individual builds for fixes found during testing).&nbsp; Once released both MAIN\r\n and DEV were labeled.<br>\r\n<br>\r\nHowever, before a different branching system could be developed, our developers started working on the next release of our software suite, by fixing more bugs in DEV.&nbsp; Thus, currently, changes have been made and checked into DEV, and items are currently\r\n checked out in DEV and being worked on.&nbsp; None of these current changes have been merged into MAIN (yet...).<br>\r\n<br>\r\nSo, I guess we&rsquo;re just looking for some advice on how to continue our development with TFS2010.<br>\r\n<br>\r\n<br>\r\nShould we continue with the same model of all fixes going on in DEV, merge back into MAIN, and build for production from MAIN?<br>\r\n<br>\r\nOr, should we change it up a little bit and create a RELEASE branch, do all our bug fixes and releases from there, while merging back into MAIN and DEV periodically?&nbsp; This would leave our DEV for additional work on future releases.<br>\r\n<br>\r\nOr????<br>\r\n<br>\r\nShould we get to a basic or standard branch plan?&nbsp; Should we use the single team branching model or the concurrent hot fix, service pack, and v.next branching model?&nbsp; (These ideas are from the TFS branching guidance documentation.)<br>\r\n<br>\r\n<br>\r\nWe&rsquo;re a small group &ndash; only six developers.&nbsp; We have full releases (e.g., v6.0, etc.).&nbsp; We have service pack releases (e.g., v6.0 SP1, etc.), which is essentially the full release version plus all patches/hotfixes since the full version\r\n was released.&nbsp; And we have patches/hotfix releases for individual applications and/or components, which get rolled up into the SP release.<br>\r\n<br>\r\nThanks!</p>\r\n",
+    "PostedDate": "2012-02-27T13:21:22.897-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "802344",
+    "ThreadId": "346465",
+    "Html": "<p>My recommendation is to choose one of the plans described in the TFS Branching guidance. As you have already figured out, if you had done that, you would not have any issues. And choose the simplest one that will serve your needs.</p>\r\n<p>Since you want service pack branches, I suggest you start first by examining the Standard Branch plan. I don't have enough experience to advise you on the advanced or mature&nbsp;plans. So if you feel you might need one of them, post another message and someone with more experience can jump in to help.</p>",
+    "PostedDate": "2012-02-27T18:32:50.02-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

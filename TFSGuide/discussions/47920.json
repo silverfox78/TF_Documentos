@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "159843",
+    "ThreadId": "47920",
+    "Html": "This is a request we've received to allow more information to flow into a work item as it is being worked by developers.  <br>\r\nWhat would be involved to customize the check in process so that the comment is inserted into the history along with / or instead of the &quot;Associated with changeset ##&quot; text?<br>\r\nIs this something that could be done with custom checkin policy - I suspect not since that is used to indicate go/nogo on checkin.<br>\r\nThanks<br>\r\n<br>\r\nAddendum - just putting the checkin comment in the Comment field on the Link would be sufficient.\r\n",
+    "PostedDate": "2009-02-19T11:46:25.033-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

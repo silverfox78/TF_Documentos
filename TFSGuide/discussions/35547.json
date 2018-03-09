@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "118160",
+    "ThreadId": "35547",
+    "Html": "Hi all.<br>\r\nWe are a small group of three developers, working with VS2008 and SourceSafe.<br>\r\nI just downlaoded Your book, and I'm going to read it....&nbsp;I'm trying to understand if would be bettere for us to move to Team Suite or not.&nbsp;<br>\r\n<br>\r\nBasically, we have 2 distinct solutions :&nbsp;<br>\r\n<br>\r\n1) A solution that create a series of DLL<br>\r\n2) A solution (Web Site) that use the previous DLL<br>\r\n<br>\r\nThose DLL are not strictly linked to the Web Site, they can be used also by others Solutions... That's why we put them in two different solutions.<br>\r\n<br>\r\nThe first solution has a configuration (Named &quot;Final Debug&quot;) that create the DLL in a shared directory. The second solution get those DLL from the shared directory.<br>\r\n<br>\r\nThe problem is that when I compile the DLLs in &quot;Final Debug&quot;, I CAN also debug the web site, but my coleagues CANNOT. <br>\r\n<br>\r\nIs there something wrong in what we did ? Are there different ways to do this letting all of us debug the Web Site, no matter who was the last one that compiled the DLL project ?<br>\r\n<br>\r\nWould be different/easier with Team Studio ? Which are, in a handful of words, the differences between SourceSafe and TFS in terms of source control and branching ?<br>\r\n<br>\r\nThanks<br>\r\nFabioG\r\n",
+    "PostedDate": "2008-09-12T08:40:07.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127838",
+    "ThreadId": "35547",
+    "Html": "hi FabioG,<br>\r\n<br>\r\nDon't stay with SourceSafe! I've been working with visual sourcesafe for years and years and i never really liked it although it suite you well if u don't know about other sourcecontrol or even Continious integration.<br>\r\n<br>\r\nThere is alot of tooling better as sourcesafe, think about subversion which is even free! :)<br>\r\n<br>\r\nBut Team Foundation Server is a solution to alot of problems, not only being a sourcecontrol integrated in visual studio but also:<br>\r\n<br>\r\n- Template based working with for example MSF Agile<br>\r\n- Bug &amp; issue tracking<br>\r\n- Buildserver<br>\r\n- Alot of reports and the ability to make custom reports.<br>\r\n<br>\r\n<br>\r\nAs far as i can think about differences between sourcecontrol in vss and in tfs is:<br>\r\n<br>\r\n- The speed, sourcesafe with pending changes can take an hour and TFS just a few seconds. That is all because sourcesafe is file based and TFS is on working against SQL Server.<br>\r\n- Ease, sourcesafe checks out in a working folder and that it. For versions u have branches and labels, but just isn't easy to work with. TFS is better integrated and for example.. it's alot easier to bugfix on an earlier version.<br>\r\n- check-in policies etc etc..<br>\r\n<br>\r\nGreetings,<br>\r\nRaymond de Jong<br>\r\n",
+    "PostedDate": "2008-10-26T07:07:35.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

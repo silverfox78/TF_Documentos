@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1037705",
+    "ThreadId": "442105",
+    "Html": "I've been looking at the Code Promotion Branch Plan and I'm not clear as to how to apply a hot fix to a production release.<br />\n<br />\nMain -&gt; Test -&gt; Prod<br />\n<br />\nFor example, if we are working on vNext in Main and QA we cannot apply the fix to those branches.  If we apply the fix to the Production branch then are we forced to RI into QA and Main?  What if we don't want to RI the change?  We just entered another problem as we changed Prod branch directly without proper testing.  I suppose we could use Shevesets, but that feels like a cruch.<br />\n<br />\nWhat's the best way to implement this scenario or would hot fixes not be supported?<br />\n",
+    "PostedDate": "2013-04-30T09:10:32.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1037709",
+    "ThreadId": "442105",
+    "Html": "I suppose I can answer my own question.\r<br />\n<br />\nLooking at &quot;Branching and Merging Guidance - Strategies&quot; it's clear the it does not support a hot fix.<br />\n",
+    "PostedDate": "2013-04-30T09:13:44.453-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1037713",
+    "ThreadId": "442105",
+    "Html": "As with most things branching... &quot;it depends&quot;... and there are options.  You could make the hotfix to the prod branch and get it out the door, then move it back to Test and Main (if they needed it).  You could cut a branch from prod to address the specific &quot;fixes&quot;.  You have many paths.  In general if this is happening all the time (every release) you might introduce a fixes branch from the beginning or choose a different model.<br />\n",
+    "PostedDate": "2013-04-30T09:18:09.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "813364",
+    "ThreadId": "349413",
+    "Html": "\r\n<p>Hello.</p>\r\n<p>Is it possible to clone an existing source tree in TFS 2010 and have the new tree show all the checkin history from the original tree?&nbsp; I have an existing tree that has too many levels of hierarchy (some intermediate folders are there but have no content).</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp; $Top/Main/Dev/Source/Middleware/...</p>\r\n<p>Currently the Source folder is&nbsp;completely empty&nbsp;and adds no value.&nbsp; I'd like the new tree to look like</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp; $Top/Main/Dev/MW</p>\r\n<p>Can this be done usinng TFS Branch and Move commands and still maintain the checkin history under the Middleware folder?</p>\r\n<p>1. Branch $Top and create $Top-New (<em>accomplishes the cloning and hopefully maintains all checkin history</em>)</p>\r\n<p>2. Move $Top-New/Main/Dev/Source/Middleware/... to $Top-New/Main/Dev/Middleware/...&nbsp; (<em>gets rid of unneeded intermediate folder</em>)</p>\r\n<p>Has anyone perform an task such as this?</p>\r\n<p>Thanks, BC</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-03-21T00:19:41.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

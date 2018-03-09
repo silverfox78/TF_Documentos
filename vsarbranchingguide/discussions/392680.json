@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "902748",
+    "ThreadId": "392680",
+    "Html": "\r\n<p>We are a new Business Intelligence (BI) development team and whilst we are attempting to model a TFS branch plan that is easily manageable / automated I'm interested to hear how others in the Microsoft BI space are managing BI development through TFS.</p>\r\n<p>Our IT team have a comprehensive TFS Workflow and Branch management scheme in place for their OLTP development, the BI side still requires TFS but not with the same complexity, after all BI has to be very nimble yet thoroughly&nbsp; tested etc.</p>\r\n<p>At present our surfacing technologies are the MS suite of tools e.g. PPS, SSRS, Powerview, Powepivot , Excel etc we use the SQL2012 Technology stack for DW/DM and Cubes, SharePoint 2010 for publication to the business.</p>\r\n<p>Would love to hear your thoughts and ideas, experiences in this area.</p>\r\n<p>Many thanks</p>\r\n<p>Paul</p>\r\n",
+    "PostedDate": "2012-08-22T16:23:01.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

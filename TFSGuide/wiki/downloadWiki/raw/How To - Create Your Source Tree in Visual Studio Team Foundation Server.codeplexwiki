@@ -1,0 +1,157 @@
+!!! How To:  Create Your Source Tree in Visual Studio Team Foundation Server
+- _[url:J.D. Meier|http://blogs.msdn.com/jmeier], [url:Jason Taylor|http://jtaylorgoodlife.blogspot.com/], Alex Mackman, [url:Prashant Bansode|http://prashantbansode.blogspot.com/], [url:Kevin Jones|http://blogs.advantaje.com/blog/kevin/]_
+
+!!! Applies To
+* Microsoft® Visual Studio® 2005 Team Foundation Server (TFS)
+* Microsoft Visual Studio Team System
+
+!!! Summary
+This How To article walks you through the process of creating a new source code tree structure in TFS. The purpose of this How To article is to familiarize you with the end-to-end steps required to create your source tree.
+
+!!! Contents
+* Objectives
+* Overview
+* Summary of Steps
+* Step 1 – Create a new team project.
+* Step 2 – Create a workspace mapping
+* Step 3 – Create your folder structure in Source Control
+* Step 4 – Add your source to your source tree
+* Additional Resources
+
+!!! Objectives
+* Learn how to create a new team project
+* Learn how to create a workspace mapping
+* Learn how to create a source tree in Team Foundation Server source control
+
+!!! Overview
+Although you can quickly add a solution to source control by right-clicking your solution in Solution Explorer and then clicking *Add Solution To Source Control*, this option does not enable you to explicitly set up your source tree structure in source control. By explicitly defining your source tree structure in source control, you can arrange your source beneath top-level folders and use separate top-level folders to contain your main source base and your branched source base such as the branches you might use during development or to maintain production releases. 
+
+In this how to you will see the steps required to explicitly create a source control tree structure.
+
+!!! Summary of Steps
+* Step 1 – Create a new team project
+* Step 2 – Create a workspace mapping
+* Step 3 – Create your folder structure in Source Control
+* Step 4 – Add your source code to your source tree
+
+!!! Step 1 – Create a New Team Project
+In this initial step, you create a new team project with default settings.
+
+# In *Team Explorer*, right-click your TFS server and click *New Team Project…*
+# In the *New Team Project* dialog box, type a project name such as *MyTeamProject1* and then click *Next*.
+# On the *Select a Process Template* page, leave the default *MSF for Agile Software Development - v4.0* and then click* Next*.
+# On the *Specify the Settings for the Project Portal* page, leave the team project portal name as *MyTeamProject1* enter a description for the team project portal and then click *Next*.
+# On the *Specify Source Control Settings* page, leave the default option *Create an empty source control folder* selected and then click *Next*.
+# Click *Finish* to create the project. 
+
+A new team project is created on your TFS server, using the selected process template with an empty source control node.
+
+!!! Step 2 – Create a Workspace Mapping
+In this step you create a workspace mapping to define the mapping between the folder structure on the TFS server and client. You need to do this in order to create a source tree structure. First, the source tree structure is created in your workspace. You then need to perform a check-in to your TFS server.
+
+You can create a workspace mapping in one of two ways:
+
+* Set the workspace mapping explicitly 
+* Perform a get operation on your team project.
+
+*To set a workspace mapping explicitly*
+# In Visual Studio, on the *File* menu, point to *Source Control* and then click *Workspaces*.
+# In the *Manage Workspaces* dialog box, select your computer name and then click *Edit*.
+# In the *Edit Workspace* dialog box, in the *Working folders* list, click *Click here to enter a new working folder*. 
+# Click the ellipsis button, select your team project (for example *MyTeamProject1*), and then click *OK*.
+# Click the Local folder cell to display another ellipsis button.
+# Click the ellipsis button beneath *Local Folder* and then browse to and select the local folder on your development computer where you want to locate your team project workspace; for example C:\DevProjects\MyTeamProject1. 
+# Click *OK* twice to close the *Edit Workspace* dialog box.** 
+# Click *OK* in response to the Microsoft Visual Studio message box that informs you than one or more working folders have changed.
+# Click *Close* to close the *Manage* *Workspaces* dialog box.
+  
+*To perform a Get operation on your team project*
+# In *Team Explorer*, expand your *MyTeamProject1* team project node.
+# Double-click *Source Control* beneath your team project.
+# In *Source Control Explorer*, right-click the root folder *MyTeamProject1* and then click *Get Latest Version*.  
+# In the *Browse For Folder* dialog box select your local path (for example C:\DevProjects\MyTeamProject1) and then click *OK*. This maps the team project root folder within TFS to a local path on your computer.
+
+!!! Step 3 – Create Your Folder Structure in Source Control
+In this step, depending on your strategy and project requirements you create a source control folder structure on your server. This should generally start with a /Main/Source folder structure, which enables you to subsequently create *Development* and *Releases* branches at the same level as *Main*. For example, the *Releases* folder would be used to contain branched code corresponding to the software releases that you are maintaining. The *Development* folder contains your isolated development branch. 
+{{ 
+*/Main* 							
+	/Source
+		/MyApp1				? Contains MyApp1.sln
+			/Source			? Container folder 
+				/ClassLibrary1		? Contains ClassLibrary1.csproj
+				/MyApp1Web		? Contains Default.aspx
+			/UnitTests			? Contains unit test projects
+				/ClassLibrary1Tests	? Test project for ClassLibrary1
+				/MyApp1WebTests	? Test project for MyApp1Web
+/Build						? Contains build output (binaries)
+	/Docs						? Contains design docs etc
+	/TestCases					? Contains test case documentation
+
+*/Development*
+	/FeatureBranch1
+		/Source
+			/MyApp1
+				/Source	
+					/MyApp1Web
+					/ClassLibrary1
+				/UnitTests
+					/ClassLibrary1Tests	
+					/MyApp1WebTests	
+	/FeatureBranch2
+
+/*Releases*
+/Release1
+			/MyApp1
+				/Source
+					/ClassLibrary1
+					/MyApp1Web
+				/UnitTests
+					/ClassLibrary1Tests
+					/MyApp1WebTests
+/Release 1.1
+/Release 1.2
+}}
+
+*To create a folder structure on the server*:
+# In *Team Explorer*, expand your *MyTeamProject1* team project node.
+# Double-click *Source Control* beneath your team project.
+# In *Source Control Explorer*, select the root node, right-click in the *Local Path:* pane, and then click *New Folder*.
+# Type the name *Main* and then press ENTER.
+# Create a *Source* folder beneath Main.
+# Repeat the previous steps to create any other root folders you might need including *Development* and *Releases* folders. 
+# After you have created your tree structure, right-click the *MyTeamProject1* root node in *Source Control Explorer* and then click *Check-in Pending Changes.*
+# In the *Check In - Source Files – Workspace* dialog box, select the folders you need to check-in, add a comment, and then click *Check In*. This builds your local folder structure and adds the structure to TFS source control.
+
+!!! Step 4 – Add Your Source Code to Your Source Tree
+In this step, you add source code from your local drive to your source control tree on the server. In this example, you create a new Web application and class library project and add these to source control.
+
+*To create a new Visual Studio solution file*:
+# On the *File* menu, point to *New*, and then click *Project*.
+# Expand *Other Project Types* and then click *Visual Studio Solutions*. 
+# In the Templates pane, select *Blank Solution*.
+# Type *MyApp1* in the *Name* text box and C:\DevProjects\MyTeamProject1\Main\Source into the *Location* text box.
+# Click *OK*. 
+
+Visual Studio creates your new solution and places the solution (.sln) file in the C:\DevProjects\ MyTeamProject1\Main\Source\MyApp1 folder.
+
+*To add a new Web site to your solution*:
+# In Solution Explorer, right-click your solution, point to *Add*, and then click *New Web Site*.
+# Select *ASP.NET Web Site* from the *Templates* list, *File System* as the *Location* and C:\DevProjects\MyTeamProject1\Main\Source\MyApp1\Source\MyApp1Web as the path.
+# Click *OK*. Visual Studio creates the Web site. 
+
+*To add a new class library project to your solution*:
+# In Solution Explorer, right-click your solution, point to *Add*, and then click *New Project*.
+# Select *Visual C#* from the *Project types* list, and *Class Library* from the *Templates* list.
+# Leave the name as *ClassLibrary1* and set the *Location* to C:\DevProjects\MyTeamProject1\Main\Source\MyApp1\Source.
+# Click *OK*. 
+
+Visual Studio creates the new project structure. Your local file structure should now look like the following:
+[image:SourceTree.gif] 
+
+*To add your solution to source control*:
+In Solution Explorer, right-click your solution and then click *Add Solution To Source Control* Your solution and two projects are added to Team Foundation Source Control.
+
+Your source control tree structure now should look like the following:
+[image:SourceTree1.gif] 
+!!! Additional Resources
+* For more information on creating a workspace, see “How to: Create a Workspace” at [url:http://msdn2.microsoft.com/en-us/library/ms181384(VS.80).aspx]

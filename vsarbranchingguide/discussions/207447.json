@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "424194",
+    "ThreadId": "207447",
+    "Html": "We have the following:\r\n\r\n1.Common shared code between products\r\n\r\n2. Only two available test environments Overnight Integration (OI) (top of tree builds automatically deployed here nightly), and QA where labeled builds are deployed manually. It is cost prohibitive to have more test environments due to the number of machines required in each environment.\r\n\r\n \r\n\r\nOften what happens is many changes will need to be put into the common code and allowed to burn in for weeks in the OI environment.\r\n\r\nImagine: changes 1,2,3 and 4 (c1-4 are burning in the overnight builds).\r\n\r\nThe problem is at some point in time one or more of the changes will be considered good (but not all of the changes put into the top of the tree).  One of the application using the common code decides they want changes C1 and C3 but not C2 and C4 as they have not been burned in enough and they need the changes C1 and C3 now.  So the application team wants the previous version of Common with just the C1 and C3 changes added to it.\r\n\r\nHow can we set up a structure of branches to allow this and which branch would be testing the overnight integration and which for QA?\r\n\r\nThoughts/ideas on how to have a process that can handle something like this with our test environment limitations?\r\n\r\n \r\n\r\nThanks.\r\n\r\n(This is &quot;somewhat&quot; similar to some other posts but the nuance here is different.  The question is how can we structure the common or other code to allow for the burn in time of certain changes in our test environments and allow to assemble some of those changes that basically have burned in enough to promote to one of the application teams so they can then build and QA/Label with that.  Clearcase offers options of promoting activities and creating labels of promoted activities.  What's the best method to handle this for TFS? Also is there a different workflow that can accomplish the same things here?).\r\n\r\n",
+    "PostedDate": "2010-03-26T10:49:54.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "671362",
+    "ThreadId": "272486",
+    "Html": "\r\n<p>Our organization adopting TFS Branching guide. I'd like to estimate by how much should we increase development tasks duration if followed Merging and Branching guide.</p>\r\n<p>So far we were using Release-By-Release branching approach which allow developers concentrate on coding and perform branching only for hot fixes.&nbsp;</p>\r\n",
+    "PostedDate": "2011-09-13T13:32:33.04-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "671368",
+    "ThreadId": "272486",
+    "Html": "<p>An argument can be made that a sound branching strategy will reduce development time rather than increase it.</p>\r\n<p>From a devleopment side, leaving aside the benefit of branching for release and post production hot fixes, we don't recommend branching for the sake of branching. But rather branching when the benefits outweigh the costs.<br />So for example, I can make extensive arguments why we advocate, at a minimum, a basic branching plan with a main branch, one development branch and one release branch.</p>\r\n<p>So as not to be *too* repetitive let me refer you to this other thread in this forum:</p>\r\n<p><a href=\"http://tfsbranchingguideiii.codeplex.com/discussions/272201#post670272\">http://tfsbranchingguideiii.codeplex.com/discussions/272201#post670272</a></p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-09-13T13:43:01.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "671375",
+    "ThreadId": "272486",
+    "Html": "<p>Thanks Bill, indeed in most cases branching and merging facilitate project delivery. However our developers are experienced and disciplined enough to not break stable branch with untested source code. So we develop directly in MAIN branch.</p>\r\n<p>Unfortunately due to real world obstacles we forced to perform branching just for the sake of branching. That pushy branching adoption form negative experience of TFS2010 product itself within the team.</p>\r\n<p>So I'd like to gather opinions on how many man-hours should we attach to code checkins if accepted even Basic plan.&nbsp;</p>",
+    "PostedDate": "2011-09-13T14:05:20.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "671377",
+    "ThreadId": "272486",
+    "Html": "<p>I would need much more information about&nbsp;how you develop applications before I would even begin to offer an estimate of man hours.</p>\r\n<p>What *real world obstacles* do you face that *force* your team to *perform branching just for the sake of branching*? Who is pushing this?</p>\r\n<p>Bill Heys</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-09-13T14:10:13.157-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "703406",
+    "ThreadId": "272486",
+    "Html": "<p>artbern, if you have just one development team working the the DEVELOPMENT branch recommended by the BASIC branching plan, then there should be almost no time associated with merging it into MAIN. When you go to do the merge from DEV to MAIN, it will only show you discrepancies (items that were changed in BOTH places). But if you are a disciplined team, you will only have made changes in DEV and it will silently merge all those changes to MAIN without drama. This would literally take just a few minutes. I don't think it creates much friction at all. If you encounter issues with build quality before the merge, it will allow you to avoid merging until they are resolved.</p>\r\n<p>On the other hand, I agree that in some cases, a disciplined team can preserve the stability of the branch to which they check in. That is the argument I make in my recent blog post <a href=\"http://codecontracts.info/2011/11/21/branching-and-merging-strategies/\">http://codecontracts.info/2011/11/21/branching-and-merging-strategies/</a>.&nbsp; This post cites evidence&nbsp;of successful teams who check-in directly to MAIN. As Bill Heys said, it's all about ROI. But since the cost of merging a single development branch to MAIN is normally trivial, why would one not want this insurance? After all, it just takes one bad checkin to really wreck the build.</p>",
+    "PostedDate": "2011-11-25T08:03:30.12-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "703417",
+    "ThreadId": "272486",
+    "Html": "<p>I agree with David's comments. I also like his spin on \"One bad apple can spoil the whole bunch\" rephrased as \"One bad check-in can really wreck the build\"</p>\r\n<p>Regards,</p>\r\n<p>Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-11-25T08:46:33.463-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

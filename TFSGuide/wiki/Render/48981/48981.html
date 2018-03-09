@@ -1,0 +1,302 @@
+<div class="wikidoc"><h3>How To – Customize a Process Template in Visual Studio Team Foundation Server</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Applies To</h3><ul><li>Microsoft&#174; Visual Studio&#174; 2005 Team Foundation Server (TFS)</li>
+<li>Microsoft Visual Studio Team System (VSTS)</li></ul>
+
+<h3>Summary</h3>This How To article walks you through the steps for modifying a process template in order to better suit your team’s needs, and explains the tools that you use to do so. Process templates define the initial process settings for team projects. By customizing a process template, you can define:
+<ul><li>Security for team project access control.</li>
+<li>What templates are available on the Microsoft Office SharePoint&#174; project portal.</li>
+<li>Presence of source code control check-in notes.</li>
+<li>Work item types and queries.</li>
+<li>Reports for monitoring project progress and health.</li>
+<li>Iterations and areas used for project organization. </li></ul>
+<br />Follow the steps in order to walk through the modification of a template, and then test the changes you made.<br />
+<h3>Content</h3><ul><li>Objective</li>
+<li>Overview</li>
+<li>Summary of Steps</li>
+<li>Step 1 – Install Process Editor</li>
+<li>Step 2 – Choose the Process Template</li>
+<li>Step 3 – Download the Process Template</li>
+<li>Step 4 – Open the Process Template in Process Editor</li>
+<li>Step 5 – Modify Work Item Types</li>
+<li>Step 6 – Modify the Default Work Items</li>
+<li>Step 7 – Modify and Manage Queries</li>
+<li>Step 8 – Modify Areas and Iterations</li>
+<li>Step 9 – Modify Groups and Permissions</li>
+<li>Step 10 – Modify Source Control Settings</li>
+<li>Step 11 – Modify the Project SharePoint Portal</li>
+<li>Step 12 – Modify Reports</li>
+<li>Step 13 – Upload the Modified Process Template</li>
+<li>Additional Resources</li></ul>
+
+<h3>Objectives</h3><ul><li>Learn what parts of a process template can be modified.</li>
+<li>Customize a process template by using the Process Editor tool.</li></ul>
+
+<h3>Overview</h3>Visual Studio Team System (VSTS) and Team Foundation Server (TFS) provide an integrated environment that supports most of the process activities involved in a software-development project. TFS implements life-cycle methodologies for team projects by using process templates. A <i>process template</i> is a set of Extensible Markup Language (XML) files that provides specifications for different artifacts and processes of a methodology. By modifying a process template, you can change the default work item types, security settings, source control settings, and reports that are set up when a new team project is created.<br /><br />You can manually customize the XML files, or you can use the Process Editor tool available with the Team Foundation Server Power Tool. Using the Process Editor tool is the recommended method because it is a user interface (UI)–based tool, which makes customizing a process much easier and less error-prone compared to manual customization of XML files.<br /><br />To modify a process template, you must first download the template you want to modify and then use the Process Editor to make necessary changes.<br />
+<h3>Summary of Steps</h3><ul><li>Step 1 – Install Process Editor</li>
+<li>Step 2 – Choose the Process Template</li>
+<li>Step 3 – Download the Process Template</li>
+<li>Step 4 – Open the Process Template in Process Editor</li>
+<li>Step 5 – Modify Work Item Types</li>
+<li>Step 6 – Modify the Default Work Items</li>
+<li>Step 7 – Modify and Manage Queries</li>
+<li>Step 8 – Modify Areas and Iterations</li>
+<li>Step 9 – Modify Groups and Permissions</li>
+<li>Step 10 – Modify Source Control Settings</li>
+<li>Step 11 – Modify the Project SharePoint Portal</li>
+<li>Step 12 – Modify Reports</li>
+<li>Step 13 – Upload the Modified Process Template</li></ul>
+
+<h3>Step 1 – Install Process Editor</h3>In this initial step, you will install the Process Editor tool, which provides a convenient UI–based method of viewing and customizing process templates. The Process Editor is part of the Team Foundation Server Power Tool,** a set of enhancements, tools, and command-line utilities that improve the TFS user experience.<br />
+<ol><li>Install DSL Tools for Visual Studio 2005 before you run the Power Tool installer. This is a prerequisite for the Team System Process Editor. If you do not install DSL Tools, the Power Tool installer installs everything except the Process Editor. The DSL Tools download is available at <a href="http://go.microsoft.com/fwlink/?LinkId=82410">http://go.microsoft.com/fwlink/?LinkId=82410</a></li>
+<li>Download the Power Tool from: <a href="http://www.microsoft.com/downloads/details.aspx?familyid=7324c3db-658d-441b-8522-689c557d0a79&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?familyid=7324c3db-658d-441b-8522-689c557d0a79&amp;displaylang=en</a> </li>
+<li>Run through the default installation, and then verify that the Power Tool has been installed correctly with the Process Editor as follows:
+<ol><li>Click <b>Start</b> and then click <b>Programs</b>. </li>
+<li>Click <b>Microsoft Team Foundation Server Power</b>.** </li></ol></li></ol>
+If the Microsoft Visual Studio Team System Process Editor appears,** this means the Process Editor has been installed correctly. If it does not appear, uninstall the Power Tool and then reinstall it according to the correct sequence as specified in the preceding steps.<br />
+<h3>Step 2 – Choose the Process Template</h3>In this step, you choose the out-of-box template that most closely suits your own process. This reduces the number of changes required in order to adapt the template to your own team’s process. TFS provides the following two templates out of the box:
+<ul><li>Microsoft Solution Framework (MSF) for Agile Software Development (MSF Agile)</li>
+<li>MSF for CMMI&#174; Process Improvement (MSF CMMI)</li></ul>
+<br />Read the following details about these process templates to help make the correct choice.<br />
+<h4>MSF Agile </h4>The MSF Agile process template is a lightweight process template for small, agile, or informal software projects on a rapid delivery schedule. This process template is based on scenarios and context-driven actions and is both project-centric and team member (people)–centric. You can use the MSF Agile process template in the following project scenarios:
+<ul><li>Your project does not include a documented process and does not rely on formal processes.</li>
+<li>You do not need to certify your process or prove compliance with process standards.</li>
+<li>Your project is of a short duration. </li>
+<li>Your project needs quick releases for the purpose of community/user feedback.</li></ul>
+
+<h4>MSF CMMI </h4>The MSF CMMI process template is designed for more mature software projects. This process template extends the MSF Agile process template by providing support for auditing, verification, and formal processes. You can use this process template in the following project scenarios:
+<ul><li>Your project involves a documented process, or you want to develop more formal processes.</li>
+<li>Predictability of releases is more important than flexibility.</li>
+<li>Your project is of a long duration.</li>
+<li>You have to certify your process or prove compliance with process standards.</li></ul>
+<br /><b>Note:</b> You are not confined to the default process templates. If you have installed other process templates from third parties, such as the Scrum process template, you can choose these templates as well.<br />
+<h3>Step 3 – Download the Process Template</h3>In this step, you download the chosen process template to be adapted to your customized process.<br />
+<ol><li>In Visual Studio, click <b>Team</b> and then select <b>Team Foundation Server Settings</b>.</li>
+<li>Click <b>Process Template Manager</b>.</li>
+<li>In the <b>Process Template Manager</b> dialog box, select the process template you want to modify, and then click <b>Download</b>.</li>
+<li>In the <b>Download Process Template</b> dialog box, select the folder location on your local drive where you want to save the template, and then click <b>Save</b>.</li></ol>
+<br />For instance, you can download the MSF CMMI process template to your desktop for use in the next step.<br />
+<h3>Step 4 – Open the Process Template in Process Editor</h3>In this step, you load the downloaded process template into the Process Editor in order to modify various settings.<br />
+<ol><li>In Visual Studio, click the <b>Team</b> menu.</li>
+<li>Click <b>Process Editor</b>, and then click <b>Open Process Template</b>. </li>
+<li>In the <b>Open Process Template fileset</b> dialog box, navigate to the downloaded process template, and then click <b>Open</b> to** open the ProcessTemplate.xml file inside Visual Studio.</li>
+<li>Specify the <b>Name</b> of the methodology you are customizing.</li></ol>
+<br />For instance, you can specify ‘My Template’ as the new process template name.<br />
+<h3>Step 5 – Modify Work Item Types</h3>In this step, you add new work items types that are specific to your process, or modify the default work item types.<br /><br /><b>To add new work item types</b>
+<ol><li>In the Process Template Explorer, click <b>Work Item Tracking</b>.</li>
+<li>In the right pane, click the <b>Type Definitions</b> tab. </li>
+<li>To create a new work item, click <b>Add</b> in the toolbar in the right pane.</li>
+<li>In the <b>New Work Item Type</b> dialog box, enter a name for the work item type, or select an existing work item type from the <b>Copy From</b> drop-down list. </li></ol>
+The new work item type will be created and will be available in the <b>Item List</b> on the <b>Type Definitions</b> tab in the right pane.
+<ol><li>On the <b>File</b> menu, click <b>Save</b> to save your changes.</li></ol>
+<br />For example, you can create a new Bug type named ‘My Bug,’ copied from the Bug work item type.<br /><br />You can now edit the work item type to modify its behavior.<br /><br /><b>To edit a work item type</b>
+<ul><li>If you want to add/remove attributes fields to/from the new work item type or an existing work item type, on the <b>Type Definitions</b> tab, right-click the work item type you want to edit, and then click <b>Open</b>.</li></ul>
+The selected work item type opens in a new Visual Studio window where you can add or remove the attributes you want.<br /><br /><b>To add a new field to the work item</b>
+<ol><li>Click the <b>Fields</b> tab, and then click <b>Add</b> in the toolbar. </li>
+<li>In the <b>Field Definition</b> dialog box, enter the details as specified below: 
+<ol><li><b>Name</b> – Type the name of the new field.</li>
+<li><b>Type –</b> In the* Data type* the drop-down list, select the data type for this field.</li>
+<li><b>RefName –</b> Enter a unique <b>Identifier</b> for the field in TFS. The identifier must have at least one period in the name; for example, Test.Test1.</li>
+<li><b>Help Text</b> – Type the text that you want the user to see when he or she moves the pointer over the name of the field. Generally, this text provides a definition of the field’s purpose.</li>
+<li><b>Reportable –</b> Select the desired option in the <b>Reportable</b> drop-down list. This determines whether to make the data in this field available for TFS reports. The following options are available:
+<ol><li><b>Dimension</b> – Use this for fields that have lists of valid values. Work Item Type and State are good examples of dimensions. The Dimension field can be used to filter reports.</li>
+<li><b>Detail</b> – This option is a good choice for unrestricted text fields because it lets you use them in reports. However, any reports that you build using these fields must use the relational database instead of the cube.</li>
+<li><b>Measure</b> – Measures are the numeric values in your reports. Each measure will appear in both the Current Work Item measure group and the Work Item History measure group.</li></ol></li>
+<li><b>Formula –</b> This drop-down list is shown only if you select <b>Measure</b> in the <b>Reportable</b> field. Examples of formula options include <b>sum</b>, <b>count</b>, and <b>avg</b>.</li></ol></li>
+<li>For any new field added to the work item type, you can constrain the values that the user can enter into a field. You can also constrain a field when the work item is in a particular state; and when the work item is making a particular transition. Perform the following steps to add constraints:
+<ol><li>Click the <b>Rules</b> tab and then click <b>New</b>.</li>
+<li>In the <b>Select a rule type</b> dialog box, select a rule type. The most commonly used types are: 
+<ol><li><b>AllowedValues –</b> Use this rule type when you want to set a list of values that can be entered.</li>
+<li><b>DefaultValue</b> – Use this rule type when providing a starting value.</li>
+<li><b>Required –</b> Use this rule type when forcing the user to always supply a value.</li>
+<li><b>ValidUser –</b> Contains the name of a user on a project. - The dialog box that appears allows you to set the rule’s parameters. </li></ol></li>
+<li>Click <b>OK</b> twice to save the changes.</li></ol></li>
+<li>After you have added a field to a work item, you need to decide where and how the field needs to displayed. Perform the following steps to add a field to your work item layout:
+<ol><li>On the Work Item Type page, click the <b>Layout</b> tab.</li>
+<li>On the <b>Layout</b> tab, select the location in the Layout tree where you want the new field to appear. </li>
+<li>In the left pane, right-click the selected node and then select <b>New Control</b>.</li>
+<li>Add an appropriate label and then in the <b>FieldName</b> property of the control, use the Ref Name that was added for the field in the above steps.</li>
+<li>Click <b>Preview Form</b> to verify that the new control is properly positioned on work item form.</li></ol></li></ol>
+<br />For example, you can add a new Security Impact field to the My Bug work item type you created previously, as follows:<br />
+<ol><li>Click the <b>Fields</b> tab, and then click <b>Add</b> in the toolbar. </li>
+<li>In the <b>Field Definition</b> dialog box, enter the following information:
+<ol><li><b>Name</b> – Security Impact</li>
+<li><b>Type</b> – String</li>
+<li><b>RefName</b> – MyBug.CustomField.1</li>
+<li><b>Help Text</b> – Enter the security impact of this bug, from 1 – 5 where 1 represents the lowest impact and 5 the highest.</li>
+<li><b>Reportable</b> – Set the value as <b>Dimension</b> so that it is possible to create a report that will show which bugs have security impact. </li></ol></li>
+<li>Click the <b>Rules</b> tab, and then click the <b>Add</b> button.</li>
+<li>In the <b>Select a rule type</b> dialog box, select the <b>ALLOWEDVALUES</b> option and then click <b>OK</b>.</li>
+<li>In the <b>ALLOWEDVALUES</b> dialog box, click <b>Add</b> button five times, each time adding a value from 1 to 5.    </li>
+<li>Click <b>OK</b>.</li>
+<li>Click the <b>Layout</b> tab.</li>
+<li>Add the new field to the Status group as follows: 
+<ol><li>Under <b>Group – Status</b>, right-click the second <b>Column</b> node and then click <b>New Control</b>.</li>
+<li>Set <b>FieldName</b> to <b>MyBug.CustomField.1</b>.</li>
+<li>Set <b>Label</b> to <b>S&amp;ecurity Impact</b>. - The ‘&amp;’ assigns the ampersand character as a hotkey for the field.</li>
+<li>Click <b>Preview Form</b> to ensure that the new field is in the right location.</li></ol></li></ol>
+<br />The new field has now been added to the custom work item type.<br /><br /><b>To remove a field from a work item</b><br />Many times fields are referenced in queries, reports, etc. Rather than track down and remove all of these references, you can leave the fields in the system but remove them from the work item dialog layout so the user cannot set their values.
+<ul><li>Click the <b>Fields</b> tab, and then click <b>Delete</b> in the toolbar. </li></ul>
+<br />For example, you can remove one of the fields from the My Bug work item type you created previously, as shown below:<br />
+<ol><li>Click the <b>Layout</b> tab to display the form layout for My Bug.</li>
+<li>On the <b>Layout</b> tab, in the tree, expand <i>TabPage</i>??Details<i>??Group</i>??Column<i>??Group</i>??Schedule<i>??Column</i>, right click* Remaining &amp;work,* and then click <b>Delete</b> to remove it from the layout.</li></ol>
+<br />You can add the field back into the layout at a future point because the field itself has not been deleted.<br /><br /><b>To edit work item type workflow</b><br />After you have created a work item type and finalized the layout, the final step is to edit the work item type workflow. Workflow governs the states and transitions that are allowed throughout the life of a work item. Because you copied the work item from an existing type, the workflow was also copied. You now need to review the work item type workflow and decide how you want to modify it. Perform the following steps to modify the work item workflow:
+<ol><li>Create states and transitions.
+<ol><li>Click the <b>Workflow</b> tab to open the Workflow window.</li>
+<li>To create a new state, drag a state from the WITDesigner toolbox into the Workflow window.</li>
+<li>To create a transition between two states, WITDesigner toolbox, click the <b>Transition Link</b>, click the starting state, and then click the ending state.</li>
+<li>To indicate the initial state (that is, the state of a newly created work item), click the <b>Transition Link</b>, click a blank part of the diagram, and then click the initial state. - This creates a transition that has no source. There should only be one such transition on the diagram; if one already exists, you need to delete it.</li>
+<li>To see a summary of the attributes of each state or transition, click the expand/collapse icon at the top right of the shape. In the list of fields in the summary, “+” marks a field that has a required rule; “-” marks a field that has an empty rule; and “*” marks a field that has other rules.</li>
+<li>To edit the attributes of each state or transition, right-click the state heading, and then click <b>Open Details</b> or double-click the heading.</li></ol></li></ol>
+<br /><b>Note</b>: If the WITDesigner toolbox is not visible, click <b>Toolbox</b> on the Visual Studio <b>View</b> menu.<br />
+<ol><li>Edit the rules governing a state as follows:
+<ol><li>Right-click the state heading and then click <b>Open Details</b>, or double-click the heading. - This opens the <b>Workflow State Field Rules</b> dialog box. Each item in the list refers to a field of the work item type, and represents a set of rules governing that field while the work item is in this state.</li>
+<li>On the <b>Field Reference</b> tab, set the <b>RefName</b> to indicate the field you want to constrain while the work item is in this state. The drop-down list of available fields that you can set is located on the <b>Fields</b> tab of the work item type.</li>
+<li>On the <b>Rules</b> tab, click <b>New</b> to create a new rule, or click <b>Open</b> to edit an existing rule. - The details provided in the dialog box on opening a rule vary depending on the type of rule.</li>
+<li>Click <b>OK</b> to complete your changes.</li></ol></li></ol>
+
+<ol><li>Edit a transition as follows:
+<ol><li>Right-click the transition heading and then click <b>Open Details</b> to open the <b>Workflow Transition</b> dialog box. 
+<ol><li>The <b>Transaction Detail</b> tab defines the <b>From</b> and <b>To</b> states of the transition. If this transition marks the initial state in which a new work item of this type is created, the <b>From</b> state is empty. These fields correspond to the links on the workflow diagram. The <b>For</b> and <b>Not</b> fields can contain the name of a user or group who can or cannot make the transition.</li>
+<li>The <b>Reasons</b> tab defines the content allowed in the <b>Reason</b> field when the transition occurs. There should be at least one reason for every transition. </li>
+<li>The <b>Actions</b> tab defines the state transition actions necessary to automate transitions of work items at various points in their workflow. For example, a TFS version control system needs to support automatic transitions of work items at check-in time.</li>
+<li>The <b>Fields</b> tab defines rules constraining fields when the transition occurs.</li></ol></li>
+<li>Click <b>OK</b> to complete your changes.</li></ol></li></ol>
+
+<h3>Step 6 – Modify the Default Work Items</h3>In this step, you add or remove the default work items that are created at the time of team project creation. These work items give a team working on a new project a head start by assigning default work items that should be completed to get the project up and running.<br />
+<ol><li>In the Process Template Explorer, click <b>Work Item Tracking</b>.</li>
+<li>In the right pane, click the <b>Default Work Items</b> tab.</li>
+<li>To create a new default work item type, click <b>Add</b> in the toolbar in the right pane. </li>
+<li>In the <b>Choose Type</b> dialog box, select a work item type.</li>
+<li>In the dialog box that opens, fill in the appropriate fields.</li>
+<li>Click <b>OK</b>.</li></ol>
+<br />For example, you can remove the task <b>Setup: Migration of Source Code</b> by doing the following:<br />
+<ol><li>In the Process Template Explorer, click <b>Work Item Tracking</b>.</li>
+<li>In the right pane, click the <b>Default Work Items</b> tab.</li>
+<li>Select <b>Setup: Migration of Source Code</b>.</li>
+<li>Click <b>Remove</b>.</li></ol>
+<br />The default task “Setup: Migration of Source Code” will no longer be created when this process template is used to create a new project.<br />
+<h3>Step 7 – Modify and Manage Queries</h3>In this step, you modify, add, or remove the default queries created at the time of team project creation.<br /> 
+<ol><li>In the Process Template Explorer, click <b>Work Item Tracking</b>.</li>
+<li>In the right pane, click the <b>Queries</b> tab.</li>
+<li>To create a new query, click <b>Add</b> in the toolbar in the right pane. </li>
+<li>In the <b>Query Reference</b> dialog box, enter the name of the new query.</li>
+<li>Click <b>Edit Query Definition</b>.</li>
+<li>Use the <b>Fields</b>, <b>Sorting</b>, and <b>Criteria</b> tabs in the <b>Query Edit</b> dialog box to define your query.</li>
+<li>Click <b>OK</b>.</li></ol>
+<br />For example, you can create a new query to select all bugs that have the highest security impact by doing the following:<br />
+<ol><li>In the Process Template Explorer, click <b>Work Item Tracking</b>.</li>
+<li>In the right pane, click the <b>Queries</b> tab. </li>
+<li>Click <b>Add</b>.</li>
+<li>Specify the <b>Name</b> as <b>Bugs with Security Impact</b>.</li>
+<li>Click <b>Edit Query Definition</b>.</li>
+<li>In the <b>Query Edit</b> dialog box, click the <b>Fields</b> tab, select all the relevant fields you want to display (including <b>MyBug.CustomField.1</b>) from the available columns, click the &gt; button, to move them to the Selected Columns pane. If you do not see the custom field you have added, make sure that you have saved the ProcessTemplate.xml file and then try again.</li>
+<li>Click the <b>Criteria</b> tab, leave the <b>And Or</b> column blank, and then in the <b>Field</b> column, select <b>MyBug.CustomField.1</b>. In the <b>Operator</b> column, select &gt; and then in the <b>Value</b> column, type <b>“1”</b>. Be sure to add quotes around the value 1 because the field is a string data type. If you had selected integer or some other numeric type when creating the Security Impact field, the quotes would not be necessary.</li>
+<li>Click <b>OK</b> twice.</li></ol>
+<br />This query ensures that all work items that have “MyBug.CustomField.1” set to a value greater than 1 will be displayed in the output of the query.<br /><br /><b>Note:</b> The Process Editor does not provide comprehensive features for editing queries. It is better to edit and test queries in a running team project in Visual Studio than in a process template. You can then save the queries to files that can be imported into other projects or copied into process templates.<br />
+<h3>Step 8 – Modify Areas and Iterations</h3>In this step, you set up the default iterations and areas that are available at the time of team project creation.<br />
+<ol><li>In the Process Template Explorer, click <b>Areas &amp; Iterations</b>.</li>
+<li>In the right pane, click the <b>Areas</b> or* Iterations* tab.</li>
+<li>Use the toolbar in the right pane to add, remove, or move areas or iterations</li></ol>
+<br />For example, you can add a few default areas to organize projects created by using this template as follows:<br />
+<ol><li>In the Process Template Explorer, click <b>Areas &amp; Iterations</b>.</li>
+<li>In the right pane, click the <b>Areas</b> tab.</li>
+<li>Click the new button.</li>
+<li>In the area name text field, type <b>UI</b></li>
+<li>Select <b>Area</b>, because you want the next area to be a child of the root area node.</li>
+<li>Click the new button again.</li>
+<li>In the area name text field, type <b>Back End</b></li></ol>
+<br />Any new projects that use your process template will now automatically have a UI and Back End area defined for them.<br />
+<h3>Step 9 – Modify Groups and Permissions</h3>In this step, you modify, remove, or add groups and their permissions that are available at the time of team project creation.<br />
+<ol><li>In the Process Template Explorer, click <b>Groups &amp; Permissions</b>. </li>
+<li>To create a new group, click <b>Add</b> in the toolbar in the right pane.</li>
+<li>In the <b>Group</b> dialog box, enter the name of the new group and a brief description of what the members of the group can do, and then click <b>OK</b>.</li>
+<li>In the top section of the right pane, select a group and then assign permissions to that group in the section below. You can select <b>Allow</b> or <b>Deny</b> or leave the permissions setting as <b>Unset</b>. An <b>Unset</b> permission is an implicit deny.</li></ol>
+
+<h3>Step 10 – Modify Source Control Settings</h3>In this step, you modify the source control settings for parallel edits and check-in edits.<br />
+<ol><li>In the Process Template Explorer, click <b>Source Control</b>.</li>
+<li>In the right pane, click the <b>Checkout Settings</b> tab.</li>
+<li>If you want to allow more than one person to edit a file at the same time, select the <b>Enable Multiple Checkout</b> check box.</li>
+<li>In the right pane, click the <b>Checkin Notes</b> tab. </li>
+<li>To create a new Checkin Note field, click <b>Add</b> in the toolbar in the right pane.</li>
+<li>To edit an existing Checkin Note field, select the field and then click <b>Open</b>. </li>
+<li>In the <b>Checkin Note</b> dialog box, make necessary changes.</li>
+<li>Click <b>OK</b>.</li></ol>
+<br /><b>Note:</b> You cannot make any changes on the <b>Permissions</b> tab in this version of the Process Editor. <br /><br />For example, you can require that all check-ins must have a check-in note by performing the following steps:<br />
+<ol><li>In the Process Template Explorer, click <b>Source Control</b>.</li>
+<li>In the right pane, click the <b>Checkin Notes</b> tab.</li>
+<li>Double-click each row, and then in the <b>Checkin Note</b> dialog box, select the <b>Required</b> check box.</li></ol>
+<br />All check-ins will now require a note.<br />
+<h3>Step 11 – Modify the Project SharePoint Portal</h3>In this step, you modify the project SharePoint portal to display specific documents and process guidance.<br />
+<ol><li>In the Process Template Explorer, click <b>Portal</b>. </li>
+<li>To create a new library, in the middle pane, right-click the <b>Portal</b> node and then click <b>New Document Library</b>.</li>
+<li>In the <b>Document Library</b> dialog box, enter the name and description of the library.</li>
+<li>Click <b>OK</b>.</li>
+<li>Right-click a document library and then click <b>New Folder</b> to create a new folder.</li>
+<li>In the <b>Folder Properties</b> dialog box, enter the name of the new folder.</li>
+<li>Select a folder and then on the toolbar in the right pane, click <b>Add</b> to upload a new document.</li>
+<li>In the <b>File Import</b> dialog box, browse to the file you want to upload. The <b>Destination Folder</b> and <b>Share Point Folder</b> fields will be automatically populated. Leave the <b>Query Id</b> field unchanged.</li>
+<li>Click <b>Import</b>.</li>
+<li>To edit the properties of an existing document in the document library, select the document in the right pane, and then click <b>Open</b> on the toolbar. </li>
+<li>In the <b>File Edit</b> dialog box, change the name of the file in the <b>Name</b> field. Do not change the other fields.</li>
+<li>Click <b>OK</b>. </li></ol>
+
+<h3>Step 12 – Modify Reports</h3>In this step, you add or remove reports from the set of default reports created at the time of team project creation.<br />
+<ol><li>In the Process Template Explorer, click <b>Reports</b>. </li>
+<li>On the toolbar, click <b>Add</b>.</li>
+<li>In the <b>Report</b> dialog box, on the <b>Report Detail</b> tab, enter a name for the report. </li>
+<li>Browse to the .rdl file you want to add in the <b>File Name</b> field. Do not make any changes to the data on the <b>Properties</b> and <b>Parameters</b> tabs.</li>
+<li>On the <b>DataSources</b> tab, enter the appropriate data sources. The default data sources for process templates shipped in TFS are /TfsOlapReportDS and /TfsReportDS.</li>
+<li>Click <b>OK</b>.</li></ol>
+<br />For example, you can remove a report from the process template as follows:<br />
+<ol><li>In the Process Template Explorer, click <b>Reports</b>. </li>
+<li>Select the <b>Load Test Detail</b> report and then click <b>Remove</b>.</li></ol>
+<br />The Load Test Detail report will no longer appear for projects created with this process template.<br />
+<h3>Step 13 – Upload the Modified Process Template</h3>In this step, you upload the modified process template to TFS so that it will be available when the new team project is created.<br />
+<ol><li>In Visual Studio, click <b>Save</b> on the toolbar to save the ProjectTemplate.xml file.</li>
+<li>Click <b>Team</b> and then select <b>Team Foundation Server Settings</b>.</li>
+<li>Click <b>Process Template Manager</b>.</li>
+<li>In the <b>Process Template Manager</b> dialog box, click <b>Upload</b>.</li>
+<li>Browse to the local folder where the process template was downloaded and modified.</li>
+<li>In the <b>Upload Process Template</b> dialog box, click <b>Upload</b>. You should see the new process template listed in the <b>Process Templates:</b> list.</li>
+<li>Click <b>Close</b>. </li></ol>
+<br />The customization process is now complete. The next time you create a new team project, the newly created process will be one of the options available when choosing the process templates.<br /><br />To test the changes you made during the course of this How To article, first upload the My Test process template you created as follows:<br />
+<ol><li>Make sure that you have saved any process template XML files that are still open.</li>
+<li>In Visual Studio, click <b>Team</b> and then select <b>Team Foundation Server Settings</b>.</li>
+<li>Click <b>Process Template Manager</b>.</li>
+<li>In the <b>Process Template Manager</b> dialog box, click <b>Upload</b>.</li>
+<li>Browse to your desktop location where you downloaded and modified the My Test process template.</li>
+<li>In the <b>Upload Process Template</b> dialog box, click <b>Upload</b>. You should see the new process template listed in the <b>Process Templates:</b> list.</li>
+<li>Click <b>Close</b>. </li></ol>
+<br />Next, create a new project based on this process template as follows:<br />
+<ol><li>Click <b>File</b> menu<b>,</b> click <b>New</b>, and** then click <b>Team Project</b>.</li>
+<li>Specify a name (for example, Test Project) and then click <b>Next</b>.</li>
+<li>In the process template drop-down list, select <b>My Test</b>.</li>
+<li>Click <b>Finish</b>.</li></ol>
+<br />Finally, review each area to see the changes you made by performing the following steps:<br />
+<ol><li>To view the new work item type:
+<ol><li>On the <b>Team</b> menu, click <b>Add Work Item</b>, and then click <b>My Bug</b> to create a new work item of the custom type you created.</li>
+<li>View the work item fields in the <b>Status</b> group box to see the <b>Security Impact</b> field that you added.</li>
+<li>Make sure that the field allows the adding of values only in the range of 1-5, add <b>5</b> as the value, and then save the work item.</li></ol></li>
+<li>To verify that the default work item you removed is no longer in the project:
+<ol><li>In Team Explorer, open your team project.</li>
+<li>Expand the Work Items folder.</li>
+<li>Expand the Team Queries folder.</li>
+<li>Double-click <b>All Work Items</b>.</li>
+<li>Review the default tasks to verify that the Setup: Migration of Source Code task does not exist.</li></ol></li>
+<li>To check the custom query you added:
+<ol><li>In Team Explorer, open your team project.</li>
+<li>Expand the Work Items folder.</li>
+<li>Expand the Team Queries folder.</li>
+<li>Double-click <b>Bugs with Security Impact</b>.</li>
+<li>Make sure that the bug you created above is displayed correctly.</li></ol></li>
+<li>To review the areas you added:
+<ol><li>Select a task from the <b>All Work Items</b> query you ran in the previous step.</li>
+<li>Click the <b>Area</b> drop-down list to view the two areas (<b>UI</b> and <b>Back End</b>) that you added to the template.</li></ol></li>
+<li>To ensure that the report you removed is no longer in the project:
+<ol><li>In Team Explorer, open your team project.</li>
+<li>Expand the Reports folder.</li>
+<li>Scan the list to verify that the <b>Load Test Detail</b> report has been removed.</li></ol></li></ol>
+
+<h3>Additional Resources</h3><ul><li>For more information about process template customization, see “Process Template Customization Overview” at <a href="http://msdn2.microsoft.com/en-us/library/ms194945(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms194945(VS.80).aspx</a> </li>
+<li>To download the Team Foundation Power Tool, including the Process Template Editor, go to <a href="http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx">http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx</a> </li>
+<li>For more information about customizing a process template using the Process Editor tool, see “Process Editor User Guide,” available with the Process Editor Tool installation.</li></ul></div><div class="ClearBoth"></div>

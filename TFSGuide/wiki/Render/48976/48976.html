@@ -1,0 +1,91 @@
+<div class="wikidoc"><h3>How To:  Create a Custom Report for Visual Studio Team Foundation Server</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Applies To</h3><ul><li>Microsoft&#174; Visual Studio&#174; 2005 Team Foundation Server (TFS)</li>
+<li>Microsoft Visual Studio Team System</li>
+<li>Microsoft SQL Server™ Reporting Services</li></ul>
+
+<h3>Summary</h3>This How To article walks you through the process of creating a new custom report and then publishing it to the team reporting portal in Team Foundation Server.<br />
+<h3>Contents</h3><ul><li>Objectives</li>
+<li>Overview</li>
+<li>Summary of Steps</li>
+<li>Before You Begin</li>
+<li>Step 1 – Create a new Reporting Project</li>
+<li>Step 2 – Create the data sources</li>
+<li>Step 3 – Create a new report in your project</li>
+<li>Step 4 – Modify the report</li>
+<li>Step 5 – Deploy the report to your Team Foundation Server</li>
+<li>Step 6 – Test the report</li>
+<li>Additional Resources</li></ul>
+
+<h3>Objectives</h3><ul><li>Learn how to create a reporting project in Visual Studio</li>
+<li>Learn how to create a new custom report in the reporting project</li>
+<li>Learn how to publish the new report to the report server</li></ul>
+
+<h3>Overview</h3>The reports that ship with VSTS are SQL Server Reporting Services reports. You can amend these reports or create your own custom reports by using the SQL Server 2005 Reporting Services Designer inside Visual Studio (Business Intelligence Development Studio), which ships with the SQL Server 2005 client tools. To create a custom report, you create a reporting project in Visual Studio, and then create data sources to connect to the TFS relational database and Online Analytical Processing (OLAP) database.<br />
+<h3>Summary of Steps</h3><ul><li>Step 1 – Create a new reporting project</li>
+<li>Step 2 – Create the data sources</li>
+<li>Step 3 – Create a new report in your project</li>
+<li>Step 4 – Modify the report</li>
+<li>Step 5 – Deploy the report to your Team Foundation Server</li>
+<li>Step 6 – Test the report</li></ul>
+
+<h3>Before You Begin</h3>Before you can customize a report for Team Foundation Server, you must ensure you have the following prerequisites in place:
+<ul><li>You must have Business Intelligence Development Studio installed on the machine you will be using to customize the report.  To test if it is installed, check Visual Studio to see if you have Business Intelligence Project type when you create a new project.</li>
+<li>Your user account must be a member of the Microsoft Analysis Server TfsWarehouseDataReaders security role on the data-tier server.</li>
+<li>Your user account must have administrator rights to the TFSWarehouse database on the data tier.</li>
+<li>Your user account must be a member of the SQL Server Reporting Services Publisher role on the application-tier server.</li></ul>
+
+<h3>Step 1 – Create a new reporting project</h3>Create a new reporting project so that you can add a new report to the project and customize it. Perform the following steps to create a new reporting project in Visual Studio:
+<ol><li>In Visual Studio, click <b>File</b>, then click <b>New</b>, then click <b>Project.</b></li>
+<li>Select the <b>Business Intelligence Project</b> type.</li>
+<li>Select the <b>Report Server Project</b> template.</li>
+<li>Set your project’s <b>Name</b> and <b>Location</b> and then click <b>OK</b>.</li></ol>
+
+<h3>Step 2 – Create the data sources</h3>In order to edit and publish the customized report, you need to add data sources for the Team Foundation Server data warehouse and OLAP cube.  Once these data sources are added to the Visual Studio project the report can pull data from the server.<br /><br /><b>To create the warehouse data source:</b>
+<ol><li>In the Visual Studio <b>Solution Explorer</b>, right click <b>Shared Data Sources</b> and then click <b>Add New Data Source</b>.</li>
+<li>On the <b>General</b> tab, enter <b>TfsReportDS</b> into the <b>Name</b> text box. </li>
+<li>Select <b>Microsoft SQL Server</b> from the <b>Type</b> combo box.</li>
+<li>Click the <b>Edit…</b> button.</li>
+<li>Fill in your data tier server name. </li>
+<li>Select the database <b>TFSWarehouse</b> database. </li>
+<li>Click the <b>OK</b> button twice to add the data source.</li></ol>
+<br /><b>To create the OLAP data source:</b>
+<ol><li>In <b>Solution Explorer</b>, right click <b>Shared Data Sources</b> and then click <b>Add New Data Source</b>.</li>
+<li>On the <b>General</b> tab, enter <b>TfsOlapReportDS</b> into the <b>Name</b> text box. </li>
+<li>Select <b>Microsoft SQL Server Analysis Services</b> from the <b>Type</b> combo box.</li>
+<li>Click the <b>Edit…</b> button.</li>
+<li>Fill in your data tier server name. </li>
+<li>Select the database <b>TFSWarehouse</b> database. </li>
+<li>Click the <b>OK</b> button twice to add the data source.</li></ol>
+
+<h3>Step 3 – Create a new report in your project</h3>Now that the data sources have been added to your project you can add a new report. Perform the following steps to add a new report to your project and customize it:
+<ol><li>In <b>Solution Explorer</b>, right click <b>Reports</b> and then click <b>Add-&gt;New Item...</b></li>
+<li>Select the <b>Report</b> template.</li>
+<li>Name the report and then click <b>OK</b></li></ol>
+
+<h3>Step 4 – Modify the report</h3>After you have added a report to the project, you can modify it as follows:
+<ol><li>If the <b>Report Designer</b> doesn&#39;t open automatically, open the report for modification by double clicking it in the <b>Solution Explorer</b>.</li>
+<li>Click the <b>Dataset</b> drop down and then select <b>&lt;New Dataset...&gt;</b></li>
+<li>Name the dataset, for example TestDataSet.</li>
+<li>Select <b>TFSOlapReportDS (shared).</b></li>
+<li>Click <b>OK.</b></li>
+<li>Click the <b>...</b> button next to <b>Build</b> (just below the <b>Dataset</b> drop down list) and then select <b>Team System</b>.</li></ol>
+<br />You are now set up to modify report by dragging measures and dimensions from the <b>Dataset</b> tree into the <b>Query Pane</b> and <b>Filter Pane.</b> You can modify the report’s layout by clicking the <b>Layout</b> tab. You can preview your report by clicking on the <b>Preview</b> tab.<br />
+<h3>Step 5 – Deploy the report to your Team Foundation Server</h3>After you have modified the report, you can deploy it to your team project’s reporting portal by performing the following steps:
+<ol><li>In Solution Explorer, right click on the report project and then click <b>Properties</b>.</li>
+<li>Ensure that <b>OverwriteDataSources</b> is set to <b>false</b>.</li>
+<li>Modify <b>TargetDataSourceFolder</b> to reflect your team project name; for example: <b>TargetDataSourceFolder</b> = TestProject.</li>
+<li>Modify <b>TargetReportFolder</b> to reflect your team project name; for example:* TargetDataSourceFolder* = TestProject.</li>
+<li>Modify <b>TargetDataSourceFolder</b> to <i>http://&lt;data-tier servername&gt;/reportserver</i>. For example: <b>TargetDataSourceFolder</b> = http://tfsrtm/reportserver.</li>
+<li>Click <b>OK.</b></li>
+<li>In Solution Explorer, right click on the rdl file and then click <b>Deploy.</b></li>
+<li>Watch the <b>Output Pane</b> to confirm successful completion.</li></ol>
+
+<h3>Step 6 – Test the report</h3>After you have published the report to your team project’s report server you can test it to make sure it was successfully deployed:<br />
+<ol><li>In <b>Team Explorer</b> expand your team project node, right click <b>Reports</b> and then click <b>Show Report Site</b></li>
+<li>In the report site, select the report you just created.</li>
+<li>Verify that the report looks the way you expected.</li></ol>
+
+<h3>Additional Resources</h3><ul><li>For more tutorials explaining how to work with reporting projects, see “Reporting Services Tutorials” at <a href="http://msdn2.microsoft.com/en-us/library/ms170246.aspx">http://msdn2.microsoft.com/en-us/library/ms170246.aspx</a> </li>
+<li>To read the Microsoft MSDN&#174;  article on editing reports, see “How to: Edit Reports in Report Designer” at <a href="http://msdn2.microsoft.com/en-us/library/ms244655(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms244655(VS.80).aspx</a> </li>
+<li>For more information on security roles in the data-tier, see “Securing Access Through Analysis Services” at <a href="http://msdn2.microsoft.com/en-us/library/ms174839.aspx">http://msdn2.microsoft.com/en-us/library/ms174839.aspx</a> </li>
+<li>For more information on security roles in the application-tier, see “Securing Reporting Services” at <a href="http://msdn2.microsoft.com/en-us/library/ms157198.aspx">http://msdn2.microsoft.com/en-us/library/ms157198.aspx</a> </li></ul></div><div class="ClearBoth"></div>

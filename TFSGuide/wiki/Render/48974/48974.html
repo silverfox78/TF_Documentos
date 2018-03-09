@@ -1,0 +1,51 @@
+<div class="wikidoc"><h3>How To:  Add a New Developer to Your Project in Visual Studio 2005 Team Foundation Server</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Applies To</h3><ul><li>Microsoft&#174; Visual Studio&#174; 2005 Team Foundation Server (TFS)</li>
+<li>Microsoft Visual Studio Team System</li>
+<li>Microsoft SQL Server™ Reporting Services</li></ul>
+
+<h3>Summary</h3>This How To article walks you through the process of adding a new developer to your team project in Team Foundation Server.  <br />
+<h3>Contents</h3><ul><li>Objectives</li>
+<li>Overview</li>
+<li>Summary of Steps</li>
+<li>Step 1 – Grant Access to the Team Project</li>
+<li>Step 2 – Grant Access to the Microsoft Office SharePoint&#174; project site</li>
+<li>Step 3 – Grant Access to SQL Server Reporting Services</li>
+<li>Additional Resources</li></ul>
+
+<h3>Objectives</h3><ul><li>Allow a developer to access the team project</li>
+<li>Grant a developer Read and Contributor access to SharePoint</li>
+<li>Allow a developer to view and subscribe to reports</li></ul>
+
+<h3>Overview</h3>Whenever you add a new developer to a project, you need to grant the developer appropriate permissions to access your team foundation project and its associated SharePoint project site. The new developer&#39;s account must also have sufficient permissions with SQL Server Reporting Services to be able to view reports such as those presented by the team site portal.<br />
+<h3>Summary of Steps</h3><ul><li>Step 1 – Grant Access to the Team Project</li>
+<li>Step 2 – Grant Access to the Microsoft Office SharePoint&#174; project site</li>
+<li>Step 3 – Grant Access to SQL Server Reporting Services</li></ul>
+
+<h3>Step 1 – Grant Access to the Team Project</h3>In this step you grant your new team member access to the Team Foundation Server.<br /><br /><b>To grant access to the team project:</b>
+<ol><li>Logon to Visual Studio with an account that is a member of the Team Foundation Administrators application group.</li>
+<li>Add the required project to <b>Team Explorer</b> (if it is not already listed)</li>
+<li>In <b>Team Explorer</b> right-click the team project, point to <b>Team Project Settings</b> and click <b>Group Membership</b>.</li>
+<li>Select <b>Project\Contributors</b> and click <b>Properties</b> and then add the new developer&#39;s account to this group. </li></ol>
+<br />Note that membership in the Contributors group provides the typical set of permissions that a developer requires, including the ability to add, modify and delete items within the team project and perform builds.<br />
+<h3>Step 2 – Grant Access to the SharePoint Project Site</h3>In this step you grant your new team member access to the SharePoint project site.<br /><br /><b>To grant access to the SharePoint project site:</b>
+<ol><li>Access the team project site with an account that is a member of the SharePoint Administrator site group. 
+<ol><li>Note that the project site for a project named YourProject is located by default at http://server/sites/YourProject/default.aspx</li></ol></li>
+<li>Click <b>Site Settings</b>.</li>
+<li>Under <b>Administration</b> title, Click <b>Manage Users</b>.</li>
+<li>Click <b>Add Users</b>.</li>
+<li>Enter the account name of the new developer’s account in the form <b>domain\useraccount</b> of the new developer&#39;s account, select <b>Contributor</b> and then click <b>Next</b>.</li>
+<li>Enter the developer&#39;s e-mail address in the address field, and optionally type a message to welcome them to the site.</li>
+<li>Click <b>Finish</b>.</li></ol>
+<br />Note that membership in Contributors group allows the developer to view and add content to existing document libraries and lists. Membership in the Reader group, provides read only access to the site, it may be sufficient depending on the needs of the new developer. <br />
+<h3>Step 3 – Grant Access to SQL Server Reporting Services</h3>In this step you grant your new team member access to SQL Report Services.<br /><br /><b>To grant access to SQL Server Reporting Services</b>
+<ol><li>Logon to the SQL Server Reporting Services administration Web site at http://server/reports by using an administrator account. .</li>
+<li>Click your team project name.</li>
+<li>Click the <b>Properties</b> tab.</li>
+<li>Click the <b>Security</b> tab.</li>
+<li>Click <b>New Role Assignment</b>.</li>
+<li>Enter your developer&#39;s Microsoft Windows&#174; account name, select <b>Browser</b> and then click <b>OK</b>.</li></ol>
+<br />Note that membership in the Browser group enables the developer to view and subscribe to reports.<br />
+<h3>Additional Resources</h3><ul><li>For a tutorial explaining how to work set permissions in SQL Server Reporting Services, see “Setting Permissions in Reporting Services” at <a href="http://msdn2.microsoft.com/en-us/library/aa337491.aspx">http://msdn2.microsoft.com/en-us/library/aa337491.aspx</a></li>
+<li>For more information on security roles in the application-tier, see “Securing Reporting Services” at  <a href="http://msdn2.microsoft.com/en-us/library/ms157198.aspx">http://msdn2.microsoft.com/en-us/library/ms157198.aspx</a> </li>
+<li>To view <i>SharePoint Administrators Guide</i> to “Managing Site and Group Permissions”, see  <a href="http://www.microsoft.com/resources/documentation/wss/2/all/adminguide/en-us/stsf03.mspx?mfr=true">http://www.microsoft.com/resources/documentation/wss/2/all/adminguide/en-us/stsf03.mspx?mfr=true</a></li>
+<li>For more information on managing permissions in TFS see “Managing Permissions” at  <a href="http://msdn2.microsoft.com/en-us/library/ms253094(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms253094(VS.80).aspx</a></li></ul></div><div class="ClearBoth"></div>

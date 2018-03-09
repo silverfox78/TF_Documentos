@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "678232",
+    "ThreadId": "274275",
+    "Html": "\r\n<p>This is somewhat larger than simply branching (or maybe not) but I thought this was the best place to ask this.</p>\r\n<p>We are beginning to re architect our site in a way that will make things much more modular and provide release independence for the various areas of our application.</p>\r\n<p>Each section of our application would be its own independent app. These apps will be released independently but follow a common company-wide iteration schedule and, hopefully, have the workitems managed in a common TFS project.</p>\r\n<p>Here would be a common scenario:</p>\r\n<p>App 1 is released after iteration 3</p>\r\n<p>App 2 is released after iteration 5 and a service pack release in iteration 7.</p>\r\n<p>App 3 is also released in iteration 5 with a service pack in iteration 8 and a second major release in iteration 12</p>\r\n<p>The way these apps will utilize common functionality (logging, persistence etc) will be through an underlying framework that can also be released independently.</p>\r\n<p>My question is, what would the recommended strategy be for these? Would we want to keep them in the same project due to the fact that the iterations are common or would we want to give them each their own project so that the branches are more normalized\r\n to the release patterns of the particular application.</p>\r\n<p>Thanks,</p>\r\n<p>&nbsp;</p>\r\n<p>Glenn</p>\r\n",
+    "PostedDate": "2011-09-29T08:52:14.57-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "703439",
+    "ThreadId": "274275",
+    "Html": "<p>Managing common source code and dependencies is a complex question.</p>\r\n<p>Generally, it is my view that if you have a common framework (similar to Patterns &amp; Practices Enterprise Library), you would maintain this framework within its own, separate Team Project.</p>\r\n<p>As with Enterprise Library you may want to maintain multiple *released* versions of the shared framework. Each dependent application would be able to create a dependency on a specific release of the common framework. This would prevent changes to the framework from inadvertantly rippling down to all the dependent applications (projects) and breaking the consumers of these dependencies. In this scenario, I prefer the consumers (dependent applications) establish assembly (binary) references to the common code (the producers). This approach works well especially when the producer is on a different release cadence from the consumers.</p>\r\n<p>On the other hand if the common source code&nbsp;(the producer)&nbsp;is being developed in conjunction with and perhaps by the same team as the one or more of the consumers, you may consider having project (source) references over assembly (binary) references. In this way, the consumer application(s) can bring in the latest changes to the producter (shared source) code.</p>\r\n<p>There are several options:</p>\r\n<ul>\r\n<li>Maintain the producer (shared source) in its own Team Project (Dependency Repository), and each consumer application in their own Team Project. The consumer projects may all be colocated in the same Team Project if they all share the same release cadence (common iterations and milestones) and are developed by the same team.</li>\r\n<li>Maintain the producer in the same Team Project as the consumer applications, but in a separate branching structure from the consumer application(s)</li>\r\n<li>Maintain the producer within the same branching structure as the consumer(s)</li>\r\n<li>Use workspace mappings to map the consumers to the producer code.</li>\r\n</ul>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-11-25T09:42:46.39-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "703724",
+    "ThreadId": "274275",
+    "Html": "<p>On a tactical note, I have experienced benefits from having \"a common company-wide iteration schedule\" as you suggest. If there is a solid reason for doing otherwise, you will feel it.</p>\r\n<p>Regarding whether to choose one TFS project for all or several, keep in mind that if you put them all in one, it will simplify management of work items by a single person or group. I have heard people complain that they had separate TFS projects and it made it more difficult to obtain a consolidated view of everyone's work at one time.&nbsp; If you have them in one TFS project, you can use areas to separate work efforts on reports.&nbsp; If these different applications are managed by entirely different people and consolidated reporting is at a distance, then this may not be as important.</p>\r\n<p>On a strategic note, have you studied CMU's guidance on product line architectures? <a href=\"http://www.sei.cmu.edu/productlines/\">http://www.sei.cmu.edu/productlines/</a> This may be what you are striving for. Or maybe not. But even if your product does not fit this, and instead fits one of the patterns they describe in \"What Software Product Lines Are Not,\" you may find the concepts and language helpful to your team. It may give you insight that will help you choose from among the various options Bill outlined.</p>",
+    "PostedDate": "2011-11-26T15:02:43.263-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

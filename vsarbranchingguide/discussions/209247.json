@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "430662",
+    "ThreadId": "209247",
+    "Html": "<p>Hello,</p>\r\n<p>I have a question about some confusing language in the TFS_Branching_Guide_Scenarios_2010_v1.pdf document at the top of page 23:</p>\r\n<p><span style=\"font-family:Calibri,Calibri;font-size:small\"><span style=\"font-family:Calibri,Calibri;font-size:small\">&quot;Team build scripts (i.e. TeamBuildTypes) should be considered first-class artifact that should be isolated from all other branches in the source explorer tree. It should be isolated from the actual source code, preferably in a directory that is a sibling of the &quot;source&quot; directory of a given branch. For example, in the Main branch, you should have both </span></span><span style=\"font-size:small\">$/WoodGroveBanking/Main/source </span><span style=\"font-family:Calibri,Calibri;font-size:small\"><span style=\"font-family:Calibri,Calibri;font-size:small\">and </span></span><span style=\"font-size:small\">$/WoodGroveBanking/Main/build. </span><span style=\"font-family:Calibri,Calibri;font-size:small\"><span style=\"font-family:Calibri,Calibri;font-size:small\">As branches are forked off of main, the build scripts will travel alongside with the source code at the same relative path ensuring stability of builds regardless of the branch.&quot; </span></span></p>\r\n<p>The first sentence makes it sound like the TeamBuildTypes folder should live outside of all of your branches, perhaps at the root level of the team project (as it <em>had</em> to in TFS05). However, the rest of the paragraph seems to indicate that TeamBuildTypes should live inside your branch so that the scripts get branched along with everything else. This way, you could create new build definitions per-branch based on those branched scripts (so you could have an automated build for each dev branch, the main branch, each release branch, etc.)</p>\r\n<p>Can you clarify the language here? It sounds like having TeamBuildTypes live within your main branch is the way to go, but I wanted to be sure.</p>",
+    "PostedDate": "2010-04-13T15:07:20.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "541894",
+    "ThreadId": "239941",
+    "Html": "\r\n<p>I know that baseless merges are not ideal but I'm wondering if the Rangers have any guidance on how to best handle baseless merges?</p>\r\n",
+    "PostedDate": "2010-12-29T13:42:48.38-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "542254",
+    "ThreadId": "239941",
+    "Html": "\r\n<p>Allen,</p>\r\n<p><span style=\"color:#000000\">As you know, we generally recommend against doing baseless merges for a variety of reasons. In general, with a good branching structure and process in place, the need for baseless merges is rare. I have recommended two scenarios\r\n for which baseless merges are useful or necessary. One is to fix a branching structure, perhaps to resolve issues that crop up during an upgrade from TFS 2005 / 2008 to TFS 2010. Following such an upgrade a user may need to convert some branches to folders,\r\n folders to branches or even reparent branches to get to the desired branch structure. Baseless merges are often necessary when doing branch reparenting.</span></p>\r\n<p><span style=\"color:#000000\">The second example was where I recommended a baseless merge to a customer as one way of fixing a problem with restructuring the folders and branches within a Team Project. When this customer removed or added a new subfolder underneath\r\n the Main branch, subsequent merges attempted to replicate this change even to prior releases where the customer wanted to retain the prior folder structure.\r\n</span></p>\r\n<p><span style=\"color:#000000\">Essentially their folder structure was originally:&nbsp;<span lang=\"EN-IN\" style=\"font-size:10pt\">$\\abc\\<strong>Main</strong>\\src\\website\\demowebsite&nbsp; which was branched to Dev:\r\n</span><span lang=\"EN-IN\" style=\"font-size:10pt\">$\\abc\\Dev\\<strong>DevTeam1</strong>\\src\\website\\demowebsite and to a few releases:&nbsp;<span lang=\"EN-IN\" style=\"font-size:10pt\">$\\abc\\<strong>Release1-0</strong>\\src\\website\\demowebsite and\r\n<span lang=\"EN-IN\" style=\"font-size:10pt\">$\\abc\\<strong>Release2-0</strong>\\src\\website\\demowebsite (branches are indicated in\r\n<strong>bold</strong>)</span></span></span></span></p>\r\n<p><span style=\"color:#000000\"><span lang=\"EN-IN\" style=\"font-size:10pt\"><span lang=\"EN-IN\" style=\"font-size:10pt\"><span lang=\"EN-IN\" style=\"font-size:10pt\">The customer decided to remove the\r\n<strong>website </strong>folder from the Main branch. But they wanted to be able to merge\r\n<strong>Main </strong>to <strong>Release1-0</strong> or <strong>Release2-0</strong> without having the website folder removed from these target branches. I recommended a baseless merge as one way to solve this issue (do a baseless merge from\r\n<span lang=\"EN-IN\" style=\"font-size:10pt\">$\\abc\\<strong>Main</strong>\\src\\demowebsite to\r\n<span lang=\"EN-IN\" style=\"font-size:10pt\">$\\abc\\<strong>Release1-0</strong>\\src\\website\\demowebsite. This seemed to work&nbsp;&nbsp;- but don't ask me why they needed to do this :). For future releases they will merge\r\n<strong>Main </strong>to <strong>Release3-0 </strong>so they can carry the new folder structure forward.\r\n</span></span></span></span></span></span></p>\r\n<p><span style=\"color:#000000\"><span lang=\"EN-IN\" style=\"font-size:10pt\"><span lang=\"EN-IN\" style=\"font-size:10pt\"><span lang=\"EN-IN\" style=\"font-size:10pt\"><span lang=\"EN-IN\" style=\"font-size:10pt\"><span lang=\"EN-IN\" style=\"font-size:10pt\">If you have any\r\n suggestions for additional guidance, please feel free to suggest.</span></span></span></span></span></span></p>\r\n<p><span style=\"color:#000000\"><span lang=\"EN-IN\" style=\"font-size:10pt\"><span lang=\"EN-IN\" style=\"font-size:10pt\"><span lang=\"EN-IN\" style=\"font-size:10pt\"><span lang=\"EN-IN\" style=\"font-size:10pt\"><span lang=\"EN-IN\" style=\"font-size:10pt\">Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</span></span></span></span></span></span></p>\r\n<p><span lang=\"EN-IN\" style=\"color:#1f497d; font-size:10pt\"><span lang=\"EN-IN\" style=\"color:#1f497d; font-size:10pt\"></span></span>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-30T10:51:30.12-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "573249",
+    "ThreadId": "239941",
+    "Html": "<p>Why exactly are merges between sibling branches baseless in the first place? I haven't come across a convincing reason for this so far, and none of the other source control tools that I've used have this limitation.</p>",
+    "PostedDate": "2011-02-28T06:18:39.687-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "573330",
+    "ThreadId": "239941",
+    "Html": "<p>Jammycakes</p>\r\n<p>You already posted&nbsp;a more elaborate form of this&nbsp;question in another forum. I suspect it will (and has) generated some response. Please try not to create two parallel threads under two separate discussion forums. Unless you want to do a baseless merge to merge these sibling threads :)</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-02-28T08:57:48.187-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "658525",
+    "ThreadId": "269167",
+    "Html": "\r\n<p>Question regarding the Basic Branch Plan in the Scenarios Guide (TFS Branching Guide - Scenarios 2010_20100330.pdf).<br>\r\n<br>\r\nOn page 5 of the scenarios guide, it says:<br>\r\n&quot;...we recommend only doing reverse integration ... when the code in the source branch is stable and has passed Quality Assurance (QA) quality gates&quot;<br>\r\n<br>\r\nSo it is recommending we perform QA on the DEV branch before merging back into MAIN.<br>\r\n<br>\r\nHowever, on page 6, it reads as follows:<br>\r\n&quot;The MAIN branch is used for final stabilization (QA) of all integrated features prior to releasing vNext.&quot;<br>\r\n<br>\r\nMy question: When does the QA team get involved?<br>\r\nDo they test the DEV branch? The MAIN branch? Or both?</p>\r\n",
+    "PostedDate": "2011-08-15T13:43:08.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658544",
+    "ThreadId": "269167",
+    "Html": "<p><span style=\"font-family: 'Segoe UI','sans-serif';\">&nbsp;</span></p>\r\n<p><span style=\"font-family: 'Segoe UI','sans-serif';\"><span>QA should be involved with both. You do not want to integrate unstable code into the MAIN branch ever. So QA should test the DEV branch. Once it passes all tests, it can be integrated to MAIN. It HAS to be tested again to ensure nothing that was in MAIN has broken. </span></span></p>",
+    "PostedDate": "2011-08-15T14:32:52.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658572",
+    "ThreadId": "269167",
+    "Html": "<p>I agree<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-08-15T15:25:49.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658579",
+    "ThreadId": "269167",
+    "Html": "<p>This is different from how my org currently works. We basically have one big phase of development, followed by a phase of QA on all changes.</p>\r\n<p>According to tinae's response, we actually need to do a round of QA for the DEV branch, then a final regression on MAIN after DEV branch is merged. Is that accurate?</p>\r\n<p>Followup question:</p>\r\n<p>Do these two rounds of testing typically execute identical test cases? Or is round #1 (against DEV branch) focused only on the functional areas which are being delivered?</p>",
+    "PostedDate": "2011-08-15T16:09:24.15-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658587",
+    "ThreadId": "269167",
+    "Html": "<p>I don't think there needs to be a total Yes or No answer here. You ask some great questions. I believe that QA should start by testing the code from the branches where the code is developed and checked in. This means we do not branch the code as a way of promoting the code to QA. Rather we deploy the code from Main or from a Dev branch to QA. I can see scenarios where there are multiple parallel development branches. For a variety of reasons the code in these branches might not be merged (integrated) until some point in time in the future. Why not deploy the code from a Dev branch to QA and later deploy the code from a different Dev branch to QA. When both branches are ready to be integrated, merge them and test the integration (first in one of the Dev branches). Finally merge the code to Main. Deploy the merged code to QA and continue until Main passes quality gates. Finally branch Main for Release. <br />So the quality gates may or may not be different for a Dev Branch vs. the Main branch.&nbsp; The test cases you run in QA against code from Main would probably be a superset rather than a subset of the tests run in QA against code from a Dev branch.<br />Finally I would not necessarily characterize these as rounds of testing. You would continue to Test, Fix Bugs, Redeploy to QA, Test Fix Bugs, Redeploy to QA until you pass Quality Gates (rate of new bugs, number and severity of unresolved bugs, etc)</p>\r\n<p>Regards,<br />Bill Heys</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-08-15T16:27:27.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "658588",
+    "ThreadId": "269167",
+    "Html": "<p>In answer to your first question, your understanding is correct.</p>\n<p>In answer to your follow-up question, please do ALL the tests on your DEV branch before going to MAIN and repeat them. Rather test too much than too little. You also want to ensure that you are not reintroducing bugs into MAIN that you have fixed in a HOTFIX or PRODUCTION branch. Did you integrate these into DEV? Test to make sure. Test again after integration to make sure. Test as early as possible and as often as possible. It will save face, time and money. :)</p>\n<p>Tina</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-08-15T16:27:53.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "659486",
+    "ThreadId": "269167",
+    "Html": "<p>Thanks Bill and Tina for the detailed responses.</p>\r\n<p>The unanimous answer seems to be that testing is required both on the DEV branch (pre-backward-integration) and the merged MAIN branch.</p>\r\n<p>In that case, do organizations typically maintain separate QA environments for testing DEV branches and the MAIN branch?</p>\r\n<p>It seems that a single QA environment would become a bottleneck if we are testing multiple branches in parallel.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-08-17T08:36:52.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "670264",
+    "ThreadId": "269167",
+    "Html": "<p>Frankosaurus, you said</p>\n<p style=\"padding-left: 30px;\">\"It seems that a single QA environment would become a bottleneck if we are testing multiple branches in parallel.\"</p>\n<p>I am curious: are your multiple branches different features within a single planned release? Or are they part of different releases, overlapping in development, incompatible with one another, and intended for release at different times in the future? (like V2, V3)?</p>\n<p>If you have several branches that are merely separate features that are part of one release, you may be fine with just one QA environment. In that case, it is simply a matter of timing to take the latest releases from Main on an orderly schedule that does not disrupt QA testing. Developers RI to Main when their code passes quality checks. QA takes deployments from Main when it is ready to test newly available, stable features. Although you could have two QA environments and two QA teams working to support each development branch, this seems to defeat the purpose of QA if these are part of a single release. In this case, you would be better ensuring your development process includes plenty of collaborative functional testing in the dev environment so that QA is really about testing the integrated product.</p>\n<p>In a different situation, if you have several branches, each of which represents different, overlapping, incompatible releases, then you may need a separate QA environment for each if you intend to perform QA activities on the distant future releases as things are developed.&nbsp; If your software is a single website or windows app with a single database, then you may be able to create several versions in one environment. But if you are testing an integrated suite of applications from many servers, you may need entirely different environments. We use VMWare lab manager to isolate our environments. It works great but requires staff and hardware&nbsp;to manage properly.</p>",
+    "PostedDate": "2011-09-11T06:02:28.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

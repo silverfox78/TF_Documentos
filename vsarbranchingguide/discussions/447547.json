@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1058666",
+    "ThreadId": "447547",
+    "Html": "Hi,<br />\n<br />\nI am working with a customer who is building 1 (or more) core products using TFS2012 which they will &quot;supply&quot; to another department within the organisation. This other department will, in turn then customise the product (including code changes if necessary) for individual customers. These customisation projects could number in the 100's. The organisation would like to share all of the artifacts from the core product with the customisation project (including test cases) so that they can be used for regression testing etc. The process template is a customised version of CMMI.<br />\n<br />\nI am wondering if anyone has any opinions on what I see as my two options (or if there are options I have not considered):<br />\n<br />\n1 Create new team projects branched from the core product.<br />\n'+ Shared work items build resources<br />\n'+ Ability to push bug fixes<br />\n'- May hit PC project limit <br />\n'- Managing security<br />\n <br />\n2 Create a separate project collection and create a custom application based on the TFS integration platform to create and update team projects as a copy of the core project. <br />\n'+ No problem PC project limit <br />\n'+ Managing security<br />\n'+ Work Items only a copy<br />\n'+ No current support for Test cases in TFS IP as well as limited support for TFS2012 from what I can see on the blogs.<br />\n<br />\nThanks in advance for any guidance!<br />\n<br />\nJohn.<br />\n<br />\nWOW the rendering was a long way from what I wrote originally! Fixed now.<br />\n",
+    "PostedDate": "2013-06-19T07:04:32.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

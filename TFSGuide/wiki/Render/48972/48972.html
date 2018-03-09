@@ -1,0 +1,262 @@
+<div class="wikidoc"><h2>Practices at a Glance:  Project Management</h2>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h2>Index</h2><h3>Check-in Policies</h3><ul><li><i>How to set up check-in policies to enforce code quality</i></li>
+<li><i>How to set up check-in policies to ensure that developers associate work items with check-ins</i></li>
+<li><i>How to set up check-in policies to enforce coding standards</i></li></ul>
+
+<h3>Project Management	</h3><ul><li><i>How to use Microsoft Project to manage your project</i></li>
+<li><i>How to use Microsoft Excel to manage your project</i></li>
+<li><i>How to create a minimal process template</i></li>
+<li><i>How to customize a process template</i></li>
+<li><i>How to customize a work item type</i> <i>within a process template</i></li>
+<li><i>How to customize a work item type within an existing team project</i></li>
+<li><i>How to create an iteration</i></li>
+<li><i>How to create an area</i></li>
+<li><i>How to add a check-in event notification</i></li>
+<li><i>How to set up a report dashboard</i></li>
+<li><i>How to create folders in your source control repository</i></li>
+<li><i>How to delete a project from Team Foundation Server</i></li></ul>
+
+<h2>Check-in Policies</h2><ul><li><b>How to set up check-in policies to enforce code quality</b></li>
+<li><b>How to set up check-in policies to ensure that developers associate work items with check-ins</b></li>
+<li><b>How to set up check-in policies to enforce coding standards</b></li></ul>
+
+<h3>How to Set Up Check-in Policies to Enforce Code Quality</h3>Use a combination of code analysis and testing policies to enforce a standard of code quality. For example, use the testing policy available out-of-box with VSTS, to ensure that specific tests are executed and passed prior to allowing source to be checked into Microsoft&#174; Visual Studio&#174; 2005 Team Foundation Server (TFS) source control. You can also configure a code analysis policy to help ensure that your code meets certain quality standards by ensuring that security, performance, portability, maintainability, and reliability rules are passed.<br /><br />By enforcing this type of check-in policy in addition to policies that enforce coding standards and guidelines, you ensure that your code meets a specific code quality gate.<br /><br /><b>To enforce a code analysis check-in policy for a team project</b>
+<ol><li>In Team Explorer, right-click your team project, point to <b>Team Project Settings</b>, and then click <b>Source Control</b>. </li>
+<li>Click the <b>Check-in Policy</b> tab. </li>
+<li>Click <b>Add</b> and then select and configure the appropriate policy.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about creating and using a custom check-in policy, see “How To – Step Through Creating Custom Check-in Policies for TFS” In this guide.</li>
+<li>To learn how to customize a check-in policy, see “Walkthrough: Customizing Check-in Policies and Notes” at <a href="http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx</a> </li>
+<li>To view sample code that will disallow selected patterns on check-in, see “Checkin Policy to Disallow Certain Patterns” at <a href="http://blogs.msdn.com/jmanning/archive/2006/02/02/523125.aspx">http://blogs.msdn.com/jmanning/archive/2006/02/02/523125.aspx</a></li>
+<li>To see sample code that will enforce comments on check-in, see “Sample Checkin Policy: Make Sure the Comment Isn’t Empty” at <a href="http://blogs.msdn.com/jmanning/archive/2006/01/21/515858.aspx">http://blogs.msdn.com/jmanning/archive/2006/01/21/515858.aspx</a></li>
+<li>To learn how to register a new check-in policy, see “I’ve Made a New Check-In Policy! How Do I Add It?” at <a href="http://blogs.msdn.com/jmanning/archive/2006/02/07/526778.aspx">http://blogs.msdn.com/jmanning/archive/2006/02/07/526778.aspx</a></li></ul>
+
+<h3>How to Set Up Check-in Policies to Ensure That Developers Associate Work Items with Check-ins</h3>Configure the out-of-box <b>Work Item</b> check-in policy, so that developers are forced to associate work items with a check-in. This association helps maintain traceability between the changes made to the source code and the work items tracking bugs and tasks.<br /><br /><b>To configure the work item check-in policy to force developers to associate check-ins with a work item</b>
+<ol><li>In Team Explorer, right-click your team project, select <b>Team Project Settings</b>, and then click <b>Source Control</b>.</li>
+<li>Click the <b>Check-in Policy</b> tab.</li>
+<li>Click <b>Add</b> and then select and configure the <b>Work Item</b> check-in policy.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about creating and using a custom check-in policy, see “How To – Step Through Creating Custom Check-in Policies for TFS” in this guide.</li>
+<li>To learn how to customize a check-in policy, see “Walkthrough: Customizing Check-in Policies and Notes” at <a href="http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx</a></li></ul>
+
+<h3>How to Set Up Check-in Policies to Enforce Coding Standards</h3>The code analysis check-in policies that ship with Team Foundation Server enable you to automatically run static code analysis on code as it is checked in, to ensure that the relevant rules are satisfied. You can fine-tune the code analysis policy to check many different rules. For example, you can check rules governing design, interoperability, maintainability, mobility, naming conventions, reliability, and more.<br /><br /><b>To enforce a code analysis check-in policy for a team project</b>
+<ol><li>In Team Explorer, right-click your team project, point to <b>Team Project Settings</b>, and then click <b>Source Control</b>.</li>
+<li>Click the <b>Check-in Policy</b> tab and then click <b>Add</b>.</li>
+<li>In the <b>Add Check-in Policy</b> dialog box, select <b>Code Analysis</b> and then click <b>OK</b>.</li>
+<li>In the <b>Code Analysis Policy Editor</b>, select either <b>Enforce C/C++ Code Analysis (/analyze)</b> or <b>Enforce Code Analysis</b> <b>For Managed Code</b>. Select both if your project contains a combination of managed and unmanaged code.</li>
+<li>If you select manage code analysis, configure your required rule settings for managed code analysis based on your required coding standards. This determines precisely which rules are enforced.</li></ol>
+<br />You can also create a custom check-in policy to perform checks that are not available by default. For example, you can disallow code patterns such as banned API calls, or you can write a policy to enforce your team’s specific coding style guidelines, such as where braces should be positioned within your source code.<br />
+<h4>Additional Resources</h4><ul><li>For more information about creating and using a custom check-in policy, see “How To – Step Through Creating Custom Check-in Policies for TFS” in this guide.</li>
+<li>To learn how to customize a check-in policy, see “Walkthrough: Customizing Check-in Policies and Notes” at <a href="http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx</a> </li>
+<li>To see sample code that will disallow selected patterns on check-in, see “Checkin Policy to Disallow Certain Patterns” at <a href="http://blogs.msdn.com/jmanning/archive/2006/02/02/523125.aspx">http://blogs.msdn.com/jmanning/archive/2006/02/02/523125.aspx</a></li>
+<li>To see sample code that will enforce comments on check-in, see “Sample Checkin Policy: Make Sure the Comment Isn’t Empty” at <a href="http://blogs.msdn.com/jmanning/archive/2006/01/21/515858.aspx">http://blogs.msdn.com/jmanning/archive/2006/01/21/515858.aspx</a></li>
+<li>To learn how to register a new check-in policy, see “I’ve Made a New Check-In Policy! How Do I Add It?” at <a href="http://blogs.msdn.com/jmanning/archive/2006/02/07/526778.aspx">http://blogs.msdn.com/jmanning/archive/2006/02/07/526778.aspx</a></li></ul>
+
+<h2>Project Management	</h2><ul><li><b>How to use Microsoft Project to manage your project</b></li>
+<li><b>How to use Microsoft Excel to manage your project</b></li>
+<li><b>How to create a minimal process template</b></li>
+<li><b>How to customize a process template</b></li>
+<li><b>How to customize a work item type</b> <b>within a process template</b></li>
+<li><b>How to customize a work item type within an existing team project</b></li>
+<li><b>How to create an iteration</b></li>
+<li><b>How to create an area</b></li>
+<li><b>How to add a check-in event notification</b></li>
+<li><b>How to set up a report dashboard</b></li>
+<li><b>How to create folders in your source control repository</b></li>
+<li><b>How to delete a project from Team Foundation Server</b></li></ul>
+
+<h3>How to Use Microsoft Project to Manage Your Project</h3>Use Microsoft Office Project to create and schedule tasks, lay out task dependencies, load-balance resources, and estimate end dates. You can use these features to track your projects. <br /><br />To track a project, you need to perform the following high-level steps:
+<ul><li>Create a project plan.</li>
+<li>Create a set of tasks, schedule them, and publish them to Team Foundation Server. 
+<ul><li>The tasks show up in the appropriate developer’s work item queue.</li>
+<li>The team members work on their tasks and report their progress in Team Explorer by setting the work item status.</li></ul></li>
+<li>Refresh the project plan to retrieve the latest information. This enables you to track the progress of the project in Microsoft Project.</li></ul>
+<br /><b>To publish a project plan to TFS</b>
+<ol><li>If you are creating a new project plan, set up your tasks, durations, resource assignments, dependencies, and other details as you would normally do with Microsoft Office Project.</li>
+<li>In Microsoft Office Project, on the <b>Team</b> menu, click <b>Choose Team Project</b>.</li>
+<li>Select the Team Foundation Server for your team project.</li>
+<li>Select your team project.</li>
+<li>Click <b>OK</b>.</li>
+<li>In the <b>Work Item Type</b> column, set the work item type for each work item that you want published to TFS.</li>
+<li>In the <b>Sync</b> column, for summary tasks that you do not want to publish to TFS, select <b>Do Not Publish</b>.</li>
+<li>If you have any tasks that are assigned to more than one resource, divide them into separate tasks that can be assigned to one resource. (Team Foundation Server does not currently support assigning a work item to multiple resources.) Optionally, you can group the separate tasks into a summary task to receive the automatic calculation benefits. To group sets of tasks, create a set of areas in TFS, and then group tasks by setting the <b>Area</b> column. TFS, see “How to: Modify the Team Project Areas” at <a href="http://msdn2.microsoft.com/en-us/library/ms181479(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181479(VS.80).aspx</a> </li>
+<li>On the <b>Work Item</b> toolbar, select <b>Publish</b> to publish the project plan to TFS.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information, see “Working with Work Items in Microsoft Project” at <a href="http://msdn2.microsoft.com/en-us/library/ms244368(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms244368(VS.80).aspx</a> </li>
+<li>For more information, see “How to: Import Work Items in Microsoft Excel or Microsoft Project” at <a href="http://msdn2.microsoft.com/en-us/library/ms181676(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181676(VS.80).aspx</a> </li>
+<li>For more information, see “Tracking Team Projects in Microsoft Excel and Microsoft Project” at <a href="http://msdn2.microsoft.com/en-us/library/ms244373(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms244373(VS.80).aspx</a> </li></ul>
+
+<h3>How to Use Microsoft Excel to Manage Your Project</h3>Use Microsoft Office Excel&#174; to store, sort, filter, and manage requirements, scenarios, issues, bugs, risks, and work items.<br /><br />There are two ways to create a work item list. With the first approach, from Team Explorer you can select a work item query and create a new data-bound spreadsheet. The new spreadsheet contains a work item list that is populated with the data from the query. You can also create a work item list from within Excel by using the add-in to select a project and import work items.<br /><br /><b>To create a work item list with Excel</b>
+<ol><li>In Microsoft Office Excel, on the <b>Team</b> menu, click <b>New List</b>.</li>
+<li>Under <b>Connect to a Team Foundation Server</b>, select the server to connect to, or click <b>Servers</b> to enter the server information.</li>
+<li>Under <b>Team Projects</b>, select the team project on the TFS server with which you want to work. The document is bound to this team project.</li>
+<li>Click <b>OK</b>.</li>
+<li>Select the type of list you want. To create a query list, select the <b>Query List</b> option and then click a team query from the <b>Select a Query</b> drop-down list.</li>
+<li>Select the columns you want to appear in the new work item list.</li>
+<li>Import the desired work items. For more information, see “How to: Import Work Items in Microsoft Excel or Microsoft Project” at http://msdn2.microsoft.com/en-us/library/ms181676(VS.80).aspx  </li>
+<li>You should now either save the spreadsheet, or publish the new work items to the work item database by clicking <b>Publish Changes</b> on the <b>Team</b> menu.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information, see “Working with Work Item Lists in Microsoft Excel” at <a href="http://msdn2.microsoft.com/en-us/library/ms181694(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181694(VS.80).aspx</a></li>
+<li>For more information, see “How to: Create a Work Item List” at <a href="http://msdn2.microsoft.com/en-us/library/ms181695(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181695(VS.80).aspx</a></li>
+<li>For more information, see “How to: Import Work Items in Microsoft Excel or Microsoft Project” at <a href="http://msdn2.microsoft.com/en-us/library/ms181676(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181676(VS.80).aspx</a> </li></ul>
+
+<h3>How to Create a Minimal Process Template</h3>If you do not require support for any project management–related features of TFS beyond source control, a minimal process template may be sufficient for your needs. In order to create a minimal process template, you use the Process Template Manager to download the template to your local computer, edit the template to remove the sections you are not going to use, and then upload the template back to the server.<br /><br /><b>To create a custom project template that supports only source control</b>
+<ol><li>In Team Explorer, right-click the server name, click <b>Team Foundation Server Settings</b>, and then click <b>Process Template Manager</b>. </li>
+<li>Choose the template you want to edit and then select <b>Download</b>. </li>
+<li>From the folder where you saved the template, open Process Template.xml for editing.</li>
+<li>Change the name of the process to a name of your choice by editing the <b>&lt;name&gt;</b> element.</li>
+<li>In the &lt;plugins&gt; section, remove the plug-ins for <b>Reporting</b>, <b>Portal</b>, and <b>WorkItemTracking</b>. </li>
+<li>In the &lt;groups&gt; section, remove the groups for <b>Reporting</b>, <b>Portal</b>, and <b>WorkItemTracking</b>. </li>
+<li>In the <b>VersionControl</b> group, find the &lt;dependencies&gt; section and then remove the <b>WorkItemTracking</b> dependency.</li>
+<li>In the folder where the template was saved, remove the Reports, Windows Sharepoint Services, and WorkItem Tracking folders.</li>
+<li>Save all of your changes. </li>
+<li>In Team Explorer, right-click the server name, click <b>Team Foundation Server Settings</b>, and then click <b>Process Template Manager</b>. </li>
+<li>Select <b>Upload</b> and choose the template you want to upload. </li></ol>
+<br />After you have uploaded the modified process template, you can create new team projects by using this template.<br />
+<h4>Additional Resources</h4><ul><li>For more information, see “Chapter 13 – Process Templates Explained” in this guide.</li>
+<li>For more information, see “How To – Customize a Process Template in Visual Studio Team Foundation Serve” in this guide.</li>
+<li>For more information, see “Customizing Process Templates” at <a href="http://msdn2.microsoft.com/en-us/library/ms243782(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms243782(VS.80).aspx</a></li></ul>
+
+<h3>How to Customize a Process Template</h3>Customize a process template to change the default work item types, security settings, source control settings, and reports that are set up when a new team project is created to match your organization’s process requirements.<br /><br /><b>To customize a process template</b>
+<ol><li>Review the out-of-box process templates and choose the one that most closely suits your organizational process.</li>
+<li>Download the chosen process template.</li>
+<li>Customize the process template and change the work item types, security settings, and source control settings as appropriate.</li>
+<li>Upload the customized template to TFS.</li>
+<li>Verify that the changes you made suit your process requirements. </li></ol>
+<br />To implement the proceeding process you have two options:
+<ul><li><b>Manually customize the XML files.</b> Although this is manual process and hence is error-prone, it does enable you to customize the process template with a fine degree of control. For more information, see “Customizing Process Templates” at <a href="http://msdn2.microsoft.com/en-us/library/ms243782(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms243782(VS.80).aspx</a> </li>
+<li><b>Use the Process Template Editor tool available with the Microsoft Visual Studio 2005 Team Foundation Server Power Tool.</b> The latest version of the TFS Power Tool provides a graphical tool for viewing and customizing process templates. When connected to TFS, you can use this tool to customize work item type definitions and global lists on an active project. For more information, see “How To – Customize a Process Template in Visual Studio Team Foundation Serve” in this guide.</li></ul>
+
+<h4>Additional Resources</h4><ul><li>For more information, see “Chapter 13 – Process Templates Explained” in this guide.</li>
+<li>For more information, see “How To – Customize a Process Template in Visual Studio Team Foundation Serve” in this guide.</li>
+<li>For more information, see “Customizing Process Templates” at <a href="http://msdn2.microsoft.com/en-us/library/ms243782(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms243782(VS.80).aspx</a></li></ul>
+
+<h3>How to Customize a Work Item Type Within a Process Template</h3>Use the Process Editor tool, available with the latest version of the TFS Power Tool, to customize work item types. You can download the TFS Power Tool from <a href="http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx">http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx</a>. <br /><br /><b>To customize work item types</b>
+<ol><li>Download the process template that most closely meets your requirements, as follows: 
+<ol><li>In Visual Studio, on the <b>Team</b> menu, select <b>Team Foundation Server Settings</b>.</li>
+<li>Click <b>Process Template Manager</b>.</li>
+<li>In the <b>Process Template Manager</b> dialog box, select the process template you want to modify and then click <b>Download</b>.</li>
+<li>In the <b>Download Process Template</b> dialog box, select the folder location on your local drive where you want to save the template, and then click <b>Save</b>.</li></ol></li>
+<li>Open the process template in the Process Editor as follows:
+<ol><li>In Visual Studio, click the <b>Team</b> menu.</li>
+<li>Click <b>Process Editor</b>, and then click <b>Open Process Template</b>. </li>
+<li>In the <b>Open Process Template fileset</b> dialog box, navigate to the downloaded process template and then click <b>Open</b>. The ProcessTemplate.xml file is loaded by Visual Studio.</li>
+<li>Set the <b>Name</b> of the methodology you are customizing.</li></ol></li>
+<li>In the Process Template Explorer, click <b>Work Item Tracking</b>.</li>
+<li>In the right pane, click the <b>Type Definitions</b> tab. </li>
+<li>To create a new work item, click <b>Add</b> in the toolbar in the right pane.</li>
+<li>In the <b>New Work Item Type</b> dialog box, enter a name for the work item type and select an existing work item type from the <b>Copy From</b> drop-down list. The new work item type is** created and is available in the <b>Item List</b> on the <b>Type Definitions</b> tab in the right pane.</li>
+<li>To save changes, on the <b>File</b> menu, click <b>Save</b>.</li>
+<li>Optionally, add/remove attributes** or fields** to/from the new work item type or an existing work item type.</li>
+<li>On the <b>Type Definitions</b> tab, right-click the work item type you want to edit, and then click <b>Open</b>. The selected work item type opens in a new Visual Studio window.</li>
+<li>Add or remove attributes as necessary.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>To download the TFS Power Tool, go to <a href="http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx">http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx</a> </li>
+<li>For more information about work items, see “Chapter 12 – Work Items Explained” in this guide.</li>
+<li>For more information on using the Process Editor tool to customize work item types, see “How To – Customize a Process Template in Visual Studio Team Foundation Server” in this guide.</li></ul>
+
+<h3>How to Customize a Work Item Type Within an Existing Team Project</h3>You have two options for editing an existing work item type: you can use the command line or you can use the Process Template Editor tool, available as part of the TFS Power Tool. <br /><br />To edit a work item type from the command line, use the witexport and witimport tools available at, “%programfiles%\Program Files\Microsoft Visual Studio 8\Common7\IDE” on a computer with Team Explorer installed. <br /><br /><b>To export the work item type from the project, edit it, and re-import the type</b>
+<ul><li>Run <b>witexport</b> as follows to export the work item type:</li></ul>
+<br /><span class="codeInline"> witexport /f task.xml /t http://TFSServer:8080 /p MyTeamProject /n Task </span><br />
+<ul><li>Edit the work item type definition.</li>
+<li>Run <b>witimport</b> as follows to import the changed type:</li></ul>
+<br /><span class="codeInline"> witimport /f task.xml /t http://TFSServer:8080 /p MyTeamProject </span><br /><br />The preceding command line shows how to export the <b>Task</b> work item type from the MyTeamProject project to a server named TFSServer.<br /><br /><b>To edit a work item type by using the Process Template Editor tool:</b>
+<ol><li>Export the work item type you want to edit as follows:
+<ol><li>In Visual Studio, on the <b>Team</b> menu, select <b>Process Editor</b> and then click <b>Work Item Types</b> and then select <b>Export WIT</b>.</li>
+<li>In the <b>Connect to Team Foundation Server</b> dialog box, enter the URL of your server.</li>
+<li>In the <b>Select Work Item Type</b> dialog box, choose the work item type you want to export.</li>
+<li>Save the work item type.</li>
+<li>Save any global lists you also want to edit.</li>
+<li>Edit the work item type and then save your edits.</li></ol></li>
+<li>Import the edited work item type as follows:</li>
+<li>In Visual Studio, on the <b>Team</b> menu, select <b>Process Editor</b> and then click* Work Item Types* and then select <b>Import WIT</b>.</li>
+<li>In the <b>Connect to Team Foundation Server</b> dialog box, enter the URL of your server.</li>
+<li>In the <b>Import Work Item Type</b> dialog box, browse to the edited work item type and then choose the team project into which you want to import the changed work item type.</li>
+<li>Click <b>OK</b> to import the new work item type definition.</li></ol>
+
+<h4>Additional Resources  </h4><ul><li>To download the TFS Power Tool, go to <a href="http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx">http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx</a> </li>
+<li>For more information about using the Process Editor tool to customize work item types, see “How To – Customize a Process Template in Visual Studio Team Foundation Server” in this guide</li>
+<li>For more information about using witimport, see “witimport” at <a href="http://msdn2.microsoft.com/en-us/library/ms253163(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms253163(VS.80).aspx</a></li>
+<li>For more information about using witexport, see “witexport” at <a href="http://msdn2.microsoft.com/en-us/library/ms253051(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms253051(VS.80).aspx</a></li></ul>
+
+<h3>How to Create an Iteration</h3>Iterations are used to group work items and therefore impact work item creation, work item queries, and reporting. <br /><br /><b>To create an iteration</b>
+<ol><li>In Team Explorer, click your team project. </li>
+<li>On the <b>Team</b> menu, point to <b>Team Project Settings</b> and then click <b>Areas and Iterations</b>.</li>
+<li>In the <b>Areas and Iterations</b> dialog box, click the <b>Iteration</b> tab.</li>
+<li>Click the <b>Add a child node</b> toolbar button.</li>
+<li>Right-click the new node, click <b>Rename</b>, and then type iteration name.</li>
+<li>Click the <b>Iteration</b> node.</li>
+<li>Repeat steps 2, 3, and 4 to create additional iterations identified for your project.</li>
+<li>Click <b>Close</b>.</li></ol>
+<br /><b>Note:</b> The Microsoft Solution Framework (MSF) for Agile Software Development (MS Agile) process template includes three predefined iterations. You can delete these iterations, rename them instead of creating new ones, or simply leave them unchanged.<br />
+<h4>Additional Resources</h4><ul><li>For more information, see “Walkthrough: Creating a New Team Project” at <a href="http://msdn2.microsoft.com/en-us/library/dhedaeb2(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/dhedaeb2(VS.80).aspx</a> </li></ul>
+
+<h3>How to Create an Area</h3>Create areas to organize team project work into project sub-areas. For example, you could organize your project work into areas such as UI, Application, and Database. Once you have created areas, you can assign scenarios and work items to these areas. <br /><br />You can start with a single root-level area and then later, as your project matures, you can create areas whenever you need them.<br /><br /><b>To create areas for your project</b>
+<ol><li>In Team Explorer, click your team project. </li>
+<li>On the <b>Team</b> menu, point to <b>Team Project Settings</b>, and then click <b>Areas and Iterations</b>.</li>
+<li>In the <b>Areas and Iterations</b> dialog box, click the <b>Area</b> tab.</li>
+<li>Click the <b>Add a child node</b> toolbar button.</li>
+<li>Right-click the new node, click <b>Rename</b>, and then type the area name you want.</li>
+<li>Click the <b>Area</b> node.</li>
+<li>Repeat steps 2, 3, and 4 to create additional areas. In this way, you can create a hierarchy for your project structure.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information, see “Walkthrough: Creating a New Team Project” at <a href="http://msdn2.microsoft.com/en-us/library/dhedaeb2(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/dhedaeb2(VS.80).aspx</a> </li></ul>
+
+<h3>How to Add a Check-in Event Notification</h3>Use the <b>bissubscribe</b> tool, available at %programfiles%\Microsoft Visual Studio 2005 Team Foundation Server\TF Setup\BisSubscribe.exe, on your TFS server to subscribe to check-in notifications. <br /><br /><b>To set up a check-in event notification</b>
+<ul><li>Open a command prompt and change to the following location: </li></ul>
+<span class="codeInline"> C:\Program Files\Microsoft Visual Studio 2005 Team Foundation Server\TF Setup\ </span>
+<ul><li>If you want to set up an e-mail notification, use the following command: </li></ul>
+<br /><span class="codeInline"> bissubscribe /eventType CheckinEvent /address someone@domain.com  /deliveryType EmailHtml /domain http://TFSRTM:8080 </span><br />
+<ul><li>If you want to set up a Web service notification, use the following command: </li></ul>
+<br /><span class="codeInline"> bissubscribe /eventType CheckinEvent /address http://TFSRTM:8080/ci/notify.asmx /deliveryType Soap /domain http://TFSRTM:8080 </span><br />
+<ul><li>If you get any errors or you want to confirm that you have registered correctly, do the following:
+<ul><li>Open SQL Server Management Studio.</li>
+<li>Open the <b>tfsIntegration</b> database.</li>
+<li>Review the <b>tbl_subscription</b> table.</li></ul></li></ul>
+<br />The* tbl_subscription* table lists all the events that are already subscribed. By viewing this table, you should be able to find the entry for the event to which you subscribed. You can unsubscribe any registered event by deleting the entry from the table. You can also unsubscribe an event by running <b>bissubscribe</b>, passing it the <b>/unsubscribe</b> command line parameter and the <b>id</b> of the event as follows:<br /><br /><span class="codeInline"> bissubscribe /delete/id *[id]* /server http://TFSRTM:8080 </span><br />
+<h4>Additional Resources</h4><ul><li>For more information, see “How To – Set Up a Continuous Integration Build in Visual Studio Team Foundation Server” in this guide.</li>
+<li>For more information, see “Adding a path filter to a CheckinEvent subscription using bissubscribe” at <a href="http://blogs.msdn.com/buckh/archive/2006/09/29/checkinevent-path-filter.aspx">http://blogs.msdn.com/buckh/archive/2006/09/29/checkinevent-path-filter.aspx</a></li>
+<li>For more information, see “Continuous Integration using Team Build” at <a href="http://blogs.msdn.com/khushboo/archive/2006/01/04/509122.aspx">http://blogs.msdn.com/khushboo/archive/2006/01/04/509122.aspx</a> </li></ul>
+
+<h3>How to Set Up a Report Dashboard</h3>Modify the team project portal Microsoft Office SharePoint&#174; site in order to create a report dashboard that can provide a variety of project information in one location.<br /><br />For example, a useful reporting dashboard might contain the following reports:
+<ul><li>Remaining Work</li>
+<li>Quality Indicators</li>
+<li>Bug Rates</li>
+<li>Project Velocity</li></ul>
+<br />You can add new reports to your SharePoint portal page by adding a Report Viewer Web Part for each report you want displayed on the page.<br /><br /><b>To modify the team project portal and create a reporting dashboard</b>
+<ol><li>Install the Report Viewer Web part on your report server by using the stsadm.exe tool and RSWebParts.cab, included with the Microsoft Office SharePoint and Report Services installation package. 
+<ol><li>STSADM.EXE can be found in the following path: C:\Program Files\Common Files\Microsoft Shared\web server extensions\60\BIN</li>
+<li>RSWebParts.Cab can be found in the following path: C:\ Program Files\Microsoft SQL Server\90\Tools\Reporting Services\SharePoint </li>
+<li>Example: STSADM.EXE -o addwppack -filename &quot;C:\ Program Files\Microsoft SQL Server\90\Tools\Reporting Services\SharePoint\RSWebParts.cab&quot; -globalinstall</li></ol></li>
+<li>In Team Explorer, right-click your project and then click <b>Show Project Portal</b>.</li>
+<li>Click <b>Modify Shared Page</b>, point to <b>Browse</b>, and then click <b>Add Web Parts</b>.</li>
+<li>Click <b>Virtual Server Gallery</b>.</li>
+<li>From the <b>Web Part List</b>, select <b>Report Viewer</b>.</li>
+<li>Click <b>Add</b>.</li>
+<li>Enter the Report Manager name, such as http://&lt;<i>report server</i>&gt;/reports.</li>
+<li>Enter the path for the report you want to display, such as &lt;<i>my project</i>&gt;/Quality Indicators.</li></ol>
+
+<h4> Additional Resources</h4><ul><li>For more information about adding a Report Viewer Web Part, see “Viewing Reports with SharePoint 2.0 Web Parts” at <a href="http://msdn2.microsoft.com/en-us/library/ms159772(SQL.90).aspx">http://msdn2.microsoft.com/en-us/library/ms159772(SQL.90).aspx</a> </li>
+<li>For more information about the team project portal, see “Using the Team Project Portal” at <a href="http://msdn2.microsoft.com/en-us/library/ms242883(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms242883(VS.80).aspx</a> </li></ul>
+
+<h3>How to Create Folders in Your Source Control Repository</h3>You can create folders in your source control repository by using Team Explorer, or you can create the folder structure in your workspace on the client and then check in pending changes.<br /><br /><b>To create a folder structure on the server</b>
+<ol><li>In Team Explorer, expand your team project.</li>
+<li>Double-click <b>Source Control</b> beneath your team project.</li>
+<li>In Source Control Explorer, select the root node, right-click in the Local Path: pane, and then click <b>New Folder</b>.</li>
+<li>Type the name of the root folder and then press ENTER.</li>
+<li>Repeat steps 3 and 4 and create the required folders in the source control repository. </li></ol>
+<br /><b>To create a folder structure on the client</b>
+<ol><li>Create a workspace mapping on your local computer.</li>
+<li>Create the folder structure as required by your project.</li></ol>
+<br />When you check in pending changes for the first time, the folder structure is copied to the server. <br />
+<h4>Additional Resources</h4><ul><li>For more information about creating a workspace, see “How to: Create a Workspace” at <a href="http://msdn2.microsoft.com/en-us/library/ms181384(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181384(VS.80).aspx</a></li>
+<li>For more information about creating a source tree, see “How To - Create Your Source Tree in Visual Studio Team Foundation Server” in this guide.</li></ul>
+
+<h3>How to Delete a Project from Team Foundation Server</h3>You cannot delete a project by using Team Explorer. Instead, you must use the <b>TfsDeleteProject</b> command-line tool. You can find this tool in Program Files\Microsoft Visual Studio 8\Common7\IDE on a computer with Team Explorer installed.<br /><br /><b>To delete a project from Team TFS</b>
+<ul><li>Open a command prompt and switch to the following location: </li></ul>
+<span class="codeInline"> C:\Program Files\Microsoft Visual Studio 2005 Team Foundation Server\TF Setup\ </span>
+<ul><li>Run <b>TfsDeleteProject</b> as follows to delete the project:</li></ul>
+<br /><span class="codeInline"> TfsDeleteProject /server:TfsServer TeamProjectName </span><br />
+<h4>Additional Resources </h4><ul><li>For more information about deleting projects, see “TFSDeleteProject” at <a href="http://msdn2.microsoft.com/en-us/library/ms181482(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181482(VS.80).aspx</a> </li></ul>
+
+<h2>Team Foundation Project Management Resources</h2><ul><li>For more information about MSF process templates, see “Process Templates” at <a href="http://msdn2.microsoft.com/en-us/teamsystem/aa718801.aspx">http://msdn2.microsoft.com/en-us/teamsystem/aa718801.aspx</a></li></ul></div><div class="ClearBoth"></div>

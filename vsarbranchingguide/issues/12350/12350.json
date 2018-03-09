@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "redundant now",
+    "ClosedDate": "2013-11-30T07:56:59.507-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "1.\tIn the main document, page 1, the old guide (v2) is referenced:\n \n2.\tMain document, page 24, talks about TFS \"basic edition\", which should be: TFS basic installation wizard.\n3.\tThe \"Track Changeset\" screenshots look like a recommendation to check-in changes to MAIN first and then merge over to all other child branches. I would expect them to start in Development (95) and then merge to Main and then to Release.",
+    "LastUpdatedDate": "2013-11-30T07:56:59.507-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2010-03-29T08:39:00.707-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "Branching Guide - Typos and Corrections suggested",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12350
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4080,
+      "FileName": "Sample Branch Visualization.jpg",
+      "DownloadUrl": ".\\4080"
+    }
+  ],
+  "Comments": []
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "597521",
+    "ThreadId": "253956",
+    "Html": "\r\n<p><span style=\"font-size:10pt\">First off, thanks to the Rangers for all the TFS branching guides. I'm at a small company in a very small development environment (2 developers) and I really appreciate the guidance.&nbsp; I'm trying to understand the branching\r\n models as we're transitioning from version 5.5 of our software to 6.0. Currently I'm not using any branches and basically use labels to take snapshots of each release build. Obviously the Basic Branch plan seems to be the best fit for a small environment,\r\n but really what we want to do is to still support bug fixes for version 5.5 labeled 5.5.X while isolating new 6.0 features from 5.5.X.&nbsp; If I understand the model correctly, the bug fixes from the 5.5 release branch will merge with Main and eventually\r\n merge with 6.0 which is great. However, the new features from 6.0 will also merge with Main and eventually end up in the Release branch which is fine if we're done supporting 5.5. If we're still maintaining 5.5 though then it will contain 6.0 features which\r\n we do not want. Maybe this is simpler than I'm portraying and it's a fork instead of a branch as we don't want the new 6.0 features to integrate with 5.5. Any advice about how to setup this scenario in TFS would be appreciated. Thanks.</span></p>\r\n",
+    "PostedDate": "2011-04-14T15:01:26.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "597990",
+    "ThreadId": "253956",
+    "Html": "<p>Thanks for your positive feedback.</p>\r\n<p>In each of the branching models shown in the guidance, it is possible to create a separate set of release branches each time you have a major or minor release. For example, when you release version 5.5.x and you are using the acvanced branching plan, you would branch Main to Service Pack 5.5, then branch Service Pack 5.5 to Hotfix 5.5, and finally branch Hotfix 5.5 to Release 5.5. Release 5.5 should be made read-only so you have an archived copy of what you actually released to your customers. Once you create these branches, you should not merge into them from Main (as you correctly note, merging from Main will being vNext changes into the vCurrent release branches). After the Release branches for vCurrent (v5.5) have been created, you are able to do vNext development (v6.0) in the Development branch(es). Main is now opened up for stabilizing vNext.</p>\r\n<p>You would make post-release bug fixes in a release branch (either ServicePack or HotFix). You could merge them (RI) to Main, but you would not merge Main with any release branches.</p>\r\n<p>The number of releases you need to maintain and / or support post-release determines how many sets of release branches you will create.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-04-15T08:17:23.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "597992",
+    "ThreadId": "253956",
+    "Html": "<p>I would note that the choice of branch plan (basic, standard, advanced) is not necessarily based upon your organization size but rather on the need to support multiple releases and do post-release servicing. The basic branch plan is not as well suited for post-release servicing as the standard and / or advanced plans are.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-04-15T08:19:15.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "598193",
+    "ThreadId": "253956",
+    "Html": "<p>Thanks Bill.&nbsp; I now see the one way arrow from SP to Main using Reverse Integration.</p>\r\n<p>Can you explain the benefit of creating a Release branch rather than just creating a label on the SP branch when a specific version is released?&nbsp; If the purpose of the release branch is to capture the specific source code at release time doesn't a label provide the same function?</p>",
+    "PostedDate": "2011-04-15T13:19:50.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "598243",
+    "ThreadId": "253956",
+    "Html": "<p>Lables are not immutable in TFS. This means you could label a release and at a later point in time change the contents of the label.</p>\r\n<p>There is minimal overhead to using a branch for this purpose, since TFS stores only delta's.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-04-15T15:43:02.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

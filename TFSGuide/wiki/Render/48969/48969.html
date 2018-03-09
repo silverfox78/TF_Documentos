@@ -1,0 +1,718 @@
+<div class="wikidoc"><h2>Practices at a Glance: Team Build</h2>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h2>Index</h2><h3>Administration</h3><ul><li><i>How to secure your build server</i></li>
+<li><i>How to delete a build</i></li>
+<li><i>How to delete a build type</i></li>
+<li><i>How to associate a work item with a build</i></li></ul>
+
+<h3>Check-in Policies</h3><ul><li><i>How to use check-in policies to improve check-in quality</i></li>
+<li><i>How to use check-in policies to associate work items with the build</i></li></ul>
+
+<h3>Continuous Integration Builds</h3><ul><li><i>How to automatically run Continuous Integration (CI) builds</i></li>
+<li><i>How to determine if you need a rolling build</i></li>
+<li><i>How to determine your rolling build time interval</i></li></ul>
+
+<h3>Customization</h3><ul><li><i>How to modify the build number</i> </li>
+<li><i>How to set up workspace mapping to get and build a subset of the tree</i></li>
+<li><i>How to build a project with dependencies on another team project</i></li>
+<li><i>How to change the build configuration (release/debug)</i></li></ul>
+
+<h3>Deployment</h3><ul><li><i>How to set up a build server</i> </li>
+<li><i>How to determine if you need multiple build servers</i></li></ul>
+
+<h3>General</h3><ul><li><i>How to build and deploy an ASP.NET application with Team Build</i></li>
+<li><i>How to build a Microsoft&#174; .NET 1.1 application with Team Build</i></li>
+<li><i>How to build setup and deployment projects with Team Build</i></li>
+<li><i>How to create a team build</i></li>
+<li><i>How to create multiple build types</i></li>
+<li><i>How to create a team build for a project that references assemblies from another project</i></li>
+<li><i>How to subscribe to build e-mail events</i></li>
+<li><i>How to receive notification when a build has failed</i></li>
+<li><i>How to start a build</i></li>
+<li><i>How to verify that the build succeeded</i></li>
+<li><i>How to view the build output</i></li>
+<li><i>How to change the build server location</i></li>
+<li><i>How to change the build output location</i></li>
+<li><i>How to determine what changesets are part of the build</i></li>
+<li><i>How to change the reported build quality</i> </li></ul>
+
+<h3>Projects</h3><ul><li><i>How to use a single-solution strategy</i> </li>
+<li><i>How to use a partitioned-solution strategy</i></li>
+<li><i>How to use a multiple-solution strategy</i> </li></ul>
+
+<h3>Reporting</h3><ul><li><i>How to view build quality</i></li>
+<li><i>How to view all the check-ins for a build</i></li>
+<li><i>How to view work items or bugs closed for a build</i></li>
+<li><i>How to view open work items or bugs for a build</i></li>
+<li><i>How to track velocity from build to build</i></li>
+<li><i>How to track test case pass/fail results for a build</i></li>
+<li><i>How to review build status (BVT results)</i></li></ul>
+
+<h3>Scheduled Builds</h3><ul><li><i>How to automatically run nightly builds</i></li>
+<li><i>How to decide on a build frequency and type for your project</i></li></ul>
+
+<h3>Test-Driven Development</h3><ul><li><i>How to create a “hello world” acceptance test</i></li>
+<li><i>How to run automated tests as part of the build</i></li>
+<li><i>How to run code analysis as part of the build</i></li>
+<li><i>How to get failed tests to fail a build</i></li></ul>
+
+<h2>Administration</h2><ul><li><b>How to secure your build server</b></li>
+<li><b>How to delete a build</b></li>
+<li><b>How to delete a build type</b></li>
+<li><b>How to associate a work item with a build</b></li></ul>
+
+<h3>How to Secure Your Build Server</h3><b>To secure your build server</b>
+<ol><li>Deploy build services on a separate server, rather than sharing a server with the Microsoft Visual Studio&#174; 2005 Team Foundation Server (TFS) application-tier or data-tier.</li>
+<li>Grant the build process read/write access to the builds directory. Ensure that the account running the build is able to access this directory.</li>
+<li>Grant the build process read/write access to the build drop network share. Ensure that the account running the build is able to access this share.</li>
+<li>Ensure that the account used to run the team build is a member of the Team Project’s <b>Build Services</b> group.</li></ol>
+<br />To improve Team Foundation Server security, you should install the build server on its own computer rather than on the application tier or data tier. Certain deployment or build steps may require elevated privileges; for example, creating a virtual directory to deploy a Web application requires administrative rights on the build server. This means that the Microsoft Windows&#174; account running the build requires these rights. If the build computer is on the application tier, then this could present a security risk. Similarly, if the build computer is on the data tier, the build account could access and change the databases on that tier. <br /><br /><b>Note:</b> For security reasons, do not add the account running the team build to the SERVER\ Service Accounts group. Members of this group have full administration rights in TFS. <br />
+<h4>Additional Resources</h4><ul><li>For more information about TFS groups and permissions, see “Team Foundation Server Default Groups, Permissions, and Roles” at <a href="http://msdn2.microsoft.com/en-us/library/ms253077(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms253077(VS.80).aspx</a></li></ul>
+
+<h3>How to Delete a Build</h3>To delete a build, you use the TFSBuild command-line tool. Specify the address of the TFS server, the name of the team project, and the build name; for example:<br /><span class="codeInline"> TfsBuild delete [url:http://mytfsserver:8080/] myproject build20070606.4 </span><br />
+<h4>Additional Resources</h4><ul><li>For more information about deleting a completed build, see “How to: Delete a Completed Build” at <a href="http://msdn2.microsoft.com/en-us/library/aa337656(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/aa337656(VS.80).aspx</a></li>
+<li>For more information about the delete command, see “Delete Command (Team Foundation Build)” at <a href="http://msdn2.microsoft.com/en-us/library/ms244360(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms244360(VS.80).aspx</a></li></ul>
+
+<h3>How to Delete a Build Type</h3>You cannot delete Team Build types by using Team Explorer. Instead, you should remove the build type from source control.<br /><br /><b>To delete an existing build type</b>
+<ol><li>Open Source Control Explorer.</li>
+<li>In Source Control Explorer, expand your team project folder.</li>
+<li>Expand the TeamBuildTypes folder.</li>
+<li>Right-click the Team Build folder that represents the Team Build type you want to delete and then click <b>Delete</b>.</li>
+<li>Right-click the Team Build folder again and then click <b>Check In Pending Changes…</b></li>
+<li>Open Team Explorer.</li>
+<li>Right-click the Team Builds** folder and then click <b>Refresh</b>.</li>
+<li>Expand the Team Builds** folder and confirm that the Team Build has been deleted.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about Team Build, see “Overview of Team Foundation Build” at <a href="http://msdn2.microsoft.com/en-us/library/ms181710(vs.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181710(vs.80).aspx</a></li></ul>
+
+<h3>How to Associate a Work Item with a Build</h3>Use the <b>Check In</b> dialog box to associate work items with a check-in. This automatically associates these work items with the next build.<br /><br /><b>To associate a work item with a build</b>
+<ol><li>Make code changes that you want to have included in the build and that will be associated with a work item.</li>
+<li>Check in the pending changes.</li>
+<li>In the <b>Check In</b> dialog box, click <b>Work Items</b>.</li>
+<li>Select the work item(s) you want to associate with this check-in.</li></ol>
+<br />All changesets that have occurred since the last successful build will be associated with the next build. After the next build, Team Build will list this changeset in the associated changesets for the build and will include the selected work item as being associated with the changeset.<br />
+<h4>Additional Resources</h4><ul><li>For more information about checking in pending changes, see “How to: Check In Pending Changes” at <a href="http://msdn2.microsoft.com/en-us/library/ms181411(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181411(VS.80).aspx</a> </li></ul>
+
+<h2>Check-in Policies</h2><ul><li><b>How to use check-in policies to improve check-in quality</b></li>
+<li><b>How to use check-in policies to associate work items with the build</b></li></ul>
+
+<h3>How to Use Check-in Policies to Improve Check-in Quality</h3>Use a combination of code analysis and testing policies to improve check-in quality. For example, use the default testing check-in policy to ensure that specific tests are executed and passed prior to allowing source to be checked into TFS source control. You can also configure a code analysis policy to help ensure that your code meets certain quality standards by ensuring that security, performance, portability, maintainability, and reliability rules are passed.<br /><br /><b>To enforce a code analysis check-in policy for a team project</b>
+<ol><li>In Team Explorer, right-click your team project, select <b>Team Project Settings</b>, and then click <b>Source Control</b></li>
+<li>Click the <b>Check-in Policy</b> tab.</li>
+<li>Click <b>Add</b> and then select and configure the code analysis and testing policies.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about creating and using a custom check-in policy, see “How To – Step Through Creating Custom Check-in Policies for TFS” in this guide.</li>
+<li>To learn how to customize a check-in policy, see “Walkthrough: Customizing Check-in Policies and Notes” at <a href="http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx</a> </li>
+<li>To see sample code that will disallow selected patterns on check-in, see “Checkin Policy to Disallow Certain Patterns” at <a href="http://blogs.msdn.com/jmanning/archive/2006/02/02/523125.aspx">http://blogs.msdn.com/jmanning/archive/2006/02/02/523125.aspx</a></li>
+<li>To see sample code that will enforce comments on check-in, see “Sample Checkin Policy: Make Sure the Comment Isn&#39;t Empty” at <a href="http://blogs.msdn.com/jmanning/archive/2006/01/21/515858.aspx">http://blogs.msdn.com/jmanning/archive/2006/01/21/515858.aspx</a></li>
+<li>To learn how to register a new check-in policy, see “I’ve Made a New Check-In Policy! How Do I Add It?” at <a href="http://blogs.msdn.com/jmanning/archive/2006/02/07/526778.aspx">http://blogs.msdn.com/jmanning/archive/2006/02/07/526778.aspx</a></li></ul>
+
+<h3>How to Use Check-in Policies to Associate Work Items with the Build</h3>Use a check-in policy to enforce that each check-in has associated work items. Developers use the <b>Check In</b> dialog box to associate work items with a check-in. This automatically associates these work items with the next build. <br /><br /><b>To set the work item check-in policy to force developers to associate their check-in with a work item</b>
+<ol><li>In Team Explorer, right-click your team project, select <b>Team Project Settings</b>, and then click <b>Source Control</b>.</li>
+<li>Click the <b>Check-in Policy</b> tab.</li>
+<li>Click <b>Add</b> and then select and configure the <b>Work Item</b> check-in policy.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about creating and using a custom check-in policy, see “How To – Step Through Creating Custom Check-in Policies for TFS” in this guide.</li>
+<li>To learn how to customize a check-in policy, see “Walkthrough: Customizing Check-in Policies and Notes” at <a href="http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx</a> </li></ul>
+
+<h2>Continuous Integration Builds</h2><ul><li><b>How to automatically run Continuous Integration (CI) builds</b></li>
+<li><b>How to determine if you need a rolling build</b></li>
+<li><b>How to determine your rolling build time interval</b></li></ul>
+
+<h3>How to Automatically Run Continuous Integration Builds</h3>Although Visual Studio 2005 Team Foundation Server does not provide a Continuous Integration (CI) solution out of the box, it does provide the framework for you to implement your own CI solution.<br /><br /><b>To set up a CI build solution</b>
+<ul><li><b>Create and test your build.</b> Make sure that you have a Team Build type in place and that you can run it without errors.</li>
+<li><b>Install the Continuous Integration add-on.</b> Install the CI add-on from <a href="http://msdn2.microsoft.com/en-us/library/ms364045(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms364045(VS.80).aspx</a>.</li>
+<li><b>Configure the Continuous Integration add-on.</b> Ensure that the CI Web application virtual root runs in the <b>TFSAppPool</b> application pool. Update the CI Web application Web.config file so that it works with your team server and team build by adding the following key:</li></ul>
+<pre>
+&lt;add key=&quot;1&quot; value=&quot;TeamServer=http://TFSRTM:8080;TeamProjectName=AdventureWorks;BuildType=Test Build&quot;/&gt;
+</pre>
+<ul><li><b>Register for the CheckinEvent event.</b> Use the <b>BisSubscribe.exe</b> tool to register for the check-in event, by using the following command line:</li></ul>
+<pre>
+Bissubscribe /eventType CheckinEvent /address http://TFSRTM:8080/ci/notify.asmx /deliveryType Soap /domain [url:http://tfsrtm:8080/] 
+</pre>
+<ul><li><b>Test the CI build.</b> Test the build by completing a check-in. Wait a few minutes for the build to complete, and then view the builds page to see if the build completed successfully.</li>
+<li><b>Set up e-mail alerts.</b> Set up alerts so that concerned parties can be notified when the build completes. Open the <b>Project Alerts</b> dialog box from the team project context menu, and then select the <b>A build completes</b> alert check box.</li></ul>
+<br />For more information and expanded steps, see “How To – Set Up a Continuous Integration Build with Visual Studio Team Foundation Server” in this guide.<br />
+<h4>Additional Resources</h4><ul><li>For more information, see “Chapter 8 – Setting up a Continuous Integration Build with Team Build” in this guide.</li>
+<li>For more information about setting up a CI build, see “How To – Set Up a Scheduled Build with Visual Studio Team Foundation Server” in this guide.</li>
+<li>For more information about how to use the Visual Studio Team System CI solution, see “Continuous Integration Using Team Foundation Build” at <a href="http://msdn2.microsoft.com/en-us/library/ms364045(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms364045(VS.80).aspx</a></li>
+<li>To download the Visual Studio Team System CI solution MSI, go to <a href="http://download.microsoft.com/download/6/5/e/65e300ce-22fc-4988-97de-0e81d3de2482/ci.msi">http://download.microsoft.com/download/6/5/e/65e300ce-22fc-4988-97de-0e81d3de2482/ci.msi</a></li>
+<li>For more information about agile development and CI in TFS, see “Extend Team Foundation Server To Enable Continuous Integration” at <a href="http://msdn.microsoft.com/msdnmag/issues/06/03/TeamSystem/default.aspx">http://msdn.microsoft.com/msdnmag/issues/06/03/TeamSystem/default.aspx</a></li></ul>
+
+<h3>How to Determine if You Need a Rolling Build</h3>Building immediately after every check-in is the simplest CI strategy and generally gives you the most rapid feedback. However, if check-ins occur rapidly enough to overwhelm the build server, you should use a rolling build approach where you build after a specified number of check-ins or after a specified time period. To find out if you need to use a rolling build, determine the following:
+<ul><li>Length of your team build in minutes</li>
+<li>Average frequency of check-ins in minutes</li>
+<li>Time window during which frequent check-ins occur</li></ul>
+<br />If the length of the build is longer than the average frequency of check-ins, your builds run continuously because the first build will not complete before the next check-in occurs, which starts another build. If check-ins continue to occur before each build is complete, this impacts the performance of the build server and will block other builds from being started, such as scheduled builds. Review the time window during which frequent check-ins occur and determine if CI builds are likely to impact the delivery of scheduled builds or other important team builds.<br />
+<h4>Additional Resources</h4><ul><li>For more information, see “Chapter 8 – Setting Up a Continuous Integration Build with Team Build” in this guide.</li></ul>
+
+<h3>How to Determine Your Rolling Build Time Interval</h3>It is important to determine the rolling build time interval to ensure an efficient build process. You will want a timely build while at the same time not overloading the build process.<br /><br />To determine the ideal rolling build interval, divide the average frequency of check-ins by the length of your build. For example, if you have a build that takes 10 minutes and you average a check-in every 5 minutes, you could set a check-in interval of two check-ins and a timeout period of 10 minutes. This helps to ensure that the build is complete before the next build is started. If you notice excessive load on your build server, you can increase these values.  <br />
+<h4>Additional Resources</h4><ul><li>For more information, see “Chapter 8 – Setting Up a Continuous Integration Build with Team Build” in this guide.</li></ul>
+
+<h2>Customization</h2><ul><li><b>How to modify the build number</b> </li>
+<li><b>How to set up workspace mapping to get and build a subset of the tree</b></li>
+<li><b>How to build a project with dependencies on another team project</b></li>
+<li><b>How to change the build configuration (release/debug)</b></li></ul>
+
+<h3>How to Modify the Build Number </h3>In order to customize the build number in your compiled assemblies, you need to generate the replacement build number and then write it to the assemblyinfo source file.<br /><br />In order to customize the build number property displayed in the Team Build interface, you need to override the $(<b>BuildNumber</b>) property in the <b>BuildNumberOverride</b> target.<br /><br /><b>To customize the build number in both the assembly and in the Team Build interface</b>
+<ol><li>Override the <b>$(BuildNumber)</b> in the <b>BuildNumberOverride</b> target.</li>
+<li>Override the <b>BeforeCompile</b> target to write the AssemblyInfo.cs or .vb file.</li></ol>
+<br /><b>Example</b><br /><pre>
+  &lt;Target Name=&quot;BuildNumberOverrideTarget&quot;&gt;
+    &lt;Message Importance=&quot;High&quot; Text=&quot;$(BuildNumber)&quot; /&gt;
+ 
+    &lt;ConvertTFSBuildNumberToSolutionBuildNumber
+      MajorAndMinorVersion=&quot;1.0&quot;
+      TFSBuildNumber=&quot;$(BuildNumber)&quot;
+      TFSLastBuildNumber=&quot;$(LastBuildNumber)&quot;&gt;
+      &lt;Output TaskParameter=&quot;SolutionBuildNumber&quot; PropertyName=&quot;SolutionBuildNumber&quot; /&gt;
+      &lt;Output TaskParameter=&quot;TFSBuildNumber&quot; PropertyName=&quot;BuildNumber&quot; /&gt;
+    &lt;/ConvertTFSBuildNumberToSolutionBuildNumber&gt;
+    &lt;Message Importance=&quot;High&quot; Text=&quot;$(SolutionBuildNumber)&quot; /&gt;
+    &lt;Message Importance=&quot;High&quot; Text=&quot;$(BuildNumber)&quot; /&gt;
+  &lt;/Target&gt;
+ 
+  &lt;Target Name=&quot;BeforeCompile&quot;&gt;
+    &lt;Message Importance=&quot;High&quot; Text=&quot;$(SolutionBuildNumber)&quot; /&gt;
+    &lt;CreateItem Include=&quot;$(SolutionRoot)\**\AssemblyInfo.cs&quot;&gt;
+      &lt;Output TaskParameter=&quot;Include&quot; ItemName=&quot;AssemblyInfoFiles&quot;/&gt;
+    &lt;/CreateItem&gt;
+    &lt;CreateItem Include=&quot;$(SolutionRoot)\**\AssemblyInfo.vb&quot;&gt;
+      &lt;Output TaskParameter=&quot;Include&quot; ItemName=&quot;AssemblyInfoFiles&quot;/&gt;
+    &lt;/CreateItem&gt;
+    &lt;RewriteFileVersions 
+      AssemblyInfoFiles=&quot;@(AssemblyInfoFiles)&quot;
+      AssemblyVersionNumber=&quot;$(SolutionBuildNumber)&quot; 
+      AssemblyFileVersionNumber=&quot;$(SolutionBuildNumber)&quot; 
+      AssemblyInformationalVersionNumber=&quot;$(SolutionBuildNumber)&quot; /&gt;
+  &lt;/Target&gt;
+</pre>
+<h4>Additional Resources</h4><ul><li>For another method to modify assembly versioning, see Aaron Halberg’s blog post “Team Build and the AssemblyInfo Task” at <a href="http://blogs.msdn.com/aaronhallberg/archive/2007/06/08/team-build-and-the-assemblyinfo-task.aspx">http://blogs.msdn.com/aaronhallberg/archive/2007/06/08/team-build-and-the-assemblyinfo-task.aspx</a> </li>
+<li>The AssemblyInfo task, referenced in the blog post above, has a new home on GotDotNet. You can find it here <a href="http://www.gotdotnet.com/Community/UserSamples/Details.aspx?SampleGuid=5C455590-332C-433B-A648-E368B9515580">http://www.gotdotnet.com/Community/UserSamples/Details.aspx?SampleGuid=5C455590-332C-433B-A648-E368B9515580</a> </li>
+<li>For more information about customizing Team Foundation Build, see “Customizing Team Foundation Build” at <a href="http://msdn2.microsoft.com/en-us/library/ms400688(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms400688(VS.80).aspx</a> </li></ul>
+
+<h3>How to Set Up Workspace Mapping to Get and Build a Subset of the Tree</h3>The workspace mapping file defines the source control folders that are retrieved by the build server. It is not always necessary to check out all of the files in order to perform the build. You can change your workspace definition to reduce the number of folders included, or you can cloak unnecessary files so that they are not retrieved as part of the build.<br /><br />For example, the default mapping for a new project is $/TeamProject. If all your source files are under $/TeamProject/foo/bar/foobar/sources, you should map only that directory<br /><br /><b>To cloak files and folders</b>
+<ol><li>Check out WorkspaceMapping.xml from source control.</li>
+<li>Add the appropriate cloak entries to this file.</li>
+<li>Check in WorkspaceMapping.xml.</li></ol>
+<br />The WorkspaceMapping.xml file looks like the following:<br /><pre>
+&lt;Mappings&gt;
+  &lt;InternalMapping ServerItem=&quot;$/MyTeamProject&quot; LocalItem=&quot;c:\projects\teamproject” Type=&quot;Map&quot; /&gt;
+  &lt;InternalMapping ServerItem=&quot;$/MyTeamProject/documentation&quot; Type=&quot;Cloak&quot; /&gt;
+&lt;/Mappings&gt;
+</pre><br />
+<h4>Additional Resources</h4><ul><li>For more information about cloaking folders in a workspace, see “How to: Cloak and Decloak Folders in a Workspace” at <a href="http://msdn2.microsoft.com/en-us/library/ms181378(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181378(VS.80).aspx</a></li>
+<li>For more information about making Team Build ignore folders, see “How to make ‘Team Build’ skip getting certain folders?” at <a href="http://blogs.msdn.com/manishagarwal/archive/2005/10/13/480584.aspx">http://blogs.msdn.com/manishagarwal/archive/2005/10/13/480584.aspx</a></li>
+<li>For more information about the WorkspaceMapping schema, see “Schema for the WorkspaceMapping.xml file” at <a href="http://blogs.msdn.com/buckh/archive/2007/02/28/schema-for-the-workspacemapping-xml-file.aspx">http://blogs.msdn.com/buckh/archive/2007/02/28/schema-for-the-workspacemapping-xml-file.aspx</a></li></ul>
+
+<h3>How to Build a Project with Dependencies on Another Team Project</h3>Team Build does not support building solutions that cross team projects. To enable this, you must customize the TFSBuild.proj file to check out the code you need from the other projects on which your build depends.<br /><br />To build a project with dependencies on another team project, you need to get the source or assemblies from that project into the workspace on your build server. To do this, you need to edit your TFSBuild.proj file to add the assembly or the solution reference and override the <b>BeforeGet</b> event to get assemblies or sources from each of the team projects on which you have a dependency.<br />   <br /><b>To build a project that has dependencies on another team project</b>
+<ul><li>Check out the TFSBuild.proj** script from Source Control Explorer. </li>
+<li>Add the following configuration setting under the <b>PropertyGroup</b> section: </li></ul>
+<pre>
+&lt;!-- to be added under PropertyGroup --&gt;
+&lt;TfCommand&gt;$(TeamBuildRefPath)\..\tf.exe&lt;/TfCommand&gt;
+&lt;SkipInitializeWorkspace&gt;true&lt;/SkipInitializeWorkspace&gt;
+</pre><br />SkipInitializeWorkSpace allows you to skip invoking the default tasks to delete and re-create the workspace on the build machine. The new property is used in the custom target <b>BeforeGet</b> (see below).
+<ul><li>Add the following configuration setting to the <b>ItemGroup</b> entries that map both the Team Projects and the solutions. Make sure that you provide the correct local paths for the build machine. Multiple mappings cannot share the same local folder and will result in a <b>MappingConflictException</b> exception in the CreateWorkspace task.</li></ul>
+<pre>
+&lt;ItemGroup&gt;
+  &lt;!-- add one entry for every solution you reference --&gt;
+  &lt;SolutionToBuild Include=&quot;$(SolutionRoot)\DependentApp\DependentApp.sln&quot; /&gt;
+  &lt;SolutionToBuild Include=&quot;$(SolutionRoot)\YourApp\YourApp.sln&quot; /&gt;
+&lt;/ItemGroup&gt;
+
+&lt;ItemGroup&gt;
+  &lt;!-- add one entry for every Team Project you reference --&gt;
+  &lt;Map Include=&quot;$/YourApp/YourApp&quot;&gt;
+    &lt;LocalPath&gt;$(SolutionRoot)\YourApp&lt;/LocalPath&gt;
+  &lt;/Map&gt;
+  &lt;Map Include=&quot;$/DependentApp/DependentApp&quot;&gt;
+    &lt;LocalPath&gt;$(SolutionRoot)\DependentApp&lt;/LocalPath&gt;
+  &lt;/Map&gt;
+&lt;/ItemGroup&gt;
+</pre>
+<ul><li>Override the <b>BeforeGet</b> event to retrieve the workspaces for each Team Project: </li></ul>
+<pre>
+&lt;Target Name=&quot;BeforeGet&quot;&gt;
+  &lt;DeleteWorkspaceTask 
+      TeamFoundationServerUrl=&quot;$(TeamFoundationServerUrl)&quot; 
+      Name=&quot;$(WorkspaceName)&quot; /&gt;
+  &lt;Exec 
+    WorkingDirectory=&quot;$(SolutionRoot)&quot; 
+    Command=&quot;&amp;quot;$(TfCommand)&amp;quot; workspace /new $(WorkSpaceName) /server:$(TeamFoundationServerUrl)&quot;/&gt;
+  &lt;Exec 
+   WorkingDirectory=&quot;$(SolutionRoot)&quot;
+   Command=&quot;&amp;quot;$(TfCommand)&amp;quot; workfold /unmap /workspace:$(WorkSpaceName) &amp;quot;$(SolutionRoot)&amp;quot;&quot;/&gt;
+  &lt;Exec 
+    WorkingDirectory=&quot;$(SolutionRoot)&quot; 
+    Command=&quot;&amp;quot;$(TfCommand)&amp;quot; workfold /map /workspace:$(WorkSpaceName) 
+          /server:$(TeamFoundationServerUrl) &amp;quot;%(Map.Identity)&amp;quot; &amp;quot;%(Map.LocalPath)&amp;quot;&quot;/&gt;
+&lt;/Target&gt; 
+</pre>
+<ul><li>Check in the build script and run the build.</li></ul>
+
+<h4>Additional Resources</h4><ul><li>For more information, see Manish Agarwal’s blog entry, “Working with multiple team projects in Team Build,” at <a href="http://blogs.msdn.com/manishagarwal/archive/2005/12/22/506635.aspx">http://blogs.msdn.com/manishagarwal/archive/2005/12/22/506635.aspx</a>  </li></ul>
+
+<h3>How to Change the Build Configuration (Release/Debug)</h3>In order to change build configuration in an existing build, you need to modify the &lt;<b>ConfigurationToBuild&gt;</b> tag in TFSBuild.proj.<br /><br /><b>To change the build configuration</b>
+<ol><li>Open Source Control Explorer.</li>
+<li>In Source Control Explorer, expand your team project folder.</li>
+<li>Expand the TeamBuildTypes folder.</li>
+<li>Select the team build folder for which you want to turn on code analysis.</li>
+<li>Check out the TFSBuild.proj file from source control. You might need to perform a <b>Get Latest Version</b> operation on the folder first.</li>
+<li>In Source Control Explorer, double-click TFSBuild.Proj to open it. </li>
+<li>Modify the <b>&lt;ConfigurationToBuild&gt;</b> tag to the new build configuration.</li>
+<li>Save TFSBuild.proj and check it back into source control.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about customizing Team Foundation Build, see “Customizing Team Foundation Build” at <a href="http://msdn2.microsoft.com/en-us/library/ms400688(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms400688(VS.80).aspx</a> </li></ul>
+
+<h2>Deployment</h2><ul><li><b>How to set up a build server</b> </li>
+<li><b>How to determine if you need multiple build servers</b></li></ul>
+
+<h3>How to Set Up a Build Server </h3>You install the build server separately from your installation of TFS. Because the build server needs to be able to compile your code, run tests, and perform code analysis, all tools that are needed by the build process must be installed.<br /><br /><b>To set up a build server</b>
+<ol><li>Install Visual Studio.</li>
+<li>If you want to ensure you have all the tools necessary for any build scenario, install the entire Team Suite.</li>
+<li>If you want to run Team Build but do not need to run test cases, install Visual Studio Team Developer Edition.</li>
+<li>If you want to run automated tests cases as part of your build process, install Visual Studio Team Test Edition.</li>
+<li>On the Team Foundation Server DVD, open the \build folder.</li>
+<li>Run the Setup wizard.</li></ol>
+<br />The account used to run the build server: 
+<ul><li>Must have <b>Log On Locally</b> permission on the TFS computers.</li>
+<li>Should not be a local administrator account on TFS computers.</li>
+<li>Should be marked <b>Account is sensitive and cannot be delegated</b> for Microsoft Active Directory&#174; on the domain.</li></ul>
+
+<h4>Additional Resources</h4><ul><li>You can download the <i>Team Foundation Server Installation Guide</i> from <a href="http://www.microsoft.com/downloads/details.aspx?familyid=e54bf6ff-026b-43a4-ade4-a690388f310e&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?familyid=e54bf6ff-026b-43a4-ade4-a690388f310e&amp;displaylang=en</a> </li></ul>
+
+<h3>How to Determine if You Need Multiple Build Servers</h3>If you have multiple build types all executing on a single build server, you can overload the build server. If this becomes an issue, consider executing different build types on different build servers.<br /><br />A build can take a long time to execute, especially if the build is for a large project. If you are using Continuous Integration or frequent scheduled builds, it is possible that the build server will not be able to keep up with the volume of builds being generated. You can install multiple build servers to distribute the load. Assign different build types to each server to even out the build load.<br />
+<h2>General</h2><ul><li><b>How to build and deploy an ASP.NET application with Team Build</b></li>
+<li><b>How to build a .NET 1.1 application with Team Build</b></li>
+<li><b>How to build setup and deployment projects with Team Build</b></li>
+<li><b>How to create a team build</b></li>
+<li><b>How to create multiple build types</b></li>
+<li><b>How to create a team build for a project that references assemblies from another project</b></li>
+<li><b>How to subscribe to build e-mail events</b></li>
+<li><b>How to receive notification when a build has failed</b></li>
+<li><b>How to start a build</b></li>
+<li><b>How to verify that the build succeeded</b></li>
+<li><b>How to view the build output</b></li>
+<li><b>How to change the build server location</b></li>
+<li><b>How to change the build output location</b></li>
+<li><b>How to determine what changesets are part of the build</b></li>
+<li><b>How to change the reported build quality</b> </li></ul>
+
+<h3>How to Build and Deploy an ASP.NET Application with Team Build</h3>If you want to build a solution that contains only ASP.NET Web applications, you must ensure that you choose the appropriate configuration. When creating the build type, when you select the configuration and the platform, make sure that the platform is set to <b>.NET</b> and that the <b>Configuration</b> is set to <b>Debug</b>:<br /><br /><b>To build a solution that contains only ASP.NET Web applications projects</b>
+<ol><li>Run the <b>New Team Build Type</b> <b>Creation</b> <b>Wizard</b>.</li>
+<li>Give the build a name.</li>
+<li>Select the solution that contains only the ASP.NET Web application.</li>
+<li>Select the appropriate configuration.</li>
+<li>Click the <b>Platform</b> drop-down list and select <b>.NET</b> as the platform.</li>
+<li>Specify the location information for the build type.</li>
+<li>Choose the tests and code analysis rules to run.</li>
+<li>Save the build type by selecting <b>Finish</b>.</li></ol>
+<br />If you are building a solution that contains both ASP.NET Web applications and other .NET projects, you must set the platform type to <b>Mixed Platforms</b>.<br /><br /><b>To build a solution that contains ASP.NET Web applications and other .NET projects</b>
+<ol><li>Run the <b>New Team Build Type</b> <b>Creation Wizard</b>.</li>
+<li>Give the build a name.</li>
+<li>Select the solution that contains only ASP.NET Web applications and other projects.</li>
+<li>Select the appropriate configuration.</li>
+<li>Click the <b>Platform</b> drop-down list and select <b>Mixed</b> as the platform.</li>
+<li>Specify the location information for the build type.</li>
+<li>Choose the tests and code analysis rules to run.</li>
+<li>Save the build type by selecting <b>Finish</b>.</li></ol>
+<br />You will find the compiled binaries in the drop location under {BuildType}\{Configuration Name}\{Platform}\_PublishedWebsites<br /><br />Deploying a Web application to Internet Information Services (IIS) is not supported natively by Team Build. If you want to deploy the application to IIS as part of the team build, you have two choices: you can: add a custom step to the build type, or you can use a Web Deployment Project.<br /><br />If you are at the start of a Team Project, examine the Web Deployment Project option to see if you can use this option in your development. If you already have existing Web sites, using Web Deployment Projects may disrupt application development. Consider using an MSBuild post-build step instead. In both cases, you must ensure that the service account used to run the build is a member of the local administrators group to allow it to create a virtual directory in IIS.<br /><br /><b>To use a post build step to deploy your Web application</b>
+<ul><li>Download the SDC Tasks Library from Codeplex at <a href="http://www.codeplex.com/sdctasks">http://www.codeplex.com/sdctasks</a></li>
+<li>Check out the Team Build type that you are going to use to deploy the Web application.</li>
+<li>Extract the file Microsoft.Sdc.Tasks.dll from the downloaded zip file into the folder where you checked out the build type.</li>
+<li>Add the DLL to source control and check it in.</li>
+<li>Amend the TFSBuild.proj file so that the build copies the files to the correct directory, and then create that directory as a virtual directory as follows:
+<ul><li>Add a <b>&lt;PropertyGroup&gt;</b> element specifying the location of the compiled Web application:</li></ul></li></ul>
+<br /><pre> &lt;PropertyGroup&gt;
+     &lt;WebBinariesLocation&gt;$(SolutionRoot)\..\Binaries\.NET\Release\_PublishedWebSites\MyWebSite&lt;/WebBinariesLocation&gt;
+  &lt;/PropertyGroup&gt; </pre><br />
+<ul><li>Add two <b>UsingTask</b> elements that add a references to the CreateVirtualDirectory and DeleteVirtualDirectory tasks:</li></ul>
+<pre>
+&lt;UsingTask TaskName=&quot;Microsoft.Sdc.Tasks.Web.WebSite.CreateVirtualDirectory&quot; AssemblyFile=&quot;Microsoft.Sdc.Tasks.dll&quot; /&gt;
+&lt;UsingTask TaskName=&quot;Microsoft.Sdc.Tasks.Web.WebSite.CreateVirtualDirectory&quot; AssemblyFile=&quot;Microsoft.Sdc.Tasks.dll&quot; /&gt;
+</pre>
+<ul><li>Add an <b>AfterCompile</b> target to create the virtual directory and copy the files into that directory:</li></ul>
+<pre>
+&lt;Target Name=&quot;AfterCompile&quot;&gt;
+  &lt;MakeDir Directories=&quot;C:\Deploy\MyWebsite&quot; /&gt;
+  &lt;CreateVirtualDirectory VirtualDirectoryName=&quot;MyWebSite&quot; Path=&quot;C:\Deploy\Website&quot; /&gt;
+  &lt;DeleteVirtualDirectory VirtualDirectoryName=&quot;MyWebSite&quot; /&gt;
+  &lt;Exec Command=&quot;xcopy /y /e $(WebBinariesLocation) C:\Deploy\MyWebsite&quot;/&gt;
+&lt;/Target&gt;
+</pre>
+<ul><li>Save the file and commit it to the source control repository.</li></ul>
+<br />If you run the team build, it will now build the Web application, create a virtual directory, and copy the Web application to that directory.<br /><br /><b>To use a Web deployment project</b>
+<ol><li>Download and install the Visual Studio 2005 Web Deployment Projects onto your client computer.</li>
+<li>Download and install the Visual Studio 2005 Web Deployment Projects onto your build server.</li>
+<li>Open the solution containing the Web application. </li>
+<li>Click the <b>Build</b> menu and then select <b>Add Web Deployment Project…</b></li>
+<li>Specify the name and location of the deployment project.</li>
+<li>In Solution Explorer, right-click the Web Deployment Project and then select <b>Property Pages</b>.</li>
+<li>In the dialog box, choose the <b>Configuration</b> that Team Build should build (Debug or Release).</li>
+<li>In the <b>Deployment</b> section, select the <b>Create an IIS virtual directory for the output folder</b> check box and then specify the virtual directory name.</li>
+<li>Click <b>OK</b>.</li>
+<li>Check the solution changes into source control.</li></ol>
+<br />If you run the team build containing this solution, it will build the Web application and create a virtual directory in the directory where the Web application is built. This will be Build Directory}\{Team Project Name}\{Build Type}\Binaries\{Configuration Name}\{Platform}\_PublishedWebSite\{Web Deployment Project Name.<br />
+<h4>Additional Resources</h4>* To download the SDC Tasks, go to <a href="http://www.codeplex.com/sdctasks">http://www.codeplex.com/sdctasks</a><br />* For more information about building ASP.NET applications with Team Build, see “TN_1600: Building ASP.NET projects with Team Build” at <a href="http://msdn2.microsoft.com/en-us/teamsystem/aa718894.aspx">http://msdn2.microsoft.com/en-us/teamsystem/aa718894.aspx</a><br />* For more information about using Web Deployment Projects, see “TN_1601: Team Build and Web Deployment Projects” at <a href="http://msdn2.microsoft.com/en-us/teamsystem/aa718895.aspx">http://msdn2.microsoft.com/en-us/teamsystem/aa718895.aspx</a><br />* For more information about building Web Deployment Projects, see “Visual Studio 2005 Web Deployment Projects” at <a href="http://msdn2.microsoft.com/en-us/asp.net/aa336619.aspx">http://msdn2.microsoft.com/en-us/asp.net/aa336619.aspx</a><br />
+<h3>How to Build a .NET 1.1 Application with Team Build</h3>Because .NET 1.1 is not directly supported by MSBuild, it is not supported by Team Build. Microsoft has released a project on CodePlex named MSBuild Extras (MSBee) that supports building .NET 1.1 applications. <br /><br />In order to build your .NET 1.1 applications, you need to upgrade your project file to a .NET 2.0 project file. You will also need to edit the Team Build project file so that it builds using the .NET 1.1 tools rather than the .NET 2.0 tools.<br /><br />*To build a .NET 1.1 applications with Team Build*<br />* Upgrade your .NET 1.1 solutions to .NET 2.0. You can do this by opening the solution in Visual Studio 2005 and running the Conversion Wizard, or by running devenv [projectname] /upgrade <br />* Ensure that the .NET 1.1 Software Development Kit (SDK) is installed on your build server.<br />* Download and install MSBuild Extras from <a href="http://www.codeplex.com/MSBee">http://www.codeplex.com/MSBee</a><br />* Download BuildingFx11inTB.targets from <a href="http://blogs.msdn.com/gautamg/attachment/578915.ashx">http://blogs.msdn.com/gautamg/attachment/578915.ashx</a><br />* Check out the build type from source control that will build your .NET 1.1 project.<br />* Copy BuildingFx11inTB.targets to the directory containing the build type and check the file into source control.<br />* Edit TFSBuild.proj file:<br />** Import the BuildingFx11inTB.targets file:<br /><pre>
+&lt;Import Project=&quot;$(MSBuildProjectDirectory)\BuildingFx11inTB.targets&quot; /&gt;  
+</pre>
+<ul><li>Add a property defining the CSharp targets:</li></ul>
+<pre>
+&lt;PropertyGroup&gt;
+     &lt;AdditionalPropertiesForBuildTarget&gt;
+        CustomAfterMicrosoftCommonTargets=$(ProgramFiles)\MSBuild\MSBee\MSBuildExtras.Fx1_1.CSharp.targets
+    &lt;/AdditionalPropertiesForBuildTarget&gt;
+ &lt;/PropertyGroup&gt; 
+</pre>
+<ul><li>Check TFSBuild.proj into source control.</li></ul>
+
+<h4>Additional Resources</h4><ul><li>For more information about MSBuild Extras, see “MSBuild Extras - Toolkit for .NET 1.1 &quot;MSBee” at <a href="http://www.codeplex.com/MSBee">http://www.codeplex.com/MSBee</a></li>
+<li>For more information about using MSBuild Extras to build .NET 1.1 applications, see “Building .NET 1.1 application using Team Build” at <a href="http://blogs.msdn.com/gautamg/archive/2006/04/19/578915.aspx">http://blogs.msdn.com/gautamg/archive/2006/04/19/578915.aspx</a></li></ul>
+
+<h3>How to Build Setup and Deployment Projects with Team Build</h3>Team Build does not support setup projects by default. Use a custom post-build step to compile the setup project and copy the binaries to the build drop location as follows.<br /><br /><b>1. Test the build.</b><br />Make sure that the Team Build that you want to use for the setup project works. If it does not, fix it before moving on.<br /><br /><b>Tip:</b> Most builds include the main project build as well as the setup build. If you are creating a new team build for the setup project only, do this before moving to step 2.<br /><br /><b>2. Ensure that the setup project is built by default.</b>
+<ol><li>In Solution Explorer, right-click the installer project for which you need to create a team build.</li>
+<li>Click <b>Properties</b>.</li>
+<li>Click <b>Configuration Manager...</b></li>
+<li>Select the build configuration(s) you want to build; for example, Debug, Release.</li>
+<li>Select the <b>Build</b> check box for the installer project.</li></ol>
+<br /><b>3. Ensure that all build paths in the project file are relative.</b>
+<ul><li>Open the solution folder for the installer project.</li>
+<li>Open the .vdproj file in an editor other than Visual Studio.</li>
+<li>Check out the .vdproj file for editing.</li>
+<li>Search for each of the following entries: <b>SccLocalPath</b>, <b>SccAuxPath</b>, <b>OutputFileName</b>, and <b>SourcePath</b>.</li>
+<li>Ensure that the path for each entry is relative and not absolute. (This is the default when a setup project is created.) Absolute paths start with a drive letter. Relative paths start with a double forward slash (‘\\’) or nothing.</li>
+<li>If you find an absolute path, replace it with a relative path. Do not modify any constant expressions. These are expanded by the installer later; for example:</li></ul>
+<br /><span class="codeInline"> &quot;OutputFileName&quot; = &quot;8:c:\\temp\\SetupProject.msi&quot; would be replaced with &quot;OutputFileName&quot; = &quot;8:debug\\SetupProject.msi&quot; </span><br /><br /><b>Tip:</b> Relative paths will be directly off of the project folder.<br /><br /><b>Tip:</b> Always use double forward slash ( &#39;\\&#39; ) when creating paths because it will be passed through code that decodes to a single forward slash ( &#39;\&#39; ).
+<ul><li>If you had to make any changes, check the .vdproj file back in.</li></ul>
+<br /><b>4. Add a post-compile task to your team build.</b>
+<ul><li>Open the team build you want to use for the setup project.</li>
+<li>Check out the build type from source control:
+<ul><li>You can find the build type beneath your team project in source control, in a subfolder of the TeamBuildTypes folder named TFSBuild.proj.</li>
+<li>You might need to perform a <b>Get Latest Version</b> operation on the folder first.</li></ul></li>
+<li>In Source Control Explorer, double-click TFSBuild.Proj to open it. </li></ul>
+<b>Note:</b> Viewing the build type from the Team Explorer will not work; because this opens a read-only copy of the build file.
+<ul><li>Add the following code to the end of the file between the last <b>&lt;/ItemGroup&gt;</b> tag and the last <b>&lt;/Project&gt;</b> tag:</li></ul>
+<pre>
+&lt;Target Name=&quot;AfterCompile&quot;&gt;
+   &lt;Exec Command=&quot;&amp;quot;C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\devenv&amp;quot; &amp;quot;C:\Documents and Settings\darren\My Documents\
+            Visual Studio 2005\Projects\HelloWorldTest\HelloWorldTestInstaller\HelloWorldTestInstaller.vdproj&amp;quot; /Build &amp;quot;Debug&amp;quot;&quot;/&gt;
+   &lt;Copy SourceFiles=&quot;C:\Documents and Settings\darren\My Documents\Visual Studio 2005\Projects\HelloWorldTest\HelloWorldTestInstaller\Debug\
+             HelloWorldTestInstaller.msi&quot; DestinationFolder=&quot;$(OutDir)&quot; /&gt;
+   &lt;Copy SourceFiles=&quot;C:\Documents and Settings\darren\My Documents\Visual Studio 2005\Projects\HelloWorldTest\HelloWorldTestInstaller
+             \Debug\setup.exe&quot; DestinationFolder=&quot;$(OutDir)&quot; /&gt;
+ &lt;/Target&gt;
+</pre>
+<ul><li>Check the paths in the pasted code to make sure that they are accurate for your build server.</li></ul>
+<b>Tip:</b> Use the command line to test the path in the exec command tag. Replace each &amp;quot; with a quote when testing on the command line, for example:<br /><br /><span class="codeInline"> &quot;C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\devenv&quot; &quot;C:\Documents and Settings\darren\My Documents\Visual Studio 2005\Projects\HelloWorldTest\HelloWorldTestInstaller\HelloWorldTestInstaller.vdproj&quot; /Build &quot;Debug&quot; </span><br /><br /><b>Tip:</b> Use the command line to test the SourceFiles paths as well.<br /><br /><b>5. Test the build changes.</b>
+<ol><li>In Team Explorer, right-click the build type and then click <b>Build Team Project</b>.</li>
+<li>Review the build summary to determine if the build passed or failed.</li>
+<li>If the build failed, click the link to the build log. Common reasons for failure include:
+<ol><li><b>Exec command path is incorrect.</b></li>
+<li><b>Permissions are not set to allow the output files to be copied to the build directory.</b> Make sure that the tfsservice user account has permissions to copy from the binaries folder and to the build folder. The binaries folder is the location where the msi file will be placed after the solution builds. The build folder is specified in tfs.proj in the &lt;BuildDirectoryPath&gt; tag.</li>
+<li><b>Permissions are not set to allow the installer to build.</b> Make sure that the tfsserver user account has permissions to read the .vdproj file and source files for your installer project as well as the application with which the installer is associated. Also make sure that the tfsserver user account has permissions to write binary files to the output directory; for example, Debug or Release.</li>
+<li><b>Build configuration is incorrect.</b> Make sure that the build configuration you specify in the <b>exec</b> command exists for your project. For instance, your project might have &quot;Debug|Any CPU&quot; but not &quot;Debug&quot;. You can check this by looking at the solution properties in Solution Explorer.</li></ol></li>
+<li>If the build log does not give you enough information, create an output file for the exec command and review this log for more information. For example:</li></ol>
+<pre>
+&lt;Exec Command=&quot;&amp;quot;C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\devenv&amp;quot; &amp;quot;C:\Documents and Settings\darren\My Documents\
+    Visual Studio 2005\Projects\HelloWorldTest\HelloWorldTestInstaller\HelloWorldTestInstaller.vdproj&amp;quot; /Build &amp;quot;Debug&amp;quot; 
+    &gt; c:\temp\output.txt&quot;/&gt;
+</pre><br />
+<h4>Additional Resources</h4><ul><li>For more information, see “Walkthrough: Configuring Team Foundation Build to Build a Visual Studio Setup Project” at <a href="http://msdn2.microsoft.com/en-us/library/ms404859(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms404859(VS.80).aspx</a> </li></ul>
+
+<h3>How to Create a Team Build</h3>You can create a new team build from the Team Builds folder in Team Explorer.<br /><br /><b>To create a team build</b>
+<ol><li>Open Team Explorer.</li>
+<li>Expand the team project for which you want to create a build.</li>
+<li>Right-click the Team Builds folder in the tree.</li>
+<li>Select <b>New Team Build Type…</b></li>
+<li>Specify the name of the new team build type and click <b>Next</b>.</li>
+<li>Select the projects you wish to build, this should include the project that contains your unit tests.</li>
+<li>Select a build configuration (e.g. release or debug) and click <b>Next</b>.</li>
+<li>Specify the name of your build server, e.g. <b>TFSRTM</b></li>
+<li>Specify a local build directory on your build server, e.g. <b>c:\builds</b></li>
+<li>Specify a drop location for your build output, e.g. \\<b>TFSRTM\NightlyBuilds</b> and then click <b>Next</b>.</li>
+<li>Click the <b>Run tests</b> checkbox, select the test list you want to associate with the build, and then click <b>Next</b>.</li>
+<li>Click <b>Finish</b> to create the team build type.</li></ol>
+
+<h3>How to Create Multiple Build Types  </h3>To create multiple build types—for example, Release for Customers or Debug for Test Team—use separate team builds for each build type that interests you.<br /><br /><b>To create a team build</b>
+<ol><li>Open Team Explorer.</li>
+<li>Expand the team project for which you want to create a build.</li>
+<li>Right-click the Team Builds folder in the tree.</li>
+<li>Select <b>New Team Build Type…</b></li>
+<li>Specify the name of the new team build type and click <b>Next</b>.</li>
+<li>Select the projects you wish to build, this should include the project that contains your unit tests.</li>
+<li>Select a build configuration (e.g. release or debug) and click <b>Next</b>.</li>
+<li>Specify the name of your build server, e.g. <b>TFSRTM</b></li>
+<li>Specify a local build directory on your build server, e.g. <b>c:\builds</b></li>
+<li>Specify a drop location for your build output, e.g. \\<b>TFSRTM\NightlyBuilds</b> and then click <b>Next</b>.</li>
+<li>Click the <b>Run tests</b> checkbox, select the test list you want to associate with the build, and then click <b>Next</b>.</li>
+<li>Click <b>Finish</b> to create the team build type.</li></ol>
+
+<h3>How to Create a Team Build for a Project That References Assemblies from Another Project</h3>To build a project that has dependencies on another team project, you need to get the source or assemblies from that project into the workspace on your build server. To do this, you need to edit your TFSBuild.proj file in order to add the assembly or the solution reference and override the <b>BeforeGet</b> event to get assemblies or sources from each of the required team projects.  <br /><br /><b>To build a project that references assemblies in another team project</b>
+<ul><li>Check out the TFSBuild.proj** script from Source Control Explorer. </li>
+<li>Add the following configuration setting under the <b>PropertyGroup</b> section: </li></ul>
+<pre>
+&lt;!-- to be added under PropertyGroup --&gt;
+&lt;TfCommand&gt;$(TeamBuildRefPath)\..\tf.exe&lt;/TfCommand&gt;
+&lt;SkipInitializeWorkspace&gt;true&lt;/SkipInitializeWorkspace&gt;
+</pre><br />SkipInitializeWorkSpace allows you to skip invoking the default tasks to delete and re-create the workspace on the build machine. The new property is used in the custom target <b>BeforeGet</b> (see below).
+<ul><li>Add the following configuration setting to the <b>ItemGroup</b> entries that map both the Team Projects and the solutions. Make sure that you provide the correct local paths for the build machine. Multiple mappings cannot share the same local folder and will result in a <b>MappingConflictException</b> exception in the CreateWorkspace task.</li></ul>
+<pre>
+&lt;ItemGroup&gt;
+  &lt;!-- add one entry for every solution you reference --&gt;
+  &lt;SolutionToBuild Include=&quot;$(SolutionRoot)\DependentApp\DependentApp.sln&quot; /&gt;
+  &lt;SolutionToBuild Include=&quot;$(SolutionRoot)\YourApp\YourApp.sln&quot; /&gt;
+&lt;/ItemGroup&gt;
+
+&lt;ItemGroup&gt;
+  &lt;!-- add one entry for every Team Project you reference --&gt;
+  &lt;Map Include=&quot;$/YourApp/YourApp&quot;&gt;
+    &lt;LocalPath&gt;$(SolutionRoot)\YourApp&lt;/LocalPath&gt;
+  &lt;/Map&gt;
+  &lt;Map Include=&quot;$/DependentApp/DependentApp&quot;&gt;
+    &lt;LocalPath&gt;$(SolutionRoot)\DependentApp&lt;/LocalPath&gt;
+  &lt;/Map&gt;
+&lt;/ItemGroup&gt;
+</pre>
+<ul><li>Override the <b>BeforeGet</b> event to retrieve the workspaces for each Team Project: </li></ul>
+<pre>
+&lt;Target Name=&quot;BeforeGet&quot;&gt;
+  &lt;DeleteWorkspaceTask 
+      TeamFoundationServerUrl=&quot;$(TeamFoundationServerUrl)&quot; 
+      Name=&quot;$(WorkspaceName)&quot; /&gt;
+  &lt;Exec 
+    WorkingDirectory=&quot;$(SolutionRoot)&quot; 
+    Command=&quot;&amp;quot;$(TfCommand)&amp;quot; workspace /new $(WorkSpaceName) /server:$(TeamFoundationServerUrl)&quot;/&gt;
+  &lt;Exec 
+   WorkingDirectory=&quot;$(SolutionRoot)&quot;
+   Command=&quot;&amp;quot;$(TfCommand)&amp;quot; workfold /unmap /workspace:$(WorkSpaceName) &amp;quot;$(SolutionRoot)&amp;quot;&quot;/&gt;
+  &lt;Exec 
+    WorkingDirectory=&quot;$(SolutionRoot)&quot; 
+    Command=&quot;&amp;quot;$(TfCommand)&amp;quot; workfold /map /workspace:$(WorkSpaceName) 
+          /server:$(TeamFoundationServerUrl) &amp;quot;%(Map.Identity)&amp;quot; &amp;quot;%(Map.LocalPath)&amp;quot;&quot;/&gt;
+&lt;/Target&gt; 
+</pre>
+<ul><li>Check in the build script and run the build.</li></ul>
+
+<h4>Additional Resources</h4><ul><li>For more information, see “Working with multiple team projects in Team Build” at <a href="http://blogs.msdn.com/manishagarwal/archive/2005/12/22/506635.aspx">http://blogs.msdn.com/manishagarwal/archive/2005/12/22/506635.aspx</a></li></ul>
+
+<h3>How to Subscribe to Build E-mail Events</h3>You can create a new project alert in order to subscribe to build e-mail events.<br /><br /><b>To set up build e-mail alerts</b>
+<ol><li>Right-click the relevant team project in Team Explorer.</li>
+<li>Select <b>Project Alerts</b>.</li>
+<li>Select each alert option you would like to receive and enter an e-mail address for notification.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about project alerts, see “Setting Alerts” at <a href="http://msdn2.microsoft.com/en-us/library/ms181334(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181334(VS.80).aspx</a> </li></ul>
+
+<h3>How to Receive Notification When a Build Has Failed</h3>You can create a new project alert with a filter to receive e-mails only when the build fails.<br /><br /><b>To create a project alert to notify you when a build fails</b>
+<ul><li><b>Create and Test your Build.</b> Make sure that you have a Team Build type in place and that it runs without errors.</li>
+<li><b>Register for BuildCompletionEvent event.</b> Use the <b>BisSubscribe.exe</b> tool to register for the <b>BuildCompletionEvent</b> event with a filter specifying that you only want the e-mail notification when the build fails, by using the following command-line syntax:</li></ul>
+<br /><span class="codeInline"> bissubscribe /eventType BuildCompletionEvent /address myemail@domain.com /deliveryType EmailPlaintext /server tfsserver1 /filter &quot;TeamProject = &#39;MyTeamProject&#39; AND CompletionStatus=‘Failed’“ </span><br />
+<ul><li><b>Test the build.</b> Test the build by checking in code that fails to compile, execute the build, and ensure that an e-mail notification is received.</li></ul>
+
+<h4>Additional Resources</h4><ul><li>For more information about filtering the build completion event, see “How to Filter the Build Completion Event” at <a href="http://blogs.msdn.com/jpricket/archive/2006/09/05/how-to-filter-the-build-completion-event.aspx">http://blogs.msdn.com/jpricket/archive/2006/09/05/how-to-filter-the-build-completion-event.aspx</a> </li>
+<li>For more information about BuildCompletionEvent filters, see “Useful BuildCompletionEvent Filters” at <a href="http://blogs.msdn.com/jpricket/archive/2006/09/05/useful-buildcompletionevent-filters.aspx">http://blogs.msdn.com/jpricket/archive/2006/09/05/useful-buildcompletionevent-filters.aspx</a>   </li></ul>
+
+<h3>How to Start a Build</h3>You can start a build type from the Team Builds folder in Team Explorer.<br /><br /><b>To manually start a build</b>
+<ol><li>Open Team Explorer.</li>
+<li>Expand the team project for which you want to start a build.</li>
+<li>Expand the Team Builds folder in the tree.</li>
+<li>Right-click the Team Build type you want to start.</li>
+<li>Select <b>Build Team Project</b>.</li></ol>
+
+<h3>How to Verify That the Build Succeeded</h3>You can check build status from the Builds window, accessible from Team Explorer.<br /><br /><b>To verify that a build succeeded</b>
+<ol><li>Open Team Explorer.</li>
+<li>Expand the team project for which you want to see results.</li>
+<li>Expand the Team Builds folder in the tree.</li>
+<li>Double-click the Team Build type for which you want to see results. </li></ol>
+
+<h3>How to View the Build Output</h3>You can view build output from the Builds window, accessible from Team Explorer.<br /><br /><b>To view build output</b>
+<ol><li>Open Team Explorer.</li>
+<li>Expand the team project for which you want to see build output.</li>
+<li>Expand the Team Builds folder in the tree.</li>
+<li>Double-click the Team Build type for which you want to see build output.</li>
+<li>Double-click the Team Build result entry for the build number for which you want to see output.</li>
+<li>If you want to see the build output folder, click the <b>Build name</b> link.</li>
+<li>If you want to see the build log, click the <b>Log</b> link.</li></ol>
+
+<h3>How to Change the Build Server Location</h3>In order to change the build server location for an existing Team Build, you modify the &lt;<b>BuildMachine&gt;</b> tag in TFSBuild.proj.<br /><br /><b>To change the build server location for an existing Team Build type</b>
+<ol><li>Open Source Control Explorer.</li>
+<li>In Source Control Explorer, expand your team project folder.</li>
+<li>Expand the TeamBuildTypes folder.</li>
+<li>Select the Team Build folder for which you want to turn on code analysis.</li>
+<li>Check out the TFSBuild.proj file from source control. You might need to perform a <b>Get Latest Version</b> operation on the folder first.</li>
+<li>In Source Control Explorer, double-click TFSBuild.Proj to open it. </li>
+<li>Modify the <b>&lt;BuildMachine&gt;</b> tag to point to the new server.</li>
+<li>Save TFSBuild.proj and check it back into source control.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about customizing Team Foundation Build, see “Customizing Team Foundation Build” at <a href="http://msdn2.microsoft.com/en-us/library/ms400688(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms400688(VS.80).aspx</a> </li></ul>
+
+<h3>How to Change the Build Output Location</h3>In order to change the build output location for an existing Team Build, modify the &lt;<b>DropLocation&gt;</b> tag in TFSBuild.proj.<br /><br /><b>To change the build server location for an existing Team Build type</b>
+<ol><li>Open Source Control Explorer.</li>
+<li>In Source Control Explorer, expand your team project folder.</li>
+<li>Expand the TeamBuildTypes folder.</li>
+<li>Select the team build folder for which you want to turn on code analysis.</li>
+<li>Check out the TFSBuild.proj file from source control. You might need to perform a <b>Get Latest Version</b> operation on the folder first.</li>
+<li>In Source Control Explorer, double-click TFSBuild.Proj to open it. </li>
+<li>Modify the <b>&lt;DropLocation&gt;</b> tag to point to the new location.</li>
+<li>Save TFSBuild.proj and check it back into source control.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about customizing Team Foundation Build, see “Customizing Team Foundation Build” at <a href="http://msdn2.microsoft.com/en-us/library/ms400688(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms400688(VS.80).aspx</a> </li></ul>
+<h3>How to Determine What Changesets Are Part of the Build</h3>You can view changesets associated with each build from the Builds window, accessible from Team Explorer.<br /><br /><b>To view changesets associated with a build</b>
+<ol><li>Open Team Explorer.</li>
+<li>Expand the team project for which you want to view changesets.</li>
+<li>Expand the Team Builds folder in the tree.</li>
+<li>Double-click the Team Build type for which you want to view changesets.</li>
+<li>Double-click the Team Build result entry for the build number for which you want to view changesets.</li>
+<li>Expand the <b>Associated changesets</b> item.</li>
+<li>If you want to see more information about a particular changeset, click the <b>ID</b> link.</li></ol>
+
+<h3>How to Change the Reported Build Quality </h3>You can change build quality from the Builds window, accessible from Team Explorer.<br /><br /><b>To change the build quality</b>
+<ol><li>Open Team Explorer.</li>
+<li>Expand the team project for which you want to change the build quality.</li>
+<li>Expand the Team Builds folder in the tree.</li>
+<li>Double-click the Team Build type for which you want to change the build quality.</li>
+<li>In the <b>Build Quality</b> drop-down list, select the build for which you want to set build quality, and then set a build quality value.</li></ol>
+
+<h2>Projects</h2><ul><li><b>How to use a single-solution strategy</b> </li>
+<li><b>How to use a partitioned-solution strategy</b></li>
+<li><b>How to use a multiple-solution strategy</b> </li></ul>
+
+<h3>How to Use a Single-Solution Strategy </h3>If you work on a small system, consider using a single Visual Studio solution to contain all of your projects. This strategy simplifies development because all of the code is available when you open the solution. This strategy also makes it easy to set up references, because all references are between projects in your solution. You might still need to use file references to reference third-party assemblies (such as purchased components) that are outside your solution.<br />
+<h4>Additional Resources</h4><ul><li>For more information, see “Chapter 3 – Structuring Projects and Solutions in Source Control” in this guide.</li></ul>
+
+<h3>How to Use a Partitioned-Solution Strategy</h3>If you work on a large system, consider using multiple Visual Studio solutions, each representing a subsystem of your application. These solutions can be used by developers to work on smaller parts of your system without having to load all code across all projects. Design your solution structure so that any projects that have dependencies are grouped together. This enables you to use project references rather than file references. Consider creating a master solution file that contains all of the projects, if you want to use this to build the entire application.<br /><br />When working with multiple solutions, use a flat file structure for all of your projects. A typical example is an application that has a Microsoft Windows Forms project, an ASP.NET project, a Windows service, and a set of class library projects shared by some or all of those projects.<br /> <br />You can use the following flat structure for all projects:
+<ol><li>/Source</li>
+<li>/WinFormsProject</li>
+<li>/WebProject</li>
+<li>/WindowsServiceProject</li>
+<li>/ClassLibrary1</li>
+<li>/ClassLibrary2</li>
+<li>/ClassLibrary3</li>
+<li>Web.sln</li>
+<li>Service.sln</li>
+<li>All.sln</li></ol>
+<br />By keeping the structure flat, you gain a lot of flexibility and the ability to use solutions for presenting different views of the projects. Designing the physical folder structure around solution files is very hard to change, especially if you realize that you need to reuse a class library from another solution.<br /><br /><b>Note:</b> If you are building with Team Build (which relies on MSBuild), it is possible to create solution structures that do not include all referenced projects. As long as the entire solution has been built first, generating the binary output from each solution, MSBuild is able to follow project references outside the boundaries of your solution and build successfully. You cannot build solutions created in this way from the Visual Studio build command, and this approach only works with Team Build and MSBuild.<br />
+<h4>Additional Resources</h4><ul><li>For more information, see “Chapter 3 – Structuring Projects and Solutions in Source Control” in this guide.</li></ul>
+
+<h3>How to Use a Multiple-Solution Strategy </h3>If you work on a very large solution requiring many dozens of projects, you might run up against solution scalability limits. In this scenario, you should break your application into multiple solutions, but do not create a master solution for the entire application because all references inside each solution are project references. References to projects outside of each solution (for example, to third-party libraries or projects in another sub-solution) are file references. This means that there can be no “master” solution. Instead, a script must be used that understands the order in which the solutions must be built. One of the maintenance tasks associated with a multiple-solution structure is ensuring that developers do not inadvertently create circular references between solutions. This structure requires complex build scripts and explicit mapping of dependency relationships. In this structure, it is not possible to build the application in its entirety within Visual Studio. Instead, you use TFS Team Build.<br />
+<h4>Additional Resources</h4><ul><li>For more information, see “Chapter 3 – Structuring Projects and Solutions in Source Control” in this guide.</li></ul>
+
+<h2>Reporting</h2><ul><li><b>How to view build quality</b></li>
+<li><b>How to view all the check-ins for a build</b></li>
+<li><b>How to view work items or bugs closed for a build</b></li>
+<li><b>How to view open work items or bugs for a build</b></li>
+<li><b>How to track velocity from build to build</b></li>
+<li><b>How to track test case pass/fail results for a build</b></li>
+<li><b>How to review build status (BVT results)</b></li></ul>
+
+<h3>How to View Build Quality</h3>You can view build quality from the Builds window, accessible from Team Explorer.<br /><br /><b>To view build quality</b>
+<ol><li>Open Team Explorer.</li>
+<li>Expand the team project for which you want to view build quality.</li>
+<li>Expand the Team Builds folder in the tree.</li>
+<li>Double-click the Team Build type to view build quality.</li></ol>
+<br />If you are using the Microsoft Solutions Framework (MSF) for CMMI&#174; Process Improvement (MSF CMMI) process template, you can view the Builds report in order to see build quality as well as additional information on test results, code coverage and code churn.<br /><br /><b>To view build quality in MSF CMMI</b>
+<ol><li>In Team Explorer, expand your team project node.</li>
+<li>Right-click <b>Reports</b> and then click <b>Show Report Site</b>.</li>
+<li>In the report site, select the <b>Builds</b> report.</li></ol>
+
+<h3>How to View All the Check-ins for a Build</h3>You can view check-ins associated with each build from the Builds window, accessible from Team Explorer.<br /><br /><b>To view check-ins associated with a build</b>
+<ol><li>Open Team Explorer.</li>
+<li>Expand the team project for which you want to view check-ins for a build.</li>
+<li>Expand the Team Builds folder in the tree.</li>
+<li>Double-click the Team Build type for which you want to view check-ins for a build.</li>
+<li>Double-click the Team Build result entry for which you want to view check-ins for a build.</li>
+<li>Expand the <b>Associated changesets</b> item to see all check-ins associated with the build</li>
+<li>If you want to see more information on a particular changeset (which represents a check-in), click the <b>ID</b> link.</li></ol>
+
+<h3>How to View Work Items or Bugs Closed for a Build</h3>You can view work items and bugs that have been closed for each build from the Builds window, accessible from Team Explorer.<br /><br /><b>To view work items associated with a build</b>
+<ol><li>Open Team Explorer.</li>
+<li>Expand the team project for which you want to view work items.</li>
+<li>Expand the Team Builds folder in the tree.</li>
+<li>Double-click the Team Build type for which you want to view work items.</li>
+<li>Double-click the Team Build result entry for the build number for which you want to view work items.</li>
+<li>Expand the <b>Associated work items</b> item.</li></ol>
+
+<h3>How to View Open Work Items or Bugs for a Build</h3>If you are using the MSF CMMI process template, you can view the Open Issues and Blocked Work Items Trend report to view open, resolved, and closed work items over a given time period. However, because the report presents the information by date instead of by build, you need to translate the results into builds according to the date on which the build was produced.<br /><br />To view open work items or bugs for a build
+<ol><li>In Team Explorer, expand your team project node.</li>
+<li>Right-click <b>Reports</b> and then click <b>Show Report Site</b>.</li>
+<li>In the report site, select the <b>Open Issues and Blocked Work Items Trend</b> report.</li></ol>
+
+<h3>How to Track Velocity from Build to Build</h3>You can use the Velocity report to track the progress and the rate at which work items are getting completed from build to build. This report is available in both MSF CMMI and MSF for Agile Software Development (MSF Agile).<br /><br /><b>To track velocity from build to build</b>
+<ol><li>In Team Explorer, expand your team project node.</li>
+<li>Right-click <b>Reports</b> and then click <b>Show Report Site</b>.</li>
+<li>In the report site, select the <b>Velocity</b> report.</li></ol>
+
+<h3>How to Track Test Case Pass/Fail results for a Build</h3>You can use the Quality Indicators report to track the number of test cases that pass and fail over a given time period. The report presents the information by date instead of by build. As a result, you need to translate the results into builds according to the date at which the build was produced. This report is available in both MSF CMMI and MSF Agile.<br /><br /><b>To track test case pass/fail for a build</b>
+<ol><li>In Team Explorer, expand your team project node.</li>
+<li>Right-click <b>Reports</b> and then click <b>Show Report Site</b>.</li>
+<li>In the report site, select the <b>Quality Indicators</b> report.</li></ol>
+
+<h3>How to Review Build Status (BVT Results)</h3>If you are using the MSF CMMI process template, you can view the Builds report in order to see BVT results.<br /><br /><b>To review build status</b>
+<ol><li>In Team Explorer, expand your team project node.</li>
+<li>Right-click <b>Reports</b> and then click <b>Show Report Site</b>.</li>
+<li>In the report site, select the <b>Builds</b> report.</li></ol>
+
+<h2>Scheduled Builds</h2><ul><li><b>How to automatically run nightly builds</b></li>
+<li><b>How to decide on a build frequency and type for your project</b></li></ul>
+
+<h3>How to Automatically Run Nightly Builds</h3>The Team Build feature in TFS does not support scheduled builds from the user interface. Instead, you can use the Microsoft Windows Task Scheduler to run the TFSBuild command utility to start builds at predetermined time.<br /><br /><b>To create a scheduled build</b>
+<ul><li>Create a TFSBuild command line as follows:</li></ul>
+<br /><span class="codeInline"> TfsBuild start &lt;&lt;TeamFoundationServer&gt;&gt; &lt;&lt;TeamProject&gt;&gt; &lt;&lt;BuildTypeName&gt;&gt; </span><br />
+<ul><li>Place the command line in a batch file.</li>
+<li>Create a Windows Scheduled Task that runs the batch file at your desired interval.</li></ul>
+<br />For more information and expanded steps, see “How To – Set Up a Scheduled Build with Visual Studio Team Foundation Server” in this guide.<br />
+<h4>Additional Resources</h4><ul><li>For more information, see “Chapter 9 – Setting Up a Scheduled Build with Team Build” in this guide.</li></ul>
+
+<h3>How to Decide on a Build Frequency and Type for Your Project</h3>The frequency of your builds is one of the most important decisions to make when creating a scheduled build.<br /><br />If you are working on a project that has enough check-ins to cause significant changes within an hour, and you do not use Continuous Integration (CI) builds, you can choose an hourly build frequency. Hourly builds provide rapid feedback to developers and can also be made available to testers and other team members to solicit their feedback.<br /><br />If you are working on a project that has enough check-ins to cause significant changes within a day, you can use daily scheduled build frequency because it gives your test and development teams a new build every morning that incorporates the changes from the previous day, ready to be tested.  <br /><br />If you are working on a large, complex project where the build time can last for days, you should opt for weekly builds. This ensures that your test team will have a build at the start of each week incorporating the changes from the previous week, ready to be tested.   <br />
+<h4>Additional Resources</h4><ul><li>For more information about setting up scheduled builds, see “How To – Set Up a Scheduled Build with Visual Studio Team Foundation Server” in this guide.</li>
+<li>For more information, see “Chapter 9 – Setting Up Scheduled Build with Team Build” in this guide.</li></ul>
+
+<h2>Test-Driven Development</h2><ul><li><b>How to create a “hello world” acceptance test</b></li>
+<li><b>How to run automated tests as part of the build</b></li>
+<li><b>How to run code analysis as part of the build</b></li>
+<li><b>How to get failed tests to fail a build</b></li></ul>
+
+<h3>How to Create a “Hello World” Acceptance Test</h3>A “hello world” acceptance test is a simple test that you can use to prove that you can create unit tests and hook them up to your build process. <br /><br />In order to create a test list to associate with the build you must have either Visual Studio Test Edition or Visual Studio Team Suite installed. In order to run automated tests on the build server you must have either Visual Studio Developer Edition, Visual Studio Test Edition, or Visual Studio Team Suite installed on the build server. <br /><br /><b>To create a hello world test</b>
+<ol><li>On the <b>Test</b> menu, click <b>New Test</b>…</li>
+<li>Click <b>Unit Test</b> and then click <b>OK</b>.</li>
+<li>Enter a name for your test project and then click <b>Create</b>.</li>
+<li>Compile your new project.</li>
+<li>Check the project into source control.</li>
+<li>With your unit test solution still open in Visual Studio, on the <b>Test</b> menu, click <b>Create New Test List</b>...</li>
+<li>Specify a test list name in the <b>Create New Test List</b> dialog and then click <b>OK</b>.</li>
+<li>In the Test Manager, click on the <b>All Loaded Tests</b> node.</li>
+<li>Drag and drop tests from the available tests into your test list node in the tree.</li>
+<li>Check the modified unit test project VSMDI file into source control.</li></ol>
+<br />The test list you have created is available when you create a new Team Build and can be run automatically as part of the build process.<br />
+<h4>Additional Resources</h4><ul><li>For more information about automatically running Build Verification Tests, see “How to: Configure and Run Build Verification Tests (BVTs)” at <a href="http://msdn2.microsoft.com/en-us/library/ms182465(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms182465(VS.80).aspx</a> </li>
+<li>For more information about how to run automated build tests without Visual Studio Test Edition or a VSMDI file, see “How to run tests in a build without test metadata files and test lists (.vsmdi files)” at <a href="http://blogs.msdn.com/buckh/archive/2006/11/04/how-to-run-tests-without-test-metadata-files-and-test-lists-vsmdi-files.aspx">http://blogs.msdn.com/buckh/archive/2006/11/04/how-to-run-tests-without-test-metadata-files-and-test-lists-vsmdi-files.aspx</a> </li></ul>
+
+<h3>How to Run Automated Tests as Part of the Build</h3>You can run automated tests to automatically gain feedback on build quality after every build. In order to run automated tests, you must have Visual Studio Developer Edition as well as Visual Studio Test Edition on the build server, or you can install the entire Team Suite. Developer Edition is necessary in order to run the build, while Test Edition is necessary in order to set up tests and test lists that can be run.<br /><br /><b>To run automated tests as part of the Team Build process</b>
+<ol><li>Create one or more automated tests that you want to run with the build.</li>
+<li>On the <b>Test</b> menu, click <b>Create New Test List</b>...</li>
+<li>Use the Test Manager to group tests into the new Test List by dragging and dropping the tests from the Test View to the Test List in the Test Manager.</li>
+<li>Create a new Team Build type.</li>
+<li>Select the check box to run automated tests.</li>
+<li>Select the test project within which your tests and test list were created</li>
+<li>Select the test list you want to run.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about automatically running Build Verification Tests, see “How to: Configure and Run Build Verification Tests (BVTs)” at <a href="http://msdn2.microsoft.com/en-us/library/ms182465(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms182465(VS.80).aspx</a> </li>
+<li>For more information about how to run automated build tests without Visual Studio Test Edition or a VSMDI file, see “How to run tests in a build without test metadata files and test lists (.vsmdi files)” at <a href="http://blogs.msdn.com/buckh/archive/2006/11/04/how-to-run-tests-without-test-metadata-files-and-test-lists-vsmdi-files.aspx">http://blogs.msdn.com/buckh/archive/2006/11/04/how-to-run-tests-without-test-metadata-files-and-test-lists-vsmdi-files.aspx</a> </li></ul>
+
+<h3>How to Run Code Analysis as Part of the Build</h3>To turn on code analysis for a build type, you can either select the code analysis check box in the New Team Build Type Creation Wizard when you create the new Team Build type, or you can modify the TFSBuild.proj file after the build type has been created. <br /><br /><b>To enable code analysis in the TFSBuild.proj file</b>
+<ul><li>If you want all projects to run code analysis, regardless of project settings, change the <b>&lt;RunCodeAnalysis&gt;</b> tag to <b>Always</b>.</li>
+<li>If you want to run code analysis on each project based on project settings, change the <b>&lt;RunCodeAnalysis&gt;</b> tag to <b>Default</b>.</li></ul>
+
+<h4>Additional Resources</h4><ul><li>For more information about automatic code analysis as part of the build, see “How To – Automatically Run Code Analysis with Team Build in Visual Studio Team Foundation Server” in this guide.</li>
+<li>For more information about code analysis tools, see “Guidelines for Using Code Analysis Tools” at <a href="http://msdn2.microsoft.com/en-us/library/ms182023(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms182023(VS.80).aspx</a> </li></ul>
+
+<h3>How to Get Failed Tests to Fail a Build</h3>When a build fails because of compilation errors, a work item is created to track the failure and the build is marked as failed. When an automated test fails, however, the build does not fail. The test failure is converted into a warning and the build continues.<br /><br />You might want to fail the build if an associated automated test fails. You might also want to generate a work item automatically to track the failure.<br /><br /><b>To fail the build upon test failure</b>
+<ol><li>Open the Microsoft.TeamFoundation.Build.targets file from Program Files\MSBuild\Microsoft\VisualStudio\v8.0\TeamBuild.</li>
+<li>Check out for edit and open the TFSBuild.proj file for the Team Build type you want to have failed upon test failure.</li>
+<li>Copy the <b>RunTestWithConfiguration</b> target from Microsoft.TeamFoundation.Build.targets to the end of the TFSBuild.proj file, just before the closing &lt;/Project&gt; tag.</li>
+<li>Modify the <b>ContinueOnError</b> attribute from <b>true</b> to <b>false</b>. </li></ol>
+<b>Note:</b> There will be two test tool tasks. Modify the end-to-end task in order to only modify the behavior of builds on the build server. Use the desktop build task when building on a developer’s desktop.<br /><br />Alternatively, if you want all Team Build types to fail upon test failure, you can modify Microsoft.TeamFoundation.Build.targets directly. This change will modify behavior for all Team Build types.<br /><br />The solution recommended above is straightforward to implement but is not guaranteed to continue working for future versions of Visual Studio. If you want to implement a solution that is guaranteed to continue working after upgrade, see Aaron Hallberg’s blog entry “Determining Whether Tests Passed in Team Build” at <a href="http://blogs.msdn.com/aaronhallberg/archive/2006/09/21/determining-whether-tests-passed-in-team-build.aspx">http://blogs.msdn.com/aaronhallberg/archive/2006/09/21/determining-whether-tests-passed-in-team-build.aspx</a><br />
+<h4>Additional Resources</h4><ul><li>For more information about setting up the build to create a work item upon test failure, see “Create Workitems for Test Failures in TeamBuild” at <a href="http://blogs.msdn.com/nagarajp/archive/2005/10/14/481290.aspx">http://blogs.msdn.com/nagarajp/archive/2005/10/14/481290.aspx</a>  </li>
+<li>For more information about a solution that is guaranteed to continue working after a Visual Studio upgrade, see “Determining Whether Tests Passed in Team Build” at <a href="http://blogs.msdn.com/aaronhallberg/archive/2006/09/21/determining-whether-tests-passed-in-team-build.aspx">http://blogs.msdn.com/aaronhallberg/archive/2006/09/21/determining-whether-tests-passed-in-team-build.aspx</a> </li></ul>
+
+<h2>Team Build Resources</h2><ul><li>For an overview of Team Foundation Build, see “Overview of Team Foundation Build” at <a href="http://msdn2.microsoft.com/en-us/library/ms181710(vs.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181710(vs.80).aspx</a></li></ul></div><div class="ClearBoth"></div>

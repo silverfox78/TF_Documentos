@@ -1,0 +1,16 @@
+### Foreword By Brian Harry
+
+Developing   software can be a very complex process. A software-development project can range from a very small team to a team of thousands of people with a multitude of specialized roles. When setting out to build Microsoft® Visual Studio®   Team System, we intended to create tools that help developers conceive, organize, design, schedule, build, test, deploy, and manage software applications. Team Foundation Server (TFS) is the centerpiece of Team System that helps to tie together all of the people and activities involved in the application life cycle.
+
+As a result, Team System is broad in scope, designed for many different people with many different roles. We have endeavored to make the product as simple as possible while keeping it flexible enough to adapt to the needs of widely varying development teams. These are competing goals. Over the past year or so, it has become clear that we’ve been missing a key component for users of Team System. While we have lots of documentation and help on “how to” do things, we have lacked good information on how things “should” be done. The process guidance in Team System fills part of this gap but focuses primarily on people, roles, and workflow. What has been missing is really solid information on software development process implementation strategies.
+
+This new patterns & practices   TFS Guide does a terrific job of filling that gap. It covers a wide array of topics ranging from “How should I organize my Team Projects?” and “What kind of branching and merging structure should I use?” to “How many builds should I have and how often?” and “How do I use Team System to manage my project?” It explains things both in terms of best practices and how they map to your team, and in terms of how you can implement them in TFS.
+
+Much of this guidance is rooted in the software-development practices we have learned and established at Microsoft over the past 30 years. Further, we are able to base this guidance on real-life experience with TFS, as we have been using it for much of our development process in the Developer Division for more than two years. I sincerely hope that you will benefit from the lessons we’ve learned and the best practices we’ve established.
+  
+
+**Brian Harry**
+**Technical Fellow, Visual Studio Team System**
+**July, 2007**
+
+_Brian Harry is the Product Unit Manager for Team Foundation Server. Brian has always had a passion for software development tools, dating all the way back to his college years in the mid '80s at North Carolina State University where he did research on compilers, linkers, assemblers, processor simulation systems and the like. After joining Microsoft, Brian worked in what was then the Tools and Databases division. For a couple of years he worked on SourceSafe and then the Microsoft Repository. Next he worked on the .NET Framework, where he was the Development manager for the Common Language Runtime and then served as the Product Unit Manager. At the end of 2002, he moved back to North Carolina to help open a development center to build tools for developers. Brian has built a team of about 50-60 people in NC who work on the Team Foundation Server and Visual Studio Team System for Testers products._

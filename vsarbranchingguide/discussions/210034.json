@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "433587",
+    "ThreadId": "210034",
+    "Html": "<p>Hi,</p>\r\n<p>as seen from previous posts and my own troubles, please comment on the following.</p>\r\n<p>Branching is based on set theory applied to real life. By &nbsp;'real life' &nbsp;you make your choices on how to apply the theory and stick to it.</p>\r\n<p>Set theory can be explained by theorems and lemmas which are made to defined fixed truths. Perhaps these theorems are too general and complicated and there is a need to limit them when applying them to real life.</p>\r\n<p>Cant you guys just come up with some small set of theorems and lemmas that defines your ideas and language clearly?</p>\r\n<p>Had I understood this stuff as well as you experts I am sure I could give this a good try, and in one way or the other I am sure that you experts do have your 'real life' theorems and lemmas working well for you whether you are aware of it or not. For the rest of us the future challenges are new and unknown and learning this as you go is not for everyone.</p>\r\n<p>'-I just want to be sure' is the big concern for so many, me included, confirms this problem many have. Not all of us have experts in our teams already and hence this problem is real.</p>\r\n<p>Certainly, with the excellent work you already have done, it should be quite possible to do this with a reasonable effort.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-21T05:16:34.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "433616",
+    "ThreadId": "210034",
+    "Html": "<p>I disagree with your basic premise that source code management, specifically branching strategies, are *based* on set theory. My view is that they are based on a common sense approach to understanding the goals, benefits, pros, and cons of using branches to manage source code. We attempt, in our branching guidance, to express these concepts in simple, clear English rather than set theory.</p>\r\n<p>Set theory is a branch of mathematics, used for studying collections of objects (sets). I suppose you could argue that any collection of objects (people, trees, cars, source code files) could be studied using set theory. But this argument, in my view, does not support the premise that branching is based on set theory, or that set theorems are the best or even a useful way to understand branching strategies.</p>\r\n<p>I prefer instead, to describe our branching strategy in plain English rather than through a set ofmathematical theorems. I do not wish to set an expectation that one must be a mathematician in order to understand some simple strategies.</p>\r\n<p>I fear that you are making this a much more complicated problem than it really is.</p>\r\n<p>If you have specific concerns or questions you would like us to answer, please post them.</p>\r\n<p>If you would like to volunteer to come up with an initial set of theorems and lemmas, I would be happy to critique them.</p>\r\n<p>Judging from the feedback we have received, there are many, many people who have successfully downloaded the branching guidance and applied it to their real-life problems.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-21T06:34:15.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

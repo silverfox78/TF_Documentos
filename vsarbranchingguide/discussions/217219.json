@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "459557",
+    "ThreadId": "217219",
+    "Html": "Currently we have an existing SharePoint 2007 application with a single main line of development from which we create feature branches as needed. We are now porting the application to SharePoint 2010 but still need to continue feature development for the SharePoint 2007 version as well. We will eventually be supporting two versions of our application for the foreseeable future - a SP 2007 one and a SP 2010 one. I'm trying to figure out the best branching strategy to support developing both a SharePoint 2007 and a SharePoint 2010 version of our application.  Some features we develop will be common across both versions while other features will be unique to a particular version of SharePoint.\r\n\r\nIdeally we are looking for a development branching strategy that would support a means to maintain a set of features which are common to both versions while still allowing for the necessary differences.\r\n",
+    "PostedDate": "2010-06-24T08:49:18.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

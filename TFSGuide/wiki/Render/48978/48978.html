@@ -1,0 +1,132 @@
+<div class="wikidoc"><h3>How To: Create Custom Check-in Policies in Visual Studio Team Foundation Server </h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Applies To</h3><ul><li>Microsoft&#174; Visual Studio&#174; 2005 Team Foundation Server (TFS)</li>
+<li>Microsoft Visual Studio Team System</li></ul>
+
+<h3>Summary</h3>This How To article walks you through the process of creating, registering, and applying a custom check-in policy for TFS. Check-in polices allow you to run rules whenever a developer attempts to check-in a source file, in order to ensure that the source file being checked-in meets a specified set of criteria. As an example, this How To article uses a custom policy to enforce that check-in comments are supplied with all check-ins. To implement a custom check-in policy, you create a class that derives from <b>PolicyBase</b> and implements the <b>IPolicyDefinition</b> and <b>IPolicyEvaluation</b> interfaces. You register the policy assembly in the Microsoft Windows&#174; registry and you apply the policy to your team project.<br />
+<h3>Contents</h3><ul><li>Objectives</li>
+<li>Overview</li>
+<li>Before You Begin</li>
+<li>Summary of Steps</li>
+<li>Step 1 – Create and Build a Custom Policy Class.</li>
+<li>Step 2 – Register the Custom Policy Class in the Windows Registry</li>
+<li>Step 3 – Apply the Custom Policy.</li>
+<li>Step 4 – Validate the Custom Policy.</li>
+<li>Additional Considerations</li></ul>
+
+<h3>Objectives</h3><ul><li>Learn what a custom check-in policy is </li>
+<li>Learn how to create, register, and apply custom check-in policies.</li></ul>
+
+<h3>Overview</h3><i>Check-in policies</i> enforce constraints whenever files are checked into source control. Team Foundation Server provides a number of out-of-box check-in policies including policies to check that unit tests have run and been passed, policies to perform static code analysis to ensure that code meets coding standards and .NET guidelines, and policies to check that work items are associated with check ins. The Microsoft Visual Studio 2005 Team Foundation Power Tool also provides a number of additional check-in policies. In this How To article, you will learn how to create, register, and apply a custom policy. The example policy ensures that developers supply check-in comments whenever they check in a file.<br />
+<h3>Before You Begin</h3>Note that, to create a check-in policy, you must have the <b>Manipulate</b> security settings permission set to <b>Allow</b>.<br />
+<h3>Summary of Steps</h3><ul><li>Step 1 – Create and Build a Custom Policy Class</li>
+<li>Step 2 – Register the Custom Policy in the Windows Registry</li>
+<li>Step 3 – Apply the Custom Policy</li>
+<li>Step 4 – Validate the Custom Policy</li></ul>
+
+<h3>Step 1 – Create and Build a Custom Policy Class</h3>In this initial step, you create a custom policy class by deriving from the <b>PolicyBase</b> base class in the <b>Microsoft.TeamFoundation.VersionControl.Client</b> namespace. By deriving from this base class, your class implements the <b>IPolicyDefinition</b> and <b>IPolicyEvaluation</b> interfaces. The example policy code below forces a developer to supply check-in comments whenever he or she checks in a source file.<br />
+<ol><li>Use Visual Studio to create a new Visual C#&#174; class library project.</li>
+<li>Add an assembly reference to <b>System.Windows.Forms.dll</b>. You use this assembly to display message boxes.</li>
+<li>Add an assembly reference to <b>Microsoft.TeamFoundation.VersionControl.Client.dll.</b> By default, this is installed in the following folder: \Program Files\Visual Studio 2005 Team Foundation Server\Tools</li>
+<li>Replace your skeleton class code implementation with the following source. Note that the class derives from the <b>PolicyBase</b> base class and is marked as serializable.</li></ol>
+<br /><br /><pre> using System;
+using System.Windows.Forms;
+using Microsoft.TeamFoundation.VersionControl.Client;
+
+[Serializable]
+public class CheckForCommentsPolicy : PolicyBase
+{
+    public override string Description
+    {
+        get { return &quot;Remind users to add meaningful comments to their checkins&quot;; }
+    }
+
+    // This is a string that is stored with the policy definition on the source
+    // control server. If a user does not have the policy plug-in installed, this string
+    // is displayed.  You can use this to explain to the user how they should 
+            // install the policy plug-in.
+    public override string InstallationInstructions
+    {
+        get { return &quot;To install this policy, read InstallInstructions.txt.&quot;; }
+    }
+
+    // This string identifies the type of policy. It is displayed in the 
+ // policy list when you add a new policy to a Team Project.
+    public override string Type
+    {
+        get { return &quot;Check for Comments Policy&quot;; }
+    }
+
+    // This string is a description of the type of policy. It is displayed 
+    // when you select the policy in the Add Check-in Policy dialog box.
+    public override string TypeDescription
+    {
+        get { return &quot;This policy will prompt the user to decide whether or not they should be allowed to check in.&quot;; }
+    }
+
+    // This method is called by the policy framework when you create 
+    // a new check-in policy or edit an existing check-in policy.
+    // You can use this to display a UI specific to this policy type 
+    // allowing the user to change the parameters of the policy.
+    public override bool Edit(IPolicyEditArgs args)
+    {
+        // Do not need any custom configuration
+        return true;
+    }
+
+    // This method performs the actual policy evaluation. 
+    // It is called by the policy framework at various points in time
+    // when policy should be evaluated. In this example, the method 
+    // is invoked when various asyc events occur that may have 
+    // invalidated the current list of failures.
+    public override PolicyFailure[] Evaluate()
+    {
+        string proposedComment = PendingCheckin.PendingChanges.Comment;
+        if (String.IsNullOrEmpty(proposedComment))
+        {
+            return new PolicyFailure[] {
+                new PolicyFailure(&quot;Please provide some comments about your check-in&quot;, this) };
+        }
+        else
+        {
+            return new PolicyFailure[0];
+        }
+    }
+
+    // This method is called if the user double-clicks on 
+    // a policy failure in the UI. In this case a message telling the user 
+    // to supply some comments is displayed.
+    public override void Activate(PolicyFailure failure)
+    {
+        MessageBox.Show(&quot;Please provide comments for your check-in.&quot;, &quot;How to fix your policy failure&quot;);
+    }
+
+    // This method is called if the user presses F1 when a policy failure 
+    // is active in the UI. In this example, a message box is displayed.
+    public override void DisplayHelp(PolicyFailure failure)
+    {
+        MessageBox.Show(&quot;This policy helps you to remember to add comments to your check-ins.&quot;, &quot;Prompt Policy Help&quot;);
+    }
+} </pre><br />
+<h3>Step 2 – Register the Custom Policy in the Windows Registry</h3>In this step, you add an entry to the Windows registry so that your policy appears in the <b>Add Check-in Policy</b> dialog box. Note that you must install the policy assembly on any computer that needs to reference the assembly. This includes the computer of the team project’s administrator who needs to associate the policy with the team project and on all of your team members’ computers where the policy is actually evaluated. <br /><br /><b>Important</b>: The policy is evaluated on the client when a developer checks in a file.<br />
+<ol><li>Start Regedit.exe and locate the following key 
+<ol><li>HKEY<i>LOCAL</i>MACHINE\Software\Microsoft\VisualStudio\8.0\TeamFoundation\SourceControl\Checkin Policies </li>
+<li>The registered policies are listed in the right pane. </li></ol></li>
+<li>Right-click in the right-hand pane, point to <b>New,</b> and then click <b>String Value</b>.</li>
+<li>Type the name of your custom policy dynamic link library (DLL), without the DLL extension; <b>CheckForCommentsPolicy</b> in the above example.
+<ol><li><b>Important</b>: The new string name must match your DLL filename exactly, without the DLL extension.</li></ol></li>
+<li>Double-click the new string value and set its value to the fully qualified path and filename to the .dll containing your custom policy.</li></ol>
+
+<h3>Step 3 – Apply the Custom Policy</h3>In this step you add the custom policy to your team project. This ensures that the policy is evaluated each time a developer checks in a file to this team project.<br />
+<ol><li>In <b>Team Explorer</b>, right-click your team project, point to <b>Team Project Settings</b> and then click <b>Source Control</b>.</li>
+<li>Click the <b>Check-in Policy</b> tab and then click <b>Add</b>.</li>
+<li>Select your custom <b>Check for Comments Policy</b> and click <b>OK</b> and then <b>OK</b> again.</li></ol>
+<br />The policy is now applied each time a developer checks a file into this team project.<br />
+<h3>Step 4 – Validate the Custom Policy</h3>In this step, you check-in a source file to ensure that the custom policy works correctly.<br />
+<ol><li>Make a change to a source file and then check-in the file without supplying a check-in comment. </li>
+<li>Verify that the check-in is prevented because the policy rule is not satisfied. </li>
+<li>Add some comments and complete the check-in. With a supplied comment the check-in should work successfully and you will not see a policy failure notification.</li></ol>
+
+<h3>Additional Resources</h3><ul><li>To learn how to customize a check-in policy, see “Walkthrough: Customizing Check-in Policies and Notes” at <a href="http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181281(VS.80).aspx</a> </li>
+<li>To see sample code that will disallow selected patterns on check-in, see “Check-in Policy to Disallow Certain Patterns” at <a href="http://blogs.msdn.com/jmanning/archive/2006/02/02/523125.aspx">http://blogs.msdn.com/jmanning/archive/2006/02/02/523125.aspx</a></li>
+<li>To see sample code that will enforce comments on check-in, see “Sample Check-in Policy: Make Sure the Comment Isn&#39;t Empty” at <a href="http://blogs.msdn.com/jmanning/archive/2006/01/21/515858.aspx">http://blogs.msdn.com/jmanning/archive/2006/01/21/515858.aspx</a></li>
+<li>To learn how to register a new check-in policy, see “I&#39;ve Made a New Check-In Policy! How Do I Add It?” at <a href="http://blogs.msdn.com/jmanning/archive/2006/02/07/526778.aspx">http://blogs.msdn.com/jmanning/archive/2006/02/07/526778.aspx</a></li></ul></div><div class="ClearBoth"></div>

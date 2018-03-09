@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1026358",
+    "ThreadId": "439311",
+    "Html": "We have found that we &quot;lost&quot; a fix from one release to another. I need help in determining the best thing to do to help make sure this doesn't happen again.\r<br />\n<br />\nPicture the &quot;Advanced Branch Plan&quot; scenario. Over time we have released a major version 1 with all the servicing branches under it. Later we release another major version 2 after development is complete. Version 2 gets brought through Main and has its own servicing branches created below it. This happens again with version 3.\r<br />\n<br />\nSo...I have 3 major versions all with servicing branches beneath and each version is still getting serviced.\r<br />\n<br />\nA fix goes into version 1. It needs to get to version 2 and then version 3.\r<br />\n<br />\nThe only way I see to get that change where it needs to go is to RI it all the way to Main, then cherry-pick it down into the servicing branches for version 2. I have to cherry-pick because version 3 has already moved through Main and I don't want to pick up any of that new development.\r<br />\n<br />\n__Question: how can I make sure that all fixes that have been serviced in version 1 <em>after</em> version 3 was released have been Reverse Integrated and then cherry-picked down to subsequent versions?__\r<br />\n<br />\nIs this a good way to do it? Is there a better solution?\r<br />\n<br />\nThank you!<br />\n",
+    "PostedDate": "2013-04-05T14:56:08.353-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

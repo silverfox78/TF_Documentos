@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "450192",
+    "ThreadId": "214615",
+    "Html": "<p>In the PDF diagram &quot;TFS Branching Guide - Scenarios 2010_20100330.pdf&quot;, what is the purpose/meaning of the &quot;Single Team Branching Model&quot;.&nbsp;&nbsp; Is that a simplification of the &quot;Basic Branch Plan&quot;? Or is it just sort of an enlargement/zoom on just two branches of the &quot;Basic Branch Plan&quot;?</p>\r\n<p><br>I don't see how the plans on the right side of the diagram relate to the three (Basic, Standard, Advanced) plans on the left side of the diagram.</p>\r\n<p><br>Thanks,</p>\r\n<p>Neal <br><br></p>",
+    "PostedDate": "2010-06-01T11:22:12.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453087",
+    "ThreadId": "214615",
+    "Html": "<p>When we developed the branching guide, we organized guidance into separate documents. The Main document contains our basic guidance and best practice recommendations.</p>\r\n<p>The scenarios document was *intended* to buid upon the Main guidance by describing specific scenarios with guidance for how one might create a branching structure for that scenario.</p>\r\n<p>Rather than suggest the the Single Team Branching model is a simplification of the Basic Branch Plan, I would prefer to say that it focuses on a particular aspect of the Basic Branch Plan. Since this scenario focuses on how to support a single development team (as opposed to multiple feature teams, for example) - the scenario focuses only on the Main and Development branches. In fact each of the branching plans in the Main Document (basic, standard, advanced) have the same structure on the development side of the branch tree.</p>\r\n<p>I often like to separate the discussion of *How should I structure my Development branches* from *How should I structure my Release branches*. There are times, however, when how you relase software may directly impact your development brances, for instance where you are developing a product for multiple customers, and you need to have development branches to isolate customer-specific customizations, and perhaps release branches that isolate releases for specific customers. But often, the structure of the development teams can be a completely separate discussion from the requrements for supporting multiple releases, or hot fixes, or service packs.</p>\r\n<p>For this reason, the scenarios tend (or may tend) to focus on one side of the the branching structure (for example Development) and not the other side (for example Release).</p>\r\n<p>Other branching guides I have read tended to offer confusing and complicated scenarios which were arbitrarily combined into one *choice*. For example (Single Team, Single Release vs. Multiple Feature Team, Multiple Release). By being (or attempting to be) more granular in the scenarios, hopefully you will be able to mix and match different scenarios together to form a complete branching strategy.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-06-08T10:07:14.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,5 @@
+## Contributors and Reviewers
+### External Contributors/Reviewers
+David P. Romig, Sr; Dennis Rea; Eugene Zakhareyev; Leon Langleyben; Martin Woodward; Michael Rummier; Miguel Mendoza; Mike Fourie; Quang Tran; Sarit Tamir; Tushar More; Vaughn Hughes
+### Microsoft Contributors / Reviewers
+Aaron Hallberg; Ahmed Salijee; Ajay Sudan; Ajoy Krishnamoorthy; Alan Ridlehoover; Alik Levin; Ameya Bhatawdekar; Bijan Javidi; Bill Essary; Brett Keown; Brian Harry; Brian Keller; Brian Moore; Buck Hodges; Burt Harris; Conor Morrison; David Caufield; David Lemphers; Doug Neumann; Edward Jezierski; Eric Blanchet; Eric Charran; Graham Barry; Gregg Boer; Grigori Melnik; Janet Williams Hepler; Jeff Beehler; Jose Parra; Julie MacAller; Ken Perilman; Lenny Fenster; Marc Kuperstein; Mario Rodriguez; Matthew Mitrik; Michael Puleio; Nobuyuki Akama; Paul Goring; Pete Coupland; Peter Provost; Richard Berg; Granville (Randy) Miller; Rob Caron; Robert Horvick; Rohit Sharma; Ryley Taketa; Sajee Mathew; Siddharth Bhatia; Tom Hollander; Tom Marsh; Venky Veeraraghavan

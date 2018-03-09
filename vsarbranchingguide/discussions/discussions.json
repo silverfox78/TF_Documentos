@@ -1,0 +1,852 @@
+[
+  {
+    "Id": "81260",
+    "Title": "Usage of CodePlex Releases feature",
+    "LatestDate": "2010-03-11T01:20:23.19-08:00"
+  },
+  {
+    "Id": "81482",
+    "Title": "Long paths: Should guidance recommend shortening practices?",
+    "LatestDate": "2010-01-20T17:39:41.743-08:00"
+  },
+  {
+    "Id": "81500",
+    "Title": "Merging from DEV To Main doesn't show Main as a valid Target Branch",
+    "LatestDate": "2010-01-22T12:06:54.58-08:00"
+  },
+  {
+    "Id": "81574",
+    "Title": "Sharing a folder of common files between projects",
+    "LatestDate": "2011-01-21T10:12:59.503-08:00"
+  },
+  {
+    "Id": "82373",
+    "Title": "what diagram tool do you use to create those guides?",
+    "LatestDate": "2010-02-16T17:53:31.46-08:00"
+  },
+  {
+    "Id": "82972",
+    "Title": "Please ignore this test discussion",
+    "LatestDate": "2010-02-02T22:54:37.293-08:00"
+  },
+  {
+    "Id": "86588",
+    "Title": "HOL_Quick_Start_Basic_Branch_Plan_2010_v1.pdf prerequisites",
+    "LatestDate": "2010-02-26T10:45:31.497-08:00"
+  },
+  {
+    "Id": "203698",
+    "Title": "Branch Solution name",
+    "LatestDate": "2010-03-03T12:10:22.697-08:00"
+  },
+  {
+    "Id": "207447",
+    "Title": "Branching guidance for scenario with common code and shared environments?",
+    "LatestDate": "2010-03-26T10:49:54.7-07:00"
+  },
+  {
+    "Id": "208636",
+    "Title": "Question on possible strategy for website branching",
+    "LatestDate": "2010-04-07T16:51:21.287-07:00"
+  },
+  {
+    "Id": "209247",
+    "Title": "Confusing language in Scenarios document: build scripts",
+    "LatestDate": "2010-04-13T15:07:20.3-07:00"
+  },
+  {
+    "Id": "210034",
+    "Title": "Branching Theory",
+    "LatestDate": "2010-04-21T06:34:15.66-07:00"
+  },
+  {
+    "Id": "210981",
+    "Title": "Feature team branching",
+    "LatestDate": "2010-04-29T05:53:38.433-07:00"
+  },
+  {
+    "Id": "210999",
+    "Title": "Hotfix release",
+    "LatestDate": "2010-04-29T08:02:18.53-07:00"
+  },
+  {
+    "Id": "211035",
+    "Title": "What do you build your test release from?",
+    "LatestDate": "2010-04-29T09:39:25.17-07:00"
+  },
+  {
+    "Id": "211421",
+    "Title": "Mapping Branching strategies with TFS projects",
+    "LatestDate": "2010-05-03T10:32:48.967-07:00"
+  },
+  {
+    "Id": "212129",
+    "Title": "branch and plugins",
+    "LatestDate": "2010-06-08T10:42:05.307-07:00"
+  },
+  {
+    "Id": "213178",
+    "Title": "Size of the TFS server",
+    "LatestDate": "2010-05-19T09:40:29.86-07:00"
+  },
+  {
+    "Id": "213299",
+    "Title": "Do check-in comments not get copied on a merge?",
+    "LatestDate": "2010-07-08T12:35:30.553-07:00"
+  },
+  {
+    "Id": "213313",
+    "Title": "Branch Icon",
+    "LatestDate": "2010-06-08T09:53:03.977-07:00"
+  },
+  {
+    "Id": "213314",
+    "Title": "Disk structure guideline?",
+    "LatestDate": "2010-06-08T09:50:59.803-07:00"
+  },
+  {
+    "Id": "213780",
+    "Title": "How to prevent new branch creation in TFS2008",
+    "LatestDate": "2010-06-08T13:05:53.347-07:00"
+  },
+  {
+    "Id": "214615",
+    "Title": "Single Team Branching Model",
+    "LatestDate": "2010-06-08T10:07:14.25-07:00"
+  },
+  {
+    "Id": "214622",
+    "Title": "Basic Branch Plan",
+    "LatestDate": "2010-06-01T14:28:58.497-07:00"
+  },
+  {
+    "Id": "214837",
+    "Title": "Team Build Versioning in a Test/Pre-Prod Branch",
+    "LatestDate": "2010-06-08T10:13:38.757-07:00"
+  },
+  {
+    "Id": "217219",
+    "Title": "Supporting Multiple SharePoint Platforms",
+    "LatestDate": "2010-06-24T08:49:18.327-07:00"
+  },
+  {
+    "Id": "217338",
+    "Title": "Branching strategy for systems with lots of frequent releases",
+    "LatestDate": "2010-06-25T09:46:18.507-07:00"
+  },
+  {
+    "Id": "221981",
+    "Title": "Release vehicle structure",
+    "LatestDate": "2010-08-23T03:47:23.063-07:00"
+  },
+  {
+    "Id": "222186",
+    "Title": "Reverse Integration for Bug Fixes",
+    "LatestDate": "2010-09-27T13:38:14.53-07:00"
+  },
+  {
+    "Id": "222962",
+    "Title": "Request: Branching Guidance using Feature Builder",
+    "LatestDate": "2010-08-30T08:35:31.623-07:00"
+  },
+  {
+    "Id": "223586",
+    "Title": "Merging Visual Studio solution/project files",
+    "LatestDate": "2010-08-19T09:21:06.057-07:00"
+  },
+  {
+    "Id": "224116",
+    "Title": "Automated Planned Release Tool",
+    "LatestDate": "2010-08-19T09:15:43.007-07:00"
+  },
+  {
+    "Id": "224610",
+    "Title": "Best way to migrate from Visual Souce Safe 2005",
+    "LatestDate": "2010-08-30T23:20:29.78-07:00"
+  },
+  {
+    "Id": "225604",
+    "Title": "Are you serious ? ",
+    "LatestDate": "2010-09-01T04:52:38.517-07:00"
+  },
+  {
+    "Id": "226319",
+    "Title": "Can Main be a child of another branch",
+    "LatestDate": "2010-09-08T08:42:54.123-07:00"
+  },
+  {
+    "Id": "226484",
+    "Title": "How to propagate fixes from older releases to newer ones",
+    "LatestDate": "2012-10-30T10:47:00.8-07:00"
+  },
+  {
+    "Id": "226529",
+    "Title": "Inconsistency in basic branch plan",
+    "LatestDate": "2010-10-19T16:04:04.877-07:00"
+  },
+  {
+    "Id": "226808",
+    "Title": "About versioning",
+    "LatestDate": "2010-09-10T13:18:50.68-07:00"
+  },
+  {
+    "Id": "227051",
+    "Title": "Mapping Between Branches",
+    "LatestDate": "2010-09-13T10:28:43.917-07:00"
+  },
+  {
+    "Id": "227056",
+    "Title": "Exclude items from Branch Merging",
+    "LatestDate": "2010-10-19T16:37:01.397-07:00"
+  },
+  {
+    "Id": "229540",
+    "Title": "Branching Setup Help Please",
+    "LatestDate": "2010-10-20T12:29:08.123-07:00"
+  },
+  {
+    "Id": "230061",
+    "Title": "3 problems as a result of migration on TFS2010",
+    "LatestDate": "2010-10-19T15:48:32.447-07:00"
+  },
+  {
+    "Id": "230136",
+    "Title": "Advanced Scenario - Merging HF changes to Release",
+    "LatestDate": "2010-10-08T14:01:14.457-07:00"
+  },
+  {
+    "Id": "230970",
+    "Title": "Basic Branching Question",
+    "LatestDate": "2010-10-20T10:18:53.863-07:00"
+  },
+  {
+    "Id": "231322",
+    "Title": "How to Handle Continuous Releases",
+    "LatestDate": "2010-10-18T18:43:41.77-07:00"
+  },
+  {
+    "Id": "231323",
+    "Title": "How to Handle N-Tier Applications",
+    "LatestDate": "2010-10-20T08:41:32.22-07:00"
+  },
+  {
+    "Id": "231621",
+    "Title": "Database Source Code",
+    "LatestDate": "2010-10-20T10:33:13.973-07:00"
+  },
+  {
+    "Id": "231687",
+    "Title": "How to Parallel develop on EXISTING solution using VS2003, VS2008, and VS2010.",
+    "LatestDate": "2010-10-22T09:59:17.883-07:00"
+  },
+  {
+    "Id": "231992",
+    "Title": "How to Handle Web Application IIS settings.",
+    "LatestDate": "2011-05-11T10:54:00.96-07:00"
+  },
+  {
+    "Id": "233238",
+    "Title": "TFS 2010 Source Safe Structure Clarification",
+    "LatestDate": "2010-11-08T15:54:43.117-08:00"
+  },
+  {
+    "Id": "234029",
+    "Title": "What Does 'Convert to Branch' Do?",
+    "LatestDate": "2010-11-09T11:43:03.27-08:00"
+  },
+  {
+    "Id": "234178",
+    "Title": "Migrating from VSS to TFS - Build automation question",
+    "LatestDate": "2010-11-10T11:02:51.677-08:00"
+  },
+  {
+    "Id": "235125",
+    "Title": "TFS Branch questions",
+    "LatestDate": "2010-11-23T14:26:10.153-08:00"
+  },
+  {
+    "Id": "235388",
+    "Title": "Basic Branch Plan",
+    "LatestDate": "2010-12-08T07:55:33.857-08:00"
+  },
+  {
+    "Id": "237294",
+    "Title": "TFS Branching Guidance 2010 Main - hierarchy question",
+    "LatestDate": "2010-12-08T01:11:53.343-08:00"
+  },
+  {
+    "Id": "237420",
+    "Title": "Complex branching (extended)",
+    "LatestDate": "2010-12-08T10:43:13.96-08:00"
+  },
+  {
+    "Id": "238443",
+    "Title": "Merging and IIS 7.5",
+    "LatestDate": "2010-12-15T02:51:07.047-08:00"
+  },
+  {
+    "Id": "238493",
+    "Title": "Sharing code, invalid references after merge.",
+    "LatestDate": "2010-12-16T11:43:44.227-08:00"
+  },
+  {
+    "Id": "239145",
+    "Title": "Make Branch Read Only",
+    "LatestDate": "2011-12-03T05:21:38.953-08:00"
+  },
+  {
+    "Id": "239310",
+    "Title": "Single release vs single team branching",
+    "LatestDate": "2010-12-22T13:56:55.147-08:00"
+  },
+  {
+    "Id": "239331",
+    "Title": "Branching and SAAS projects",
+    "LatestDate": "2011-01-17T08:01:42.53-08:00"
+  },
+  {
+    "Id": "239941",
+    "Title": "Baseless Merge Best Practices",
+    "LatestDate": "2011-02-28T08:57:48.187-08:00"
+  },
+  {
+    "Id": "241188",
+    "Title": "New branching article in upcoming MSDN Magazine.",
+    "LatestDate": "2011-05-30T18:59:48.807-07:00"
+  },
+  {
+    "Id": "241870",
+    "Title": "My latest blog on complex development pattern",
+    "LatestDate": "2011-01-15T08:22:12.053-08:00"
+  },
+  {
+    "Id": "242321",
+    "Title": "New blog - Branching for Scrum",
+    "LatestDate": "2011-01-18T15:07:34.183-08:00"
+  },
+  {
+    "Id": "242462",
+    "Title": "New Blog - Branching–Sprint is Done, Some Features Are Not",
+    "LatestDate": "2011-01-19T12:45:43.153-08:00"
+  },
+  {
+    "Id": "242483",
+    "Title": "New Blog - Cherry Pick merges - why do you recommend against them",
+    "LatestDate": "2011-01-19T15:15:48.38-08:00"
+  },
+  {
+    "Id": "242789",
+    "Title": "TFS 2010 and Branch Security",
+    "LatestDate": "2011-01-21T12:17:32.583-08:00"
+  },
+  {
+    "Id": "245800",
+    "Title": "Shared roots - stay in the islands or move to the Main land?",
+    "LatestDate": "2011-02-24T22:06:52.627-08:00"
+  },
+  {
+    "Id": "246891",
+    "Title": "Branching by workspace version",
+    "LatestDate": "2011-02-21T09:45:40.067-08:00"
+  },
+  {
+    "Id": "246929",
+    "Title": "Branch-by-Release vs Basic plan?",
+    "LatestDate": "2011-02-23T04:44:09.057-08:00"
+  },
+  {
+    "Id": "247481",
+    "Title": "Branches and Builds",
+    "LatestDate": "2011-02-24T14:05:12.647-08:00"
+  },
+  {
+    "Id": "247598",
+    "Title": "How to Transition from Basic to Standard to Advance",
+    "LatestDate": "2011-02-25T10:50:47.92-08:00"
+  },
+  {
+    "Id": "248921",
+    "Title": "Handling Content Changes Selectively Released To Production",
+    "LatestDate": "2011-03-08T17:27:24.28-08:00"
+  },
+  {
+    "Id": "248923",
+    "Title": "Handling Content Changes Selectively Released To Production",
+    "LatestDate": "2011-03-17T15:03:50.117-07:00"
+  },
+  {
+    "Id": "249641",
+    "Title": "Relative project references break when merging",
+    "LatestDate": "2011-04-15T09:46:56.497-07:00"
+  },
+  {
+    "Id": "250088",
+    "Title": "Virtual image",
+    "LatestDate": "2011-03-17T06:52:26.643-07:00"
+  },
+  {
+    "Id": "250579",
+    "Title": "Branching Strategy for Bug fixes?",
+    "LatestDate": "2011-04-15T10:23:57.083-07:00"
+  },
+  {
+    "Id": "251708",
+    "Title": "Feature Branches & Code Sharing",
+    "LatestDate": "2011-03-31T08:57:21.747-07:00"
+  },
+  {
+    "Id": "251979",
+    "Title": "Branching Plan For TFS Beginner",
+    "LatestDate": "2011-04-01T09:14:31.753-07:00"
+  },
+  {
+    "Id": "253111",
+    "Title": "Testing Hotfixes",
+    "LatestDate": "2011-04-08T07:37:34.927-07:00"
+  },
+  {
+    "Id": "253762",
+    "Title": "Branching and Bug fixing",
+    "LatestDate": "2011-04-16T21:42:05.877-07:00"
+  },
+  {
+    "Id": "253956",
+    "Title": "Branch strategy to isolate new version features from current version bug fixes",
+    "LatestDate": "2011-04-15T15:43:02.363-07:00"
+  },
+  {
+    "Id": "254196",
+    "Title": "Newbie branching and merging question",
+    "LatestDate": "2011-04-16T13:24:03.72-07:00"
+  },
+  {
+    "Id": "254850",
+    "Title": "Sharing code across Team Projects, concerning binary assets",
+    "LatestDate": "2011-04-21T10:24:13.883-07:00"
+  },
+  {
+    "Id": "256269",
+    "Title": "Completely independent bug-fix releases?",
+    "LatestDate": "2011-05-09T05:35:57.88-07:00"
+  },
+  {
+    "Id": "256495",
+    "Title": "Reparenting to insert a Service Pack branch",
+    "LatestDate": "2011-05-11T07:56:11.543-07:00"
+  },
+  {
+    "Id": "257338",
+    "Title": "Beginners Question - Basic Branch Plan",
+    "LatestDate": "2013-10-09T05:33:29.907-07:00"
+  },
+  {
+    "Id": "257362",
+    "Title": "Beginner issue: Structuring TFS the right way",
+    "LatestDate": "2011-05-13T14:10:39.047-07:00"
+  },
+  {
+    "Id": "257869",
+    "Title": "Moving/renaming branches in TFS2010",
+    "LatestDate": "2011-05-17T13:25:23.88-07:00"
+  },
+  {
+    "Id": "257972",
+    "Title": "Reparent or OK to treat the original ancestor branch as a child branch?",
+    "LatestDate": "2011-05-17T13:08:09.4-07:00"
+  },
+  {
+    "Id": "258609",
+    "Title": "Integrate Multiple releases via MAIN, how ?",
+    "LatestDate": "2011-05-23T07:43:26.42-07:00"
+  },
+  {
+    "Id": "260433",
+    "Title": "MergeMagician can streamline your merge workflow",
+    "LatestDate": "2011-06-07T13:24:30.09-07:00"
+  },
+  {
+    "Id": "260521",
+    "Title": "What merge automation tools are available?",
+    "LatestDate": "2011-06-07T13:00:33.84-07:00"
+  },
+  {
+    "Id": "263550",
+    "Title": "\"Deleted items will not be available in a label\"?",
+    "LatestDate": "2011-07-01T07:04:31.083-07:00"
+  },
+  {
+    "Id": "269167",
+    "Title": "Should QA test the DEV branch or MAIN branch?",
+    "LatestDate": "2011-09-11T06:02:28.883-07:00"
+  },
+  {
+    "Id": "269999",
+    "Title": "In branching scenario guide, what is \"V1.1 FT3\" label?",
+    "LatestDate": "2011-08-23T13:19:48.967-07:00"
+  },
+  {
+    "Id": "271159",
+    "Title": "New to branching, have some questions",
+    "LatestDate": "2011-09-01T10:23:12.083-07:00"
+  },
+  {
+    "Id": "271309",
+    "Title": "Merging from Main to other Branches",
+    "LatestDate": "2011-09-02T13:39:25.677-07:00"
+  },
+  {
+    "Id": "271329",
+    "Title": "Why does the file reference path changes after branch merging",
+    "LatestDate": "2011-09-06T11:22:55.137-07:00"
+  },
+  {
+    "Id": "272201",
+    "Title": "Why not develop in Main?",
+    "LatestDate": "2011-09-11T18:09:17.787-07:00"
+  },
+  {
+    "Id": "272486",
+    "Title": "Merge efforts overhead",
+    "LatestDate": "2011-11-25T08:46:33.463-08:00"
+  },
+  {
+    "Id": "273270",
+    "Title": "Label names must be unique in scope",
+    "LatestDate": "2011-09-22T18:36:29.117-07:00"
+  },
+  {
+    "Id": "274263",
+    "Title": "Branch Strategy Multiple Clients",
+    "LatestDate": "2012-02-09T13:53:40.803-08:00"
+  },
+  {
+    "Id": "274275",
+    "Title": "Multiple Teams, modular apps, common project management. ",
+    "LatestDate": "2011-11-26T15:02:43.263-08:00"
+  },
+  {
+    "Id": "274754",
+    "Title": "Branching Change Ancestor to child",
+    "LatestDate": "2011-10-05T08:44:41.647-07:00"
+  },
+  {
+    "Id": "276490",
+    "Title": "Parallel SPs and Hotifixes - A little bit confused about service branches",
+    "LatestDate": "2011-11-25T09:30:00.723-08:00"
+  },
+  {
+    "Id": "277234",
+    "Title": "Need guidance on branching setup",
+    "LatestDate": "2011-10-26T13:32:49.197-07:00"
+  },
+  {
+    "Id": "278790",
+    "Title": "Do we really need service branch?",
+    "LatestDate": "2011-11-08T18:25:26.4-08:00"
+  },
+  {
+    "Id": "280052",
+    "Title": "Using Main, QA and Dev branch. Merging Question",
+    "LatestDate": "2011-11-25T14:13:21.613-08:00"
+  },
+  {
+    "Id": "280837",
+    "Title": "Branch Guidance discrepancies",
+    "LatestDate": "2011-11-25T08:58:47.913-08:00"
+  },
+  {
+    "Id": "281574",
+    "Title": "Automation of Merge (Forward Integration)",
+    "LatestDate": "2012-02-18T14:39:40.52-08:00"
+  },
+  {
+    "Id": "281898",
+    "Title": "Delta Branches",
+    "LatestDate": "2011-12-08T13:49:15.943-08:00"
+  },
+  {
+    "Id": "283610",
+    "Title": "Merging HotFix V1.01 into Release 2",
+    "LatestDate": "2012-02-18T14:59:58.63-08:00"
+  },
+  {
+    "Id": "285830",
+    "Title": "TFS 2010 Branching Strategy",
+    "LatestDate": "2012-02-18T14:43:17.767-08:00"
+  },
+  {
+    "Id": "286725",
+    "Title": "Unclean MAIN",
+    "LatestDate": "2012-01-30T11:46:14.53-08:00"
+  },
+  {
+    "Id": "300610",
+    "Title": "Existing VS Project--Import into TFS & Restructuring",
+    "LatestDate": "2012-02-09T20:05:12.973-08:00"
+  },
+  {
+    "Id": "346465",
+    "Title": "TFS 2010 Branching Advice",
+    "LatestDate": "2012-02-27T18:32:50.02-08:00"
+  },
+  {
+    "Id": "346752",
+    "Title": "Separation of features from Dev branch",
+    "LatestDate": "2012-03-07T11:25:51.253-08:00"
+  },
+  {
+    "Id": "346933",
+    "Title": "Re-Create Branching relationships",
+    "LatestDate": "2012-03-01T14:39:23.263-08:00"
+  },
+  {
+    "Id": "348335",
+    "Title": "Where is \"Setup.doc\"",
+    "LatestDate": "2012-07-18T14:04:38.343-07:00"
+  },
+  {
+    "Id": "348682",
+    "Title": "Merging between multiple release branches",
+    "LatestDate": "2012-03-15T05:51:14.89-07:00"
+  },
+  {
+    "Id": "349413",
+    "Title": "Maintaining Checkin History during branching/moving",
+    "LatestDate": "2012-03-21T00:19:41.52-07:00"
+  },
+  {
+    "Id": "349773",
+    "Title": "Why create release branch with Hotfix branch?",
+    "LatestDate": "2012-07-17T16:37:11.347-07:00"
+  },
+  {
+    "Id": "358231",
+    "Title": "associating changeset per branch using Team Build in TFS 2010",
+    "LatestDate": "2012-06-08T06:38:46.883-07:00"
+  },
+  {
+    "Id": "358867",
+    "Title": "Why merge Main to Dev daily?",
+    "LatestDate": "2012-06-08T06:35:48.777-07:00"
+  },
+  {
+    "Id": "359906",
+    "Title": "Reverse Integration from Dev into Main",
+    "LatestDate": "2012-10-22T23:30:04.41-07:00"
+  },
+  {
+    "Id": "361766",
+    "Title": "New TFS User - Multiple Releases - Branching/Merging help",
+    "LatestDate": "2012-07-17T01:58:24.32-07:00"
+  },
+  {
+    "Id": "362198",
+    "Title": "Branching Strategy - (dev, qa, uat, stage) to Branch Per Release",
+    "LatestDate": "2013-03-07T06:24:18.45-08:00"
+  },
+  {
+    "Id": "362780",
+    "Title": "Single or multiple release branches using basic plan",
+    "LatestDate": "2012-07-13T17:20:44.577-07:00"
+  },
+  {
+    "Id": "362887",
+    "Title": "Is it OK to just have a Main & Release(s) branches with no Dev Branch?",
+    "LatestDate": "2012-07-12T17:14:46.287-07:00"
+  },
+  {
+    "Id": "392680",
+    "Title": "Managing Business Intelligence development using TFS",
+    "LatestDate": "2012-08-22T16:23:01.59-07:00"
+  },
+  {
+    "Id": "393118",
+    "Title": "epub format would be great addition",
+    "LatestDate": "2012-08-26T08:53:25.053-07:00"
+  },
+  {
+    "Id": "394734",
+    "Title": "Cumulative and non cumulative hotfixes",
+    "LatestDate": "2012-09-07T16:03:09.607-07:00"
+  },
+  {
+    "Id": "397787",
+    "Title": "Publish the guide as HTML under documentation tab",
+    "LatestDate": "2012-10-02T14:20:44.44-07:00"
+  },
+  {
+    "Id": "398073",
+    "Title": "TFS Folder Structuring for DLL's",
+    "LatestDate": "2012-10-05T20:44:14.51-07:00"
+  },
+  {
+    "Id": "398996",
+    "Title": "Lots of \"Done\" development branches. How to clean up the clutter?",
+    "LatestDate": "2012-11-15T23:12:45.043-08:00"
+  },
+  {
+    "Id": "402480",
+    "Title": "Putting a Branch \"On Hold\"",
+    "LatestDate": "2012-11-08T15:05:33.917-08:00"
+  },
+  {
+    "Id": "405091",
+    "Title": "Hola!",
+    "LatestDate": "2012-11-29T20:09:23.717-08:00"
+  },
+  {
+    "Id": "407020",
+    "Title": "Branching advise for Modular development",
+    "LatestDate": "2012-12-18T09:09:24.307-08:00"
+  },
+  {
+    "Id": "423496",
+    "Title": "Branch Scheme for Future Releases Using Reparenting",
+    "LatestDate": "2012-12-27T14:38:24.213-08:00"
+  },
+  {
+    "Id": "429834",
+    "Title": "Proper TFS Project, seperate source control and seperate branching Usage Advice",
+    "LatestDate": "2013-01-18T19:31:12.003-08:00"
+  },
+  {
+    "Id": "430531",
+    "Title": "Reparenting question in VS2012",
+    "LatestDate": "2013-01-22T22:00:40.587-08:00"
+  },
+  {
+    "Id": "434606",
+    "Title": "Feature Branch plan and Automated Builds",
+    "LatestDate": "2013-02-28T05:35:21.527-08:00"
+  },
+  {
+    "Id": "437230",
+    "Title": "Branch to share assemblies and other blobs between team projects?",
+    "LatestDate": "2013-03-21T12:45:13.51-07:00"
+  },
+  {
+    "Id": "439311",
+    "Title": "Making sure fixes don't get lost from one release to another",
+    "LatestDate": "2013-04-05T14:56:08.353-07:00"
+  },
+  {
+    "Id": "442105",
+    "Title": "Code Promotion Branch Plan Limitations?",
+    "LatestDate": "2013-04-30T09:18:09.667-07:00"
+  },
+  {
+    "Id": "442858",
+    "Title": "Basic plan confusion about number of release branches and dev branches?",
+    "LatestDate": "2013-05-09T18:43:05.773-07:00"
+  },
+  {
+    "Id": "443121",
+    "Title": "Rolling Release as a component of a Periodic Release",
+    "LatestDate": "2013-05-09T07:37:53.333-07:00"
+  },
+  {
+    "Id": "445955",
+    "Title": "Identify an artifact or Multiple Artifacts for a Project",
+    "LatestDate": "2013-06-17T21:26:31.9-07:00"
+  },
+  {
+    "Id": "447547",
+    "Title": "Structure for large amounts of customisations per product",
+    "LatestDate": "2013-06-19T07:04:32.79-07:00"
+  },
+  {
+    "Id": "455213",
+    "Title": "Advanced Plan, Why FI from Main to Servicing?",
+    "LatestDate": "2013-10-05T06:14:50.36-07:00"
+  },
+  {
+    "Id": "455804",
+    "Title": "TFS 2012 File Time - pros/cons of setting to Current (default) vs Checkin Time",
+    "LatestDate": "2013-09-06T16:47:29.697-07:00"
+  },
+  {
+    "Id": "471231",
+    "Title": "Path issues related to branching",
+    "LatestDate": "2014-05-26T09:09:16.77-07:00"
+  },
+  {
+    "Id": "538098",
+    "Title": "TFS Branching strategy for selectively promoting some changes from Dev branch to release branch",
+    "LatestDate": "2014-03-05T21:17:55.79-08:00"
+  },
+  {
+    "Id": "538330",
+    "Title": "How to insert integration branch?",
+    "LatestDate": "2014-03-13T11:10:24.437-07:00"
+  },
+  {
+    "Id": "538351",
+    "Title": "Suggestion to alter some recommendation in Feature Branch Model with Integration Line Branch",
+    "LatestDate": "2014-03-07T22:06:00.817-08:00"
+  },
+  {
+    "Id": "538997",
+    "Title": "Branch Plan Image",
+    "LatestDate": "2014-03-16T17:23:06.007-07:00"
+  },
+  {
+    "Id": "542260",
+    "Title": "Code Organization",
+    "LatestDate": "2014-04-16T06:19:59.143-07:00"
+  },
+  {
+    "Id": "544366",
+    "Title": "Database Projects",
+    "LatestDate": "2014-05-05T13:51:28.99-07:00"
+  },
+  {
+    "Id": "545262",
+    "Title": "Branching strategy for one release",
+    "LatestDate": "2014-05-14T01:40:29.413-07:00"
+  },
+  {
+    "Id": "545277",
+    "Title": "Pattern Language for v3",
+    "LatestDate": "2014-05-13T20:19:57.863-07:00"
+  },
+  {
+    "Id": "545279",
+    "Title": "Minor Edits to v3 Version Control Guide",
+    "LatestDate": "2015-02-04T06:54:11.607-08:00"
+  },
+  {
+    "Id": "547072",
+    "Title": "Multi-Trunk",
+    "LatestDate": "2014-06-01T14:08:00.703-07:00"
+  },
+  {
+    "Id": "548773",
+    "Title": "Branch image",
+    "LatestDate": "2015-05-19T07:30:29.16-07:00"
+  },
+  {
+    "Id": "569237",
+    "Title": "Servicing, Hotfix and Release Isolation - need advising",
+    "LatestDate": "2014-10-07T10:27:01.06-07:00"
+  },
+  {
+    "Id": "570073",
+    "Title": "Branching Plan for SAAS Application Maintenance Team",
+    "LatestDate": "2014-10-18T01:22:42.233-07:00"
+  },
+  {
+    "Id": "570571",
+    "Title": "Questions about the Code Promotion Branch Plan ",
+    "LatestDate": "2014-10-24T06:01:37.907-07:00"
+  },
+  {
+    "Id": "654852",
+    "Title": "Branching/merging visualizations",
+    "LatestDate": "2016-05-23T02:35:10.423-07:00"
+  },
+  {
+    "Id": "656104",
+    "Title": "Build for branches",
+    "LatestDate": "2016-07-04T13:09:39.41-07:00"
+  }
+]

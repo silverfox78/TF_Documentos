@@ -1,0 +1,92 @@
+<div class="wikidoc"><h3>Chapter 15 – Reporting Explained</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Objectives</h3><ul><li>Describe Microsoft&#174; Visual Studio&#174; Team Foundation Server (TFS) reporting architecture.</li>
+<li>Identify the components that make up TFS reporting.</li>
+<li>Describe the purpose of each available report.</li>
+<li>Know which process template contains which report.</li>
+<li>Customize and create new reports.</li></ul>
+
+<h3>Overview</h3>This chapter describes TFS reporting architecture and the common reports that you can use with new team projects. It also connects common reporting scenarios with reports available in TFS, and describes common reasons to customize existing reports or create new reports. TFS reporting enables you to view aggregated data over many aspects of your team project. You can use this information to analyze project progress, project health, and the effectiveness of your development and test teams.  <br /><br />TFS reporting uses Microsoft SQL Server™ 2005 Reporting Services to create, manage, and run reports. Each process template contains a set of predefined reports which are deployed to the project’s report folder when the project is created. By using Reporting Services you can also amend these reports and create custom reports for your project. You can add new reports to an existing process template so that they are available for other team projects.<br />
+<h3>How to Use This Chapter</h3>Use this chapter to understand how TFS reporting works and how it can help you assess project health and status. To gain the greatest benefits from this chapter, you should:
+<ul><li><b>Read the “Scenarios and Solutions” section</b>. Understand common reasons to use TFS reporting and learn the purpose of each standard report. </li>
+<li><b>Read the “Physical Architecture” section</b>. Learn what components make up the reporting system and how they interrelate.</li>
+<li><b>Read the “Customizing Reports” section</b>. Learn the mechanisms available for report customization and creation.</li>
+<li><b>Read the companion How To articles</b>. Read the following companion How To articles for a step-by-step walk through of various procedures discussed in this chapter. 
+<ul><li>How To - Customize a Report with Visual Studio 2005 Team Foundation Server”</li>
+<li>How To - Create a Custom Report in Visual Studio 2005 Team Foundation Server</li>
+<li>How To - Create a Risk Over Time Report with Visual Studio 2005 Team Foundation Server</li></ul></li></ul>
+
+<h3>Scenarios and Solutions</h3>Reports are the primary way project managers and team leaders keep up to date with an ongoing project. After you create a new team project, a set of reports is generated for you based on the process template you chose. These reports are available to you from the project’s Microsoft Office SharePoint&#174; portal site or from the reports node in Team Explorer inside Visual Studio. <br /><br />The following are common questions that can be answered by using TFS reports:
+<ul><li>When will my application be ready to ship?</li>
+<li>Is work proceeding according to plan?</li>
+<li>What is the quality of the build?</li>
+<li>What is the status of development against defined scenarios?</li>
+<li>How quickly is development work getting completed?</li>
+<li>Are bugs getting fixed?</li>
+<li>Are bugs regressing?</li></ul>
+
+<h3>Team Foundation Server Reports</h3>Both the Microsoft Solution Framework (MSF) for Agile Software Development (MSF Agile) and MSF for CMMI&#174; Process Improvement (MSF CMMI) process templates each include a set of reports by default.<br />
+<h4>Bugs</h4>The bug-related reports in the process templates enable you to see what types of bugs are being generated and fixed and to identify trends. The following bug related reports are available:
+<ul><li><b>Bugs by Priority</b>. Are the correct bugs being found? This report shows you the rate of high-priority bugs found versus low priority bugs. This report is available in both of the supplied process templates.</li>
+<li><b>Bug Rates</b>. How effectively are bugs being found, fixed, and closed? This report shows trends over time for new bugs, bug backlogs, and bug resolution. This report is available in both of the supplied process templates.</li></ul>
+
+<h4>Release Management</h4>Release management reports enable you to judge how close your software is to being fit for release. The following release management reports are available:
+<ul><li><b>Actual Quality versus Planned Velocity</b>. How many scenarios can be completed before quality is unacceptable? This report presents the relationship for each iteration, of estimated size to overall quality. This report is available in both process templates.</li>
+<li><b>Builds</b>. What is the quality of a build? This report provides a list of available builds including build quality and other detailed information. This report is available in MSF for CMMI Process Improvement.</li>
+<li><b>Quality Indicators</b>. What is the quality of the software? This report collects test results, bugs, code coverage and code churn into a single report to track project health. This report is available in MSF Agile and MSF CMMI.</li>
+<li><b>Velocity</b>. How quickly is the team completing work? This report shows how quickly the team is completing planned work and show rates of change from day to day. This report is available in MSF Agile and MSF CMMI.</li>
+<li><b>Scenario Details</b>. What scenarios are we building the application against? This report provides information on each scenario including completion status, risks and testing progress. This report is available in MSF CMMI.</li></ul>
+
+<h4>Testing</h4>Testing reports enable you to monitor the effectiveness and progress of your testing. The following test reports are available:
+<ul><li><b>Regressions</b>. What tests passed at one point but are now failing? This report shows a list of all the tests that passed previously and now are failing. This report is available in MSF CMMI.</li>
+<li><b>Requirements Test History</b>. How well tested are my scenarios and requirements? This report shows the progress of testing against defined scenarios and requirements. This report is available in MSF CMMI.</li>
+<li><b>Test Failure Without Active Bug</b>. Are there bugs to track every known defect? This report shows any tests that have failed and are not associated with an open bug. This report is available in MSF CMMI.</li>
+<li><b>Test Passing With Open Bug</b>. Is the bug list up to date and consistent with application quality? This report shows stale bugs for which tests are now passing. This report is available in MSF CMMI.</li>
+<li><b>Load Test Summary</b>. What are the results of load testing on application performance? This report shows test results for load testing on your application. This report is available in MSF Agile.</li></ul>
+
+<h4>Work Items</h4>Work item reports enable you to assess the current state of your project and current project progress. The following work item reports are available.<br />
+<ul><li><b>Open Issues and Blocked Work Items Trend</b>. How many open issues remain? This report shows the remaining open issues as well as the trend toward resolving them. This report is available in MSF CMMI.</li>
+<li><b>Reactivations</b>. How many work items are being reactivated? This report shows work items that have been resolved or closed prematurely. This report is available in MSF Agile and MSF CMMI.</li>
+<li><b>Related Work Items</b>. What work items are dependent on other work items? This report shows a list of work items that are linked to other work items so you trace dependencies. This report is available in MSF CMMI.</li>
+<li><b>Remaining Work</b>. How much work is left to be done and when will it be completed? This report shows work remaining, resolved and closed over time.  Projecting remaining work trends forward can enable you to predict the point at which you will be code complete. This report is available in MSF Agile and MSF CMMI.</li>
+<li><b>Triage</b>. What work items need to be triaged? This report shows every work item that is still in the proposed state. This report is available in MSF CMMI.</li>
+<li><b>Unplanned Work</b>. How much unplanned work is there? This report charts total work versus remaining work and distinguishes planned from unplanned tasks. This report is available in MSF Agile and MSF CMMI.</li>
+<li><b>Work Items</b>. What are the active work items? This report lists every active work item. This report is available in MSF CMMI.</li>
+<li><b>Work Items by Owner</b>. How much work is assigned to each member of the team? This report shows work items per team member. This report is available in MSF CMMI.</li>
+<li><b>Work Items by State</b>. How many active, resolved and closed work items are there? This report lists work items organized by state. This report is available in MSF CMMI.</li></ul>
+
+<h3>Customizing Reports</h3>You might want a report that does not exist in either of the MSF process templates. You can customize reports in one of three ways:
+<ul><li><b>Use a filter on an existing report</b>. Many reports provide parameters that you can use to filter the report. For example date, area, iteration, and priority filters are available. Use these filters to review a subset of the data provided in the report.  Note that these filters are temporary and are lost when you browse away from the report.</li>
+<li><b>Customize an existing report</b>. If a report you want is similar to an existing report, it is often easiest to make a copy of the existing report and then modify it. For example, you might want to plot risks over time to analyze how well your team is working with project risks. </li>
+<li><b>Create a new report</b>. You can create a new report from scratch.</li></ul>
+<br />If you modify an existing report or create a new report from scratch you can publish it to the Report Server so that it is available to the rest of your team. If you want to modify an existing report or create a new report, you can use one of the following methods:
+<ul><li>Use Microsoft Office Excel&#174; to create pivot tables from data in the reporting databases.</li>
+<li>Create a new Report Server project in Visual Studio and then create new reports or import existing reports.</li></ul>
+<br />Creating a Report Server project in Visual Studio is the most powerful and flexible method for report creation and modification. <br /><br /><b>Note:</b> It is possible to use the Report Builder, available from the team reporting site; however this tool is not well supported for Visual Studio reporting scenarios and is not recommended. <br />
+<h4>More Information</h4><ul><li>For more information about customizing an existing report, see “How To: Customize a Report with Visual Studio Team Foundation Server.” </li>
+<li>For more information about creating a custom report, see “How To: Create a Custom Report in Visual Studio Team Foundation Server.”</li>
+<li>For a step-by-step guide to creating a Risk over Time report, see “How To: Create a Risk over Time Report with Visual Studio Team Foundation Server.”</li></ul>
+
+<h3>Physical Architecture</h3>Team Foundation Server is built on SQL Server 2005 and uses SQL Server Analysis Services to aggregate data and drive reports. You can create new reports by using Microsoft Excel or Visual Studio 2005 Report Designer. Reports are hosted on SQL Server 2005 Reporting Services and can be viewed from the report server Web site, team SharePoint project portal or from the Reports node in Team Explorer. Figure 15.1 shows the physical reporting architecture.<br /><br /> <br /><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=TFSGuide&DownloadId=16717" alt="Fig15.1.GIF" title="Fig15.1.GIF" /><br /><b><i>Figure 15.1</b> Physical Reporting Architecture</i><br /><br />Each TFS component maintains its own set of transaction databases. This includes work items, source control, tests, bugs, and Team Build. This data is aggregated into a relational database. The data is then placed in an Online Analytical Processing (OLAP) cube to support trend-based reporting and more advanced data analysis. <br /><br />The TfsWarehouse relational database is a data warehouse designed to be used for data querying rather than transactions. Data is transferred from the various TFS databases, which are optimized for transaction processing, into this warehouse for reporting purposes. The warehouse is not the primary reporting store, but you can use it to build reports.  The TfsReportDS data source points to the relational database. The Team System Data Warehouse OLAP Cube is an OLAP database that is accessed through SQL Server Analysis Services. The cube is useful for reports that provide data analysis of trends such as ‘how many bugs closed this month versus last month?’ The TfsOlapReportDS data source points to the Team System Data Warehouse OLAP cube in the analysis services database.<br />
+<h4>Components of the Reporting System</h4>The reporting system consists of the following server-side and client-side components.<br />
+<h5>Server-Side Components</h5>Server-side components include:
+<ul><li><b>Report server databases</b>. These databases contain the report definitions, historical reports, and configuration data.</li>
+<li><b>Report server Web service</b>. This Web service provides programmatic access to the Report Server.</li>
+<li><b>Report Manager Web site</b>. This site provides user access to Report Server through a Web browser.</li>
+<li><b>Windows service</b>. This service provides the scheduling and delivery of report snapshots.</li></ul>
+
+<h5>Client-Side Components</h5>Client-side components include:
+<ul><li><b>Browser</b>. This component provides access to the Report Manager Web site.</li>
+<li><b>Team Explorer</b>. This component provides access to reports through Visual Studio.</li></ul>
+
+<h5>Report Development Tools</h5>Development tools include:
+<ul><li><b>Business Intelligence Designer Studio (BIDS)</b>. This component enables developers to design and deploy reports from within Visual Studio 2005.</li>
+<li><b>Excel</b>. Excel can be used to generate pivot tables from the reporting store.</li>
+<li><b>Report</b> <b>Builder</b>. This component allows end users to design ad-hoc reports. It is not well supported for Team Foundation reporting scenarios and is not recommended.</li></ul>
+
+<h3>Summary</h3>The MSF Agile and MSF CMMI process templates each provide a set of default reports for bugs, release management, testing, and work item tracking: 
+<ul><li>Bug-related reports in the process templates enable you to see what types of bugs are being generated to help identify bug trends.</li>
+<li>Release management reports help you judge if your application is fit for release. </li>
+<li>Testing reports enable you to monitor the effectiveness and progress of your testing efforts. </li>
+<li>Work item reports enable you to assess the current state of your project and current project progress.</li></ul>
+<br />If you want to modify an existing report or create a new report, you can use the Report Builder available from the team reporting site, use Excel to create pivot tables from data in the reporting databases, or create a new Report Server project in Visual Studio.<br />
+<h3>Additional Resources</h3><ul><li>For more information about Team Foundation Server Reporting, see <a href="http://msdn2.microsoft.com/en-us/library/ms194922(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms194922(VS.80).aspx</a></li></ul></div><div class="ClearBoth"></div>

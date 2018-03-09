@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "483294",
+    "ThreadId": "224415",
+    "Html": "<p>Hello,</p>\r\n<p>I'm wondering if this site will be updated for the TFS 2010 version?</p>\r\n<p>More specifically, what I'm really interested in is how do I use TFS over the WAN? &nbsp;Like this <a href=\"http://social.msdn.microsoft.com/Forums/en-US/tfssetup/thread/81abf995-928b-4f1b-a41a-fc783fbad2c7\">Forum Post</a></p>\r\n<p>&nbsp;</p>\r\n<p>Thanks,</p>\r\n<p>Mike D.</p>",
+    "PostedDate": "2010-08-22T09:24:51.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "843855",
+    "ThreadId": "224415",
+    "Html": "<p>Hello, Mike</p>\r\n<p>It's now mid-2012 and they have not updated their documentation to include TFS 2010!&nbsp; What's really sad is that it's not really that unusual for Microsoft to drag their feet when it comes to timely or useful documentation.</p>",
+    "PostedDate": "2012-06-02T06:17:39.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "844056",
+    "ThreadId": "224415",
+    "Html": "<p>They should probably post a prominent message on the home page&nbsp;saying all this has been superceded by guidance provided by the Visual Studio ALM Rangers.&nbsp; If you are interested in this content, take a look at</p>\r\n<p><a href=\"http://blogs.msdn.com/b/visualstudioalm/\">http://blogs.msdn.com/b/visualstudioalm/</a></p>\r\n<p><a href=\"http://msdn.microsoft.com/en-us/vstudio/ee358786\">http://msdn.microsoft.com/en-us/vstudio/ee358786</a></p>\r\n<p>The stuff remaining on this P&amp;P&nbsp;site is of historical significance.&nbsp; It has some useful ideas still, and is worth keeping, but the ALM Rangers have invested huge amounts of time over the last few years. They have been prolific in producing guidance drawn from their consulting practices.</p>\r\n<p>I hope the links are helpful to you.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-06-03T07:24:20.203-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "849070",
+    "ThreadId": "224415",
+    "Html": "<p>Thanks David!</p>",
+    "PostedDate": "2012-06-14T08:55:45.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

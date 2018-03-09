@@ -1,0 +1,53 @@
+[
+  {
+    "Id": "0",
+    "Name": "Team Development with TFS - Visio Diagrams",
+    "DevelopmentStatus": "None",
+    "Description": "Team Development with Visual Studio Team Foundation Guide - Visio Diagrams.\nClick the link below to download the Visio diagrams that are included in the guide for your own use and modification.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2007-09-19T18:20:05.407-07:00",
+    "Files": [
+      {
+        "Id": "b37941b9-e500-4c7d-8abd-ceef337272ef",
+        "FileName": "TFSGuideVisio.2007-09-06.zip",
+        "Url": "./0/b37941b9-e500-4c7d-8abd-ceef337272ef",
+        "Type": "Documentation",
+        "UploadDate": "2007-09-06T17:13:51.627-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "1",
+    "Name": "Team Development with TFS - Beta 1",
+    "DevelopmentStatus": "None",
+    "Description": "Team Development with Visual Studio Team Foundation Guide - PDF Version.\r\nClick the link below to download the guide.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2007-05-23T10:12:08.333-07:00",
+    "Files": [
+      {
+        "Id": "5066651f-7dd2-4aab-a0a7-a92a8031fde0",
+        "FileName": "TFSGuide.2005-05-22.6.pdf",
+        "Url": "./1/5066651f-7dd2-4aab-a0a7-a92a8031fde0",
+        "Type": "Documentation",
+        "UploadDate": "2007-05-23T09:57:59.053-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "2",
+    "Name": "Team Development with TFS - Final Release",
+    "DevelopmentStatus": "None",
+    "Description": "Team Development with Visual Studio Team Foundation Guide - PDF Version.\nClick the link below to download the guide.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2007-08-06T09:04:32.287-07:00",
+    "Files": [
+      {
+        "Id": "b9479213-72b3-44a7-89bc-1183d621d71e",
+        "FileName": "TFSGuide.2007-08-02.2.pdf",
+        "Url": "./2/b9479213-72b3-44a7-89bc-1183d621d71e",
+        "Type": "Documentation",
+        "UploadDate": "2007-08-06T09:04:32.303-07:00"
+      }
+    ]
+  }
+]

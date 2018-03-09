@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "531729",
+    "ThreadId": "237294",
+    "Html": "\r\n<p>I've read the MS VS TFS Branching Guidance 2010 Main and am curious why&nbsp;the order of branches is:</p>\r\n<p>main -&gt; service pack -&gt; hot fix -&gt; release</p>\r\n<p>As the document states creation (maintenance) of branches is not free, therefore wouldn't it make sense to have a branch order like this:</p>\r\n<p>main -&gt; release -&gt; hot fix</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt; service pack</p>\r\n<p>This way &quot;hot fix&quot; &amp; &quot;service pack&quot; branches are only created when and if needed, instead of up front.</p>\r\n",
+    "PostedDate": "2010-12-06T06:25:26.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "531819",
+    "ThreadId": "237294",
+    "Html": "\r\n<p>Perhaps we should have been a little clearer in describing the *cost* of creating branches. When you create a new branch (or in this case three new branches: SP, Hotfix, Release), there is not a lot of *overhead* involved. That is to say that creating a\r\n branch does not copy the entire contents of the source branch into the target branch. TFS only stores the differences when changes are made to a file.</p>\r\n<p>The important reason for the order of branches on the release side of the branching structure reflects the purpose of each branch and the direction that changes flow. When you are ready to release a new version of your product (application), you create the\r\n release branch(es) at the same point in time. If you are using the Advanced Branch plan you have 3 branches on the release side. Branch Main -&gt; ServicePack (SP); Branch SP -&gt; Hotfix; and Branch Hotfix -&gt; Release. At this point you would make the release\r\n branch read-only for safekeeping. This branch keeps a *copy* of the code as it was released (without any hotfixes or service packs that might come later). Making a read-only branch is preferred over labels in this context. Labels are modifiable - you can change\r\n the contents of a label after it is defined. Labels would likely not satisfy legal or auditing requirements for a safe-keeping copy of the code as it was released.</p>\r\n<p>It is important to note that changes are never merged *from* the Main branch into the Release branches once they are created. This is primarily becuase, once you create the release branch(es), you free up the Main and Development branches for vNext development.\r\n If you allow changes to be merged from Main (vNext) to Release (vCurrent), you will introduce unwanted changes from vNext into the vCurrent code. Unlike the development side of the branching structure, where changes are merged bidirectionally (forward and\r\n reverse integrations) - in the release side of the branching structure, changes should only be merged from child to parent (Release -&gt; Main ) and not from parent to child (Main -&gt; Release).</p>\r\n<p>It is perfectly acceptable, therefore to make a hotfix in the hotfix branch and merge it from Hotfix -&gt; ServicePack and then from ServicePack to Main. This allows you to bring a bug fix forward into future code releases. If you put the Release branch\r\n (which should be read-only) between Main and ServicePack, it makes the merging (reverse integration) of hot fixes back to main impossible. At the very least you would end up with the Release branch containing the hotfix, when it should be a read-only safekeeping\r\n branch.</p>\r\n<p>Back to the cost of branching. The *cost* of branching, therefore is not from creating the branch, but rather from the merging that is required from changes that are made after the branch is created. Merging tends to be labor intensive, particularly when\r\n it comes to resolving merge conflicts. Since we do not recommend bidirectional merging on the release side of the branching structure, this becomes less of an issue. If you create a Servicepack branch and / or hotfix branch that never gets used, that does\r\n not incur a lot of cost - since no changes imply no merging.</p>\r\n<p>Creating the release branches in the order we suggest gives you a post-release mechanism for servicing your code and bringing hotfixes and / or service packs up into the main branch.</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger.</p>\r\n",
+    "PostedDate": "2010-12-06T09:01:08.523-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "532225",
+    "ThreadId": "237294",
+    "Html": "\r\n<p>Ok I understand the choice in the order of branches, appears to be because lables in TFS are mutable, which is unfortunate as that would have been my first choice to mark a release.</p>\r\n<p>You mention that once a release branch is created you never update it from main again, but that kind of implies that all feature/dev branch finish their work more-or-less simultaniously which never really happens in the real world. How do you propose to\r\n handle a situation where 2 feature teams are submitting to the same release, but there is a 2 week gap in completion between the teams?</p>\r\n<p>How well would TFS cope with a situation in which changes from a dev/feature branch are directly integrated into the release branch and then pushed up to main?</p>\r\n<p>Antoni</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-07T04:44:36.807-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "532467",
+    "ThreadId": "237294",
+    "Html": "\r\n<p>I would never recommend *skipping* over the Main branch during a release. You should merge from the dev/feature branch to main, test the merge in Main (stabilize main). Then branch Main to Release.</p>\r\n<p>A release branch is always created from a&nbsp;branch operation.</p>\r\n<p>A release branch is never the target of a merge from Main or from a Development branch.</p>\r\n<p>If two feature teams are submitting feature to the same release, but there is a 2 week gap in completing these features, then you would integrate the first team's feature into Main and test it. Then two weeks later you would integrate the second team's change\r\n into Main and test it. Then you would branch Main to Release when both features have been stabilized in Main and are ready for release.</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n",
+    "PostedDate": "2010-12-07T12:27:53.62-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "532739",
+    "ThreadId": "237294",
+    "Html": "\r\n<p>But what about release &#43; 1?</p>\r\n<p>What you are saying is effectively locking main and preventing any other work to be integrated into main until team 2 is done in 2 weeks time, but what about team 1 which is already working on a feature for release &#43; 1?</p>\r\n<p>Antoni</p>\r\n",
+    "PostedDate": "2010-12-08T01:11:53.343-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

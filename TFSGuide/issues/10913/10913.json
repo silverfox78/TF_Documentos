@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Microsoft is promoting TFS as a leading ALM - Application Lifecycle Management tool.\n \nAn ALM must contain a fundemental element for Requirements Management and developement, especially when embarking CMMI support from within the development framework.\n \nUntil now I can see no trace for such feature...\n \nAhmad Al-Musallami\nOptimiza Solutions\nQuality Assurance Manager",
+    "LastUpdatedDate": "2013-02-21T16:44:21.95-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "TFSGuide",
+    "ReportedDate": "2008-08-05T08:10:31.727-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Where is the Requirements Management Capabilities?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 10913
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This is of interest, however, I have greater \"faith\" in Code Patterns & Practices and the novice approach that is the true effort behind Codeplex. There is clearly a failure in doxology as the software community closes it's great wall on the future. How can \"the future\" of not but one or two decades past become entrenched in ignorance?\r\n\r\nConcept developments requirements layering is still alive in closed circles of empirical powers behind high value and commodity priced software and firmware commercial developers. It seems ironic that Microsoft is an active part in revealing how closed the field is today and where stagnation introduces critical flaws. Isn't this the fear that was pronounced at the kingship of Microsoft. It appears the soothsayers at the coronation are the vile menace?",
+      "PostedDate": "2009-01-25T13:50:41.787-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-25T13:52:08.973-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:44:21.95-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

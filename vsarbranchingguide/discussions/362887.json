@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "860573",
+    "ThreadId": "362887",
+    "Html": "\r\n<p>Is it OK to just have a Main &amp; Release(s) branches with no Dev?<br>\r\nA co-worker is recommending this approach. Is this a common branching scenario?<br>\r\nWhat are the pros &amp; cons of not having a separate Dev Branches?<br>\r\n<strong>Your feedback on the following would be appreciated.</strong>&nbsp;</p>\r\n<p><strong><span style=\"font-size:12pt\">BRANCHING SCENARIO (Without using Dev Branch)</span></strong></p>\r\n<ol>\r\n<li><span style=\"font-size:12pt\">The <strong>Release 1</strong> branch is created from\r\n<strong>Main</strong> for working on your next release.</span> </li><li><span style=\"font-size:12pt\">(Optional) Periodic merges into <strong>Main</strong> ensure bug fixes from the release are moved into the main integration branch.</span>\r\n</li><li><span style=\"font-size:12pt\">The release build is labeled in the <strong>RTM (Release to Manufacturer)</strong> branch and merged back into\r\n<strong>Main</strong>.</span> </li><li><span style=\"font-size:12pt\">A service pack, SP1 (or hotfix), is released. The build is labeled and changes are merged into\r\n<strong>Main</strong>.</span> </li><li><span style=\"font-size:12pt\">The <strong>Release 1</strong> branch lives on in support of SP1 and to enable future service packs.</span>\r\n</li><li><strong><span style=\"font-size:12pt\">These process then repeat for all future releases (release 2, 3, and on&hellip;)</span></strong>\r\n</li></ol>\r\n<p><span style=\"font-size:12pt\">Once deploy to PROD and merge back in to the Main App tree, we must label the build (version 1.1.0, or 1.1.1, etc.) so we have the checkpoint to branch from it if we need to. I recommend to only keeping the previous release branch\r\n active while we&rsquo;re working on the next. All releases before that can safely be deleted off Release Folder to avoid cluster and save space in your TFS. We can always branch an old version using Label so there&rsquo;s no point of keeping multiple releases\r\n active beside the current and the previous released branches.</span></p>\r\n",
+    "PostedDate": "2012-07-11T16:01:58.787-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "861126",
+    "ThreadId": "362887",
+    "Html": "<p>Yes this approach is fine.&nbsp; There is no magic to always having a dev branch, you are in a basic 2 branching model here, and if that is the isolation you need then that will work well.&nbsp; Keep in mind that your plan to only keep the previous release active (not deleted) I assume is due to the fact that you are only supporting the 1 release at a time in prod?&nbsp; For example, I would keep as many release branches active as I had out in production somewhere.</p>",
+    "PostedDate": "2012-07-12T06:48:29.887-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "861980",
+    "ThreadId": "362887",
+    "Html": "<p>I have a different perspective. The Main branch should be kept as stable as possible, throughout its lifetime. This allows it to be deployed at any time to a testing environment (QA, UAT, Staging, etc). For this reason, all development should be isolated into one or more development branches (children of main), Development, should be fairly stable before being merged (RI) with Main. Further stabilization can take place in Main, while development continues in a Dev branch. Branching for Release is much preferred over using labels. Release branches can be locked down (made read-only). The contents of a label are NOT immutable. Many organizations require the auditability provided by branches that cannot be provided by labels. Ongoing development should not be taking place in a release branch. Code, once stabilized for release, should be branched for release from Main. TFS is very efficient at saving \"diff\" files and compressing large files. If the same version of a file exists in two separate, related branches, only one version of the content is stored in TFS. Having separate Release branches for each active release version in production (or deployed to customers), may be a minimum audit requirement in most organizations.</p>\r\n<p>I believe the Ranger Branching Guide makes a strong case for this approach.</p>\r\n<p>Bill Heys, VS ALM Ranger</p>",
+    "PostedDate": "2012-07-12T12:15:40.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "862694",
+    "ThreadId": "362887",
+    "Html": "<p>mlhoop &amp; wheys - Thank you both for the advice.&nbsp;</p>\r\n<p>wheys (Bill Heys)- thank you for the detailed info on why it isn't a good idea to do branching without a dev branch and for explaining TFS space saving techniques it uses and about labeling.&nbsp; I will share this my organization.</p>",
+    "PostedDate": "2012-07-12T17:14:46.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "666920",
+    "ThreadId": "271309",
+    "Html": "\r\n<p>I have the following branches in <span style=\"text-decoration:underline\">Team Project X</span>:</p>\r\n<p>Main (references the <strong>release </strong>assembly files from Team Project Y)</p>\r\n<p>Dev1 (references the <strong>debug </strong>assembly files from Team Project Y)</p>\r\n<p>Dev2&nbsp;(references the&nbsp;<strong>debug&nbsp;</strong>assembly files from Team Project Y)</p>\r\n<p>Release&nbsp;(references the&nbsp;<strong>release&nbsp;</strong>assembly files from Team Project Y)</p>\r\n<p><em>Note: </em><span style=\"text-decoration:underline\">Team Project Y</span><em> is the framework team project where I store common projects as well as Files such as Assemblies (Debug, Release), Company Key, Code Analysis custom setting file.</em></p>\r\n<p>My issue: When merging (Forward Integration)&nbsp;from Main back to Dev1 or Dev2 the reference path are overwritten. In other words, the reference path on Dev is changed from .../debug/... to .../release/...</p>\r\n<p>As a result, my build definition for Dev1 and Dev2 breaks.</p>\r\n<p>My build definition for Dev1, for example, contains two paths in the workspace:</p>\r\n<ol>\r\n<li>path to the .sln file in Dev1 (to build the whole solution) </li><li>path to the assembly debug (not the release) folder in Team Project Y </li></ol>\r\n<p>What strategy should I use to overcome my problem. Thanks in advance!</p>\r\n",
+    "PostedDate": "2011-09-02T10:28:00.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "666925",
+    "ThreadId": "271309",
+    "Html": "<p>Anytime you change the target of a project or assembly reference, you will have this problem. Why not reference the release assembly files from all branches?</p>\r\n<p>Regards,</p>\r\n<p>Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-09-02T10:55:42.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "666997",
+    "ThreadId": "271309",
+    "Html": "<p>Bill thanks for your reply!</p>\r\n<p>I will use the release version of the assembly files in the projects. But, after little more investigation I found that the problem is something else...</p>\r\n<p>Scenario&nbsp;1: When I merge (FI) from MAIN to RELEASE branch, the Release Branch breaks.&nbsp;</p>\r\n<p>Scenario&nbsp;2:&nbsp;When I merge (RI) from RELEASE to MAIN branch, the MAIN Branch breaks.</p>\r\n<p>&nbsp;</p>\r\n<p>What I have found out is that, lets say Scenario 1,</p>\r\n<ol>\r\n<li>For a project in the MAIN branch I add a file reference to&nbsp;<em>C:\\Projects\\Framework\\Files\\Assemblies\\Release\\<em>Microsoft.Practices.EnterpriseLibrary.Common.dll</em></em></li>\r\n<li>I build, check-in the code, a triggered build is initiated. Every builds fine in the MAIN branch.</li>\r\n<li>Then, I merge the Main (FI) with the RELEASE branch, that file reference&nbsp;morphs&nbsp;to&nbsp;<em>C:\\Projects\\&lt;TeamProjectName&gt;\\Main\\Src\\&lt;ProjectName&gt;\\Src\\Data\\DL\\bin\\Release\\Microsoft.Practices.EnterpriseLibrary.Common.dll</em></li>\r\n</ol>\r\n<p>You have two options to add references to a project (VB.NET):</p>\r\n<ol>\r\n<li>Go to the project property windows, reference tab, then add the reference there. The Specific Version is set to <strong>False</strong>.&nbsp;</li>\r\n<li>Right click the reference folder in the project, then select \"Add Reference\". After the reference is added check the reference properties in the properties window. The Specific Version is set to <strong>True </strong>(Why? bug?). When you toggle that value to false the Path changes to&nbsp;<em>C:\\Projects\\&lt;TeamProjectName&gt;\\Main\\Src\\&lt;ProjectName&gt;\\Src\\Data\\DL\\bin\\Release\\Microsoft.Practices.EnterpriseLibrary.Common.dll</em></li>\r\n</ol>\r\n<p>If I do option #2, that is when merging from MAIN to RELEASE will cause a problem for me. On the other hand, if I use option #1, where the Specific Version is set to False and the path doesn't toggle everything is fine.</p>\r\n<p>Very&nbsp;weird. Is this a bug? If not is there an article you can point me to read more on. Thanks!</p>",
+    "PostedDate": "2011-09-02T13:39:25.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

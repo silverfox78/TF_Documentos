@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "607796",
+    "ThreadId": "256495",
+    "Html": "\r\n<p>In a test instance I was able to convert a &quot;Basic Branch Plan&quot; to a &quot;Standard Branch Plan&quot; by inserting the Service Pack branch. I did some reparenting and a baseless merge to make it happen. It didn't seem difficult, though it had many steps. I was thinking\r\n about following this pattern. I like this way because I don't <em>have</em>&nbsp;to create a Service Pack branch until the moment I actually need one. In our case, we may never have a SP or we may create the SP to a release a year after the fact. We just don't\r\n know up front.</p>\r\n<p>Is it safe to insert a branch, do a lot of reparenting and baseless merges, to get my Branch Hierarchy like I want it\r\n<em>after</em>&nbsp;the need arises? Or is it better to create the extra&nbsp;branches\r\n<em>just in case</em>&nbsp;we might use them? What do you think?</p>\r\n<p>Thank you!</p>\r\n<p>~Jon</p>\r\n",
+    "PostedDate": "2011-05-05T07:07:08.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "607812",
+    "ThreadId": "256495",
+    "Html": "<p>Here is how I \"inserted\" an SP branch. Assume I have a Main that is a parent of 1.00. Main --&gt; 1.00</p>\r\n<ol>\r\n<li>Branch from 1.00 and create a 1.01.<ol>\r\n<li>Main --&gt; 1.00 --&gt; 1.01</li>\r\n</ol></li>\r\n<li>Baseless merge 1.01 to Main&nbsp;<ol>\r\n<li><span style=\"font-family: Consolas, 'Courier New', Courier, monospace; white-space: pre;\">tf merge /baseless /discard \"$/Test/Release/1.01\" \"$/Test/Main\"</span></li>\r\n</ol></li>\r\n<li>Reparent 1.01 to Main<ol>\r\n<li>Main --&gt; 1.01</li>\r\n<li>Main --&gt; 1.00</li>\r\n</ol></li>\r\n<li>Reparent 1.00 to 1.01<ol>\r\n<li>Main --&gt; 1.01 --&gt; 1.00</li>\r\n</ol></li>\r\n</ol><ol> </ol>\r\n<p>That's it! It seems to work and is easy enough to feel \"safe\", but am I going to cause myself problems down the road if I do this a lot?</p>",
+    "PostedDate": "2011-05-05T07:30:19.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "607837",
+    "ThreadId": "256495",
+    "Html": "<p>I did notice that the 1.00 branch still has Main as a possible merge target branch. I don't know how to get that out of the Merge Wizard Target branch dropdown.</p>",
+    "PostedDate": "2011-05-05T08:00:01.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "607881",
+    "ThreadId": "256495",
+    "Html": "<p>I will respond shortly. I am about to post a blog or two to provide context to my response.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-05-05T08:52:05.18-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "608052",
+    "ThreadId": "256495",
+    "Html": "<p>I have just posted a blog: <a href=\"http://tinyurl.com/tfsversioning\">http://tinyurl.com/tfsversioning</a>. In it I discuss the real overhead of creating a branch and not making changes to any files in the branch. You might want to read this for some context.</p>\r\n<p>I would prefer to create the recommended branch structure at the *time of release*, rather than creating a servicing branch at the time of need and then trying to insert this new branch between two existing branches.</p>\r\n<p>Rather than branch Main -&gt; Release and then some time later branch Release to Servicing, do a baseless merge between Main and Servicing and then reparent Servicing to Main and Release to Servicing, I would much prefer to branch Main to Servicing and Servicing to Release at the time of release. Even if I don't make changes post-release, the incremental cost of having this branch in place in the event I need it seems better than not having the branch structure I need when I want to do a hot fix or service pack.</p>\r\n<p>You are correct that when you do the baseless merge and reparenting, you will now see multiple merge targets for some branches. There is no way to remove these from the merge wizard target branch dropdown. It may prove confusing and error prone as a result.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-05-05T12:49:19.637-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "608118",
+    "ThreadId": "256495",
+    "Html": "<p>Bill, thank you for your reply and your time. Much appreciated!</p>",
+    "PostedDate": "2011-05-05T14:25:26.04-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610581",
+    "ThreadId": "256495",
+    "Html": "<p>I've been thinking about this for a bit now. I'm not concerned with the size that branches take up.</p>\r\n<p>It seems to me that the ultimate path of fixes mirrored in branches would be ideal. It would look something like 1.0 --&gt; 1.1 --&gt; 1.2 --&gt; main. Simple to look at and easy to follow when merging changes. If I can achieve that by reparenting branches, is there a reason not to do it that way?</p>\r\n<p>I feel as though I am oversimplifying and probably missing something. I also am not sure if doing a lot of \"reparenting\" with TFS will muck up the inner workings of TFS somehow.</p>",
+    "PostedDate": "2011-05-10T14:19:14.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610648",
+    "ThreadId": "256495",
+    "Html": "<p>I cannot asset that doing&nbsp; a lot of branch reparenting will NOT muck up the inner workings of TFS somehow. I can tell you that there is no way to remove the extra merge relationship from the target branch dropdown. I can also tell you that TFS has plenty of issues dealing with renaming files (not the same as reparenting), particularly when files were renamed in TFS 2008 prior to upgrading to TFS 2010. If any one issue keeps popping up on my radar it is the challenge TFS has with renaming files, and / or deleting a file and adding a different file with the same name.</p>\r\n<p>I know of no specific issue with *excessive* branch reparenting. But then again, I was not aware of any problems with file renaming in TFS 2008 until they changed to slot-mode identification of files.</p>\r\n<p>I work with many companies with branching requirements similar to yours. None have found it preferrable to do reparenting as a routine process. I would personaly prefer to proactively create an empty branch structure in the correct hierarchy over routinely inserting brancthes through reparenting.</p>\r\n<p>This is my preference, and as I said ealier, I know of no particular issues but cannot assert there will never be an issue. Since reparenting relies on baseless merges and baseless merges in themselves are to be discourgaed (deletes are not handled as you would expect, etc), I would not go this route.</p>\r\n<p>Good luck!</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-05-10T16:55:14.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610927",
+    "ThreadId": "256495",
+    "Html": "<p>Thank you again, Bill. I definitely take your advice to heart. I'm not convinced my idea is good either. ;-) I'll play around with it some more on our test instance because I'm interested. However, I'm not comfortable with it in production. I'll follow the guidance. There is&nbsp;definitely&nbsp;something to be said about tried and true solutions....they've been tried...and they work. ;-)</p>",
+    "PostedDate": "2011-05-11T06:49:30.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610962",
+    "ThreadId": "256495",
+    "Html": "<p>I wrote another blog for a customer with a slightly different problem. But it may provide some insight. ﻿(﻿﻿﻿<a href=\"http://tinyurl.com/6d638mw\">http://tinyurl.com/6d638mw</a> )&nbsp;</p>\r\n<p>Rather than having a separate branch for every hotfix in an inverted hierarchy as above (1.0 -&gt; 1.1 -&gt; 1.2 -&gt; Main), I recommend a combination of branching and labeling to allow this customer to make a hotfix to any version of his software EVER released.</p>\r\n<p>﻿﻿﻿﻿Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-05-11T07:56:11.543-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

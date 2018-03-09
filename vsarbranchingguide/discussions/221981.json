@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "474680",
+    "ThreadId": "221981",
+    "Html": "<p>We are in the starting fase of creating&nbsp;a branch structure for a small group of developers (10+).</p>\r\n<p>In the tfs branching guide 2010 it is proposed to create a release tree from MAIN at the same time <br>(MAIN-&gt;SP-&gt;RELEASE) <br>or more advanced if needed (MAIN-&gt;SP-&gt;HOTFIX-&gt;RELEASE)</p>\r\n<p>Is there any simple reason why this&nbsp;could a better release tree than i.e. what we are considering:&nbsp;MAIN-&gt;RELEASE-&gt;FIX</p>\r\n<p>We are considering to branch out from the RELEASE branch, only when we have to fix errors in our production version.</p>\r\n<p>When no fixes is needed we will&nbsp;not create the FIX branch.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-07-30T03:29:35.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474771",
+    "ThreadId": "221981",
+    "Html": "<p>&nbsp;</p>\r\n<p><span style=\"font-family:'Calibri','sans-serif';color:#1f497d;font-size:11pt\">When we create the release tree, we create Main-&gt;Servicing&gt;Fix&gt;Release all at the same time.</span></p>\r\n<p><span style=\"font-family:'Calibri','sans-serif';color:#1f497d;font-size:11pt\">There are several principles involved here. First, the Release branch is a copy of the code exactly as you ship it to the customer. This branch is often made read-only. You would never change or merge into this branch after it is created.</span></p>\r\n<p><span style=\"font-family:'Calibri','sans-serif';color:#1f497d;font-size:11pt\">Second the Fix branch is where you would do POST release engineering. Generally the changes made here are for fixing specific customer issues and are not as thoroughly tested as service packs. However it is possible you may want to roll hotfixes up into a service pack. You flow merges on the release tree ALWAYS towards Main (Reverse Integration). </span></p>\r\n<p><span style=\"font-family:'Calibri','sans-serif';color:#1f497d;font-size:11pt\">So hotfixes can roll up to the ServicePack branch (Servicing) where they can be more thoroughly tested and shipped to a broader customer base.</span></p>\r\n<p><span style=\"font-family:'Calibri','sans-serif';color:#1f497d;font-size:11pt\">Then you would merge ServicePack changes up (RI) into Main.</span></p>\r\n<p><span style=\"font-family:'Calibri','sans-serif';color:#1f497d;font-size:11pt\">Inverting this tree structure means you will not have a copy of what you actually released (the release or rtm branch)</span></p>\r\n<p><span style=\"font-family:'Calibri','sans-serif';color:#1f497d;font-size:11pt\">It also means you have to merge back up through the release branch to bring a fix to main.</span></p>\r\n<p><span style=\"font-family:'Calibri','sans-serif';color:#1f497d;font-size:11pt\">Finally, the incremental cost of a creating a branch is relatively low UNTIL you start making changes. Since Deltas are all that TFS stores. When you Branch A &gt; B, B has no Deltas yet.</span></p>\r\n<p><span style=\"font-family:'Segoe UI','sans-serif'\">If you don't need a separate Release branch and HotFix or Servicing branch (for archival or auditing purposes), then just create one branch in the release tree that you use for fixing/servicing. </span></p>\r\n<p><span style=\"font-family:'Segoe UI','sans-serif'\">But if you need both, please create them in the suggested&nbsp; hierarchical relationship. You will (I hope) thank us later.</span></p>\r\n<p><span style=\"font-family:'Segoe UI','sans-serif'\">Regards,<br>Bill Heys <br>VS ALM Ranger</span></p>",
+    "PostedDate": "2010-07-30T08:11:59.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "476280",
+    "ThreadId": "221981",
+    "Html": "<p>Thanks for your reply; it now makes sense to me with the order of release tree branches.</p>\r\n<p>We are a department developing .NET integration software for our company&rsquo;s online production system. The production system has monthly releases on specified dates, and we have a number of environments (Development-&gt; UAT -&gt; Staging -&gt; Production) where we can develop and test our software before it is released to production. Parallel development is a relatively new practice in our company, and not supported by all our platforms. But we are using it in our .NET development.</p>\r\n<p>Is there an obvious branch structure in our case (i.e. monthly releases and four environments)?</p>",
+    "PostedDate": "2010-08-03T23:17:29.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "482397",
+    "ThreadId": "221981",
+    "Html": "<p>I like to reinforce the idea of separating development and release issues when designing a branching strategy.</p>\r\n<p>Therefore I would like to divide your question into two parts:</p>\r\n<ul>\r\n<li>What is a recommended branching strategy for monthly releases</li>\r\n<li>What is a recommended branching strategy for developing a system that is tested in a number of different environments prior to release</li>\r\n</ul>\r\n<p>With respect to monthly releases, we recommend creating the release branches at such time as the code in the Main branch has been stabilized and is ready for release. This presumes that you have some established quality gates that the system must pass in order to make the *ready for release* decision. Since you are proposing to do monthly releases (a typical agile process), you would create a new set of release branches each month. This approach isolates your proudction (released) code from the ongoing development. Your organization needs to determine how many releases to maintain. You may decide to only keep the current release. Or you may decide to keep current and one prior. Legal and other requirements may influence how long an archived release branch needs to be maintained.</p>\r\n<p>&nbsp;On the development side, I view the need to support multiple testing environments as more of a deployment issue rather than a branching issue. You mentioned having Development, UAT, Staging, and Production environments.&nbsp;For the development environment our guidance suggests isolating development from the main branch by creating one or more development (or feature team) branches. Depending on the complexity of your development, you may only need one development branch in addition to the main branch. Devleopers will have workspaces on their development machines to provide isolation from other developers on their team. Each developer will likely do unit testing on their own workstation.</p>\r\n<p>At some point the code being developed by a team may need to be tested by a separate Q/A team. Rather than create a whole branching structure, I would recommend deploying the code to the testing environment(s) directly from the Developer Team's &nbsp;branch. Once the code in a development branch reaches a level of quality, it can be shared with other teams. At this point the code in the development branch can be merged with the main branch for integration testing.&nbsp; At this point, you would deploy the code from the main branch into whatever testing environments you require (UAT, Staging, etc)</p>\r\n<p>Finally, as stated above, you would reach a point where you are ready to release.. the release branch&nbsp;is deployed to production.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-08-19T09:39:23.45-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "483443",
+    "ThreadId": "221981",
+    "Html": "<p>Thanks for your reply.</p>\r\n<p>We are considering to just create one branch in the release tree for fixing/servicing, as your suggest.<br>But we are looking at the pros and cons of reusing the servicing branch instead of creating a new one every time we start servicing a new release.</p>\r\n<p>One pro we are looking at is: we do not have to remap our workspaces, when reusing the branch, which can be an advantage when considering tfs build.<br>One con we are looking at is: we loose the possibility to service the old release when overriding the branch with the new release.</p>\r\n<p>Are the other pros and cons of reusing the servicing branch?</p>",
+    "PostedDate": "2010-08-22T23:50:47.483-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "483531",
+    "ThreadId": "221981",
+    "Html": "<p>In my view the inability to service the released code because you are reusing the release branch outweighs the other considerations. For this reason alone, I would create a new release branch for servicing each new release. You then decide how many prior releases you will support for servicing.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-08-23T03:47:23.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "89691",
+    "ThreadId": "26831",
+    "Html": "\r\nI have been looking for a good comprehensive guide for TFS 2008.  This guide here for TFS 2005 looks like exactly what I am looking for.  How well do the concepts in this guide map to TFS 2008.  Or is there a guide out there already and I am just not finding it?  I would assume most of the guide is still relevant, but I assume it is missing items that I would want to consider for my 2008 implementation?<br /><br />Thanks for any help you all may provide.<br />",
+    "PostedDate": "2008-04-29T11:55:38.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "96552",
+    "ThreadId": "26831",
+    "Html": "Hi,&nbsp; After getting through the document and writing down some points to ask the vendors helping us set this up, I realized there is a section in here showing the improvements for TFS 2008.&nbsp; Thanks a lot.&nbsp; This is a great document.<br>\r\n",
+    "PostedDate": "2008-06-03T12:29:13.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

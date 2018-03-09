@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "536234",
+    "ThreadId": "238493",
+    "Html": "\r\n<p>HI there, i need some advice how to structure my solution so the merging of branches works transparently and efficient.</p>\r\n<p>Today, my solutions are referencing other projects by adding project references.<br>\r\nThese project references creates relative paths in the solution file and becomes a problem when i merge my projects.\r\n<br>\r\n<br>\r\nFor the branching i have follwed the simple branching guid, with one dev, main and release branch.\r\n<br>\r\n(HOL_Quick_Start_Basic_Branch_Plan_2010_v1.pdf)<br>\r\n<br>\r\nWhen i merge my dev branch, the project references gets invalid since they are relative.\r\n<br>\r\nFrom this guid, what i dont really understand is that when i creae my dev branch from the main source folder, the guide tells me that the path should be (see page 9):<br>\r\n$/eBanking1/Dev/Dev where dev is duplicated. If i instead would create a branch like $/eBanking1/Dev then i guess that i wouldnt have the problem with invalid relative paths when merging back to the main branch or what?</p>\r\n<p>Why are the /Dev folder duplicated in the guide?</p>\r\n<p>Any tips?</p>\r\n<p>Regards Niclas</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-15T09:24:39.347-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "536328",
+    "ThreadId": "238493",
+    "Html": "\r\n<p>Niclas,</p>\r\n<p>Lets use the following example</p>\r\n<p>Create a TeamProject : BasicBranch ($\\BasicBranch)</p>\r\n<p>Create a folder, Main ($BasicBranch\\Main)</p>\r\n<p>add your solution to the Main folder</p>\r\n<p>Create another folder, Common ($\\BasicBranch\\Common).</p>\r\n<p>Convert Common to a branch.</p>\r\n<p>Branch Main to Dev within a folder called Development (Branch $\\BasicBranch\\Main -&gt; $\\BasicBranch\\Development\\Dev)</p>\r\n<p>At this point Main is a branch (the source of the preceding branch operation and Dev is a branch (the target of the preceding branch operation)</p>\r\n<p>The branch Dev is contained in a folder, Development that is created during this branch operation (or it could already exist)</p>\r\n<p>So in your question there is no duplication of Dev in the guide. There is a TeamProject (eBanking1), it contains a folder (Dev) which contains a branch (Dev). If it is easier for you to understand, simply change the names of Dev so they are not the same.</p>\r\n<p>As for your problem, with the project reference, I have never had problems with project references being valid following a branching operation.</p>\r\n<p>How did you add the project reference?</p>\r\n<p>I assume the referenced project is in the same Team Project?</p>\r\n<p>Is the referenced project part of the solution?</p>\r\n<p>Changing the location of the Dev branch should not affect your problem with referenced projects</p>\r\n<p>What problem are you encountering with the merge?</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-15T12:04:46.313-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "536773",
+    "ThreadId": "238493",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>wheys wrote:</strong><br>\r\n.......\r\n<p>I assume the referenced project is in the same Team Project?</p>\r\n<br>\r\n</blockquote>\r\n<p>Bill,</p>\r\n<p>How would you recommend dealing with references that are in a different Team Project?</p>\r\n<p>We currently use relative reference to some common stuff in another Team Project, when branching in the manner described there is an extra folder in the DEV branch path. I know one option would be to branch from the 'common' stuff in the other Team Project\r\n into the current Team Project but I think this adds unnecessary complexity.</p>\r\n<p>Thanks</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-16T06:36:43.057-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "536779",
+    "ThreadId": "238493",
+    "Html": "\r\n<p>One option to consider, as you note above,&nbsp;in this scenario (Common Shared Code) is to branch from the Common Code Team Project into the Dependent Team Project(s).</p>\r\n<p>Branch $\\CommonTeamProject\\<strong>Main </strong>-&gt; $\\DependentTeamProject\\<strong>CommonCode</strong></p>\r\n<p>Note: this new branch in the dependent team project cannot be nested under any existing branch in the target team project. TFS 2010 does not allow nested branches.</p>\r\n<p>Once you have branched the common code into your team project, add the project(s) to your solution and create\r\n<strong>project</strong> refererences in any dependent projects that reference the common code.</p>\r\n<p>I have co-authored an article for MSDN magazine that talks about various approaches to sharing code. This is one of the approaches. Look for publication in early 2011 (The publishing lead time is frustratingly long).</p>\r\n<p>One issue to consider when you consider whether to branch from one Team Project to another, is whether you want to be able to make changes in the common code from the dependent project, and have the ability to merge it back to the common code base (some\r\n do not want to allow this).</p>\r\n<p>Another issue to consider is whether you want all dependent projects to use exactly the same version of source for the common code, or whether you will allow specialization in the dependent project. Branching from the common code team project into the dependent\r\n team project allows each dependent project to specialize the shared code (which&nbsp;may or may not be merged back).</p>\r\n<p>It is also possible to setup workspace mappings to projects from different team projects. This might be a viable alternative to branching. Is this how you created the relative references you mentioned above?</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n",
+    "PostedDate": "2010-12-16T06:49:50.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "536794",
+    "ThreadId": "238493",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>wheys wrote:</strong><br>\r\n........<br>\r\n<p>It is also possible to setup workspace mappings to projects from different team projects. This might be a viable alternative to branching. Is this how you created the relative references you mentioned above?</p>\r\n</blockquote>\r\n<p>Bill,</p>\r\n<p>Our temporary resolution while moving to\\learning TFS (and proper branch/merging)&nbsp; is as follows.</p>\r\n<p>We have a $\\CommonTeamProject\\Main structure with the common project assemblies copied to the WorkspaceRoot\\CommonTeamProject\\binaries folder. Our $\\DependentTeamProject projects reference the common assemblies from the WorkspaceRoot\\CommonTeamProject\\binaries.</p>\r\n<p>This requires each developer to get and build the $\\CommonTeamProject\\Main locally prior to working on $\\DependentTeamProject. We currently have no problems with having to manually get and build $\\CommonTeamProject as we are a very small team and change\r\n to the common code is extremely infrequent. We then use assembly references as needed in our&nbsp;$\\DependentTeamProject(s) to the WorkspaceRoot\\CommonTeamProject\\binaries folder. This works fine since we all only map the root '$' and let all children of $\r\n map to the defaults.</p>\r\n<p>Our problem then surfaces by the addition of the extra folder when branching from say $\\DependentTeamProject\\Main\\Src to $\\DependentTeamProject\\DEV\\R1\\Src. We pondered branching of the $\\CommonTeamProject\\Main\\Src -&gt; $\\DependentTeamProject\\Common but\r\n again we see that as a complexity we do not need for common code that rarely changes.</p>\r\n<p>Thanks</p>\r\n<p>Mike</p>\r\n",
+    "PostedDate": "2010-12-16T07:33:23.427-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "536812",
+    "ThreadId": "238493",
+    "Html": "\r\n<p>Mike,</p>\r\n<p>Thanks for clarifying.&nbsp;Your approach is sharing assembly references rather than project references.&nbsp;This is another approach with pros/cons we discuss in our upcoming MSDN article.</p>\r\n<p>Regards,</p>\r\n<p>Bill Heys<br>\r\nVS ALM Ranger<br>\r\n&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-16T08:16:04.57-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "536906",
+    "ThreadId": "238493",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>mikeschellenberge wrote:</strong><br>\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>wheys wrote:</strong><br>\r\n........<br>\r\n<p>It is also possible to setup workspace mappings to projects from different team projects. This might be a viable alternative to branching. Is this how you created the relative references you mentioned above?</p>\r\n</blockquote>\r\n<p>Bill,</p>\r\n<p>Our temporary resolution while moving to\\learning TFS (and proper branch/merging)&nbsp; is as follows.</p>\r\n<p>We have a $\\CommonTeamProject\\Main structure with the common project assemblies copied to the WorkspaceRoot\\CommonTeamProject\\binaries folder. Our $\\DependentTeamProject projects reference the common assemblies from the WorkspaceRoot\\CommonTeamProject\\binaries.</p>\r\n<p>This requires each developer to get and build the $\\CommonTeamProject\\Main locally prior to working on $\\DependentTeamProject. We currently have no problems with having to manually get and build $\\CommonTeamProject as we are a very small team and change\r\n to the common code is extremely infrequent. We then use assembly references as needed in our&nbsp;$\\DependentTeamProject(s) to the WorkspaceRoot\\CommonTeamProject\\binaries folder. This works fine since we all only map the root '$' and let all children of $\r\n map to the defaults.</p>\r\n<p>Our problem then surfaces by the addition of the extra folder when branching from say $\\DependentTeamProject\\Main\\Src to $\\DependentTeamProject\\DEV\\R1\\Src. We pondered branching of the $\\CommonTeamProject\\Main\\Src -&gt; $\\DependentTeamProject\\Common but\r\n again we see that as a complexity we do not need for common code that rarely changes.</p>\r\n<p>Thanks</p>\r\n<p>Mike</p>\r\n</blockquote>\r\n<p>Mike,</p>\r\n<p>Perhaps you could clarify some points for *our readers*</p>\r\n<p>You mention a &quot;problem then surfaces by the addition of the extra folder when branching from say $\\DependentTeamProject\\Main\\Src to $\\DependentTeamProject\\DEV\\R1\\Src&quot;.</p>\r\n<p>First, could you be more specific as to what the extra folder is? I assume you are referring to the $\\CommonTeamProject\\Binaries folder.</p>\r\n<p>Second could you elaborate some on what problem you are seeing when branching the Dependent Team Project? I assume that the assembly reference is invalid when you branch (which may have been the initial issue in this thread)</p>\r\n<p>Bill</p>\r\n",
+    "PostedDate": "2010-12-16T11:06:13.867-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "536927",
+    "ThreadId": "238493",
+    "Html": "\r\n<p>Mike,</p>\r\n<p>Two comments on your approach.</p>\r\n<p>1. For larger teams with many Team Project, some may find it cumbersome or objectionable to &quot;map the root '$' and let all children of $ map to the defaults&quot;. This means that each developer has one and only workspace which maps ALL of the Team Projects to\r\n their local hard drive folders. There may be a lot of files copied down from the server on a Get Latest at the root leve. As an alternative to this, I recommend a more granular mapping of workspaces. For example, I might only map the specific Team Projects\r\n I am working on. I might also only map the specific branches within those team projects I am working on.</p>\r\n<p>With respect to using assembly references with branching, one approach I recommend is to create a binaries folder *under* the Main branch. Rather than adding assembly&nbsp;references in the Dependent Team Project back to the binaries folder in the Common\r\n Team Project, I copy those binaries under tha Main branch (in the binaries folder). I create my assembly references to those assemblies. When I later branch Main to Dev, the binary folder under Main gets copied over as well. The assembly references remain\r\n valid. Just be sure that after you copy the DLLs into this binaries folder that you also add them to source control so they will be included in the branching/merging process.</p>\r\n<p>Alternatively you can GAC these assemblies.</p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n",
+    "PostedDate": "2010-12-16T11:43:44.227-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

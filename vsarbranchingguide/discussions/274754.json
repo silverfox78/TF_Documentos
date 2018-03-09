@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "679958",
+    "ThreadId": "274754",
+    "Html": "\r\n<p>I have 2 branches Development and release. Development is ancestor. Now I want to introduce Main branch in between them, How to do that?</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> Development&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r\n &nbsp;Main</strong></p>\r\n<p><strong>Main</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r\n<strong>Release&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; . </strong>I want in the following fashion&nbsp;<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Development&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r\n Release</strong></p>\r\n",
+    "PostedDate": "2011-10-04T12:27:31.67-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "680000",
+    "ThreadId": "274754",
+    "Html": "<p>Assuming you are using VS 2010. You could consider renaming Development to Main and then branching from Main to create a new *Development* branch. I would NOT, however, reuse the same name for the new Development branch. I would also make sure that there are no pending changes in the development branch before renaming it.</p>\r\n<p>Alternatively, but not necessarily better, you could achieve something similar with the branch reparenting feature of VS 2010. I am not sure I like this if you want to invert the relationship between Development and Main and then reparent Release to the new Main.</p>\r\n<p>All-in-all, I prefer the first approach.</p>\r\n<p>Regards,<br />Bill Heys <br />VS ALM Ranger</p>",
+    "PostedDate": "2011-10-04T13:49:23.067-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "680001",
+    "ThreadId": "274754",
+    "Html": "<p>I would suggest that you do NOT want to add Main as a branch between Development and Release. Rather you want Main to be the top-level branch in your hierarchy, with both Development and Release as full-children of Main</p>\r\n<p>This results in a good, two-level branch hierarchy.</p>\r\n<p>Regards,<br />Bill Heys</p>",
+    "PostedDate": "2011-10-04T13:52:49.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "680003",
+    "ThreadId": "274754",
+    "Html": "\r\n<div dir=\"ltr\">How to do this? Can you please explain me in detail!!!<br>\r\n<br>\r\n<div>\r\n<hr id=\"stopSpelling\">\r\nFrom: [email removed]<br>\r\nTo: [email removed]<br>\r\nDate: Tue, 4 Oct 2011 13:52:58 -0700<br>\r\nSubject: Re: Branching Change Ancestor to child [TFSBranchingGuideIII:274754]<br>\r\n<br>\r\nFrom: wheys<br>\r\n<div id=\"ecxThreadNotificationPostBody\">I would suggest that you do NOT want to add Main as a branch between Development and Release. Rather you want Main to be the top-level branch in your hierarchy, with both Development and Release as full-children of\r\n Main<br>\r\nThis results in a good, two-level branch hierarchy.<br>\r\nRegards,<br>\r\nBill Heys<br>\r\n</div>\r\n<div id=\"ecxThreadNotificationFooter\">Read the <a href=\"http://tfsbranchingguideiii.codeplex.com/discussions/274754#post680001\" target=\"_blank\">\r\nfull discussion online</a>.<br>\r\nTo add a post to this discussion, reply to this email (<a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com?subject=[TFSBranchingGuideIII:274754]\">TFSBranchingGuideIII@discussions.codeplex.com</a>)<br>\r\nTo start a new discussion for this project, email <a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com\">\r\nTFSBranchingGuideIII@discussions.codeplex.com</a><br>\r\nYou are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://tfsbranchingguideiii.codeplex.com/discussions/274754/unsubscribe/\" target=\"_blank\">\r\nunsubscribe</a> on CodePlex.com.<br>\r\nPlease note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com<br>\r\n</div>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2011-10-04T13:54:48.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "680004",
+    "ThreadId": "274754",
+    "Html": "\r\n<div dir=\"ltr\">I do not want to merge changes directly from Dev to Release, I want merge should be happen from Dev to Main and Main to relase, I want these flow, Please help me out to implement this Behaviour.<br>\r\n<br>\r\n<br>\r\n<br>\r\n<div>\r\n<hr id=\"stopSpelling\">\r\nFrom: [email removed]<br>\r\nTo: [email removed]<br>\r\nDate: Tue, 4 Oct 2011 13:52:58 -0700<br>\r\nSubject: Re: Branching Change Ancestor to child [TFSBranchingGuideIII:274754]<br>\r\n<br>\r\nFrom: wheys<br>\r\n<div id=\"ecxThreadNotificationPostBody\">I would suggest that you do NOT want to add Main as a branch between Development and Release. Rather you want Main to be the top-level branch in your hierarchy, with both Development and Release as full-children of\r\n Main<br>\r\nThis results in a good, two-level branch hierarchy.<br>\r\nRegards,<br>\r\nBill Heys<br>\r\n</div>\r\n<div id=\"ecxThreadNotificationFooter\">Read the <a href=\"http://tfsbranchingguideiii.codeplex.com/discussions/274754#post680001\" target=\"_blank\">\r\nfull discussion online</a>.<br>\r\nTo add a post to this discussion, reply to this email (<a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com?subject=[TFSBranchingGuideIII:274754]\">TFSBranchingGuideIII@discussions.codeplex.com</a>)<br>\r\nTo start a new discussion for this project, email <a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com\">\r\nTFSBranchingGuideIII@discussions.codeplex.com</a><br>\r\nYou are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://tfsbranchingguideiii.codeplex.com/discussions/274754/unsubscribe/\" target=\"_blank\">\r\nunsubscribe</a> on CodePlex.com.<br>\r\nPlease note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com<br>\r\n</div>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2011-10-04T13:57:28.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "680073",
+    "ThreadId": "274754",
+    "Html": "<p>&nbsp;</p>\r\n<p><span style=\"font-family: 'Segoe UI','sans-serif';\">Assuming you have Development and Release where Release is a child of Development&hellip; simply rename Development to Main.</span></p>\r\n<p><span><span style=\"font-family: 'Segoe UI','sans-serif';\">Now Release is a child of Main. </span></span></p>\r\n<p><span><span style=\"font-family: 'Segoe UI','sans-serif';\">Branch Main to Development2 (or some new name). </span></span></p>\r\n<p><span><span style=\"font-family: 'Segoe UI','sans-serif';\">Now Development2 is a child of Main.</span></span></p>\r\n<p><span><span style=\"font-family: 'Segoe UI','sans-serif';\">Do all development check-in in Development2</span></span></p>\r\n<p><span><span style=\"font-family: 'Segoe UI','sans-serif';\">Do stabilization in Main (deploy Main to QA)</span></span></p>\r\n<p><span><span style=\"font-family: 'Segoe UI','sans-serif';\">Branch Main to Release when you release a new version</span></span></p>\r\n<p><span>&nbsp;</span></p>",
+    "PostedDate": "2011-10-04T17:22:42.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "680083",
+    "ThreadId": "274754",
+    "Html": "\r\n<div dir=\"ltr\">\r\n<div>Thank you very much wheys.</div>\r\n<div><br>\r\nTo: [email removed]<br>\r\nDate: Tue, 4 Oct 2011 17:22:48 -0700<br>\r\nSubject: Re: Branching Change Ancestor to child [TFSBranchingGuideIII:274754]<br>\r\n<br>\r\nFrom: wheys<br>\r\n<div id=\"ecxThreadNotificationPostBody\"><br>\r\n<span style=\"font-family:'Segoe UI','sans-serif'\">Assuming you have Development and Release where Release is a child of Development… simply rename Development to Main.</span><br>\r\n<span><span style=\"font-family:'Segoe UI','sans-serif'\">Now Release is a child of Main.\r\n</span></span><br>\r\n<span><span style=\"font-family:'Segoe UI','sans-serif'\">Branch Main to Development2 (or some new name).\r\n</span></span><br>\r\n<span><span style=\"font-family:'Segoe UI','sans-serif'\">Now Development2 is a child of Main.</span></span><br>\r\n<span><span style=\"font-family:'Segoe UI','sans-serif'\">Do all development check-in in Development2</span></span><br>\r\n<span><span style=\"font-family:'Segoe UI','sans-serif'\">Do stabilization in Main (deploy Main to QA)</span></span><br>\r\n<span><span style=\"font-family:'Segoe UI','sans-serif'\">Branch Main to Release when you release a new version</span></span><br>\r\n<span></span><br>\r\n</div>\r\n<div id=\"ecxThreadNotificationFooter\">Read the <a href=\"http://tfsbranchingguideiii.codeplex.com/discussions/274754#post680073\" target=\"_blank\">\r\nfull discussion online</a>.<br>\r\nTo add a post to this discussion, reply to this email (<a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com?subject=[TFSBranchingGuideIII:274754]\">TFSBranchingGuideIII@discussions.codeplex.com</a>)<br>\r\nTo start a new discussion for this project, email <a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com\">\r\nTFSBranchingGuideIII@discussions.codeplex.com</a><br>\r\nYou are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://tfsbranchingguideiii.codeplex.com/discussions/274754/unsubscribe/\" target=\"_blank\">\r\nunsubscribe</a> on CodePlex.com.<br>\r\nPlease note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com<br>\r\n</div>\r\n</div>\r\n</div>\r\n",
+    "PostedDate": "2011-10-04T18:43:18.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "680310",
+    "ThreadId": "274754",
+    "Html": "<p>You should also run the <a href=\"http://msdn.microsoft.com/en-us/library/bb386005.aspx\">this</a>&nbsp;command to destroy the dangling branch (Main) in the left diagram, in your post.&nbsp;</p>\r\n<p><em>TF destroy &lt;branch path&gt; /collection:&lt;tfs collection&gt;</em></p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-10-05T08:15:58.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "680316",
+    "ThreadId": "274754",
+    "Html": "<p>It is not clear whether the Main branch exists in the left diagram. If it does exist, you should destroy it FIRST, before renaming the Development branch to Main.</p>\r\n<p>If it does not exist already, then there is no need to destroy it, of course.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-10-05T08:44:41.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

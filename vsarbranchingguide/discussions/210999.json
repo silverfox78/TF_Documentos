@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "437043",
+    "ThreadId": "210999",
+    "Html": "<p>Hello everybody</p>\r\n<p>I've a question about how to release an hotfix package:</p>\r\n<p>Suppose my tfs branch is MAIN --&gt; (V 1.0) &nbsp;Service Pack &nbsp;--&gt;&nbsp;Hotfix --&gt; RTM &nbsp;</p>\r\n<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;--&gt; (V 2.0) &nbsp;Service Pack &nbsp;--&gt;&nbsp;Hotfix --&gt; RTM &nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Customer1 signal a bug in Assembly1.dll &nbsp; &nbsp;and Customer2 signal a bug in Assembly2.dll and so on... &nbsp;</p>\r\n<p>My objective is to send only the fixed dll's</p>\r\n<p>1) if i want to send a cumulative patch installer to all other customers containing only the changed dll's how can i find thats automatically ?</p>\r\n<p>2) which is the difference to send a cumulative patch rather than a ServicePack ?</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks</p>\r\n<p>Paolo</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-29T05:40:11.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "437052",
+    "ThreadId": "210999",
+    "Html": "<p>Paolo,</p>\r\n<p>With respect to hotfixes, the general recommendation is, as you suggest, to send only the changed DLL(s) to a customer that fix THAT customer's problem. Hotfixes are sometimes called Quick Fix Engineering (QFEs). Generally a hotfix is not as exhaustively tested as a full release or Service Pack. For this reason most customers are advised not to install a specific hotfix unless they believe it is a fix to a problem they are experiencing.</p>\r\n<p>In my view a Service Pack is the vehicle that creates a cumulative patch. You might combine several individual hotfixes into a Service Pack. Service Packs SHOULD be thoroughly tested (similar to a full release) since they will have broad distribution. I would NOT send a cumulutive patch containing several hotfixes UNLESS it undergoes rigorous testing.</p>\r\n<p>Regards,</p>\r\n<p>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-04-29T06:00:24.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "437121",
+    "ThreadId": "210999",
+    "Html": "<p>Thanks Bill</p>\r\n<p>I'll follow your suggestion, i'll send only the changed DLL(s)&nbsp;to a customer that fix THAT customer's problem, but 2 question again :)</p>\r\n<p>1) if i need (for any reason) to send to a customer a fully tested service pack &nbsp;there is a way to get only the changed DLLs &nbsp;from the branch or &nbsp;there is a best method to do this ?</p>\r\n<p>2) if i fix a problem to &nbsp;myAssembly1.dll &nbsp;a time T - 1 &nbsp; &nbsp;for customer1 and i fix another assembly&nbsp;myAssembly2.dll &nbsp;a time T for customer2 &nbsp;i have</p>\r\n<p>Customer1 with &nbsp;a <span style=\"text-decoration:underline\">new</span>&nbsp;myAssembly1.dll and <span style=\"text-decoration:underline\">old</span>&nbsp;myAssembly2.dll</p>\r\n<p>Customer2 with &nbsp;a <span style=\"text-decoration:underline\">old</span>&nbsp;myAssembly1.dll and <span style=\"text-decoration:underline\">new</span> myAssembly2.dll<br><br></p>\r\n<p>&nbsp;how can i be sure that changes made in&nbsp;myAssembly2.dll &nbsp;don't use the fix made in&nbsp;myAssembly1.dll ? &nbsp;do you think it's my risk?</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks alot again for any suggestion</p>\r\n<p>Paolo</p>",
+    "PostedDate": "2010-04-29T08:02:18.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

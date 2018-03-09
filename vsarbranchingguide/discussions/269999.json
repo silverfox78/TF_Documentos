@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "661762",
+    "ThreadId": "269999",
+    "Html": "\r\n<p>On page 6 of TFS_Branching_Guide_Scenarios_2010_v1.pdf, there is a diagram at the top, under Scenario #1: Single Team Branching Model.</p>\r\n<p>In this diagram, there is a label &quot;V1.1 FT3&quot; after the forward integration from main.</p>\r\n<p>What does &quot;FT3&quot; mean and what is the purpose of this label?</p>\r\n",
+    "PostedDate": "2011-08-22T13:32:40.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "661771",
+    "ThreadId": "269999",
+    "Html": "<p>I know this is probably not a good answer, but I will try.</p>\r\n<p>As you note, V1.1 FT3 is a label. One can only guess (and I did not write this part of the guidance) what the purpose of the label is. It could be a milestone reached during development. Again, I can only speculate that FT3 might mean (based on other contexts where we have abbreviated Feature Team as FT) that this is a milestone for Feature Team 3. It could be this indicates feature complete for a particular team or feature. <br />This answer probably raises more questions than answers.&nbsp;</p>\r\n<p>I am not particularly comfortable with the content of the Scenearios Document. It is likely to be completely rewritten for the next release of the Guidance.</p>\r\n<p>I am sorry the narrative doesn't do a better job of explaining the illustration. Or I am sorry the illustration doesn't just stick to the narrative.</p>\r\n<p>Sorry I don't have a better answer. Bottom line, this label is not critical to an understanding of the Basic Branch Plan.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-08-22T13:52:12.68-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "662321",
+    "ThreadId": "269999",
+    "Html": "<p>Thanks, that clears it up a bit.</p>",
+    "PostedDate": "2011-08-23T13:19:48.967-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

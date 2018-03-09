@@ -1,0 +1,67 @@
+<div class="wikidoc"><h3>Chapter 12 - Work Items Explained</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Objectives</h3><ul><li>Learn about the purpose and structure of work items.</li>
+<li>Describe work item workflow.</li>
+<li>Customize work items to meet your team’s specific needs.</li></ul>
+
+<h3>Overview</h3>This chapter introduces you to work items and explains how you can use them to help manage your software development projects. Each work item represents a unit of work to be carried out by your development team. A set of work item types is defined in the process template you choose when creating a new team project. <br /><br />After your project has started, you can create any of the available work item types to track work efforts. While default work item types and behaviour are defined in the process templates, any aspect of a work item type can be modified to better fit the way your team works.<br />
+<h3>How to Use This Chapter</h3>To gain the greatest benefits from this chapter, you should:
+<ul><li>Read the “Work Item Structure” section to learn about predefined work item types and how work item workflow is defined. </li>
+<li>Read the “Customizing Work Items” section to learn how and why you would customize a work item type. </li></ul>
+
+<h3>Scenarios and Solutions</h3>Work items are the primary way that project managers and team leaders track the work that remains to be done on a project, as well as the work that has been already been completed. Team members use work items to track their personal work queue and assign work to each other for example, in the form of bugs or tasks.  <br /><br />The following are common uses of work items in team projects:
+<ul><li>Create user requirements or Quality of Service (QoS) requirements for an application.  </li>
+<li>Track development and testing against requirements.</li>
+<li>Create development tasks to represent the work that must be completed in order to implement application components and features.</li>
+<li>Create bugs to represent defects in the implementation of application components and features.</li>
+<li>Triage bugs and tasks so that they are appropriately prioritized and balanced across the team.</li>
+<li>Track development tasks to determine progress toward code complete status.</li>
+<li>Track bugs, along with other quality metrics, to determine the quality of the application and its readiness to be shipped. </li></ul>
+<br />How you use work items depends on the work item types that are defined for your project. The work item definitions are stored in the process template you choose when the team project is first created. You can choose one of the two default templates - Microsoft&#174; Solution Framework (MSF) for Agile Software Development (MSF Agile) or MSF for CMMI&#174; Process Improvement (MSF CMMI) ? or you can customize work items to meet your team’s specific needs and process.<br />
+<h3>Work Item Structure</h3>Each work item type can be defined as follows:
+<ul><li>It has a purpose and intended use. For instance, bugs are used to track quality defects, tasks are used to track scheduled work, QoS requirements are used to capture critical non-functional aspects such as security and performance requirements, and so on</li>
+<li>It has a workflow defined by states and transitions. For example, the steps from “Opened” to “Resolved” to “Closed” status.</li>
+<li>It has a set of fields that can be set, queried, and reported on. For example, Priority, Status and, Iteration.</li></ul>
+
+<h3>Work Item Types</h3>The MSF Agile and MSF CMMI process templates each define a set of work items that map to the roles and activities defined in the process guidance.<br />
+<h4>MSF Agile Work Item Types</h4>MSF Agile contains the following work item types:
+<ul><li><b>Bug</b>. Represents a problem or potential problem in your application.</li>
+<li><b>Risk</b>. Represents a possible event or condition that would have a negative impact on your project.</li>
+<li><b>Scenario</b>. Represents a single path of user interaction through the system.</li>
+<li><b>Task</b>. Represents the need for a member of the team to do some work.</li>
+<li><b>Quality of Service Requirement</b>. Represents a requirement constraining how the system should work.  </li></ul>
+
+<h4>MSF CMMI Work Item Types</h4>MSF CMMI contains the following work item types:
+<ul><li><b>Bug</b>. Represents a problem or potential problem in your application.</li>
+<li><b>Change Request</b>. Represents a proposed change to your application.</li>
+<li><b>Issue</b>. Represents a situation that may block work or is currently blocking work.</li>
+<li><b>Requirement</b>. Represents a description of what your application should do to solve a customer problem.</li>
+<li><b>Review</b>. Represents the results of a code, design, or deployment review.</li>
+<li><b>Risk</b>. Represents a possible event or condition that would have a negative impact on the project.</li>
+<li><b>Task</b>. Represents the need for a member of the team to do some work.</li></ul>
+
+<h3>Work Item Workflow</h3>Each work item has a pre-defined workflow representing each state the work item can be in as well as transitions between states. Each state is naturally associated with a role in TFS. For example when a tester opens a new bug in MSF Agile the state is <b>Active</b>. When a developer fixes the bug the state is changed to <b>Resolved</b>. When the tester verifies the fix the bug state is changed to <b>Closed</b>.
+<h4>Workflow Examples</h4>The following examples show workflow for two common work item types.<br />
+<h5>MSF CMMI Task</h5>An MSF CMMI task has the following possible states:
+<ul><li><b>Proposed.</b> For example, proposed by a developer, tester, or architect.</li>
+<li><b>Active.</b> For example, accepted by a lead or manager.</li>
+<li><b>Resolved.</b> For example, resolved by a developer.</li>
+<li><b>Closed.</b> For example, tested and closed by a tester.</li></ul>
+<br />Figure 12.1 shows each state along with the possible transitions between the states.<br /><br /><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=TFSGuide&DownloadId=16712" alt="Fig12.1.GIF" title="Fig12.1.GIF" /><br /><b><i>Figure 12.1</b> Transition States for MSF CMMI</i><br />
+<h5>MSF Agile Bug</h5>An MSF Agile Bug has the following possible states:
+<ul><li><b>Active</b>. For example, opened by a tester.</li>
+<li><b>Resolved</b>. For example, resolved by a developer.</li>
+<li><b>Closed</b>. For example, tested and closed by a tester.</li></ul>
+<br />Figure 12.2 shows each state along with the possible transitions between the states.<br /><br /><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=TFSGuide&DownloadId=16713" alt="Fig12.2.GIF" title="Fig12.2.GIF" /> <br /><b><i>Figure 12.2</b> Transition States for MSF Agile</i><br />
+<h3>Customizing Work Items</h3>There are a few scenarios in which you may want to modify the work item types defined in MSF Agile or MSF CMMI:
+<ul><li>A work item is missing a field that is important for your development process.</li>
+<li>A work item workflow does not match how your team works.</li>
+<li>You need a new work item type.</li></ul>
+<br />To support these scenarios, you can do the following in TFS:
+<ul><li>Add/remove work item types.</li>
+<li>Modify fields in existing work items.</li>
+<li>Modify states and transitions in existing work items.</li></ul>
+<br />For more information about customizing work items, see “How To: Customize a Process Template in Visual Studio Team Foundation Server.”<br />
+<h3>Summary</h3>Work items are used by project managers and team leaders to track the work to be done on a project. They are used to create development tasks to represent the work that must be completed, create bugs to represent defects in the implementation and create user requirements or Quality of Service (QoS) requirements. Additionally they can be used to track development and testing against requirements, and to determine the quality of the application and its readiness to be shipped.<br /><br />The MSF Agile and MSF CMMI process templates provide a set of default work item types. You can customize these or create new work item types to meet your process requirements.<br />
+<h3>Additional Resources</h3><ul><li>For more information on work items, see “Managing Team Foundation Work Items” at  <a href="http://msdn2.microsoft.com/en-us/library/ms181314(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181314(VS.80).aspx</a> </li>
+<li>To download the MSF CMMI process template and review available work item types, go to <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=12A8D806-BB98-4EB4-BF6B-FB5B266171EB&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?FamilyID=12A8D806-BB98-4EB4-BF6B-FB5B266171EB&amp;displaylang=en</a></li>
+<li>To download the MSF Agile process template and review available work item types, go to  <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=EA75784E-3A3F-48FB-824E-828BF593C34D&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?FamilyID=EA75784E-3A3F-48FB-824E-828BF593C34D&amp;displaylang=en</a></li></ul></div><div class="ClearBoth"></div>

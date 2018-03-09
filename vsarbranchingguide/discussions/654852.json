@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1474054",
+    "ThreadId": "654852",
+    "Html": "On Page 16 of 32 in the &quot;Branching and Merging Guide&quot; three visualization types are shown. The &quot;Horizontal Timeline&quot; looks like this:\r<br />\n<br />\n<img src=\"http://i.imgur.com/Rjc5N1x.png?1\" alt=\"visualization\" />\r<br />\n<br />\nBut how do you <em>create</em> such a visualization? I'm somewhat afraid the answer's going to be &quot;MS Visio&quot;, but have some hope still this can be done with TFS, Visual Studio, or some kind of extension.\r<br />\n<br />\nTo be clear, I'm looking for the feature that tools like TortoiseHg and SourceTree have, where you can see all commits on all branches in a certain timespan, and have a visualization of where commits/checkins merge code from one branch to another.\r<br />\n<br />\nIs something like that possible? Is it perhaps even in the guide and did I miss it?<br />\n",
+    "PostedDate": "2016-05-23T02:35:10.423-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

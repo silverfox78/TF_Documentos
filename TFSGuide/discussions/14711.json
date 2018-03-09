@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "47839",
+    "ThreadId": "14711",
+    "Html": "\r\nTo see what's the real deal on incremental builds with vsts 2005 see my comment on <a href=\"http://www.codeplex.com/TFSGuide/Wiki/View.aspx?title=http%3a%2f%2fforums.microsoft.com%2fMSDN%2fShowPost.aspx%3fPostID%3d1099873%26SiteID%3d1\">http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=1099873&amp;SiteID=1</a>.<br />When applying the solution you are suggesting, your build will break as soon as you delete a vs project.<br />",
+    "PostedDate": "2007-09-05T02:51:30.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

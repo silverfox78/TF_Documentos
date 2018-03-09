@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "283025",
+    "ThreadId": "82373",
+    "Html": "<p>Hi,</p>\r\n<p>The information presented in those guides is tremendous. In particular, I find the diagrams extremely expressive. They do make the whole complicated branching strategy much clearer.</p>\r\n<p>I was just wondering what tool was the team using to create those diagrams. I am guessing it's Visio. If it is, I would be very interested in the original diagrams or the stencils so I could create clean diagrams like yours to explain our branching strategy to our team (and management).</p>\r\n<p>Thanks again for the guides and for any feedback.</p>\r\n<p>&nbsp;</p>\r\n<p>Regards,</p>\r\n<p>&nbsp;</p>\r\n<p>Eric.</p>",
+    "PostedDate": "2010-01-28T15:46:23.363-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283040",
+    "ThreadId": "82373",
+    "Html": "<p>Eric,</p>\r\n<p>Thanks for the positive feedback. These diagrams were drawn in PowerPoint and should be fairly easy to create with simple lines and shapes.</p>\r\n<p>For example, on a blank slide, draw an arrow (left-to-right). Choose the style of arrow you prefer. Apply a quick style with the desired color&nbsp;to the arrow (in our case, I think we use the &quot;intense&quot;).</p>\r\n<p>Do the same for simple shapes such as ovals, circles, or hexagons. I find it easy to get one shape the correct size and then copy and paste or copy and drag to other places on the diagram.</p>\r\n<p>Thanks go to Willy-Peter Schaub for his fantastic diagrams and posters!!!</p>\r\n<p>Regards,<br>Bill Heys<br>VS Ranger</p>",
+    "PostedDate": "2010-01-28T16:42:01.697-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283349",
+    "ThreadId": "82373",
+    "Html": "<p>Bill,</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks for your quick reply. We are implementing one of the strategies, though without TFS (SVN). I will be glad to provide feedback in a few months after 1 or 2 releases.</p>\r\n<p>&nbsp;</p>\r\n<p>Regards,</p>\r\n<p>&nbsp;</p>\r\n<p>Eric.</p>",
+    "PostedDate": "2010-01-29T07:31:23.823-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283368",
+    "ThreadId": "82373",
+    "Html": "<p>Eric,</p>\r\n<p>I will very interested in your feedback. Feel free to post additional questions here.<br>While technically we wrote the guide for TFS 2008 and 2010, we are finding many people finding the guidance for non TFS SCM (such as SVN).<br>It will be interesting to learn of your experience.</p>\r\n<p>Regards,<br>Bill Heys<br>VS Ranger</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-29T08:37:45.83-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291513",
+    "ThreadId": "82373",
+    "Html": "<p>Bill,</p>\r\n<p>Just realized you guys had posted the diagrams out there. You guys rock. And I need to learn to search before I ask questions ;)</p>\r\n<p>Regards,</p>\r\n<p>Eric.</p>",
+    "PostedDate": "2010-02-16T17:53:31.46-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

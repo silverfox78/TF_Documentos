@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "90596",
+    "ThreadId": "27147",
+    "Html": "\r\nWe already have our site in source control, connected to IIS.  Now we want to do some branching, however, when you branch, the branched solution file is still pointing to the original Virtual Directory of the parent.  This is causing issues with manaing the branching and merging.  I read somewhere that someone wrote a a script to update the files, but this seems like a kind of cludge.  Any suggestions?<br />",
+    "PostedDate": "2008-05-05T11:15:01.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

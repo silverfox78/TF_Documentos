@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "445441",
+    "ThreadId": "213299",
+    "Html": "<p>Let me make sure I understand something.&nbsp; I have a main, I create a  devlopment branch.&nbsp;</p>\r\n<p>A programmer named John Doe makes a change in the development branch  and checks it in.&nbsp;&nbsp; During his check-in he puts a really nice  description of the change such as:</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp; &quot;My boss Suzie told me to fix this by changing the way we  compute xyz.&quot;</p>\r\n<p>Now later, another guy, let's call him Fred is the &quot;referee&quot; and is  the only person in charge of merging all developer changes back to  &quot;Main&quot;.&nbsp;&nbsp; So Fred does the Merge, the changes are on his disk, and then  Fred needs to check them in.&nbsp; In addition to John's change above, he  also picks up a few changes by Sue.&nbsp; So now, if someone looks at the  change history of Main, they would only see the changes by Fred.&nbsp; All  the TFS check-in comments entered by John and Susan are effectively lost  in the Main.</p>\r\n<p>1. Is this correct?&nbsp;</p>\r\n<p>2 If so, then is it really useful to enter descriptive check-in  comments into TFS itself?&nbsp; Or is it better to put all the comments in  the code itself?&nbsp;</p>\r\n<p>3. What comments should Fred enter for his TFS check-in (just  something like &quot;Merge on 05/19/210&quot; or &quot;weekly merge&quot;)?</p>\r\n<p>Thanks,</p>\r\n<p>Neal Walters</p>",
+    "PostedDate": "2010-05-20T08:15:57.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "445452",
+    "ThreadId": "213299",
+    "Html": "<p>Neal,</p>\r\n<p>Thanks for posting your question to this forum.</p>\r\n<p>When a developer checks changes into&nbsp;the Development&nbsp;branch, a changeset is created and all of the changed files that are checked in at the same time are associated with this changeset. The developer should ALWAYS enter check-in comments to describe the change, as you note above.</p>\r\n<p>Later when the Development branch is merged (RI) back to the Main branch, another changeset will be created on the Main branch. When these changes are checked, the person in charge of doing the merge should also enter a check-in comment.</p>\r\n<p>You do not lose the check-in comments done earlier against the development branch. But you would need (in TFS 2008) to view changes against that branch to see the changeset history and associated check-in comments.</p>\r\n<p>&nbsp;As for what comments Fred enters on a merge changeset.. it probably is not important to enter more than &quot;weekly merge&quot;. The changeset will have a date and time stamp. If you do a regular merge, vs. a special request merge the comments might indicate that. You might for example merge Main to Dev nightly, while you would wait for a milestone in Dev to pass quality gates before merging Dev back to Main. Here you might enter the milestone description in the change comment.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-05-20T08:38:53.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "465015",
+    "ThreadId": "213299",
+    "Html": "Hi Bill,\r\n\r\nWhile I think you are correct, the answer is not satisfying and I wonder if there is not another solution.  Here is why,\r\n\r\nYes, the comments (of course) stay on the development branch.  But it is unfortunate that they are not also brought down to the MAIN branch with the code.  The reason this is a drag is because when we generate our changeset on the MAIN branch (using TFS Sidekick even) we don't get the original comments the developer checked in on DEV.  We only see Freds comments, which says &quot;weekly merge&quot;.  \r\n\r\nSo we need to manually go back and get the changes on the DEV branch, which if different people RI back to main at different times - or over a long period of time due to a long QA cycle - this is a real pain in the neck. \r\n\r\nIt would be better (and expected behavior) that the original change set and comment was truly MERGED into MAIN.  Not a new change set and a new comment.\r\n\r\nAny ideas on how to resolve this?\r\nThanks\r\nJess",
+    "PostedDate": "2010-07-08T11:52:56.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "465037",
+    "ThreadId": "213299",
+    "Html": "<p>Jess,</p>\r\n<p>I don't have a good answer for you. Part of the challenge is the possibility of having to save a huge glob of text that represents the concatenation of the changeset comments for all the changesets that participated in a merge. Take for example a feature development. You don't want to merge the feature team branch into Main unless and until it passes predetermined quality gates.</p>\r\n<p>Over time there could be dozens or hundreds of changes checked into the feature branch. How would changeset comments for these be stored in the main branch on a merge? What maximum limit to merged changeset comments would you propose?</p>\r\n<p>What would happen when you merge from Main into other branches and then back to Main. It seems you will have a recursive comment.&nbsp; For this and many other reasons, I think I disagree that this would or should be expected behavior.</p>\r\n<p>VS 2010 and TFS 2010 offer improved view of changes across branches. Checkout branch visualization, view history, and changeset tracking.</p>\r\n<p>Regards,</p>\r\n<p>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-07-08T12:35:30.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

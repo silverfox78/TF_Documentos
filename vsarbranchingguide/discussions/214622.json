@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "450237",
+    "ThreadId": "214622",
+    "Html": "<p>Is each subsequent release a new branch (so that it is basically a &quot;copy&quot;, an alternative to a label, so you can get back to that release if needed)?</p>\r\n<p>Or if you don't need prior releases (as with typical inter-company software), should one use Forward Integration to refresh the release branch at release time?</p>\r\n<p>Thanks,</p>\r\n<p>Neal <br><br></p>",
+    "PostedDate": "2010-06-01T12:54:20.227-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "450240",
+    "ThreadId": "214622",
+    "Html": "<p>Nevermind - I found the answer.&nbsp; There seem to be a lot of docs to juggle in this guideline.&nbsp; Following is quote from page 6 of TFS_Branching_Guide_Main_2010_v1.pdf.&nbsp; Would have been nice to see this on the &quot;Basic Branch Plan&quot; diagram.</p>\r\n<p>Additional releases are supported by creating additional release branches for each product release. Each release branch is a child of MAIN and a peer to each other (e.g. release2.0 branch is peer to release3.0 and both are children of MAIN).</p>",
+    "PostedDate": "2010-06-01T12:57:16.947-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "450294",
+    "ThreadId": "214622",
+    "Html": "<p>As you correctly determined, in a multiple release scenario, each new release would be a new branch (or set of branches) from the MAIN branch.</p>\r\n<p>In TFS, Labels are NOT immutable, so it is possible that you label your code, release it, and then modify the label (to perhaps include a bug fix). In this scenario, the code in the label would NOT be the same as the code you released.</p>\r\n<p>For this reason, our branching guidance suggests making a read-only branch with the code you release. This would allow you to get back to the release whenever you need to.</p>\r\n<p>In general, we recommend against doing a forward integration (from MAIN to an existing release branch). In the scenario you mention: you don't need prior releases, and you are doing the Forward Integration at release time, I suppose you end up with the same thing as if you had created a new release branch for the next release (and then deleted the existing release branch for the prior release).</p>\r\n<p>Our recommendation against doing a forward integration is based on the assumption that you want to keep the prior release branch, and that you do not want to bring forward changes from&nbsp; the next release into a branch for a prior release.</p>\r\n<p>As long as you understand the concerns, you could probably choose either option (new branch or FI from Main at release time).</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-06-01T14:28:58.497-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "490095",
+    "ThreadId": "226319",
+    "Html": "<table style=\"width:100%\" cellspacing=0 cellpadding=0>\r\n<tbody>\r\n<tr id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl00_PostPanel\">\r\n<td id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl00_PostDetailsCell\" style=\"vertical-align:top;border:medium 1px medium medium none solid none none -moz-use-text-color #bbbbbb -moz-use-text-color -moz-use-text-color\">\r\n<div>\r\n<div><span id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl00_Timestamp\"><br></span></div>\r\n</div>\r\n<br></td>\r\n<td style=\"width:100%;vertical-align:top\">\r\n<div>The branching guide tells that &quot;Main&quot;  should be created 1st and branched to &quot;Development&quot; and &quot;Release&quot;. <br>\r\n<div id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl00_BodyPanel\">\r\n<table>\r\n<tbody>\r\n<tr>\r\n<td>\r\n<div id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl00_BodyDiv\">\r\n<p>But  in the project I am working with the branches were created in the order</p>\r\n<p>1) Development.</p>\r\n<p>2) Development -&gt; Main</p>\r\n<p>3) Main -&gt; Production</p>\r\n<p><br>The question are: <br>1) Does order matter and I need to recreate  branches using the order bellow</p>\r\n<p>1st Main</p>\r\n<p>2d Main -&gt; Development<br> 3rd Main -&gt; Production</p>\r\n<p>&nbsp;<br>2) What issues will I have if I use wrong order of creation  branches</p>\r\n</div>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</div>\r\n</div>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>",
+    "PostedDate": "2010-09-07T07:17:39.68-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "490126",
+    "ThreadId": "226319",
+    "Html": "<p>Alex,</p>\r\n<p>As you note, our guidance suggests the following basic branch structure. Starting with MAIN.</p>\r\n<p>MAIN<br>&nbsp;&nbsp;&nbsp; DEVELOPMENT<br>&nbsp;&nbsp;&nbsp; PRODUCTION (Release)</p>\r\n<p>Technically the order of creation of branches *may* not matter a great deal. There may be confusion when start to add complexity on the Development side of the branch structure. For example, if you wanted three parallel development branches (e.g. feature team isolation), the guidance suggests the following structure. Note, that with the basic branch plan the branch structure is only two-levels deep. The Development branches AND the Production branches are full-children of MAIN.</p>\r\n<p>MAIN<br>&nbsp;&nbsp;&nbsp; DEVELOPMENT (DevTeam01)<br>&nbsp;&nbsp;&nbsp; DEVTEAM02<br>&nbsp;&nbsp;&nbsp;&nbsp;PRODUCTION (Release)</p>\r\n<p>Note: By following the guidance, MAIN is the parent of all development branches. Each of the Feature Team branches are full children of MAIN (and siblings of each other).&nbsp; It is easier and more straightforward &nbsp;to add complexity to the Development side when Main is the *starting* point.</p>\r\n<p>On the other hand when you start with Development, you now have a three-level branch hierarchy (Release is a full child of Main which, in turn, is a full-child of Development):</p>\r\n<p>DEVELOPMENT<br>&nbsp;&nbsp;&nbsp; MAIN<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RELEASE</p>\r\n<p>Adding complexity (for example parallel development teams) results in the following:</p>\r\n<p>DEVELOPMENT (DevTeam01)<br>&nbsp;&nbsp;&nbsp; MAIN<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEVTEAM02<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRODUCTION (Release)</p>\r\n<p>I think this structure begins to be confusing. For example one Development branch is the parent of MAIN. Others are children of MAIN.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-09-07T07:56:48.073-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "490386",
+    "ThreadId": "226319",
+    "Html": "<p>Wheys, thank you for detailed description but it is still not clear why it won't work If I branch</p>\r\n<p>Devt 1-&gt; Main</p>\r\n<p>Main -&gt; Production</p>\r\n<p>Main -&gt; Dev 2</p>\r\n<p>When Dev 2 is finished it will be merged to the Main and from the Main to Dev 1.</p>",
+    "PostedDate": "2010-09-07T14:09:19.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "490428",
+    "ThreadId": "226319",
+    "Html": "<p>Alex,</p>\r\n<p>To be clear, I did not say it *won't* work. I simply said it would be confusing as you add complexity to the development side of the branching structure.</p>\r\n<p>If you adhere to the other aspects of the guidance, which is to set quality gates that must be passed before any development branch merges to MAIN, then it probably does not matter a great deal whether you merge from parent (Devt1) to child (Main), which is forward integration. Or from child (Devt 2) to parent (Main), which is reverse integration. I think it is confusing, but I don't see any reason why it *won't* work.</p>\r\n<p>The goal is to isolate development teams from each other (which you are doing with Devt 1 and Devt 2. And as well to isolate development from the Main branch which should be as stable as possible. If you keep these goals in mind it should *work*.</p>\r\n<p>Regards,</p>\r\n<p>Bill Heys <br>VS ALM Ranger</p>",
+    "PostedDate": "2010-09-07T16:30:24.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "490489",
+    "ThreadId": "226319",
+    "Html": "<p>Bill,</p>\r\n<p>Thanks, explicit and clear )</p>\r\n<p>Last questions, they are not strongly connected to the previous post.</p>\r\n<p>1) Can you advice where I can find good algorithm description how branching system works in TFS from technical/developer point of view.</p>\r\n<p>2)&nbsp; If I have the structure of branches as bellow and I decide to remove DEVELOPMENT that is the root branch. Will deleting of root branch have the influence on merging between MAIN and PRODUCTION?</p>\r\n<p><strong>DEVELOPMENT</strong></p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp; MAIN</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRODUCTION</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-09-07T23:03:35.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "490667",
+    "ThreadId": "226319",
+    "Html": "<p>Alex,</p>\r\n<p>You should be able to remove (delete) the Development branch without affecting the merge relationship between Main and Production. You need to make sure that if there are any changes in the Development branch that you either merge them to Main first, before deleting Devleopment, or accept that you will likely lose these changes.</p>\r\n<p>As for an algorithm description of how branching works in TFS, I am not sure how to answer that question. TFS is a tool and branching uses the tool to manage and isolate changes in your software. There is no black and white (right vs wrong) way to do branching. There are best practice recommendations (such as having Main be the parent of Devlopment branches rather than the other way around - see earlier discussion).</p>\r\n<p>I would like to note, that our branching guidance recommends creating branches and doing merges at various milestones in the development process. Each organization will likely have a different set of milestones based on their specific software development process. I am not sure how to translate process into an algorithm. Maybe you have an example.</p>\r\n<p>Using the basic branch plan as an example. You would typically have your project source code stabilized in the Main branch before beginning development for the next release. Assuming you do not yet have a development branch, you would create this branch PRIOR to beginning development. As you proceed with development you might do daily builds on the Main branch, and frequent (daily) merges *from* Main *to* Development. But you would NOT typically merge *from* Development *to* Main until such time as the code in Development passes quality gates and is either deemed ready to share with other development teams OR is ready to release to production. At this point you would merge from Development to Main. Now you would stabilize the code prior to release in Main. Once the code in Main passes quality gates and is ready to release, you would create the Production branch. Note that you would NOT typically merge from Main to Production after creating this branch (for various reasons outlined in our guidance).</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-09-08T07:05:36.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "490731",
+    "ThreadId": "226319",
+    "Html": "<p>Bill, thanks for you help and sharp answers )</p>",
+    "PostedDate": "2010-09-08T08:42:54.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

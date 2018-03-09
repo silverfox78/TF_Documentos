@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1241764",
+    "ThreadId": "544366",
+    "Html": "We are currently experiencing a bit of an issue with TFS. We just recently migrated to TFS from VSS. \r<br />\n<br />\nThe main product we support is a third party product. We have access to the database, which we have customized and added to. We also have a slew of other applications and interfaces that are built around our main product. \r<br />\n<br />\nWe have 2 databases one for the main product and an interface database. These are linked servers. In source safe we used linked files to store sql under the application it was written for and a database scripts project which contained all objects specific to each database. \r<br />\n<br />\nNow in TFS we are wanting to convert our sql to visual studio database projects. We want the code to exist in a central location and in our application folders. We are not using custom schemas.\r<br />\n<br />\nI want to know if anybody has been in a similar situation and how they handled it. Let me know if you need more information.<br />\n",
+    "PostedDate": "2014-05-05T13:51:28.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

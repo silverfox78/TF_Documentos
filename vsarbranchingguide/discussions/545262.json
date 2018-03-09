@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1245001",
+    "ThreadId": "545262",
+    "Html": "We have one stable release (v1.1) for a client and now we have to do a long dev cycle for a new version with a few new features (1.2). What strategy is recommended for this case ?<br />\n",
+    "PostedDate": "2014-05-13T14:01:41.173-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1245079",
+    "ThreadId": "545262",
+    "Html": "Have you downloaded the &quot;TFS Version Control Part 1 - Branching Strategies.pdf&quot; and read it yet? \r<br />\nIf not, I recommend it. It was recently updated, and I like it a lot. It continues to get better in every release. They recommend you start with the simplest branching strategy possible and evolve it as you go. That resonates with my experience. They choice depends on many factors such as<br />\n<ol>\n<li>How many developers do you have?</li>\n<li>How many separate development efforts are going on at once?</li>\n<li>How disciplined and experienced are your team (more discipline and experience means less likely to break the build, and less likely to delete labels).</li>\n<li>Do you need to be able to easily provide hot-fixes to the v1.1 while development of v 1.2 continues?</li>\n<li>Do you have regulatory compliance needs that require tight audit controls on source?</li>\n<li>\nAre you using gated check-ins to prevent garbage from reaching Main?<br />\n</li>\n</ol>\nThose are just some of the many possible factors I consider. \r<br />\n<br />\nBut for your case, let's say you start with the Main Only strategy: tell me why you need a release branch if you can label Main at each release.<br />\n",
+    "PostedDate": "2014-05-13T17:55:09.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1245127",
+    "ThreadId": "545262",
+    "Html": "Yes, I have read all documents, but I still need some direction. We have a 2-3 devs on the project, and we will have just one dev effort going at once. Team is relatively disciplined and we should apply hotfixes during dev process. For 5., we don't have strictly defined regulary compliance, and for 6. yes.<br />\n",
+    "PostedDate": "2014-05-13T22:35:04.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1245128",
+    "ThreadId": "545262",
+    "Html": "I did give you direction. I suggested you Use the Main Only branching strategy, described on page 13 of the Branching Strategies.\r<br />\nLet me know how I might have worded it better to be more obvious.\r<br />\nAs the documents suggest, try the simplest thing first. If it does not work, you will have the insight to adopt one of the more complex strategies.<br />\n",
+    "PostedDate": "2014-05-13T22:49:05.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1245163",
+    "ThreadId": "545262",
+    "Html": "Everything is more than perfectly clear to me. Thank you for your time.<br />\n",
+    "PostedDate": "2014-05-14T01:40:29.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

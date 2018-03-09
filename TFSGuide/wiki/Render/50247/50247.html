@@ -1,0 +1,74 @@
+<div class="wikidoc"><h3>Chapter 10 - Large Project Considerations</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Objectives</h3><ul><li>Understand large project workflow in Microsoft&#174; Visual Studio&#174; Team System Team Foundation Server (TFS).</li>
+<li>Learn how to optimize source control and builds for large teams.</li>
+<li>Learn how source control is impacted by large projects.</li>
+<li>Learn how your branching and merging strategy may need to change if you are involved in a large project.</li>
+<li>Learn how build strategy is influenced by large projects.</li></ul>
+
+<h3>Overview</h3>This chapter describes additional considerations for large-scale development efforts with TFS. A large project typically differs from a smaller project in the following ways:
+<ul><li>They require a more complex branching and merging structure. </li>
+<li>They must deal with a greater number of dependencies across solutions and team projects.</li>
+<li>They are more likely to maintain multiple builds for components and teams.</li></ul>
+<br />For example, in a large project you might need to support multiple branches in order to support the parallel development efforts of multiple feature teams. In this scenario, you are likely to need to manage dependencies across solutions and team projects and to share common Web services and databases. Each sub-team may need to maintain its own build server and output builds to a specific drop point. <br />
+<h3>How to Use This Chapter</h3>Use this chapter if you need to manage, support or participate in large-scale development project. Chapters 3, 5, and 7 also provide specific “Large Project Considerations” sections. Use this chapter to review all of the large project considerations in a single place.<br />
+<h3>Logical Workflow for Large Projects</h3>Figure 10.1 outlines a common scenario of multiple sub-teams working together to produce a complex application.  <br /><br /><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=TFSGuide&DownloadId=16710" alt="Fig10.1.GIF" title="Fig10.1.GIF" /> <br /><b><i>Figure</b> <b>10.1</b> Large Project Scenario</i><br /><br />Figure 10.1 highlights a number of key points about the way in which a large team project operates:
+<ul><li>Each sub-team maintains its own build server and output builds to a drop point.</li>
+<li>Application teams pick up builds from the component teams, reuse them as part of their solutions, and include them in their builds.</li>
+<li>Component and integration testing occurs on each build. Bugs are filed in the appropriate bug database.</li></ul>
+
+<h3>Source Control Considerations</h3>If you work on a very large solution requiring many dozens of projects, you may encounter Visual Studio solution (.sln) scalability limits. For this reason, you should organize your source control structure by sub-systems or sub-applications and use multiple solution files. Divide your application into multiple solutions, but do not create a master solution for the entire application. Figure 10.2 shows the multiple solutions approach commonly used by large teams.<br /><br /><img src="http://download-codeplex.sec.s-msft.com/Download?ProjectName=TFSGuide&DownloadId=16711" alt="Fig10.2.GIF" title="Fig10.2.GIF" /><br /><b><i>Figure 10.2</b> Multiple Solution Approach</i><br /><br />In this scenario, all references inside each solution are project references. References to projects outside of each solution (for example to third-party libraries or projects in another sub-solution) are file references. This means that there can be no “master” solution. Instead, you must use a script that understands the order in which the solutions must be built. <br /><br />One of the maintenance tasks associated with a multiple-solution structure is ensuring that developers do not inadvertently create circular references between solutions. This structure requires complex build scripts and explicit mapping of dependency relationships. In this structure it is not possible to build the application in its entirety within Visual Studio. Instead, you use TFS Team Build.<br /><br />For more information about this multiple solution approach, see “Chapter 3 - Structuring Projects and Solutions in Source Control.”<br />
+<h3>Branching and Merging Considerations</h3>Large teams are likely to branch both by team and by feature and are also more likely to have one or more branches designed to integrate external dependencies. Since the branching structure is deeper, there is more lag between a change in a development branch and getting that change into the main integration branch. For this reason it pays to careful consider your merging strategy when creating branches. <br /><br />For example, consider the following when deciding whether your merges will be scheduled or event-driven:
+<ul><li>Reverse integration, such as merging from the development branch to the main branch, may be based on an event, such as a feature milestone being completed, or scheduled in order to integrate code from multiple branches at particular points in time.  Whether it is based on a milestone or scheduled often, it is driven by a combination of the phase of the software development cycle and the methodology used.</li>
+<li>Forward integration, such as merging from the main branch to a development branch, occurs when a child branch is ready to accept the latest code that has been integrated into a parent branch.  Frequent forward integrations into development branches are a best practice.  Keeping the code base more closely synchronized across branches will help you discover bugs that occur when components are integrated together.</li></ul>
+<br />Rationalize your branching / merging strategy according to the frequency with which you want to produce builds. A deeper branching structure results in more time to merge from child branches to the main integration branch. Symptoms of this causing a problem for your development team include:
+<ul><li>Broken builds where the fix takes too long to propagate up to the main integration branch.</li>
+<li>Missed milestones because features take too long to propagate up to the main branch.</li>
+<li>Large amounts of time spent merging changes between various branches.</li></ul>
+<br />If this becomes a problem for your team, consider reducing the depth of your branching structure. <br /><br />The following is an example of a branching structure for a large team:
+<ul><li><b>My Project</b>
+<ul><li><b>Development</b> – Container to isolate active development branches
+<ul><li><b>Team 1</b>
+<ul><li><b>Feature A</b> – Isolated branch for development
+<ul><li><b>Source</b></li></ul></li>
+<li><b>Feature B</b> – Isolated branch for development
+<ul><li><b>Source</b></li></ul></li></ul></li>
+<li><b>Team 2</b>
+<ul><li><b>Feature A</b> – Isolated branch for development
+<ul><li><b>Source</b></li></ul></li>
+<li><b>Feature B</b> – Isolated branch for development
+<ul><li><b>Source</b></li></ul></li></ul></li></ul></li>
+<li><b>Main</b> – Main integration and build branch. All changes come together here.
+<ul><li><b>Source</b></li>
+<li><b>Other Asset Folders</b></li></ul></li>
+<li><b>Releases</b> – Container for release branches
+<ul><li><b>Release 4 –</b> Branch containing the code currently being locked down to release
+<ul><li><b>Source</b></li></ul></li>
+<li><b>Release 2</b>– Active maintenance branch
+<ul><li><b>Source</b></li></ul></li>
+<li><b>Release 3</b> – Active maintenance branch
+<ul><li><b>Source</b> </li></ul></li></ul></li>
+<li><b>Safe Keeping</b>
+<ul><li><b>Release 1</b> – Old release in safe keeping
+<ul><li><b>Source</b></li></ul></li></ul></li></ul></li></ul>
+This structure includes:
+<ul><li>Feature branches for multiple teams to work in isolation from each other.</li>
+<li>A main branch to gather changes by all teams, as well as bug fixes from the release branches.</li>
+<li>A release branch used to lock down the current release.</li>
+<li>A maintenance branch for an old release that is being actively maintained and supported.</li>
+<li>Safekeeping branches for older releases that are no longer being maintained.</li></ul>
+
+<h3>Build Considerations</h3>Larger teams are likely to have longer build times. The frequency of continuous integration builds should be less than the build time to avoid excessive queuing and loading of the build server. A build system for a large team is typically organized as follows:
+<ul><li>If the team uses multiple team or feature branches, a build server is dedicated to each branch. This enables the team to focus each build on the purpose of the branch, for example integration or development. </li>
+<li>Build frequency is determined based on team’s needs. The build infrastructure is designed and built to support these needs. </li>
+<li>Build frequency is chosen first, and based on that goal, the merge frequency is determined.</li>
+<li>Scheduled builds are generally used for integration branches.</li>
+<li>A combination of continuous integration and scheduled builds is used for development branches. Integration builds are distributed to the integration test team. The output from the development branch scheduled build goes to the associated test team and the development branch continuous integration build provides feedback specific to the particular development team.</li></ul>
+<br />Another key question is whether you should have build, testing, and quality gates at each integration point. Alternatively, you could save that for your main integration branch. Ideally, you would have a build server for each branch, and quality gates along with a supporting development and test team. You should be pragmatic though, and if that option does not exist, you might want to remove quality gates or remove branches to simplify your structure. <br />
+<h3>Summary</h3>When working on very large solutions requiring many dozens of projects, you may encounter Visual Studio solution (.sln) scalability limits. If you do, organize your source control structure by subsystems or sub-applications and use multiple solution files.<br /><br />For large teams, the branching structure is deeper, so you should expect a greater time lag between a change in a development branch and the merging of that change into the main integration branch.<br /><br />Large teams are likely to have longer build times. The frequency of continuous integration builds should be less than the build time to avoid too much queuing and loading of the build server. If you are still having problems with build server performance, consider using a build server for each branch in your source control structure.<br />
+<h3>Additional Resources</h3><ul><li>For more information about Team Foundation Source Control, see “Using Source Code Control in Team Foundation” at <a href="http://msdn2.microsoft.com/en-us/library/ms364074(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms364074(VS.80).aspx</a> </li>
+<li>For more information about creating a workspace, see “How To - Create a Workspace” at <a href="http://msdn2.microsoft.com/en-us/library/ms181384(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181384(VS.80).aspx</a></li>
+<li>For an introduction to branching and merging, see “Branching and Merging Primer” at  <a href="http://msdn2.microsoft.com/en-us/library/aa730834(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/aa730834(VS.80).aspx</a>      </li>
+<li>For more information about branching, see “How To - Branch Files and Folders” at <a href="http://msdn2.microsoft.com/en-us/library/ms181425(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181425(VS.80).aspx</a>   </li>
+<li>For more information about merging, see “How To - Merge Files and Folders” at  <a href="http://msdn2.microsoft.com/en-us/library/ms181428(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181428(VS.80).aspx</a>  </li>
+<li>For additional descriptions of how to branch and merge in Visual Studio 2005, see “Branching and Merging Team Foundation Source Control” at <a href="http://msdn2.microsoft.com/en-us/library/ms181423(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181423(VS.80).aspx</a>  </li>
+<li>For more information about Team Build, see “Overview of Team Foundation Build” at <a href="http://msdn2.microsoft.com/en-us/library/ms181710(vs.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181710(vs.80).aspx</a></li></ul></div><div class="ClearBoth"></div>

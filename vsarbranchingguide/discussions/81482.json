@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "279662",
+    "ThreadId": "81482",
+    "Html": "<p>I'm starting with the assumption that the 260 character path limitation remains in VS TFS 2010 (if not, please mention it, but ignore my concern).</p>\r\n<p>I'm concerned that the guidance produces long path names for branched artifacts.</p>\r\n<p>&nbsp;</p>\r\n<p>I've run into this problem primarily when importing third party or legacy source.</p>\r\n<p>One example is the Patterns &amp; Practices Enterprise Library. The source distribution for EntLib has fairly deep paths of its own and runs over the TFS 260 char server path limit pretty quickly when you start branching it with any significant nesting.</p>\r\n<p>Some discussion about this and ways to avoid running into it during your Nth release cycle would be a great addition.</p>",
+    "PostedDate": "2010-01-20T12:05:10.023-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "279790",
+    "ThreadId": "81482",
+    "Html": "<p>I would start to address this problem by rasing awareness to this long-standing path/filename restriction. I suggest adopting a set of naming guidelines for naming files, folders, and branches. Such naming conventions would provide readable names with reasonable lengths. Try to minimize your folder hierarchy where possible. As you nest folders within folders, try not to repeat parent folder names in child folder names. Follow these same guidelines with respect to naming assemblies.</p>\r\n<p>For example, I&nbsp;recently saw a customer with a folder / file path something similar to the following:</p>\r\n<p>$/Gas Company Inc - Customer Service Dpt/Main/Src/GasCompany.CustomerServiceDpt/GasCompany.CustomerServiceDpt.DB/Schema Objects/Tables/Constraints/dbo.MeterReadingDetailCalculation.DF_MeterReadingDetailCalculation_IsMeterReadingActualOrEstimated.defconst.sql</p>\r\n<p>As you can see from this example, &quot;Gas Company&quot; and/or &quot;GasCompany&quot; appears redundantly in this path three times, &quot;Customer Service Dpt&quot; and/or &quot;CustomerServiceDpt&quot; also appears three times, and &quot;MeterReadingDetailCalculation&quot; appears twice. It would seem to me that this file path/name could be reduced by almost 50% by using a good naming standard for abbreviations and/or eliminating redudundat name qualifiers:</p>\r\n<p>$/Gas Co Inc - Cust Svc Dpt/Main/Src/GasCo.CustSvcDpt/DB/Schema Objects/Tables/Constraints/dbo.MtrRdgDtlCalc.DF_MtrRdgDtlCalc_IsMtrRdgActOrEst.defconst.sql</p>\r\n<p>I would suggest that using reasonable branch names should not pose a problem when following our guidance, if the other components of the name are reasonably concise.</p>\r\n<p>With respect to Enterprise Library, part of the problem has been the default installation location (in Program Files....). Many have addressed this problem by installing EntLib to a folder directly under the root of the local drive.</p>\r\n<p>Regards,<br>Bill Heys<br>VS Ranger</p>",
+    "PostedDate": "2010-01-20T17:39:41.743-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

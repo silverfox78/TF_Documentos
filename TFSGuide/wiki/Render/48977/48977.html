@@ -1,0 +1,117 @@
+<div class="wikidoc"><h3>How To: Create a “Risk over Time” Report for Visual Studio Team Foundation Server</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Applies To</h3><ul><li>Microsoft&#174; Visual Studio&#174; 2005 Team Foundation Server (TFS)</li>
+<li>Microsoft Visual Studio Team System (VSTS)</li>
+<li>Microsoft SQL Server™ Reporting Services</li></ul>
+
+<h3>Summary</h3>This How To article walks you through the process of creating a new report that shows how <b>Risk</b> work items trend over time. The article then shows you how to publish it to the team reporting portal in TFS.<br />
+<h3>Contents</h3><ul><li>Objectives</li>
+<li>Overview</li>
+<li>Summary of Steps</li>
+<li>Before You Begin</li>
+<li>Step 1 – Create a New Reporting Project</li>
+<li>Step 2 – Create the Data Sources</li>
+<li>Step 3 – Create a New Report in Your Project</li>
+<li>Step 4 – Modify the Report</li>
+<li>Step 5 – Deploy the Report to your Team Foundation Server</li>
+<li>Step 6 – Test the Report</li>
+<li>Additional Resources</li></ul>
+
+<h3>Objectives</h3><ul><li>Create a reporting project in Visual Studio.</li>
+<li>Create a new Risk over Time report in the reporting project.</li>
+<li>Publish the Risk over Time report to the report server.</li></ul>
+
+<h3>Overview</h3>The reports that ship with VSTS are SQL Server Reporting Services reports. You can amend these reports or create your own custom reports by using the SQL Server 2005 Reporting Services Designer inside Visual Studio (Business Intelligence Development Studio<a href="https://tfsguide.codeplex.com/wikipage?title=BISD&referringTitle=How%20To%20-%20Create%20a%20Risk%20Over%20Time%20Report%20for%20Visual%20Studio%20Team%20Foundation%20Server">BISD</a>), which ships with the SQL Server 2005 client tools. To create a custom report, you create a Report Project in Visual Studio and then create data sources to connect to the TFS relational database and Online Analytical Processing (OLAP) database. This How To article shows how to create a simple report from scratch - the Risk over Time report that identifies number of Risk work items over a given period of time.
+<h3>Summary of Steps</h3><ul><li>Step 1 – Create a New Reporting Project</li>
+<li>Step 2 – Create the Data Sources</li>
+<li>Step 3 – Create a New Report in Your Project</li>
+<li>Step 4 – Modify the Report</li>
+<li>Step 5 – Deploy the Report to your Team Foundation Server</li>
+<li>Step 6 – Test the Report</li></ul>
+
+<h3>Before You Begin</h3>Before you can customize a report for TFS, you must ensure you have the following prerequisites in place:
+<ul><li>You must have Business Intelligence Development Studio (BIDS) installed on the machine you will be using to customize the report.  To verify whether BIDS is installed, check Visual Studio to see if you have the Business Intelligence Project type option when you create a new project.</li>
+<li>Your user account must be a member of the Microsoft Analysis Server TfsWarehouseDataReaders security role on the data-tier server.</li>
+<li>Your user account must have administrator rights to the TFSWarehouse database on the data tier.</li>
+<li>Your user account must be a member of the SQL Server Reporting Services Publisher role on the application-tier server.</li>
+<li>The project must contain Risk work items so that the report shows some data.</li></ul>
+
+<h3>Step 1 – Create a New Reporting Project</h3>In this initial step, you create a new reporting project so that you can add a new report to the project and then customize the report. Perform the following steps to create a new reporting project in Visual Studio:
+<ol><li>Click <b>File</b>, then click <b>New</b>, and then click <b>Project.</b></li>
+<li>Select the <b>Business Intelligence Project</b> type.</li>
+<li>Select the <b>Report Server Project</b> template.</li>
+<li>Set your project’s <b>Name</b> and <b>Location</b> and then click <b>OK</b>.</li></ol>
+
+<h3>Step 2 – Create the Data Sources</h3>In order to edit and publish the customized report you first need to add data sources for the TFS data warehouse and OLAP cube.  Once these data sources are added to the Visual Studio project the report can pull data from the server.<br /><br /><b>To create the warehouse data source:</b>
+<ol><li>In the Visual Studio <b>Solution Explorer</b>, right-click <b>Shared Data Sources</b> and then click <b>Add New Data Source</b>.</li>
+<li>On the <b>General</b> tab, in the <b>Name</b> text box , enter <b>TfsReportDS</b> . </li>
+<li>Select <b>Microsoft SQL Server</b> from the <b>Type</b> combo box.</li>
+<li>Click the <b>Edit…</b> button.</li>
+<li>Fill in your data tier server name. </li>
+<li>Select the <b>TFSWarehouse</b> database. </li>
+<li>Click the <b>OK</b> button twice to add the data source.</li></ol>
+<br /><b>To create the OLAP data source:</b>
+<ol><li>In <b>Solution Explorer</b>, right-click <b>Shared Data Sources</b> and then click <b>Add New Data Source</b>.</li>
+<li>On the <b>General</b> tab, in the <b>Name</b> text box, enter <b>TfsOlapReportDS</b> . </li>
+<li>Select <b>Microsoft SQL Server Analysis Services</b> from the <b>Type</b> combo box.</li>
+<li>Click the <b>Edit…</b> button.</li>
+<li>Fill in your data tier server name. </li>
+<li>Select the <b>TFSWarehouse</b> database. </li>
+<li>Click the <b>OK</b> button twice to add the data source.</li></ol>
+
+<h3>Step 3 – Create a New Report in Your Project</h3>Now that the data sources have been added to your project you can add a new report. Perform the following steps to add a new report to your project and customize it:
+<ol><li>In <b>Solution Explorer</b>, right-click <b>Reports</b> and then select <b>Add-&gt;New Item...</b></li>
+<li>Select the <b>Report</b> template.</li>
+<li>Name the report and click <b>OK</b></li></ol>
+
+<h3>Step 4 – Modify the Report</h3>After you have added a report to the project you can modify the report as follows:
+<ol><li>If the <b>Report Designer</b> doesn&#39;t open automatically, open the report for modification by double clicking it in the <b>Solution Explorer</b>.</li>
+<li>Click the <b>Dataset</b> drop down and the select <b>&lt;New Dataset...&gt;.</b></li>
+<li>Name the dataset, example TestDataSet.</li>
+<li>Select <b>TFSOlapReportDS (shared)</b> and then** click <b>OK.</b></li>
+<li>Click the <b>...</b> button next to <b>Build</b> (just below the <b>Dataset</b> drop down list) and then select <b>Team System</b>.</li>
+<li>In the <b>Dataset Tree</b>, expand <b>Measures.</b></li>
+<li>In the <b>Dataset Tree,</b> expand <b>Current Work Item.</b></li>
+<li>Drag <b>Current Work Item Count</b> into the main query window.</li>
+<li>In the <b>Dataset Tree,</b> collapse <b>Measures.</b></li>
+<li>Scroll down to <b>Team Project</b> and drag it into the <b>Dimensions</b> <b>Grid.</b></li>
+<li>In the <b>Dimensions Grid,</b> click the <b>Filter Expression</b> cell and select your team project name. This filters the results to just your team project.</li>
+<li>Expand the <b>Work Item</b> dimension in the <b>Dataset Tree.</b></li>
+<li>Drag <b>WorkItem.WorkItemType</b> from the <b>Dataset Tree</b> into the <b>Dimensions Grid.</b> You may see <b>System_WorkItemType</b> instead of <b>WorkItem.WorkItemType</b>, if this is the case it will still work, but it means you should apply SQL Server Service Pack 2.  </li>
+<li>Drag <b>WorkItem.WorkItemType</b> from the <b>Dataset Tree</b> into the main query window and drop it in front of the <b>work item count</b> column. You may see <b>System_WorkItemType</b> instead of <b>WorkItem.WorkItemType</b>, if this is the case it will still work, but it means you should apply SQL Server Service Pack 2.  </li>
+<li>In the <b>Dimensions Grid,</b> click the <b>Filter Expression</b> cell and then select the <b>Risk</b> type. This filters the results to include only Risk work item types.</li>
+<li>In the <b>Dataset Tree,</b> expand the <b>Date</b> dimension<b>.</b></li>
+<li>Drag the <b>Date</b> dimension value into the main query window; dropping it in front of the <b>work item type</b> column.</li>
+<li>Click the <b>Layout</b> tab.</li>
+<li>Open the <b>Toolbox</b> window.</li>
+<li>Drag the <b>Chart</b> item from the <b>Toolbox</b> to the layout grid.</li>
+<li>Adjust the size of the chart to fit.</li>
+<li>Right-click on the chart and then select <b>Chart Type? Line? Smooth</b> <b>Line.</b></li>
+<li> Open the <b>Datasets</b> <b>Pane</b>.</li>
+<li> Expand your data set, for example, TestDataSet.</li>
+<li> Highlight the graph so that the <b>Data</b>, <b>Series</b> and <b>Category</b> drop targets appear.</li>
+<li> Drop <b>Current<i>Work</i>Item_Count</b> into the <b>Drop Data Fields Here</b> drop target box.</li>
+<li> Drop <b>Work<i>Item</i>Type</b> into the <b>Drop Series Fields Here</b> drop target box.</li>
+<li> Drop <b>Date</b> into the <b>Drop Category Fields Here</b> drop target box.</li>
+<li> Right-click the graph and then select <b>Properties.</b></li>
+<li> Enter a title for your graph and then click <b>OK</b>.</li>
+<li> Click the <b>Preview</b> tab to view what the report will look like.</li></ol>
+
+<h3>Step 5 – Deploy the Report to your Team Foundation Server</h3>After you’ve created the Risk over Time report, you can deploy it to your team project’s reporting portal by performing the following steps:
+<ol><li>In <b>Solution Explorer,</b> right-click on the report project and then click <b>Properties</b>.</li>
+<li>Ensure that <b>OverwriteDataSources</b> is set to <b>false</b>.</li>
+<li>Modify <b>TargetDataSourceFolder</b> to reflect your team project name; for  example: <b>TargetDataSourceFolder</b> = TestProject.</li>
+<li>Modify <b>TargetReportFolder</b> to reflect your team project name; for example:* TargetDataSourceFolder* = TestProject.</li>
+<li>Modify <b>TargetDataSourceFolder</b> <i>to http://&lt;data-tier servername&gt;/reportserver</i>; for example: <b>TargetDataSourceFolder</b> = http://tfsrtm/reportserver.</li>
+<li>Click <b>OK.</b></li>
+<li>In <b>Solution Explorer,</b> right-click on the .rdl file and then click <b>Deploy.</b></li>
+<li>Observe the <b>Output Pane</b> to verify for successful completion.</li></ol>
+
+<h3>Step 6 – Test the report</h3>After you’ve published the report to your team project’s report server you can test it to make sure it was successfully deployed:
+<ol><li>In <b>Team Explorer</b> expand your team project node, right-click on <b>Reports</b> and then select <b>Show Report Site.</b></li>
+<li>On the report site, select the report you just created.</li>
+<li>Verify that the report looks as you expected.</li></ol>
+
+<h3>Additional Resources</h3><ul><li>For more tutorials explaining how to work with reporting projects, see “Reporting Services Tutorials” at <a href="http://msdn2.microsoft.com/en-us/library/ms170246.aspx">http://msdn2.microsoft.com/en-us/library/ms170246.aspx</a> </li>
+<li>For the MSDN article on editing reports, see “How to: Edit Reports in Report Designer” at <a href="http://msdn2.microsoft.com/en-us/library/ms244655(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms244655(VS.80).aspx</a> </li>
+<li>For more information on security roles in the data-tier, see “Securing Access Through Analysis Services” at <a href="http://msdn2.microsoft.com/en-us/library/ms174839.aspx">http://msdn2.microsoft.com/en-us/library/ms174839.aspx</a> </li>
+<li>For more information on security roles in the application-tier, see “Securing Reporting Services” at <a href="http://msdn2.microsoft.com/en-us/library/ms157198.aspx">http://msdn2.microsoft.com/en-us/library/ms157198.aspx</a></li></ul></div><div class="ClearBoth"></div>

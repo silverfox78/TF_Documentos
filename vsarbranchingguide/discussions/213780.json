@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "447154",
+    "ThreadId": "213780",
+    "Html": "Is it possible to prevent a developer from creating branches in TFS2008 while still allowing them to check-in and check-out from the working branch?",
+    "PostedDate": "2010-05-25T08:38:20.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "451754",
+    "ThreadId": "213780",
+    "Html": "<p>Dale7,</p>\r\n<p>I guess I need to know the same thing but only from a TFS 2010 standpoint.&nbsp;&nbsp; We do not have TFS in production as of yet but we have been using VSS 2005 ( huge change for us).&nbsp;&nbsp; I have been testing out the branching and merging functionality and have ran into the same issue.&nbsp;</p>\r\n<p>Maybe I should have done this but I have two members defined to the project as Project Admins ( Admin1,&nbsp; Admin2) The first Admin1 under the project created the Main Branch folder and copied a sln from VSS to TFS under that project and Main Folder.&nbsp;&nbsp;&nbsp; Admin1 then had that sln become a branch.&nbsp;&nbsp;&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Now Admin2 comes in and right clicks on the MainBranch and does a &quot;Convert To Branch&quot;&nbsp;&nbsp; an error message comes up of TFS203028 that Branch Already Exists at&nbsp;&nbsp;&nbsp; such of such workspace that was owned by ADMIN1.&nbsp;</p>\r\n<p>First of all I also want to share the structure of the MainBranch, DevBranch and a FixBranch with all the developers that need access to that Project.&nbsp;&nbsp;&nbsp; I don't want them to go out and create separate Branches where ever.</p>\r\n<p>Secondly, when this situation happens how can an Adminstrator or even the Project Administrator go back and fix this mess.&nbsp;&nbsp;</p>\r\n<p>I am a bit confused also.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-06-04T08:16:20.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "451766",
+    "ThreadId": "213780",
+    "Html": "<p>The answer to this question is different for TFS 2010 vs. TFS 2008.</p>\r\n<p>In TFS 2010, a user must have <strong>Manage Branch </strong>permission set to Allow for a given path&nbsp;to do the following:</p>\r\n<ul>\r\n<li>Convert folders to branches (and branches back to folders) </li>\r\n<li>Update metadata for a branch (i.e. owner, description) </li>\r\n<li>Create additional child branches from the original branch </li>\r\n<li>Change the relationships between branches with merge relationships (i.e. reparenting branches)</li>\r\n</ul>\r\n<p>In TFS 2010, a user must have <strong>Merge </strong>permission&nbsp;set to Allow for a given path can do the following:</p>\r\n<ul>\r\n<li>Pend merge operations on branches, folders, and files under the specified path </li>\r\n</ul>\r\n<p><strong>Manage Branch </strong>and <strong>Merge </strong>permissions are new for TFS 2010.</p>\r\n<p>In TFS 2008 users must have <strong>Read, </strong><strong>PendChange (</strong>aka <strong>Edit </strong>or <strong>Check Out</strong>&nbsp;<strong>),&nbsp;</strong>and <strong>Check in&nbsp;</strong>permission set to allow&nbsp;in order to&nbsp;do branch and merge operations.</p>\r\n<ul>\r\n<li><strong>Read </strong>permission is required to discover items to be branched and/or merged</li>\r\n<li><strong>PendChange </strong>is required to perform a branch or merge (which creates a pending changes)</li>\r\n<li><strong>Check-in </strong>permission is required to commit (check-in) the pending changes.</li>\r\n</ul>\r\n<p>Permissions can be set at the item level (even on a single file).</p>\r\n<p>Bill Heys<br>VS ALM Ranger</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-06-04T08:48:41.54-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "451772",
+    "ThreadId": "213780",
+    "Html": "<p>To further elaborate, in TFS 2008 if you grant&nbsp;need to grant developers <strong>Read, Check Out, </strong>and <strong>Check-in </strong>on the branches they are working on.</p>\r\n<p>Having done that, you probably cannot prevent them from creating new branches from those where they have permission.</p>\r\n<p>You can deny developers permission on other branches to prevent them from branching and merging branches they should not be touching.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-06-04T08:55:35.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "451796",
+    "ThreadId": "213780",
+    "Html": "<p>This is great.&nbsp; This fits in nicely with how we are trying to convert.&nbsp;&nbsp; Couple of additional questions:</p>\r\n<p>1.&nbsp; Is there some kind of Security Quick Start Guide that I can use to at least get certain groups defined and setup initially.</p>\r\n<p>2.&nbsp;&nbsp;From my previous mess-up of creating a Branch two different ways with two different users, is there a way to clear the branching a start from scratch.&nbsp;&nbsp; With my scenarios as Admin1 doing one thing and Admin2 doing another on the same project and folder.&nbsp;&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks for the prompt feedback.</p>",
+    "PostedDate": "2010-06-04T09:45:02.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453095",
+    "ThreadId": "213780",
+    "Html": "<p>I am not sure how you ended up creating a branch *two different ways* for two different users.</p>\r\n<p>Branching in TFS 2010 is a server-side operation. Presumably, if you have a team of developers and you grant them check-in and check-out permissions without merge or manage branch permissions - these developers would be able to create workspaces that map whatever branches they need to work on to local folders on their hard drive.</p>\r\n<p>Having a smaller group of people, such as a technical or senior develper with branch permissions - merge and manage branch would help to ensure that your branching strategy is implemented correctly (according you your requirements and best practice recommendations).</p>\r\n<p>As for cleaning up a *messed-up* branching structure, there are probably several options. If you want to start from scratch, you can probably create a new branch - to serve as your Main branch. When you do this, you need to be careful that any changes in existing branches are checked in and merged into the branch that will become the Main branch. Be aware that, while it is possible to delete or rename existing branches, you need to be careful going down this road. You do not want to lose changes (and you may not want to lose change history).</p>\r\n<p>I am not sure I totally understand how your branching structure got *messed up* or what it looks like right now. For example, you state: &quot;The first Admin1 under the project created the Main Branch folder and copied a sln from VSS to TFS under that project and Main Folder.&nbsp;&nbsp;&nbsp; Admin1 then had that sln become a branch.&nbsp;&nbsp;&quot;&nbsp; I am sure you are not suggesting that Admin1 converted a a solution file to a branch. It is possible you meant to state that Admin1 clicked on a folder (called &quot;Main&quot; or &quot;Main Branch&quot;) and converted that folder to a branch. That would certainly explain why Admin2 could not convert this folder to a branch ... it is already a branch.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-06-08T10:36:47.787-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453121",
+    "ThreadId": "213780",
+    "Html": "<p>I was mistaken in my previous post.&nbsp;&nbsp;</p>\r\n<p>What Admin1 did was created additional folders under the Main branch and called it XXXX(solution name)Solution-Branch. Then created another folder called XXXXX(solution name)Solution-Branch2.&nbsp; Under the Main branch there are multiple Solutions for this Project so each has been put into a folder called&nbsp; that solution name and branch and branch1.&nbsp;</p>\r\n<p>+Mainbranch</p>\r\n<p>&nbsp;&nbsp; +XXXXSolution</p>\r\n<p>&nbsp;&nbsp; +XXXXSolution-branch&nbsp;&nbsp;&nbsp;&nbsp; (this is a branch)</p>\r\n<p>&nbsp;&nbsp;&nbsp;+XXXXSolution-branch-2&nbsp; (this is a branch)</p>\r\n<p>When Admin2 tried to take the MainBranch folder and &quot;Convert to Branch&quot; he got the error message that I originally wrote about.&nbsp;</p>\r\n<p>So if Admin1 has a different Branching concept than Admin2, the Branching structure could get really &quot;messed up&quot;.&nbsp;</p>\r\n<p>Thanks.&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-06-08T11:19:58.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453163",
+    "ThreadId": "213780",
+    "Html": "<p>I think it is important, as you describe your current situation, to carefully distinguish between folders and branches. In VS 2008 it was much more difficult, in Source Code Explorer, to see which folders were containers of other folders, branches, and files, and which folders had actually been created through a branching operation.</p>\r\n<p>In VS 2010, Branches are now a first-class object and as such have a branch icon that easily distinguishes a branch from a folder (with a folder icon).</p>\r\n<p>It is also important to have a standard approach to setting up new Team Projects in VS 2010.</p>\r\n<p>For example I generally start in the Team Explorer by adding a new Team Project (&lt;TeamProjectName&gt;) to TFS. After it creates all of the nodes in Team Explorer, I double-click on the Source Code node to open the Team Project in Source Code Explorer.</p>\r\n<p>Initially, a new Team Project will not be mapped to a workspace. The workspace defines a mapping between a Team Project and folders on your local hard drive. I generally create this mapping first. I would map the Team Project to a folder such as c:\\VS2010\\&lt;TeamProjectName&gt;\\</p>\r\n<p>If prompted to do a get latest, I click yes, to ensure that my local folders bring down all of the contents of &lt;TeamProjectName&gt; from TFS. In the case of a new Team Project, this should not be necessary, but I do this anyway.</p>\r\n<p>At this point, I create my first folder under the Team Project, called Main. This will initially be a folder, but I will soon convert it to a branch. After adding the folder, I check-in any pending changes. I typically check-in pending changes frequently as I am setting up the Team Project. For this reason, I often keep the Pending Changes window open.</p>\r\n<p>Next, I might some folders (for example &ldquo;Bin&rdquo;, &ldquo;Source&rdquo;, and &ldquo;Docs&rdquo; under the Main Folder&hellip; Check-in these changes.</p>\r\n<p>Next I add my solution under the &lt;TeamProjectName&gt;\\Main\\Source folder&hellip; and Check-in these changes.</p>\r\n<p>Once I have created my initial solution, then I might create my first child branch of Main. To do this, I first convert Main from a folder to a branch (VS 2010 only).</p>\r\n<p>Then I right click on the Main branch and create a new child-branch. I might put this new branch into a Development container folder. So I branch $&lt;TeamProjectName&gt;\\Main to $&lt;TeamProjectName&gt;\\Development\\DevTeam1. Note Development is created for me If it did not exist and is now the container folder for the child branch DevTeam1.</p>\r\n<p>If I had a second Development team, and I needed isolation between the two development teams, I might create a second development branch. Once again, branch from $&lt;TeamProjectName&gt;\\Main to $&lt;TeamProjectname&gt;\\Development\\DevTeam2. Note since Development is a folder that already exists, it will simply add this new branch, DevTeam2 to this folder.</p>\r\n<p>Note the differences between the icons for folders, and branches.</p>\r\n<p>After you branch from Main to DevTeam1, you should notice that the folder structure under Dev is created under DevTeam1, and the solution should be under the source folder in DevTeam1.</p>\r\n<p>If you right-click on a branch in the Source Code Explorer, you should be able to see the properties of the branch.. including it&rsquo;s hierarchical relationship to other branches.</p>\r\n<p>Now here is the important concept. In VS 2010, you cannot nest branches within other branches. Currently, if you have followed the steps above, you should have three branches (Main, DevTeam1, and DevTeam2.) The hierarchy should show you that DevTeam1 and DevTeam2 are siblings in that they are both full children of Main. But this does not mean they are nested within the Main branch.</p>\r\n<p>If you were to attempt to convert a folder under any existing branch from a folder to a branch, I would expect you would receive an error regarding nested branches.</p>\r\n<p>For this reason, I believe when you try to convert Main from a folder to a branch, you are essentially converting a container folder (of other branches) to a branch, and that won&rsquo;t be permitted either.</p>\r\n<p>As a general rule I think it is better to branch from existing branches .. than it is to create folder within folders and then try to convert them to branches.</p>\r\n<p>Further, If Admin1 converts the folder MainBranch from a folder to a branch, then Admin2, should do a get latest and it would also be a branch for Admin2. You should not have to users looking at the same Team Project where one users thinks MainBranch is a branch and another user thinks MainBranch is a folder. If that happens then one user has not done a get latest to be sync'd with changes made on the server by other users.</p>\r\n<p>Finally as a naming convention... you probably would not have the word &quot;folder&quot; in the names of folders of your hard drive.. it should be obvious when you use file explorer that something is a folder vs a file.</p>\r\n<p>For the same reason, you probably don't want to put the name &quot;branch&quot; onto a folder or branch in TFS. It is possible to convert a folder to a branch or vice versa. The icon should be sufficient to tell you it is a branch... without adding a suffix to the name.</p>\r\n<p>I hope this helps explain your scenario, and gives you some hints for starting in a better direction.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-06-08T12:40:35.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453177",
+    "ThreadId": "213780",
+    "Html": "<p>It has.&nbsp; Luckily we are still in test mode and everything installed in a&nbsp;separate environment. So we are trying to determine best practices as we move forward.&nbsp; Your help is much appreciated.&nbsp;</p>",
+    "PostedDate": "2010-06-08T13:05:53.347-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "667030",
+    "ThreadId": "271329",
+    "Html": "\r\n<p>I add a file reference to a project in the RELEASE branch. The reference properties are...</p>\r\n<p>Copy Local = true</p>\r\n<p><strong>Path (read-only property) =&nbsp;C:\\Projects\\Framework\\Files\\Assemblies\\Release\\test.dll</strong></p>\r\n<p>Everything else is the default.</p>\r\n<p>&nbsp;</p>\r\n<p>Then, I check-in the project into the RELEASE branch. I merge the changes back to MAIN. The reference properties are changed to...</p>\r\n<p>Copy Local = true</p>\r\n<p><strong>Path (read-only property) =&nbsp;C:\\Projects\\TeamProjectX\\Main\\Src\\ProjectX\\Src\\Data\\BL\\bin\\Release\\test.dll</strong></p>\r\n<p>Everything else is the default.</p>\r\n<p>&nbsp;</p>\r\n<p>Why does the path change? How can I have it so that the path doesn't change in the MAIN branch? This is an issue for me because the build will fail. The build is expecting the assembly in the&nbsp;<strong>C:\\Projects\\Framework\\Files\\Assemblies\\Release\\</strong>\r\n folder not <strong>C:\\Projects\\TeamProjectX\\Main\\Src\\ProjectX\\Src\\Data\\BL\\bin\\Release\\</strong></p>\r\n<p>&nbsp;</p>\r\n<p>Please advice, Thanks!</p>\r\n",
+    "PostedDate": "2011-09-02T15:01:58.04-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "667049",
+    "ThreadId": "271329",
+    "Html": "<p>I think my issue is related and can be resolved by the <a href=\"http://blogs.msdn.com/b/billheys/archive/2011/03/14/project-dependencies-will-break-with-branching-if-not-done-properly.aspx\" target=\"_blank\">Bill's blog</a> and <a href=\"http://tfsbranchingguideiii.codeplex.com/discussions/249641\" target=\"_blank\">this</a> discussion thread.</p>",
+    "PostedDate": "2011-09-02T16:10:39.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "668224",
+    "ThreadId": "271329",
+    "Html": "<p>I also picked the option #2 \"...all branches must be at the same folder depth within the team project...\"&nbsp;</p>\r\n<p>I found option #2 more feasible because you can create a shared folder inside the MAIN at anytime. In other words, option #1 is a subset of option #2 somewhat.</p>\r\n<p>My apologizes for creating multiple discussions based on the same problem. The other discussion is <a href=\"http://tfsbranchingguideiii.codeplex.com/discussions/271309\">here</a>. I am now clear what needs to be done to fix my issue. BTW, Bill's blog content is not included into the TFS guidelines that is created by VS ALM team.</p>\r\n<p>Thanks,</p>\r\n<p>HA</p>",
+    "PostedDate": "2011-09-06T11:22:55.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

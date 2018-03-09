@@ -1,0 +1,58 @@
+[
+  {
+    "Id": 12346,
+    "Title": "Branch By Label - Q&A"
+  },
+  {
+    "Id": 12347,
+    "Title": "Branching Poster Scenarios and the Branching Scenarios document don't align"
+  },
+  {
+    "Id": 12348,
+    "Title": "Quick Start - Basic Branch Plan HOL question"
+  },
+  {
+    "Id": 12349,
+    "Title": "Branching Guidance Main Document - Type"
+  },
+  {
+    "Id": 12350,
+    "Title": "Branching Guide - Typos and Corrections suggested"
+  },
+  {
+    "Id": 12670,
+    "Title": "TFS Branching Guide - Scenarios 2.0 - Typo"
+  },
+  {
+    "Id": 13957,
+    "Title": "TFS Branching Guide - Scenarios 2.0 - Missing Content"
+  },
+  {
+    "Id": 17892,
+    "Title": "Error in Advanced Plan Diagram"
+  },
+  {
+    "Id": 17895,
+    "Title": "No Source Code"
+  },
+  {
+    "Id": 18090,
+    "Title": "NuGet for shared resources"
+  },
+  {
+    "Id": 20663,
+    "Title": "Incorrect URL for branch re-parenting"
+  },
+  {
+    "Id": 20915,
+    "Title": "Documentation (vs2012_v2.1_AllGuides)"
+  },
+  {
+    "Id": 20979,
+    "Title": "Cheat Sheet - Feature Isolation Branching Example"
+  },
+  {
+    "Id": 22242,
+    "Title": "Step 3.1 - From nothing to complexity or not - Incorrect FI"
+  }
+]

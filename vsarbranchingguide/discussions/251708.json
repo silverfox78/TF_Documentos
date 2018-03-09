@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "588468",
+    "ThreadId": "251708",
+    "Html": "\r\n<p>Before I begin I wanted to thank you again for the branching strategy post you did a while back\r\n<a href=\"http://blogs.msdn.com/b/billheys/archive/2011/01/14/parallel-feature-teams-working-on-multiple-releases-in-development-monthly-releases-to-production.aspx\">\r\nhere</a>. It is the basis for my branch refactoring proposal here and the basis for my question.</p>\r\n<p>Some of the push back I have gotten on the strategy revolves around code sharing and feature branches. It mainly involves this scenario:</p>\r\n<ul>\r\n<li>You have a major, long term feature a decent size team is working on - say a full db refactor or something that significant. Something that's going to take several months before its ready to integrate to Main.\r\n</li><li>You have another project that involves a decent sized feature change that is about 2 months out, not nearly as major as the first but still not ready to integrate to main.\r\n</li></ul>\r\n<p>Team 1 tells you that they need the changes from Team 2's branch because its enough of a major change to significantly affect what they are doing. They are willing to accept the fact that this code is not stabilized yet because it is such a major change\r\n they need to accommodate for it in what they are doing.</p>\r\n<p>I'm assuming at this point we are looking at a baseless merge which wouldn't be ideal but I cant think of another way to handle something like this.</p>\r\n",
+    "PostedDate": "2011-03-29T14:19:55.33-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "588487",
+    "ThreadId": "251708",
+    "Html": "<p>You have two feature branches. Team 2 needs (wants) the code from Team 1.</p>\r\n<p>I advise teams NOT to integrate code with other teams until it has been stabilized and the feature is either *ready to release* or *ready to share*. Of course we can't always stick to ideal best practice guidance.:)</p>\r\n<p>You have a few options:</p>\r\n<ul>\r\n<li>You could merge the code (RI) &nbsp;from Feature Team 1 to Main and then merge from Main to Feature Team 2 (FI). This is the standard guidance. But you have already indicated the code is not ready to integrate with Main.</li>\r\n<li>You could *anticipate* this situation and have an integration layer (branch)&nbsp;between Main and the Feature Team development branches. This is something we generally recommend against, since geting changes from a feature team branch to Main or from Main to a feature team branch requires twice as many merges in each direction. However, if you haven't already created the integation layer, than this is not an option either.</li>\r\n<li>You could, as you suggest, do a baseless merge between the sibling branches (Feature Team 1 and Feature Team 2). We recommend, as a general rule, avoiding baseless merges because:\r\n<ul>\r\n<li>Files that are deleted in the source branch are not included in a baseless merge - they will not get deleted in the target branch.</li>\r\n<li>More merge conflicts will result from not having a *common* baseline for the merge.</li>\r\n</ul>\r\n</li>\r\n<li>If you are using TFS 2010 SP1, you can now specify a starting range for a baseless merge. The specified changeset will now be used as the base in a three-way content merge. In addition, there is an improved approach for handling deletes. Starting with SP1, if a path is deleted in the source the corresponding path in the target will have a merge,delete conflict. Also, if a file is not deleted in the source but is deleted in the target, the target will get a merge,undelete conflict. You now have more control over how deletes are / are not propogated between source and target. These changes&nbsp;are possible as a result of changes to how items are identified in TFS 2010 in that&nbsp;merge lines up the items by path rather than by item ID.</li>\r\n</ul>\r\n<p>Note that once you do a baseless merge between two sibling branches, future merges will now be *based* merges and can be done through the UI.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-03-29T14:57:10.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "589589",
+    "ThreadId": "251708",
+    "Html": "<p>OK, we are in the process of upgrading to SP1 so I'm assuming that #4 would be our choice given an unfortunate situation of a unplanned need to merge sibling branch changes.</p>\r\n<p>&nbsp;</p>\r\n<p>Question on this process, would you suggest the baseless merge contain a limited number of changesets and then immediately perform a second, standard merge for the rest of the changes or bring all of the needed changes in via the baseless merge?</p>",
+    "PostedDate": "2011-03-31T08:48:03.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "589597",
+    "ThreadId": "251708",
+    "Html": "<p>I have been thinking a little about recommending doing a baseless merge between sibling branches, right after creating the second (sibling) branch.</p>\r\n<p>I am not sure what the difference (user experience) would be if you do a baseless merge with a minimum of changes followed by a standard merge, vs doing a more extensive baseless merge.</p>\r\n<p>I might try to experiment with various options and then blog :)</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-03-31T08:57:21.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "549705",
+    "ThreadId": "241870",
+    "Html": "\r\n<h3>Parallel Feature Teams working on multiple releases in development. Monthly releases to production.</h3>\r\n<p><a href=\"http://bit.ly/gveSiw\">http://bit.ly/gveSiw</a></p>\r\n<p>Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger<br>\r\n<a href=\"http://blogs.msdn.com/b/billheys\">http://blogs.msdn.com/b/billheys</a></p>\r\n",
+    "PostedDate": "2011-01-14T18:24:00.113-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "549861",
+    "ThreadId": "241870",
+    "Html": "\r\n<p>I'm going to spend a few hours today, saturday, reading through this and working on our automated TFS Builds. Thanks for posting you're insights are quite helpful and allow me to easily grasp the concepts and extend them into our own enterprise model.</p>\r\n<p>Cheers!</p>\r\n",
+    "PostedDate": "2011-01-15T08:22:12.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

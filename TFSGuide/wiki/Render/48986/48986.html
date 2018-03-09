@@ -1,0 +1,100 @@
+<div class="wikidoc"><h3>How To: Set Up a Continuous Integration Build in Visual Studio Team Foundation Server </h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Applies To</h3><ul><li>Microsoft&#174; Visual Studio&#174; 2005 Team Foundation Server (TFS)</li>
+<li>Microsoft Visual Studio Team System (VSTS)</li></ul>
+
+<h3>Summary</h3>Although Visual Studio 2005 Team Foundation Server does not provide a Continuous Integration (CI) solution out of box, it does provide a framework on which you can build your own CI build solution. This How To article walks you through the process of setting up a CI build with TFS by using the solution provided by the VSTS team. This solution installs a Web service running under the account that has access to the TFS server. When you register the Web service for the <b>CheckinEvent</b> event, the Web service will initiate a team build whenever a check-in occurs. <br />
+<h3>Contents</h3><ul><li>Objectives</li>
+<li>Overview</li>
+<li>Summary of Steps</li>
+<li>Before You Begin</li>
+<li>Step 1 – Create and Test Your Build</li>
+<li>Step 2 – Install the Continuous Integration Solution</li>
+<li>Step 3 – Configure the Continuous Integration Solution</li>
+<li>Step 4 – Register for the CheckinEvent Event</li>
+<li>Step 5 – Test the Continuous Integration Build</li>
+<li>Step 6 – Set Up E-mail Alerts</li>
+<li>Additional Resources</li></ul>
+
+<h3>Objectives</h3><ul><li>Learn what a Continuous Integration build is</li>
+<li>Create a CI build by using <b>TFSBuild</b> and the VSTS team’s CI solution. </li></ul>
+
+<h3>Overview</h3>An important mechanism for improving code quality is to give developers continuous feedback regarding the quality of the check-ins they make. This is especially important for check-in that causes a build break resulting in compilation errors. The earlier the developer receives feedback, the sooner they can fix any errors in the code, thus unblocking other developers/testers and improving all team members’ productivity. <br /><br />This is where the Continuous Integration build type—the process of creating builds whenever a developer checks code into source control—becomes valuable. The Continuous Integration build provides quick feedback to developers, who can also configure their CI builds with quality gates to ensure further improvement in your build quality. <br />
+<h3>Summary of Steps</h3><ul><li>Step 1 – Create and Test your Build</li>
+<li>Step 2 – Install the Continuous Integration Solution</li>
+<li>Step 3 – Configure the Continuous Integration Solution</li>
+<li>Step 4 – Register for the CheckinEvent Event</li>
+<li>Step 5 – Test the Continuous Integration Build</li>
+<li>Step 6 – Set Up E-mail Alerts</li></ul>
+
+<h3>Before You Begin</h3>Make sure the account that runs your build service has, Start a build = Allow, permission in Team Foundation Server.<br />
+<h3>Step 1 – Create and Test your Build</h3>In this initial step, you create a test build and make sure it works from within the Visual Studio Integrated Development Environment (IDE).  If the team build does not work, you should fix it before moving on to the next step.<br />
+<ol><li>Create a Microsoft Windows&#174; Form project that you can use for testing the build.</li>
+<li>Build the project and make sure that it is working correctly. </li>
+<li>Check your project into source control</li>
+<li>Create a team build as follows
+<ol><li>In Team Explorer, right-click <b>Team Builds</b>, and then click <b>New Team Build Type</b></li>
+<li>Complete the self-explanatory <b>Team Build Type Creation Wizard</b></li></ol></li>
+<li>Verify that the team build is working by performing the following steps:
+<ol><li>In Team Explorer, double-click the Team Build Project you just created.</li>
+<li>On the <b>Build</b> menu of the Visual Studio instance, click <b>Build Team Project <i>&lt;&lt;Your Team Build Name&gt;&gt;.</i></b></li>
+<li>Confirm that the correct build type is selected and then click <b>Build.</b> </li></ol></li>
+<li>Review the build output and make sure that no errors occurred in the build process.</li></ol>
+<br /><b>Important</b>: Make sure your build services account (TFSService) has Full Control permission to the shared folder for the drops, as specified in <b>Team Build Type Wizard</b>.<br />
+<h3>Step 2 – Install the Continuous Integration Solution</h3>In this step, you install the solution provided by VSTS team for setting up the CI build. Detailed information about the solution is available at <a href="http://msdn2.microsoft.com/en-us/library/ms364045(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms364045(VS.80).aspx</a> <br />
+<ol><li>Install the solution on your TFS server from following location  <a href="http://download.microsoft.com/download/6/5/e/65e300ce-22fc-4988-97de-0e81d3de2482/ci.msi">http://download.microsoft.com/download/6/5/e/65e300ce-22fc-4988-97de-0e81d3de2482/ci.msi</a> </li>
+<li>On the second page of the installer wizard, ensure that the “<b>Team Foundation Server</b>” site is selected.</li></ol>
+<br />Setup creates a virtual directory beneath the root of the application-tier server for TFS. This should be an Internet Information Services (IIS) Web site named Team Foundation Server on port 8080.<br />
+<h3>Step 3 – Configure the Continuous Integration Solution</h3>In this step, you will configure the CI settings to specify the project to be built and the build machine and team build type to be used.<br />
+<ol><li>Perform the followings steps to ensure that the virtual root runs in the &quot;TfsAppPool&quot; application pool:
+<ol><li>Open IIS Manager by clicking <b>Start</b>, click* Administrative Tools<b>, and then select </b>IIS Manager*</li>
+<li>Under the <b>Web Sites,</b> expand the <b>Team Foundation Server</b> Web site.</li>
+<li>Right-click on the <b>CI Web Application</b> and make sure that <b>Application Pool</b> is set to <b>TfsAppPool</b>.</li></ol></li>
+<li>Configure Continuous Integration settings as follows</li>
+<li>Open the <b>CI Web Application</b> Web.config file located at C:\Program Files\Microsoft Visual Studio 2005 Team Foundation Server\Web Services\CI\</li>
+<li>Set the following properties by adding a new key under the <b>&lt;appsettings&gt;</b> node:
+<ul><li><b>TeamFoundationServer</b> – the URL for the application tier, in the format http://machine:8080.</li>
+<li><b>TeamProject</b> – the  team project for which you want to enable CI</li>
+<li><b>BuildType</b> – the build type to be used while creating CI builds. Typically, this is configured for builds only. You can also add a basic level of testing and static analysis.</li>
+<li><b>Build Machine</b> – an optional parameter, use this to override the default build machine specified in the build type.</li></ul></li></ol>
+<br />The following is an example of the configuration settings:<br /><pre> …. 
+&lt;add key=&quot;1&quot; value=&quot;TeamServer=http://TFSRTM:8080;TeamProjectName=AdventureWorks;BuildType=Test Build&quot;/&gt;
+…. </pre><br />
+<h3>Step 4 – Register for the CheckinEvent Event</h3>In this step, you register for the <b>CheckinEvent</b> event by using the <b>bisubscribe</b> tool available with TFS.
+<ol><li>Open a command prompt and navigate to the following location C:\Program Files\Microsoft Visual Studio 2005 Team Foundation Server\TF Setup\</li>
+<li>Run the following command </li></ol>
+ <br /><span class="codeInline"> Bissubscribe /eventType CheckinEvent /address http://TFSRTM:8080/ci/notify.asmx /deliveryType Soap /domain http://TFSRTM:8080 </span><br />
+<ol><li>If you get any errors, or if you want to confirm that you have registered correctly, do the following:
+<ol><li>Open Microsoft SQL Server™ Management Studio.</li>
+<li>Open the <b>tfsIntegration</b> database.</li></ol></li>
+<li>Open the <b>tbl_subscription</b> table.</li></ol>
+The table has entries for all events that have already been subscribed; you should be able to find the entry for CI solution subscribed to the CheckinEvent event. If required, you can unsubscribe any registered event, by simply deleting the entry from the table. <br />
+<h3>Step 5 – Test the Continuous Integration Build</h3>In this step, you verify that the CI build is working correctly.<br />
+<ol><li>Open the Windows Forms Application that was created in Step 1.</li>
+<li>Make some nominal changes to the code. Be careful to ensure that the changes will not break the build.</li>
+<li>Check-in the code changes you made.</li>
+<li>If you have access to the build machine, open Task Manager and look at the machine’s CPU usage; it should increase soon after the check-in to indicate that a build is occurring. If you look at the process list, you should see msbuild, csc, and/or aspnet_compiler using up CPU cycles, indicating that the build is in progress.</li>
+<li>Give the build time to run and then in the <b>Team Explorer,</b> double-click on <b>All Build Types</b> and look for the build after it completes.</li></ol>
+
+<h4>Trouble shooting</h4>In case the build does not show up in the build list, you can troubleshoot the problem as follows:
+<ol><li>Make sure that the event is subscribed correctly. For more information, see sub-step 3 of Step 4 above.</li>
+<li>Make sure that the CI Web Application’s Web.config is configured correctly, for more information, see Step 3 above.</li>
+<li>Make sure that the CI Web application is running in the right context and that it has access to the TFS server.</li>
+<li>If you have followed the preceding troubleshooting steps but the build still fails you can debug the CI Web application as follows:</li>
+<li>Create a new Web site project.</li>
+<li>Select to add an existing Web site to this new project.</li>
+<li>Click the local IIS button and then select the CI Web Application from the list.</li>
+<li>Open <b>notify.cs</b> and set a breakpoint on the <b>Notify</b> method.</li>
+<li>Press F5 to start debugging.</li>
+<li>Make changes to the Windows Forms test application and then check the code into source control.
+<ul><li>If the breakpoint is not hit, the event is not being captured; try subscribing again</li>
+<li>If the breakpoint is hit, debug further.</li>
+<li>Ensure that script debugging is enabled in Microsoft Internet Explorer. On tools menu select <b>Internet Options</b> and then click the <b>Advanced</b> tab, here make sure the <b>Disable Script Debugging (Internet Explorer)</b> option is unchecked.</li></ul></li></ol>
+
+<h3>Step 6 – Set Up E-mail Alerts</h3>In this step you will set up an e-mail alert to be sent upon build completion, so that all concerned parties are informed. <br />
+<ol><li>In the Team Explorer, right-click the relevant team project. </li>
+<li>Select <b>Project Alerts.</b></li>
+<li>Select the <b>A build completes</b> option and enter the e-mail address(es) for notification. </li></ol>
+
+<h3>Additional Resources</h3><ul><li>For more information on how to use the Visual Studio Team System CI solution, see “Continuous Integration Using Team Foundation Build” at <a href="http://msdn2.microsoft.com/en-us/library/ms364045(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms364045(VS.80).aspx</a></li>
+<li>To download the Visual Studio Team System CI solution installer, go to <a href="http://download.microsoft.com/download/6/5/e/65e300ce-22fc-4988-97de-0e81d3de2482/ci.msi">http://download.microsoft.com/download/6/5/e/65e300ce-22fc-4988-97de-0e81d3de2482/ci.msi</a></li>
+<li>For more information on Agile Development and Continuous Integration in Team Foundation Server, see “Extend Team Foundation Server To Enable Continuous Integration” at <a href="http://msdn.microsoft.com/msdnmag/issues/06/03/TeamSystem/default.aspx">http://msdn.microsoft.com/msdnmag/issues/06/03/TeamSystem/default.aspx</a></li></ul></div><div class="ClearBoth"></div>

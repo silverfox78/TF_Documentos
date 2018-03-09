@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "589475",
+    "ThreadId": "251979",
+    "Html": "\r\n<p>Hi, i'm new to tfs (source control in general) and was wondering if someone could let me know if i'm on the right track with the following structure.&nbsp; Our company builds a content management system&nbsp;which we build websites on top of (using the latest\r\n version each time).&nbsp; Here's the setup i am experimenting with:</p>\r\n<ul>\r\n<li>$/MyCMS\r\n<ul>\r\n<li>Main </li><li>Development&nbsp;(folder)\r\n<ul>\r\n<li>Development 1 </li></ul>\r\n</li><li>Releases (folder)\r\n<ul>\r\n<li>Release 1.0&nbsp;(folder)\r\n<ul>\r\n<li>Release </li><li><a href=\"http://www.test1.com\">www.test1.com</a> </li><li><a href=\"http://www.test2.com\">www.test2.com</a> </li></ul>\r\n</li><li>Release 1.1&nbsp;(folder)\r\n<ul>\r\n<li>Release </li><li><a href=\"http://www.test3.com\">www.test3.com</a> </li></ul>\r\n</li><li>Release 1.2&nbsp;(folder)\r\n<ul>\r\n<li>Release </li><li><a href=\"http://www.test4.com\">www.test4.com</a> </li></ul>\r\n</li></ul>\r\n</li></ul>\r\n</li></ul>\r\n<p>Basically everytime we are ready for a release we create a folder for the release under the &quot;Releases&quot; folder (eg Release 1.3)&nbsp;and then branch the&nbsp;&quot;Main&quot; branch underneath this folder called &quot;Release&quot;.&nbsp; Then we would label it as &quot;Release 1.3.0&quot;.&nbsp;\r\n Now if we built a site say <a href=\"http://www.test5.com\">www.test5.com</a> we would see &quot;Release 1.3&quot; is the latest release and create a branch from the Release branch to\r\n<a href=\"http://www.test5.com\">www.test5.com</a> within the same directory (the folder allows us to see which version each site is branched under easily).&nbsp; Since we never merge changes from\r\n<a href=\"http://www.test5.com\">www.test5.com</a> to it's subsequent release branch&nbsp;we should be fine to change\r\n<a href=\"http://www.test5.com\">www.test5.com</a> as we wish to add any bespoke code or styling changes.&nbsp; Please correct me if i'm wrong.</p>\r\n<p>Now we have this in place if we wanted to patch&nbsp;&quot;Release 1.0&quot;.&nbsp; We would fix the change in Release 1.0/Release branch and label it as &quot;Release 1.0.1&quot;.&nbsp; We would then&nbsp;merge that change with all the sites underneath that branch.&nbsp; We're\r\n not interested in maintaining the Release 1.0.0 code therefore an inbetween branch is not needed.</p>\r\n<p>I hope i have explained this well enough.&nbsp; Please let me know if this would work or if i am living in cloud cockoo land.&nbsp; Thanks</p>\r\n",
+    "PostedDate": "2011-03-31T06:16:55.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "589564",
+    "ThreadId": "251979",
+    "Html": "<p>You seem to be following the basic plan in the Rangers Branching Guidance. From your description, it seems you have a good understanding. Congratulations, and feel free to ask additional questions as they arise.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-03-31T08:08:13.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "590056",
+    "ThreadId": "251979",
+    "Html": "<p>Thanks for the reassurance.&nbsp; One final question.&nbsp; Where would i put a third party library that i needed to patch?&nbsp;&nbsp;I wouldn't want to duplicate the third party code under each branch as i see this as over kill.&nbsp; Would you recommend i started a new team project for each third party library or add another folder within my project to put them inside?</p>\r\n<p>I'd appreciate your advice once more.&nbsp; Thanks</p>",
+    "PostedDate": "2011-04-01T01:43:55.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "590300",
+    "ThreadId": "251979",
+    "Html": "<p>When you say you have a \"third party library that I need to patch\", is this a source code library or a .NET DLL (Assembly)?</p>\r\n<p>I am assuming you are talking about sharing third-party code with one or more *dependent* team projects, and that the dependent team project needs to modify (patch) the library?</p>\r\n<p>Do the changes (patches) need to be merged back to the base copy of the third-party code?</p>\r\n<p>Depending on your answers to these question, I will probably blog on this issue, and post the link back here.</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-04-01T09:14:31.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

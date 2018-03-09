@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "440999",
+    "ThreadId": "212129",
+    "Html": "<p>hi everybody</p>\r\n<p>We have just on team that is developing one product with many plugins &nbsp;at the moment we have one team project with this branch strategy</p>\r\n<p>-tfs TeamProject</p>\r\n<p>&nbsp;&nbsp; -main</p>\r\n<p>&nbsp;&nbsp; &nbsp; ---DEV</p>\r\n<p>&nbsp;&nbsp; &nbsp; ---versions</p>\r\n<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;--v1</p>\r\n<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;--v2 &nbsp;and so on...</p>\r\n<p>it's correct to have plugins inside the product project or is better to have one Team project foreach plugin ? i need to change my branching strategy ?</p>\r\n<p>&nbsp;</p>\r\n<p>thanks&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-05-10T02:15:19.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453101",
+    "ThreadId": "212129",
+    "Html": "<p>I don't suppose there is ever one *correct* answer for all scenarios.</p>\r\n<p>Your question probably raises more questions than answers:</p>\r\n<p>Do you release different versions of a plugin at different times. For example, if your product has ten plugins, and you release a new version of the product, would you be releasing new versions of the plugins at the same time, on the same release cycle. Or is it possible to release a plugin on a different release cycle than the product?</p>\r\n<p>My first inclination would to have all the code related to a product (and it's plugins) all contained within one TeamProject. I would not have a separate Team Project for each plugin unless these plugins are shared across products.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-06-08T10:42:05.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

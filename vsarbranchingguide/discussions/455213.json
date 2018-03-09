@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1087496",
+    "ThreadId": "455213",
+    "Html": "Just when I thought I understood the advanced branching plan I noticed that there is an <strong>FI</strong> from <strong>Main</strong> to <strong>Servicing</strong> in Figure 3 (v2.1 - Visual Studio 2012).\r<br />\n<br />\nMy understanding is that <strong>Servicing</strong> represents the release tree for release 1 in this example.  Why would changes from <strong>Dev</strong> and <strong>Main</strong> make it into <strong>Servicing</strong> for release in <em>hotfix r1 sp1</em>?  Features from version 2 may be being implemented in <strong>Main</strong>.\r<br />\n<br />\nIt seems more reasonable to <strong>RI</strong> up to <strong>Main</strong> just before the branch to <em>hotfix r1 sp1</em>.\r<br />\n<br />\nYour help is appreciated<br />\n",
+    "PostedDate": "2013-09-02T18:58:41.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1101160",
+    "ThreadId": "455213",
+    "Html": "Your understanding is correct. Once a servicing branch in the release tree is created, you should never FI from Main into the servicing branch for precisely the reasons you specify. You should never do a forward integration from Dev or Main into a release branch. But you may do a Reverse Integration from a servicing branch back to Main (if you understand what you are doing). \r<br />\nI am not sure you want to RI up to Main just prior to the branch to hotfix R1 SP1. Wouldn't that branch also bring version 2 changes down?<br />\n",
+    "PostedDate": "2013-09-30T19:42:00.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102491",
+    "ThreadId": "455213",
+    "Html": "Thanks for the validation.\r<br />\n<br />\nAs for that last comment: If there were modifications to the servicing branch (e.g. Emergency Hotfix) it would make sense to RI from Servicing to Main.  In the example (Figure 3) this is done on the <em>hotfix r1 sp1</em> branch.  I don't follow what you mean by &quot;Wouldn't that branch also bring version 2 changes down?&quot;.\r<br />\n<br />\nI was simply trying to understand why the diagram includes and FI from Main to Servicing.  I was speculating that perhaps they meant for it to be an RI which is at least defensible.\r<br />\n<br />\nThanks again.<br />\n",
+    "PostedDate": "2013-10-01T14:46:25.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1102759",
+    "ThreadId": "455213",
+    "Html": "@Wheys, makes me wonder if we should not be revising the diagram(s) accordingly for the update we are working on?<br />\n",
+    "PostedDate": "2013-10-02T07:25:32.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1103646",
+    "ThreadId": "455213",
+    "Html": "@Wschaub - Yes, I think there are some glaring errors we should correct.<br />\n",
+    "PostedDate": "2013-10-04T07:49:26.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1103649",
+    "ThreadId": "455213",
+    "Html": "There should NEVER be any FI from MAIN to any of the servicing branches after they are created, for precisely the reasons you suggest. I haven't had the time to create a detailed bug list for the team. I hope to get to this soon :)<br />\n",
+    "PostedDate": "2013-10-04T07:51:52.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1103953",
+    "ThreadId": "455213",
+    "Html": "@Wheys, the sooner the better as we are in the midst of v3 content development, planning to complete the BETA by end-November :) We are working on four areas: Strategies, TFVC, NuGet and Git, which will be packaged in separate focused eBooks. <br />\n",
+    "PostedDate": "2013-10-05T06:14:50.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

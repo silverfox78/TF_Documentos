@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "674504",
+    "ThreadId": "273270",
+    "Html": "\r\n<p>What does that mean?&nbsp; I suppose I could create some test labels and play with this long enough to understand it but I was hoping someone could provide a link to documentation or just explain it.&nbsp; What does it mean &quot;in&nbsp; a scope&quot;?&nbsp; I've\r\n heard it said that the scope includes workspace so that means multiple developers could create the same label name on the same code.&nbsp; Is this correct?&nbsp; This is actually how I hope this works.&nbsp;</p>\r\n<p>Thanks,</p>\r\n<p>Dale</p>\r\n",
+    "PostedDate": "2011-09-20T19:59:07.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "674511",
+    "ThreadId": "273270",
+    "Html": "<p>You may want to read this blog by one of the VS ALM Rangers:</p>\n<p><a href=\"http://teamfoundation.blogspot.com/2008/03/label-scope-revealed.html\">http://teamfoundation.blogspot.com/2008/03/label-scope-revealed.html</a></p>\n<p>Labels and&nbsp;label scope is a server-side concept. Workspaces are not included in scope. Creating two labels with the same name and scope will cause the second label to replace the first.</p>\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>\n<p>﻿﻿﻿</p>\n<p>﻿</p>",
+    "PostedDate": "2011-09-20T20:44:07.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "675602",
+    "ThreadId": "273270",
+    "Html": "\r\n<div><span><font size=\"2\" face=\"Arial\">Thanks for the update and the link, Bill. It was very helpful.</font></span></div>\r\n<div><span><font size=\"2\" face=\"Arial\"></font></span></div>\r\n<div><span><font size=\"2\" face=\"Arial\">Regards,</font></span></div>\r\n<div><span><font size=\"2\" face=\"Arial\"></font></span></div>\r\n<div><span><font size=\"2\" face=\"Arial\">Dale</font></span></div>\r\n",
+    "PostedDate": "2011-09-22T18:36:29.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "redundant now.",
+    "ClosedDate": "2013-11-30T07:54:37.98-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Page 10 in doc TFS_Branching_Guide_Q&A_2010_v1.pdf is talking about Branch by Label. This feature is available only in command line, and not in the UI.\n \nI think this is important to be rephrased.\nNote - Submitted directly to Willy-Peter Schaub",
+    "LastUpdatedDate": "2013-11-30T07:54:37.98-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2010-03-29T08:31:27.09-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "Branch By Label - Q&A",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12346
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

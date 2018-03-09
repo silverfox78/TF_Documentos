@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "482343",
+    "ThreadId": "224116",
+    "Html": "<p>Wondering if anyone has or has worked on a project to automate the creation of new branches. In our company, we have a large number of different applications, with shared components in the middle and back end. What we'd like to do is build an extension (or some other tool) within Studio to prompt the user for certain information (build number, project name, project type) and then use that to create the necessary folders and all the branching for a new project.</p>\r\n<p>Thoughts/Comments/Advice?</p>",
+    "PostedDate": "2010-08-19T07:46:03.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "482389",
+    "ThreadId": "224116",
+    "Html": "<p>I am not sure what you mean by *all the branching* for a new project.</p>\r\n<p>To some extent, I can see where defining a standard set of folders within a branch would be helpful. Automating this might save some time.</p>\r\n<p>In general, however, with respect to branches, once you set up the Main branch folder structure (and add the&nbsp;solution etc.) creating branches is fairly easy to do. When you branch Main to Dev, for example, all the folders under the&nbsp;Main branch automatically get replicated under the Dev branch.</p>\r\n<p>For release branches, our guidance suggests creating them when you have stabilized the code in the Main branch, have passed certain quality gates, and are ready to ship the next release. Creating release branches in advance would be counter productive.</p>\r\n<p>Perhaps I am missing something.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-08-19T09:15:43.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

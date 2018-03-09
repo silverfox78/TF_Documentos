@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "redundant now",
+    "ClosedDate": "2013-11-30T07:55:11.8-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In TFS_Branching_Guide_Scenarios_2010_Poster_v1.vsd I can see there are 4 scenarios under tab Scenarios.\nThe forth one is being called – Team, Feature, Release Isolation Branching Model.\n \nHowever I cannot find this scenario in TFS_Branching_Guide_Scenarios_2010_v1.pdf. Only the first three are included in the pdf.\n \nDo you plan to add this forth one to the pdf? I think it will be very valuable.\n \nIssue submitted directly to Willy-Peter Schaub",
+    "LastUpdatedDate": "2013-11-30T07:55:11.8-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2010-03-29T08:32:50.51-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "Branching Poster Scenarios and the Branching Scenarios document don't align",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 12347
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

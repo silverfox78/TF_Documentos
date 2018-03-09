@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "487488",
+    "ThreadId": "225604",
+    "Html": "<p>Sincerely, I hope this Branching Guide is a joke.</p>\r\n<p>Who does not laugh now will cry later.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-09-01T03:31:48.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487523",
+    "ThreadId": "225604",
+    "Html": "<p>Adrian,</p>\r\n<p>Thanks for engaging and for posting a comment here on codeplex about the branching guidance.</p>\r\n<p>I'm a bit concerned about your comment though. I've been successfully using the branching guidance for the past 2 years. The guidance is clear, practical, and easily picked up and applied in mulitple scenarios.</p>\r\n<p>Can you explain why the branching guidance isn't helpful, what your finding missing, and more importantly what your looking for?</p>\r\n<p>The ALM Ranger team (made up of MSFT employees, MVPs, and community members with 15+ years of experience)&nbsp;have been really great about taking feedback, adopting the input of the community, and&nbsp;changing the guidance. &nbsp;</p>\r\n<p>At the end of the day, good, resuable guidance is what is trying to be created....so help the broader community out and let everyone know what pain points you're encountering and I'm sure someone will respond.</p>\r\n<p>Thx. Allen.</p>",
+    "PostedDate": "2010-09-01T04:52:38.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "552151",
+    "ThreadId": "242462",
+    "Html": "\r\n<p>Background &ndash; I keep getting this question:</p>\r\n<p style=\"padding-left:30px\">I have a quick question for you on branching in Scrum and feature management.&nbsp;</p>\r\n<p style=\"padding-left:30px\">My client is using Scrum and if we look at the branching structure all sprints branch off of main.&nbsp;</p>\r\n<p style=\"padding-left:30px\">I noticed in your blog that you take one branch to development in sprint 1 and then do merges going forward as you move from sprint to sprint. I must be confused because I was thinking that each sprint was a branch off of Main,\r\n with Main being the stable code base that moves forward.</p>\r\n<p style=\"padding-left:30px\">At any rate the question is how do they manage feature releases in sprints?&nbsp;</p>\r\n<p style=\"padding-left:30px\">The example is that you select 10 features for a sprint.&nbsp;</p>\r\n<p style=\"padding-left:30px\">When you get to the end of a sprint, say it is time bound by the business, two features are not ready so you need to move them to the next sprint.&nbsp;</p>\r\n<p style=\"padding-left:30px\">How do we merge and release the 8 ready to release features and hold the other 2 to later sprints.&nbsp;</p>\r\n<p style=\"padding-left:30px\">The code for the 2 not ready to go features is interwoven with the rest of the code in the sprint.&nbsp;</p>\r\n<p>Checkout some ideas on my blog: <a href=\"http://blogs.msdn.com/b/billheys/archive/2011/01/19/branching-sprint-is-done-some-features-are-not.aspx\">\r\nhttp://blogs.msdn.com/b/billheys/archive/2011/01/19/branching-sprint-is-done-some-features-are-not.aspx</a></p>\r\n<blockquote>\r\n<p>&nbsp;</p>\r\n</blockquote>\r\n",
+    "PostedDate": "2011-01-19T12:45:43.153-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "1007224",
+    "ThreadId": "434606",
+    "Html": "After studying the branching guide, I've come to the conclusion that the Feature Branch plan would work the best for our team.\r<br />\n<br />\nI'd like to make this as easy as possible for the devs on my team, so I'm looking for a way to set up a build definition that will build and deploy our web app to a test location <strong>for the currently open solution.</strong> I seem to be stuck because the build definition requires a solution file in &quot;Projects to Build&quot;, and this would be changing for every branch.\r<br />\n<br />\nIs there any way to configure the build process to build the currently open solution?<br />\n",
+    "PostedDate": "2013-02-26T13:17:14.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1007244",
+    "ThreadId": "434606",
+    "Html": "You will want a separate team build definition per branch there, and they may all use the same build process template that does the workflow you describe.  I think there is some confusion here as you are not really interested in building a solution that is open on a developer's machine, but rather what is stored in version control (your real &quot;version of the truth&quot;).\r<br />\n<br />\nI think we are headed down the wrong path to worry about what solution is open on a devs machine, etc.<br />\n",
+    "PostedDate": "2013-02-26T14:00:24.663-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1007338",
+    "ThreadId": "434606",
+    "Html": "I'm confused. Spivonious, how many people are on your team? And what do you mean by &quot;currently open solution?&quot;<br />\n",
+    "PostedDate": "2013-02-26T19:15:21.66-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1007577",
+    "ThreadId": "434606",
+    "Html": "I was hoping to not have to make two new build definitions for each branch, as these branches can and will be very temporary (sometimes only lasting a few days).<br />\n<br />\nIdeally ,our workflow would go like this:<br />\n<ol>\n<li>dev team 1 makes a new branch from main and begins work on their feature.</li>\n<li>dev team 2 makes a new branch from main and begins work on their feature.</li>\n<li>dev team 2 finishes and is ready for testing. They build their branch to a test environment.</li>\n<li>dev team 2 testing passes, changes checked into main, main is built to production.</li>\n<li>dev team 1 merges main into their branch to get dev team 2's changes.</li>\n<li>dev team 1 ready for testing, build their branch to test enviroment.</li>\n<li>\ndev team 1 testing passes, changes checked into main, main is built to production.<br />\n</li>\n</ol>\nI would absolutely love to have a build definition that both dev team 1 and dev team 2 could use to put their branch into a test environment. Something where the teams could choose the solution to build (from source control, not locally) at the time the build is queued. Is this possible without developing a custom add-in?<br />\n<br />\nOh, and our entire department is six devs, one designer, and two report writers. We have a couple of large projects that routinely have independent changes going on concurrently.<br />\n",
+    "PostedDate": "2013-02-27T06:06:12.63-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1007802",
+    "ThreadId": "434606",
+    "Html": "I'm starting to think that having a build definition on a feature branch isn't worth anything. Test builds can happen from Main, and another branch can be added to handle releases. Main builds to test on check-in and Release builds to prod on check-in. Devs can setup build definitions to Dev if they want to, but it wouldn't be required. If we find that we really need that build to Dev, we could always add another branch in between Main and the features.\r<br />\n<br />\nAnything I'm missing?<br />\n",
+    "PostedDate": "2013-02-27T11:43:18.287-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1007845",
+    "ThreadId": "434606",
+    "Html": "It depends what your quality bar is for the main branch. If, as in most cases, it contains the latest <strong>stable</strong> &quot;version of the truth&quot; you need at worst a gated check-in build, or separate the main and feature branches with an integration branch which has a build, or define a build per branch. Personally I prefer to keep main in a known and stable state, defining builds per dev and/or feature branch.<br />\n",
+    "PostedDate": "2013-02-27T13:05:38.257-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008164",
+    "ThreadId": "434606",
+    "Html": "Yes, we'll need to figure out what &quot;stable&quot; means for us. I'm leaning towards &quot;feature completed and ready for testing&quot;. We'd just need to be careful to only merge the changeset from the feature branch into the release branch.\r<br />\n<br />\nThanks for the input, everyone.<br />\n",
+    "PostedDate": "2013-02-28T05:35:21.527-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

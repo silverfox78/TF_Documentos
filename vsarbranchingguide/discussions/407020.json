@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "957050",
+    "ThreadId": "407020",
+    "Html": "\r\n<p>Hi guys; read the documents and they were very helpful. We have some heated discussion on the best way to revamp our branching strategy and wanted to find out how the experts were doing it. ;)</p>\r\n<p>We are using TFS 2010 and mostly C# development.</p>\r\n<p><em><strong>Current setup: </strong></em>Under the project we have:</p>\r\n<p><strong>Dev-branch\\</strong> (where development of new code takes place, SME verification etc)</p>\r\n<p><strong>AIT\\</strong> (intial branch from Dev-branch, we now merge items from Dev to here by work item. We build this nightly and our internal QA group uses it to verify Tasks are done, Bugs are fixed, etc)</p>\r\n<p><strong>UAT\\</strong> (branch from AIT, merge by work item from AIT to here once the WI has been verified in AIT branch. This environment is built twice per week and deployed to machines for the end user to test. Typical UAT environment)</p>\r\n<p><em><strong>Problem List: </strong></em>Since it takes awhile sometimes for the Devs to complete work items and get approved sometimes we end up with smaller tasks ready to go up before the larger piece is complete. We almost have to (and sometimes do) merge\r\n only the particular changeset associated with the work item [cherry picking] but of course this causes alot of problems later on with dependencies not in place, etc. Alot of times a Task will work in DEV, AIT but not work in UAT. The Dev is very modular with\r\n gui typically first then backend services and DB work done. Also we are coming to the end of the development for this project (2-3 months) and will be in Bug Fix mode from then on.</p>\r\n<p>Given all of that what is the best way to create a new branching strategy to stop our issues but will allow us to merge modular development up as needed. Any ideas is much appreciated. If you need more info I will be happy to help. Ive typically worked as\r\n ConfigMgr for Agile teams; this style of development is different than what Im used too. Also we did not use TFS work items from the beginning. We imported a spreadsheet into TFS as Tasks and use Bugs...nothing on a higher level.</p>\r\n",
+    "PostedDate": "2012-12-17T08:33:55.897-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "957791",
+    "ThreadId": "407020",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>One possible solution is when you run into those smaller type tasks you are referring to is to cut a feature branch to handle those.&nbsp; You could branch out 1 feature branch (call it &quot;Misc Features&quot; for this example) which would give you the isolation.&nbsp; You\r\n could then move those in a single changeset&nbsp;upstream to UAT or&nbsp;main, eventually deploy, etc&nbsp;and continue work normally on the Dev branch at the slower rate.</p>\r\n<p>Remember in TFS you can always branch &quot;on demand&quot; or as needed from an earlier changeset/point in time.&nbsp; If it was the norm that I had a subset of smallish tasks that I wanted to bundle, I might introduce the branch in play full time though.</p>\r\n",
+    "PostedDate": "2012-12-18T09:09:24.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

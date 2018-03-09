@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "110880",
+    "ThreadId": "33453",
+    "Html": "Hi all. <br>\r\nI have been trying to restructure our source control according to best practices outlined in tfsguide. Everything has worked out great so far eliminating some of the awkwardness we have experienced with the previous setup. However I am having some problems with shared projects. <br>\r\nThe chapter &quot;Shared Code Considerations&quot; in &quot;How To: Structure your windows applications for team foundation server&quot; (<a href=\"http://www.codeplex.com/Project/Download/FileDownload.aspx?ProjectName=VSTSGuidance&DownloadId=9473\">http://www.codeplex.com/Project/Download/FileDownload.aspx?ProjectName=VSTSGuidance&amp;DownloadId=9473</a>) points out two ways to handle shared projects:<br>\r\n<br>\r\n<ul>\r\n    <li>Reference the code from a shared location</li>\r\n    <li>Branch the shared code</li>\r\n</ul>\r\nI am trying to go with the branching strategy but have run into a snag - what to do when you have multiple branches of the same shared project? In my case this is a shared util project that I have branched into two projects that both are dependencies for the third project. Now I have two possibly different branches of the shared code and have no way of referencing both of them in the solution file for the third project. Is there a workaround or do I need to create a third branch into the third project where I merge changes from the other two and reference only that branch? <br>\r\n<br>\r\nI have been posting on MSDN about this scenario but so far have gotten no response (<a href=\"http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=3689115&SiteID=1\">http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=3689115&amp;SiteID=1</a>)<br>\r\n<br>\r\nI am hoping that someone here would be able to clarify what to do in this scenario as I am pretty lost atm.<br>\r\n<br>\r\nThanks in advance. <br>\r\n",
+    "PostedDate": "2008-08-13T08:54:35.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

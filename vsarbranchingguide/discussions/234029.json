@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "519361",
+    "ThreadId": "234029",
+    "Html": "\r\n<p>Can anyone provide some insight onto what the 'Convert to Branch' does and when I should or shouldn't use it?</p>\r\n<p>From the ranger docs I see some of the 'Main' folders have been converted to a branch but the Development and Release folders at the same level as Main have not been converted to a branch. Figure 3 from page 6 of the TFS_Branching_Guide_Main_2010_v1.pdf\r\n shows the following branch depiction, under Develpoment and Release are the same folder names that have been converted to a branch</p>\r\n<p><span style=\"text-decoration:underline\">MAIN</span> (is converted to branch)</p>\r\n<p>DEVELOPMENT (not converted to branch)</p>\r\n<p>&nbsp;&nbsp;&nbsp; <span style=\"text-decoration:underline\">DEVELPOMENT</span> (is converted to branch)</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BIN......</p>\r\n<p>RELEASE (not converted to branch)</p>\r\n<p>&nbsp;&nbsp;&nbsp; <span style=\"text-decoration:underline\">RELEASE</span> (is converted to branch)</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BIN.....</p>\r\n<p>&nbsp;</p>\r\n<p>When I branch from a 'converted to branch' folder why would it not already be a 'converted to branch' type folder.....as it is a branch? i.e. if I Branch MAIN above to DEVELOPMENT/DEVELOPMENT the second DEVELOPMENT folder is not defaulted to a 'Converted\r\n to Branch' folder.......yet it is a Branch.</p>\r\n<p>Convert to Branch seems an odd name to me as in my eyes you don't have a Branch until you create a branch. Why can I have a folder 'converted to Branch' that actually has no branch?</p>\r\n<p>&nbsp;</p>\r\n<p>Any clarification would be greatly appreciated.</p>\r\n",
+    "PostedDate": "2010-11-09T07:07:56.46-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "519373",
+    "ThreadId": "234029",
+    "Html": "\r\n<p>In VS 2008, TFS did not have a concept of branches as *first class objects*. These were introduced with TFS 2010.</p>\r\n<p>In TFS 2008, therefore, you could have folders that were branched to other folders. In TFS 2010, when you create a folder it can become (converted to)&nbsp;a branch in a number of ways. When you branch a folder to create a child branch, both the source and\r\n target of the branch operation are converted to first class branches. A major benefit of branch objects is that you can visualize branches in TF 2010 but you cannot visualize folders.</p>\r\n<p>In you example above, where you branch Main to Development/Development (the target branch cannot already exist). A new branch *Development* is created within a containing folder *Development*. Since the Development/Development (folder/branch) branch did\r\n not exist, it was created, not converted from a folder.&nbsp; In our example above, Release/Release (folder/branch) is anothe example of a folder (Release) containing a branch (Release)</p>\r\n<p>You can also take any folder in your hierarchy and convert it from a folder to a branch. Or you can take a branch and convert it to a folder. What you cannot do, however, is create a nested branch scenario. A branch in TFS 2010 cannot contain another branch\r\n undereath it. Release/Release cannot both be branches (although they could be folders. Similarly Development/Development cannot both be branches.</p>\r\n<p>In VS 2008, it was difficult to ascertain which folders were also branches (there were no branch objects). Folders, and branched folders all had folder icons associated with them in Source Code Explorer. In TFS 2010, the branch icon is separate and distinct\r\n from the folder icon. When a folder is converted to a branch, it is no&nbsp; longer technically a folder.</p>\r\n<p>Hope this helps,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</p>\r\n",
+    "PostedDate": "2010-11-09T07:38:14.067-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "519403",
+    "ThreadId": "234029",
+    "Html": "\r\n<p>Am I correct in stating that converting a folder to a branch just changes the folder icon to a branch icon and is simply a visual notation with nothing else happening?</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-11-09T08:33:00.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "519413",
+    "ThreadId": "234029",
+    "Html": "\r\n<p>Mike,</p>\r\n<p>No, changing the icon is only a small part of the picture. You can only do branch visualization on branches (witht the branch icon), not with folders (with the folders icon)</p>\r\n<p>Bill</p>\r\n",
+    "PostedDate": "2010-11-09T08:48:57.16-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "519425",
+    "ThreadId": "234029",
+    "Html": "\r\n<p>Bill,</p>\r\n<p>Thanks for the responses....and all of the other support here as well.... but my thick skull just can't seem to get over the name 'Convert to Branch'. A branch, is created by copying one set of 'data' to another set, the output of 'Convert to Branch' does\r\n not result in another set of data.</p>\r\n<p>I'm still not clear, outside of visualizations and the ability for the IDE to display graphical information what effect does a folder converted to a branch have on the actual branching process? It seems I do not have to Convert to Branch, in the above example\r\n what would happen if MAIN had not been converted to a branch?</p>\r\n<p>&nbsp;</p>\r\n<p>Mike</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-11-09T09:07:36.033-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "519480",
+    "ThreadId": "234029",
+    "Html": "\r\n<p>Mike,</p>\r\n<p>In this case, Converting a folder to a Branch *converts* the type of object from folder to branch (it does not result in another set of data, as you note.). Converting a folder to a branch&nbsp;enables a lot of new branch functionality in TFS 2010 such as\r\n branch visualizations, tracking changesets, etc.</p>\r\n<p>As I noted above, by default, when you start with a folder and branch this folder to a new branch you have the option to convert the source and target folders to branches as part of the branching operation. If you uncheck this option, Main and Development/Development\r\n will remain as folders. Keeping them as folders, does not change the branching process, per se. But it does prevent you from doing the branch visualizations that are available only on branch objects.</p>\r\n<p>In fact, when you create a&nbsp; branch, there is no copying of data from the source branch to the new target branch. TFS only keeps a delta (what has changed). So only when you make changes to a file in the new branch and check it in will you begin to create\r\n data (behind the scenes) under the new branch.</p>\r\n<p>You can't see this in the IDE - becuase when you open a file in the new branch you are seeing the current state of the file. But behind the scenes TFS does not store the complete before and after of this file ... just the changes.</p>\r\n<p>Regards,</p>\r\n<p>Bill Heys</p>\r\n",
+    "PostedDate": "2010-11-09T10:41:36.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "519499",
+    "ThreadId": "234029",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>wheys wrote:</strong><br>\r\n<br>\r\n</blockquote>\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<p>As I noted above, by default, when you start with a folder and branch this folder to a new branch\r\n<span style=\"color:blue\">you have the option to convert the source and target folders to branches as part of the branching operation.</span> If you uncheck this option, Main and Development/Development will remain as folders. Keeping them as folders, does not\r\n change the branching process, per se. But it does prevent you from doing the branch visualizations that are available only on branch objects.</p>\r\n<br>\r\n</blockquote>\r\n<p>Ok I am clear now, 'Converting to Branch' has nothing at all to do with the actual code branching process itself. Above in blue again shows my confusion around this 'Convert to Branch' option, creating a branch....creates a branch regardless of whether I\r\n choose convert to branch or not. If I choose to also convert to branch it enables various GUI viewing capabilities that in no way effect the physical branching process itself.</p>\r\n<p>While I do not have a better name for it I believe that 'Convert to Branch' is a very misleading term for those new to branching.</p>\r\n<p>Seems to me that the ability to visually differentiate between a source folder and a folder resulting from a branch operation would be something you would always want. Are there reasons you would not want to 'Convert to Branch'?</p>\r\n<p>Thanks for your help.</p>\r\n<p>Mike</p>\r\n",
+    "PostedDate": "2010-11-09T11:12:41.02-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "519511",
+    "ThreadId": "234029",
+    "Html": "\r\n<p>Mike,</p>\r\n<p>Convert to Branch - as its name implies - converts a folder object to a branch object, thus enabling branch visualizations for that branch.</p>\r\n<p>You also have (not as easy to find) Convert to Folder - which converts a branch back to a folder.</p>\r\n<p>If you do not select the option to convert source and target folders to branches, then after the branch operation (assuming you are branching from a folder, not a branch object), you will end up with *branched folders*. They will be *branches* with functionality\r\n similar to that in VS 2008, but without visualizations. With the option selected you will start from a folder and end up with two first-class branches - with visualizations enabled.</p>\r\n<p>I can't think a better term than Convert [folder] to Branch. That is precisely what is happening.</p>\r\n<p>As for your *editorial* comment about always wanting to select this option - I agree - absolutely. But there are times when you may want to restructure your folder/branch hierarchy when it might (rarely) be preferred to have a folder (or branched folder)\r\n rather than a first-class branch. Nested branches (whcih are not allowed) might be one case where if you convert a branch to a folder (branched folder), you might be able to nest a branch under it, or make a different folder in the hierarchy into a branch.\r\n These are admittedly edge cases.</p>\r\n<p>Bill</p>\r\n",
+    "PostedDate": "2010-11-09T11:34:06.463-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "519520",
+    "ThreadId": "234029",
+    "Html": "\r\n<p>Mike,</p>\r\n<p>As an example of my points above. I started with a new team project. I add a *folder* called Main.</p>\r\n<p>I then branch Main to Development/Development and choose the option to convert folders to branches. Both the source and target folders become branches and have the branch icon in SCE. This option only appears when the source of your branch operation is a\r\n folder (not a branch).</p>\r\n<p>Next I create another new folder called Main2. I then branch Main2 to Development/Development2 and choose to deselect the convert folders to branches option. Both the source and target folders remain as folders (branched folders) in SCE. If you look at the\r\n properties of a branch and compare that to the properties of a folder, they are quite different.</p>\r\n<p>Next I branched from branch Main to Main2/Main3. This operation is allowed becuase Main2 is a branched folder. Main and Main3 are branches.</p>\r\n<p>Next I try to convert Main2 from a folder to branch (convert to branch). This does not work&nbsp;because this folder contains a branch underneath it.</p>\r\n<p>Next I convert Main2/Main3 from a branch to a folder (this option is not easy to find. It is under File -&gt; Source Control -&gt; Branching and Merging, but not under the Branching and Merging menu when you right-click on Main2/Main3</p>\r\n<p>Now Main2 and Main2/Main3 are branched folders. I can now make Main2 a branch (Convert to Branch)</p>\r\n<p>So now Main2 is a branch and Main2/Main3 is a branched folder.</p>\r\n<p>Regards<br>\r\nBill Heys</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-11-09T11:43:03.27-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

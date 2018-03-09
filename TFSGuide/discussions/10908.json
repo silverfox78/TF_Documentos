@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "35361",
+    "ThreadId": "10908",
+    "Html": "\r\nPlease add page numbers and version/date to headers and footers.<br />",
+    "PostedDate": "2007-06-01T09:23:37.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "35602",
+    "ThreadId": "10908",
+    "Html": "\r\nI will second that. It's a pain to use the document with no page numbers!<br />",
+    "PostedDate": "2007-06-04T08:35:52.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "35630",
+    "ThreadId": "10908",
+    "Html": "\r\n{quote} <br />FreeToDev wrote:<br />I will second that. It's a pain to use the document with no page numbers!<br />{quote}Oh, I know, I've already gotten some pages out of order, now I have to go through page by page matching them up in the PDF to get them back in order.  Huge PITA.<br />",
+    "PostedDate": "2007-06-04T11:08:11.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "47388",
+    "ThreadId": "10908",
+    "Html": "\r\nYes we will include page numbers in the next version of the PDF, and it will definately be in place for the print guide as published by MSPress.<br /><br />Thank you for this request and we are sorry for any inconvenience the lack of page numbers in the current version has caused you. Keep using the guide and let us know if there are any other areas we can improve.<br />",
+    "PostedDate": "2007-08-31T08:06:49.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "47398",
+    "ThreadId": "10908",
+    "Html": "\r\nMany thanks!<br /><div class=\"quote\" style=\"border: dotted .1em #aaa; border-left: none; border-right: none; font-style: italic; margin: 1em 0em 2.5em 3em;padding: .2em;\"><br />jtaylorsi wrote:<br />Yes we will include page numbers in the next version of the PDF, and it will definately be in place for the print guide as published by MSPress.<br /><br />Thank you for this request and we are sorry for any inconvenience the lack of page numbers in the current version has caused you. Keep using the guide and let us know if there are any other areas we can improve.<br /><br /></div>",
+    "PostedDate": "2007-08-31T09:01:39.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

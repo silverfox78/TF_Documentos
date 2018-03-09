@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "571784",
+    "ThreadId": "247481",
+    "Html": "\r\n<p>We are currently in the process of identifying a branching model based on the documentation posted here. After some early discussions we are thinking the Standard Branch Plan will probably statisfy our needs. However, I have some questions about how to handle\r\n check-ins and builds:</p>\r\n<p>1. When we follow the best practice of only checking in code into the Development branch, should we create a Gated Check-in Build definition specifically for those check-ins on that branch. Is that the right place for a Gated Check-in to take place? Or does\r\n it make more sense to execute a Gated Check-in build when the Development branch is reverse integrated into Main and the merge changes are then checked in?</p>\r\n<p>2. We are a very small development/QA team and we currently don't have any integrated testing into our build processes, though we plan on implementing something in due time. Our current process is comprised of building the code, building an install msi off\r\n that code and then passing it on to QA for testing. Similar to question #1, where is the correct place to integrate Build Verification Tests? Should that be done on the Development branch or Main?</p>\r\n<p>3. In the meantime, and until we implement BVTs, when it comes time to create a build for QA testing, should that build be executed against the Development or the Main branch?</p>\r\n<p>I apologize for all 3 of my questions being somewhat similar, but I want to make sure we implement this correctly.</p>\r\n<p><br>\r\nThanks.</p>\r\n<p>Mike</p>\r\n",
+    "PostedDate": "2011-02-24T13:53:39.217-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "571793",
+    "ThreadId": "247481",
+    "Html": "<p>Gated checkins belong on the Development branch. The whole concept behind gated check-ins is to prevent changes from being checked-in before determining that they will build properly and execute Build Verification Tests (BVTs). It doesn't make much sense to do gated check-ins on a merge, since there are no pending check-ins until after the merge completes and merge conflicts are resolved.</p>\r\n<p>It does make sense to have automated build tests to speed up code velocity. Build Verification Tests are useful anywhere (any branch) that builds take place.</p>\r\n<p>Typically when you are stabilizing code for a release (develoment is done) you deploy to QA from the Main branch. But if you want QA to test a feature before it is integrated with other features, you can deploy to QA from a Development branch.</p>\r\n<p>Hope this helps</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-02-24T14:05:12.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

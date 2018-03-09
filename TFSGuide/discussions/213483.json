@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "446065",
+    "ThreadId": "213483",
+    "Html": "<p>A lot of the guide seems to be geared toward adding new solutions to an existing structure.&nbsp; What if we just built our solutions without TFS, and now we want to load them into TFS?</p>\r\n<p>I have built the disk structure to following the general guides, except on thing that I didn't see.</p>\r\n<p>For example, our .NET and BizTalk naming convention is something like this: CompanyName.AppName.AppFunction.BizTalk.Type.</p>\r\n<p>I currently have the disk structured Under Project/Main/Source/CompanyName/ApplicationName/AppFunction.BizTalk/Type/CompanyName.ApplicationName.AppFunction.BizTalk.Artifacts.sln.</p>\r\n<p>I remember having to following this type of pattern at some place I worked in the past. Is it advised to match the disk directory to your xx.xx.xx.xx naming convention of your projects?&nbsp;</p>\r\n<p>So when I check in - it looks like I have two options:&nbsp; I could either do 1) &quot;Add Folder&quot; and pull in my whole &quot;Project&quot;Directory (with all children) at once,<br>or 2) I could open each solution and check it in.&nbsp;</p>\r\n<p>Thanks,</p>\r\n<p>Neal Walters</p>",
+    "PostedDate": "2010-05-21T17:56:50.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

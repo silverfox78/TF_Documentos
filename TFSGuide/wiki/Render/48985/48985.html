@@ -1,0 +1,54 @@
+<div class="wikidoc"><h3>How To:  Perform a Baseless Merge in Visual Studio Team Foundation Server</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Applies To</h3><ul><li>Microsoft&#174; Visual Studio&#174; 2005 Team Foundation Server (TFS)</li>
+<li>Microsoft Visual Studio Team System (VSTS)</li></ul>
+
+<h3>Summary</h3>This How To article walks you through the process of merging files from two branches that are not related to one another. The process of merging items that are not directly branched from each other is called a <i>baseless merge</i>. To perform a baseless merge, you must use the <b>Tf merge</b> command. You cannot perform a baseless merge operation from Visual Studio.<br />
+<h3>Contents</h3><ul><li>Objectives</li>
+<li>Overview</li>
+<li>Summary of Steps</li>
+<li>Step 1 – Evaluate Whether a Baseless Merge Is Needed</li>
+<li>Step 2 – Perform a Baseless Merge Using Tf.exe</li>
+<li>Step 3 – Resolve Merge Conflicts</li>
+<li>Step 4 – Check-In the Merged Changes</li>
+<li>Additional Resources</li></ul>
+
+<h3>Objectives</h3><ul><li>Learn how to decide if a baseless merge is necessary</li>
+<li>Perform a baseless merge and resolve merge conflicts</li></ul>
+
+<h3>Overview</h3>The process of merging items that are not directly branched from each other is called a <i>baseless merge</i>. For example, you might want to merge a change between two release branches, which are siblings of each other, without merging up to the parent branch. You can only perform a baseless merge by using the <b>Tf merge</b> command. You cannot perform a baseless merge from within the Visual Studio IDE.<br /><br />When you perform a baseless merge, TFS does not have any information about the relationship of the files in the branches. For example, if you have renamed a file, this will be viewed as a deleted file and a new file will be added in the branch. For this reason you have to perform more manual conflict resolutions than when you perform a normal merge. However, you only have to perform this conflict resolution once. After you have performed the baseless merge, TFS records merge history and establishes a relationship between the folders and files.<br />
+<h3>Summary of Steps</h3><ul><li>Step 1 – Evaluate Whether a Baseless Merge Is Needed</li>
+<li>Step 2 – Perform a Baseless Merge Using Tf.exe</li>
+<li>Step 3 – Resolve Merge Conflicts</li>
+<li>Step 4 – Check-In the Merged Changes</li></ul>
+
+<h3>Step 1 – Evaluate Whether a Baseless Merge Is Needed</h3>In this step, you evaluate the branches and items to be merged to determine if you need to do a baseless merge or whether a regular merge will work.<br /><br />If you are the owner/administrator of your team project, you will know the relationships between the branches or items. From Visual Studio, you can only merge the branches or items that have a parent-child relationship. If your project contains branches or items that do not have this relationship, you require to perform baseless merge.   <br /><br />If you are not aware of all the relationships between the branches or items, you can evaluate whether you need to use a baseless merge as follows.<br />
+<ol><li>Open <b>Source Code Explorer</b>.</li>
+<li>Right-click the branched folder and then click <b>Merge</b>.</li>
+<li>In the <b>Source Control Merge Wizard</b> dialog box, click the <b>Target branch</b> drop-down list.</li></ol>
+If you do not see an entry for the branch you want to merge, this indicates that no merge relationship exists between these branches. In this case you must perform a baseless merge.<br />
+<h3>Step 2 – Perform a Baseless Merge Using Tf.exe</h3>In this step, you use the TFS command line tool <b>Tf.exe</b> to perform a baseless merge.<br /><br />To perform a baseless merge:
+<ol><li>Set the Workspace for both branches by performing a “Get Latest” operation on the branches to be merged:
+<ol><li>Open <b>Source Code Explorer</b>.
+<ol><li>Right-click the folder for the first branch to be merged, and click <b>Get Latest Version</b>.</li>
+<li>Repeat the previous step for the second branch to be merged.</li></ol></li></ol></li></ol>
+<br />Note that if no workspace is mapped, Visual Studio prompts you to select a folder on your local drive.<br />	
+<ol><li>Open a Visual Studio command window.</li>
+<li>Run the following Tf.exe command from the command line:</li></ol>
+<span class="codeInline"> Tf merge /baseless &lt;&lt;source path&gt;&gt; &lt;&lt;target path&gt;&gt; /recursive </span><br /><br /><b>Example</b><br /><span class="codeInline"> Tf merge /baseless c:\data\proj1 c:\data proj2 /recursive </span><br /><br />If you need to merge specific versions of the code changes, you can use the version switch with <b>Tf.exe</b> as follows:<br /><span class="codeInline"> tf merge /baseless &lt;&lt;source path&gt;&gt; &lt;&lt;target path&gt;&gt; / recursive /version:&lt;&lt;from Changeset&gt;&gt;~&lt;&lt;to Changeset&gt;&gt; </span><br /><br /><b>Example</b><br /><span class="codeInline"> tf merge /baseless c:\data\proj1 c:\data\proj2 /recursive /version:C123~C125 </span><br />
+<h3>Step 3 – Resolve Merge Conflicts</h3>In this step, you resolve conflicts that might occur when performing a baseless merge. After you run the Tf.exe command, it displays a <b>Resolve Conflicts</b> dialog box with a list of the files that have conflicts.<br />
+<ol><li>Select each file and click <b>Resolve</b>.</li>
+<li>In the <b>Resolve version conflict</b> dialog box:
+<ol><li>If there are no content changes, select the <b>Keep changes in the target branch</b> resolution option and then click <b>OK</b>.</li>
+<li>If there are content changes, select the <b>Merge changes in merge tool</b> resolution option, and then click <b>OK</b>.</li></ol></li>
+<li>In the merge tool, click the conflict regions in the upper pane or type in the lower pane to apply changes for each conflicting line.</li>
+<li>After you have applied changes for all of the conflicts, click <b>OK</b> in the merge tool.</li>
+<li>After all the conflicts have been resolved, click <b>Close</b>.</li></ol>
+
+<h3>Step 4 – Check-in the Merged Changes</h3>In this step, you check-in the baseless merged changes<br />
+<ol><li>Open <b>Source Code Explorer</b>.</li>
+<li>Right-click the target folder in which you have merged the changes and click <b>Check-in pending changes</b>.</li>
+<li>In the <b>Check-In Source Files</b> dialog box, ensure that all the files to be checked in are selected.</li>
+<li>Click <b>Check In</b>.</li></ol>
+
+<h3>Additional Resources</h3><ul><li>To learn how to merge files and folders, see “How to: Merge Files and Folders” at <a href="http://msdn2.microsoft.com/en-us/library/ms181428(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181428(VS.80).aspx</a> </li>
+<li>To learn more about baseless merge, see the /baseless option in “Merge Command” at <a href="http://msdn2.microsoft.com/en-us/library/bd6dxhfy(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/bd6dxhfy(VS.80).aspx</a></li></ul></div><div class="ClearBoth"></div>

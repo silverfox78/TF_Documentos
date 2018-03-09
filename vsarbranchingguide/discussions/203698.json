@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "413789",
+    "ThreadId": "203698",
+    "Html": "<p>Hi there,</p>\r\n<p>Thanks for the great description of using branches. Before this guide I had heard of branches but never really understood how to use them properly.</p>\r\n<p>I do however have a question regarding the solution names. When I branch my Main to a Development branch, its solution name will be the same as the solution name in the Main branch.&nbsp;</p>\r\n<p>This is what my recent projects looks like after creating a main branch and two development branches... you can see how this can get confusing.</p>\r\n<p><img src=\"http://www.robba.nl/branch solutions.jpg\" alt=\"\"></p>\r\n<p>I've tried renaming the solution in the development branches, but a solution rename will propagate to the other branches when they are merged.</p>\r\n<p>I was wondering how the rest of you solve this particular issue.</p>\r\n<p>Thanks in advance.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-03T11:11:34.283-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "413808",
+    "ThreadId": "203698",
+    "Html": "<p>I think you will have to navigate in a different way.</p>\r\n<p>You would start by connecting to a Team Project within TFS. Presumably you would already have a workspace mapped to the various branches you are using.</p>\r\n<p>From Source Control Explorer (SCE) you would navigate to the Branch/Folder for the specific solution you want to open. You should be able to see in SCE which solution is opened up in Solution Explorer.</p>\r\n<p>You are right that the Recent Projects list is pretty useless at this point. You are also correct that renaming solutions (by branch) is not viable.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-03-03T11:55:30.783-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "413811",
+    "ThreadId": "203698",
+    "Html": "<p>Hmm.. I never really thought of it that way. I knew you could open a project directly from the Source Control Explorer, but I've just gotten so used to the Recent Projects window that I didn't even occur to me to do it that way.</p>\r\n<p>Thanks for the quick reply!</p>",
+    "PostedDate": "2010-03-03T12:10:22.697-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

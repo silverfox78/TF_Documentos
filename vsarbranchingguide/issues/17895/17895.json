@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "this is more of a discussion",
+    "ClosedDate": "2013-11-30T07:58:23.93-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Since this is a CodePlex project you should make the raw Word and image documents available so that we can modify them to fit the needs of our separate teams. \n \nFor example, if my company is using the advanced branching plan, then I would want to remove the basic and standard plans from the documents I give them. Likewise, I would want to add my own section on version numbers that apply specifically to my project..",
+    "LastUpdatedDate": "2013-11-30T07:58:23.93-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2012-04-20T17:27:20.633-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "No Source Code",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 17895
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The ranger team does not generally release the original word documents. We have had copyright issues in the past, where people will modify \"our documents\" and release them with modifications we do not and cannot approve. Often the changed documents do not give appropriate copyright credit to the Ranger team (a violation of the agreement you consent to when you download from Codeplex)",
+      "PostedDate": "2012-07-17T14:22:54.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please consider to create document templates, that different teams can use to describe their own branching plans.\n",
+      "PostedDate": "2012-10-02T13:39:28.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-10-02T13:39:41.417-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:42:53.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-11-30T07:58:23.93-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

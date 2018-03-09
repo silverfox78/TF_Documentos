@@ -1,0 +1,147 @@
+<div class="wikidoc"><h3>Chapter 4 - Structuring Projects and Solutions in Team Foundation Source Control</h3>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h3>Objectives</h3><ul><li>Structure projects for effective team development in Microsoft&#174; Visual Studio&#174; Team Foundation Server (TFS) source control.</li>
+<li>Keep server-side and client-side folder structures synchronized.</li>
+<li>Choose a strategy for unit test structure.</li>
+<li>Create a folder structure that supports various branching scenarios.</li>
+<li>Learn what a workspace is and how it maps local files to source control.</li>
+<li>Understand what files are added to source control.</li></ul>
+
+<h3>Overview</h3>Many of the default folder conventions used by Visual Studio when creating new solutions and projects are not optimized for team development and for use with TFS source control. Rather than accepting the defaults when you create new Visual Studio projects and solutions, you should give careful consideration to your local and server-based folder structure.<br /><br />This chapter starts by explaining how you should structure solutions and projects on your development computer (the client-side) and how you should structure your folders within TFS source control (the server-side). It provides example folder structures for a variety of application types including Microsoft Windows&#174; Forms, smart clients, and Web applications. The chapter then explains how workspaces are used to manage the mappings between client and server folder structures. <br />
+<h3>How to Use This Chapter</h3>Use this chapter to learn about sample folder structures suitable for team development projects of various sizes and complexity. To gain the greatest benefits from this chapter, you should:
+<ul><li><b>Use the server-side structure suggestions</b>.** Use the suggested server-side folder structures to organize your project source code within TFS source control.</li>
+<li><b>Use the client-side structure suggestions</b>.** Use the suggested client-side folder structures to organize your project source code in your local development workspace.</li>
+<li><b>Read the companion How To articles</b>. These articles provide a step-by-step walkthroughs of some of the processes discussed in this chapter:</li>
+<li>How To: Create Your Source Tree in Team Foundation Server.</li>
+<li>How To: Structure ASP.NET Applications in Team Foundation Server.</li>
+<li>How To: Structure Windows Applications in Team Foundation Server.</li>
+<li>How To: Structure Your Source Control Folders in Team Foundation Server.</li></ul>
+
+<h3>Server-Side Structure</h3>Most team projects contain one or more Visual Studio solutions, each of which contains one or more Visual Studio projects. When you require branching to support isolated development paths, you use a root level folder named <b>Main</b> (on both client and server) to group together your Visual Studio projects. The following is a sample folder structure within TFS source control:<br /><pre>
+$MyTeamProject1
+     /Main 						? Can contain solution (.sln) files	
+	/Source
+		/MyApp1					? Contains MyApp1.sln file 
+			/Source				? Contain folder for all source
+				/ClassLibrary1		? Contains ClassLibrary1.csproj 
+				/MyApp1Web 		? Contains Default.aspx
+			/UnitTests			? Container folder for unit tests
+				/ClassLibrary1Tests	? Contains test project and code
+				/MyApp1WebTests 	? Contains test project and code
+		/SharedBinaries				? Shared binaries e.g. libraries
+		/SharedSource				? Shared source code	 
+	/Docs						? Contains product documentation
+	/Tests						? Container for tests
+		/FunctionalTests
+		/PerformanceTests
+		/SecurityTests
+/TeamBuildTypes						? Created automatically by Team Build. 
+	/BuildType1
+	/BuildType2
+</pre><br /><br /><b>Main</b> is a container folder for the source files and other related artifacts such as build output, design documentation, and test cases. An application folder (such as <b>MyApp1</b> in the preceding example) contains the Visual Studio solution (.sln) file used to group together a related set of Visual Studio projects. Each project file (.vcproj or .vbproj) is contained in a dedicated project folder, located beneath /Main/Source/MyApp1/Source. Unit tests that accompany each source project are located beneath the <b>UnitTests</b> folder. You can place additional Visual Studio solution (.sln) files in the <b>Main</b> folder to allow you to work with multiple different groupings of projects.<br /><br />The <b>Docs</b> and <b>Test</b> folders are used to hold additional artifacts associated with the team project including product documentation and automated tests. <br /><br />The <b>TeamBuildTypes</b> folder is automatically created for you when you generate your first Team Build.  If you want to manually check in a team build type you can create this folder by hand, add your Team Build files, and TFS recognizes this folder for you automatically.<br /><br />For more information about project groupings and solution structure, see “Chapter 3 - Structuring Projects and Solutions in Source Control.”<br />
+<h4>Storing Unit Tests</h4>You can store unit tests beneath a folder named <b>UnitTests</b> at the same level as <b>Source</b> as shown here. <br /><pre>	…
+		/MyApp1					? Contains MyApp1.sln file 
+			/Source				? Contain folder for all source
+				/ClassLibrary1		? Contains ClassLibrary1.csproj 
+				/MyApp1Web 		? Contains Default.aspx
+			/UnitTests			? Container folder for unit tests
+				/ClassLibrary1Tests	? Contains test project and code
+				/MyApp1WebTests 	? Contains test project and code
+</pre><br />This scenario treats unit tests as first-class citizens. However, it does so at the expense of project level branching compatibility. An alternate structure is shown here:<br /><pre>
+		/MyApp1
+			/Source
+				/ClassLibrary1
+				/ClassLibrary1Tests
+				/MyApp1Web
+				/MyApp1WebTests
+</pre><br />The following pros and cons apply to each approach:<br />
+<h5>UnitTests as a Peer to the Source folder</h5><ul><li>Pro: You can find unit tests in one place.</li>
+<li>Pro: You separate shipping code from non-shipping code.</li>
+<li>Pro: Your build process can easily run all unit tests across all projects.</li>
+<li>Con: It is harder for developers to run unit tests for their project only.</li>
+<li>Con: When you branch source, it will not include unit tests. </li></ul>
+
+<h5>UnitTests in Each Project</h5><ul><li>Pro: Developers can easily run unit tests on a single project.</li>
+<li>Pro: When you branch, your branched folders include unit tests, so they can stay tightly bound to the source in each branch.</li>
+<li>Con: You mix shipping with non-shipping code in the source folder.</li>
+<li>Con: It is generally harder to run all unit tests at once at build time across all projects.</li></ul>
+
+<h4>Storing Documents</h4>The <b>Documentation</b> folder is for product related documentation. To help determine what documents to store in TFS source control and what to store in a document library on your Microsoft Windows SharePoint&#174; team site, consider the following:<br />
+<ul><li>Use SharePoint for internal team documents such as use cases, scenario and requirements documentation, and design documentation.</li>
+<li>Use TFS source control for product-related documentation that you ship to your customers. This could include installation and deployment guides, operations guides, and Help files.</li></ul>
+<br />Most documents are binary files, so consider using exclusive locks to avoid manual merges. By doing so, you get notified when a file is in use and you help avoid having to perform manual merges.<br /><br />Use caution when using SharePoint because strict management of document versions is required. It is easier to overwrite changes in SharePoint compared to TFS source control. By default, SharePoint enables the &quot;overwrite existing file&quot; option selected when files are uploaded.<br />
+<h3>Client-Side Structure</h3>The local folder structure on your development workstations should be identical to the server folder structure. Keep source artifacts well organized on your workstations by placing all source from all team projects together beneath a single root folder, such as C:\DevProjects. Create one sub-folder for each team project as shown in this example:<br /><pre>
+C:\DevProjects				? Root container folder for all team projects
+	\MyTeamProject1			? Container folder for TeamProject1
+	\MyTeamProject2			? Container folder for TeamProject2
+</pre><br />Beneath each team project folder, use a copy of the application folder structure used on the source control server as shown in the following example: <br /><pre>
+\MyTeamProject1					? Container folder for TeamProject1
+    \Main					? Contains .sln files that span projects
+	\Source
+		\MyApp 1			? Contains MyApp1.sln
+  		    \Source			
+	 		\ClassLibrary1		? Contains ClassLibrary1.csproj 
+			\MyApp1Web		? Contains Default.aspx
+		    \UnitTests			? Contains unit test projects and source
+			\ClassLibrary1Tests
+			\MyWinApp1Tests
+		\SharedBinaries			? Shared binaries e.g. libraries
+		\SharedSource			? Shared source code	 
+	\Docs					? Contains product documentation
+	\Tests					? Container for tests
+		\FunctionalTests
+		\PerformanceTests
+		\SecurityTests
+</pre><br /><b>Note:</b> The client-side structure automatically mirrors the server-side structure if you create a workspace mapping from the application root to your local computer.  However, in very large projects this can result in slow workspace load times. To optimize your approach for very large projects, create workspace mappings below the root to only retrieve the files you need for development.<br />
+<h3>Branched Folders</h3>To support development isolation with branches, create additional folders as siblings of <b>Main</b>. You can also place additional Visual Studio solution (.sln) files in <b>Main</b> to enable developers to work with various groupings of projects. Branches created from the <b>Main</b> source folders can be used to support ongoing maintenance of product releases or parallel streams of development.<br /><br />In the following sample structure, in addition to the <b>Main</b> root folder, a <b>Development</b> folder (branched from <b>Main</b>) is used to provide isolation for features or for teams. A <b>Releases</b> folder which is a container for release branches (again branched from <b>Main</b>) provides isolation for released builds that require ongoing maintenance and current release lockdown.<br /><pre>
+$MyTeamProject1
+	/Development
+		/FeatureBranch1
+			/Source
+				/MyApp
+		/FeatureBranch2
+			/Source
+				/MyApp
+	/Main
+		/Source
+	/Releases
+		/Release1 – Maintenance  
+			/Source
+				/MyApp
+		/Release2 – Maintenance 
+			/Source
+				/MyApp
+		/Release3 – Current release lockdown
+			/Source
+				/MyApp
+</pre><br /><b>Note</b>: Do not branch unless you need to. If required, you can label a release and branch at a later time.<br /><br />For more information about project groupings and solution structure, see “Chapter 03, Structuring Projects and Solutions in Source Control.”<br /><br />For more information about branching scenarios and related folder structures, see “Chapter 5, Defining Your Branching and Merging Strategy.”<br />
+<h3>Workspaces Explained</h3>A TFS workspace is a client-side copy of the files and folders in TFS source control. A workspace maps source control folders to local file system directories. When you make changes to files within the workspace on your local computer, the local changes, referred to as <i>pending</i> <i>changes,</i> are isolated in your workspace until you check them into the server as an atomic unit. The collective set of changes, checked in as a batch is referred to as a <i>changeset</i>.  <br /><br />A single workspace can contain references to multiple team projects. You can also use multiple workspaces to isolate files or versions for your use only. Workspaces are per computer, per user account. Therefore, you can have different workspace definitions for each computer you use. Also, as a single user, you can have multiple workspaces on a single computer.<br /><br /><b>Note</b>: You can only map each physical location on the local file system by using a single workspace. However, you can map each <i>server</i> directory to entirely different local directories by using different workspaces. <br />
+<h4>Creating a New Workspace Mapping</h4>Because mappings are recursive, when you create a new workspace mapping and you perform a <b>Get Latest Version</b> operation at the root of that workspace, the entire local folder structure is created automatically. The newly created local folder structure matches the server structure.<br /><br />Keep the following recommendations in mind when you create new workspace mappings:
+<ul><li>The project owner must ensure that the correct folder structure is used locally prior to adding the solution to source control for the first time.</li>
+<li>When establishing a workspace mapping for a team project for the first time and performing a <b>Get Latest</b> operation, be sure to map the root team project folder into an appropriate local folder such as C:\DevProjects\TeamProject1.</li></ul>
+
+<h4>Where Are Workspace Mappings Stored?</h4>Workspace information is maintained on both the client and the server. On the client, workspace information is held in VersionControl.config which is located in the following folder:<br /><span class="codeInline"> \Documents and Settings\[user]\Local Settings\Application Data\Microsoft\Team Foundation\1.0\Cache. </span><br /><br />The VersionControl.config file maps the name of the workspace to a local directory on your computer. It does not hold the mapping between individual source control folders and your local directories. That information is held on the server in several tables (including tbl<i>Workspace and tbl</i>workingfolder) in the TfsVersionControl database. <br />
+<h4>Cloaking</h4>You can use cloaking as a performance optimization when you want to prevent a part of the source control tree from being retrieved. The following are typical scenarios for using cloaking:
+<ul><li>You want to build the project locally and a folder is not needed for the build, for example a documentation folder.</li>
+<li>You are part of a large team project and you only want to retrieve part of the project.</li></ul>
+<br />For either of the above scenarios you can cloak folders to stop the client retrieving those folders. You cloak folders on the client by editing the workspace and changing the status of the working folder from active to cloak. <br /><br />Keep the following recommendations in mind when you cloak:
+<ul><li>Do not cloak individual files. This is likely lead to maintenance problems later in the project.</li>
+<li>For a large project, map out the root folder and cloak sub folders rather than creating multiple workspaces for the project.</li></ul>
+
+<h3>What Files Should Be Version Controlled?</h3>The following list identifies the key file types that you should add to source control. These are the file types that are added when you click <b>Add Solution to Source Control</b>.<br />
+<ul><li><b>Solution files (</b>.sln).* Solution files maintain a list of constituent projects, dependencies information, build configuration details, and source control provider details. </li>
+<li><b>Project files (</b>.csproj or <b>.vbproj)</b>. Project files include assembly build settings, referenced assemblies (by name and path), and a file inventory. </li>
+<li><b>Visual Studio Source Control Project Metadata (</b>.vspscc)*. These files maintain project bindings, exclusion lists, source control provider names and other source control metadata.</li>
+<li><b>Application configuration files (</b>.config)*. Extensible Markup Language (XML) configuration files contain project and application specific details used to control your application’s run-time behavior. Web applications use files named Web.config. Non-Web applications use files named App.config.</li></ul>
+<br /><b>Note:</b>  At run time, the Visual Studio build system copies App.config to your project’s Bin folder and renames it as &lt;YourAppName&gt;.exe.config.  For non-web applications, a configuration file is not automatically added to a new project. If you require one, add it manually. Make sure you name it App.config and locate it within the project folder.<br />
+<ul><li><b>Source files (</b>.aspx, <b>.asmx, </b>.cs, <b>.vb, …)</b>. These are source code files, depending on application type and language.</li>
+<li><b>Binary dependencies (</b>.dll).* If your project relies on binary dependencies such as third–party dynamic-link libraries (DLLs), you should also add these to your project within source control. For more information about managing dependencies, see Chapter 6, “Managing Source Control Dependencies in Visual Studio Team System.” </li></ul>
+
+<h3>What Files Should Not Be Source Controlled?</h3>The following files are specific to each developer and therefore should not be added to version control: <br />
+<ul><li><b>Solution user option files (</b>.suo).* These contain personalized customizations made to the Visual Studio IDE by an individual developer. </li>
+<li><b>Project user option files (</b>.csproj.user or <b>.vbproj.user).</b> These files contain developer specific project options and an optional reference path that is used by Visual Studio to locate referenced assemblies. </li>
+<li><b>WebInfo files (</b>.csproj.webinfo or <b>.vbproj.webinfo).</b> This file keeps track of a project&#39;s virtual root location. This is not added to source control, to allow individual developers to specify different virtual roots for their own working copy of the project. While this capability exists, it is recommended that all team members use a consistent (local) virtual root location when developing Web applications. </li>
+<li><b>Build outputs.</b> These include** assembly DLLs, interop assembly DLLs and executable files (EXEs). (However, note that assemblies such as third-party binaries that are not built as part of the build process should be placed under version control as described above). </li></ul>
+
+<h3>Summary</h3>Structure projects in TFS source control for effective team development. Use a root-level folder called <b>Main</b> to group together your Visual Studio projects. The <b>Main</b> folder should contain child folders to store various project assets such as source code, tests, documents, and team build types.  <br /><br />Use SharePoint for internal team documents such as use cases and design documentation. Use TFS source control for product-related documentation that you plan to ship to your customers. This might include installation and deployment guides, operations guides, and Help files. <br /><br />Keep the server-side and client-side folder structures synchronized in order to reduce confusion caused by differences in folder organization. To optimize your approach for very large projects, create workspace mappings below the root to ensure that you only retrieve the files you need for development.<br />
+<h3>Additional Resources</h3><ul><li>For more information about Team Foundation Source Control, see “Using Source Code Control in Team Foundation” at <a href="http://msdn2.microsoft.com/en-us/library/ms364074(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms364074(VS.80).aspx</a> </li>
+<li>For more information about creating a workspace, see “How to: Create a Workspace” at <a href="http://msdn2.microsoft.com/en-us/library/ms181384(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181384(VS.80).aspx</a></li></ul></div><div class="ClearBoth"></div>

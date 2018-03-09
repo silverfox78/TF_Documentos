@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1311275",
+    "ThreadId": "569237",
+    "Html": "Hello,\r<br />\n<br />\nOrganization have following delivery scenario:<br />\n<ol>\n<li>Major release every quarter or so</li>\n<li>Minor release (features, bugs) every month or so</li>\n<li>\nHotfixes - as required.<br />\n</li>\n</ol>\nWe adopted Advance Branch Plan, but had some issues merging one change from Hotfix to the Development branch (changeset merge a.k.a. cherry picking). Issue came from the merging files changed in both Hotfix and Servicing branches.\r<br />\n<img src=\"http://i60.tinypic.com/22de9v.png\" alt=\"Image\" />\r<br />\n<br />\nAs a result following change to the branching strategy was suggested:\r<br />\n<img src=\"http://i59.tinypic.com/kdakux.png\" alt=\"Image\" />\r<br />\n<br />\nThat approach will address cherry picking issues, but will require lots of branches to deal with features, hotfixes and critical issues.\r<br />\n<br />\nI was hoping to get an advice and rational explanation which option should be the best choice for our situation.\r<br />\n<br />\nThank you!<br />\n",
+    "PostedDate": "2014-10-07T10:27:01.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

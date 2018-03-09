@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "846558",
+    "ThreadId": "358867",
+    "Html": "\r\n<p>If you haven't made any changes to a Release branch and you never check code into Main, what is the reason to do FI from Main to Dev daily?</p>\r\n",
+    "PostedDate": "2012-06-08T05:57:49.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "846575",
+    "ThreadId": "358867",
+    "Html": "<p>If you never change Main (and you could guarantee that) then a FI would be unnecessary of course.&nbsp; There of course are no changes to merge if there was nothing changed.&nbsp; For peace of mind you might still attempt to FI before every RI (from like a Dev branch) ....just to be sure!&nbsp; :).</p>\r\n<p>So with all things branching, there are certainly a lot of \"what ifs\", but on larger teams with more than one dev branch or some activity in Main, then the step of a Main to Dev FI ahead of doing and RI from said Dev branch back to Main&nbsp;is a way to ensure you are stabilizing on Dev branches ahead of merging those in...&nbsp;and keeping Main stable.</p>",
+    "PostedDate": "2012-06-08T06:35:48.777-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

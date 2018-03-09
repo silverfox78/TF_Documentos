@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "624368",
+    "ThreadId": "260521",
+    "Html": "\r\n<p>This is a discussion thread to address broader version of previous post.</p>\r\n<p>Anyone used MergeMagician enough to have pros/cons/recommendation? (<a href=\"http://www.mergemagician.com\">www.mergemagician.com</a>)</p>\r\n<p>Any other autmated merge tools or scripts available (Open source, third party, hand-crafted PowerShell scripts, etc.)?</p>\r\n<p>I don't have an immediate need, but I'm interested and I'm sure there are teams that could really use additional merge/branching automation. I also remember that conflict resolution should never be considered a fully automatable process. Without humans you\r\n<strong>will </strong>get bad conflict resolutions from time to time.</p>\r\n",
+    "PostedDate": "2011-06-07T13:00:33.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

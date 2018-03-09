@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "803290",
+    "ThreadId": "346752",
+    "Html": "\r\n<p>We currently support a variation of the Advanced Branch Plan. We have a Main, Dev, and Dev_vNext. Each release point results in a corresponding Service Release and Release (Read Only) child branches. This has worked great for us because we were&nbsp;producing\r\n a single software product. However, we are spawning new products and those new products will reuse some projects in our existing branch line. These new products will also be on their own release schedule. At first I thought spinning off separate Dev - Dev_vNext\r\n - Main branches for each new product would be the answer, but there is the issue of the resuable components. I don't want to duplicate projects across separate branch structures. Now I'm wondering if it makes sense to keep our existing Dev, but spawn off child\r\n branches for each product line. The result would be all product lines feeding back into Dev and then Main. So, for example, I could have ProductA, Product B, ProductC and Common all as child branches of Dev. The other part of this is ensuring changes made\r\n to a Common component do not break the build for Products A, B, or C using gated checkin builds.</p>\r\n<p>Any thoughts?</p>\r\n<p>Mike</p>\r\n",
+    "PostedDate": "2012-02-29T10:44:12.597-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "803542",
+    "ThreadId": "346752",
+    "Html": "<p>What would happen if you were to&nbsp;merge ProductA branch back to Dev, then ProductB branch to Dev? What would you have in Dev?&nbsp; Depending on which version you chose to keep, it would be either A or B or a Frankenstein monstrosity. &nbsp;It would not make sense.</p>\r\n<p>That is just one scenario. For branch plan designers, I recommend you draw a picture of the branch paths, and write scenarios. Then desk check the design against them. Then you can evaluate your proposed designs. Think through the common scenarios: starting new dev, release to production, emergency bug fix, etc...</p>\r\n<p>But coming up with the design is the hard part.&nbsp; Martin Hinshelwood offers a nice approach&nbsp;in the following post. <a href=\"http://blog.hinshelwood.com/project-of-projects-with-team-foundation-server-2010/\">http://blog.hinshelwood.com/project-of-projects-with-team-foundation-server-2010/</a>. His post describes one approach to maintaining multiple products in separate folders. His approach has the advantage that the code is in one version control namespace, making it easier to share code among them.&nbsp; Since it's all in one TFS project, if you want all work items in one place, this is a good choice. Notice that making one branch per product is not what he is proposing.&nbsp; Everything he shows is in the trunk. And you can then continue your current branch plan without any variation.</p>\r\n<p>Another approach is to&nbsp;create one TFS Project per product.&nbsp; Then they each get their own trunk.</p>\r\n<p>With either of these approaches, to prevent breaking a product when common code changes, you&nbsp;put a folder inside of each product folder that will contain versioned copies of the binaries of the common code and other external dependencies. Then the respective product teams can choose when to copy a newer version of common code to their folder.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-02-29T19:55:25.767-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "803762",
+    "ThreadId": "346752",
+    "Html": "<p>David, thanks for the response. I guess what I was thinking is that the Product branches would be full child branches of Dev, so each Product branch would have the same projects regardless of whether that&nbsp;product uses them or not. Obviously, it's not ideal, but I thought it would satisfy the possibility of some projects starting off as product specific and transitioning into more of a common role that any product could use. It's happened, so I'm just trying to anticipate scenarios. I need to wrap my head around some of the ideas Martin described.</p>",
+    "PostedDate": "2012-03-01T06:18:30.633-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "804124",
+    "ThreadId": "346752",
+    "Html": "<p>Yes, Martin packed a lot of ideas into that one article. The main theme is that&nbsp;you just put separate products in separate folders. That is super easy, and still allows the shift in roles you describe, where an independent product may become common code later. That is so easy with folders. And it allows you to use any of the published branching plans. When you make a branch, it carries along relative references from one folder to another within the branch.</p>\r\n<p>If you follow your original plan, project references made to projects across branches will have to be made directly to DLLs, not as project references. And when those branches are branched, there is no relative adjustment made. You will soon have a huge mess of confusion.&nbsp; I would caution you against connecting code in one branch to code in another branch, ever. This is not one of those subjective preferences like \"you like blue and I like red.\"&nbsp; This is more like \"you want to walk on hot coals and I think you should walk on carpet.&nbsp;</p>",
+    "PostedDate": "2012-03-01T19:12:04.27-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "806952",
+    "ThreadId": "346752",
+    "Html": "<p>Couple more questions about this setup that Martin described. From his screenshot of the Source Code structure, I see the separation of the products using folders. Easy enough as you said. Now, under each product folder, the Main branch resides at the root and then the children of Main (Dev, R1, et al) reside under their own subfolders. Am I to assume that the Dev, R1, etc branches contain the same subfolders as Main (Build, Documentation, Tools)? I'm specifically focused on the Tools folder, which I assume must be used to store the third-party/common assemblies. Can you clarify that for me?</p>\r\n<p>Also, if I decide to restructure our existing branches this way, is there anything that I need to be aware of with regards to the creation of the folders and the subsequent moving of branches into these folders? Will TFS retain the history on a moved branch. Is a Move the right way to do it or is there a different method to handle this?</p>\r\n<p>Finally, if we end up with separate product folders and one of them is used for Common/Shared projects, what is the right way to propagate the rebuilt shared outputs to the other product's subfolders that will hold those assemblies? Is this TFS Dependency Replicator something I should look into. Or is this more of a responsibilty of the developer to make sure they are using the correct version?</p>",
+    "PostedDate": "2012-03-07T08:59:39.68-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "807068",
+    "ThreadId": "346752",
+    "Html": "<p>Yes, when you branch off of main, and create another branch, let's call it Dev, it will be an identical copy of EVERYTHING in the main branch, including the tools folder, if the tools folder is under MAIN.</p>\r\n<p>That question suggests to me that you need more experience playing with branching. I encourage you to create a TFS Project called Sandbox or whatever. Copy your stuff into there and play around. You seem to want to get it perfect first, which is understandable with something as important as your source code. But in a sandbox, if you mess it up, just create another project and try again. The sandbox will allow your learning to be vastly accelerated.</p>\r\n<p>In answer to your other question, when you go to do this for real, and want to retain history, yes, you will use the MOVE function.&nbsp; It will retain history. but it may appear indented. I can't quite remember how it looks. I am at a location without TFS so I can't check it now. But try a move in TFS source control on something small and harmless so you can see what it looks like when viewing history. Move is great that way. You can rearrange your source tree as you improve your design. But naturally you will want to do it infrequently because it confuses other people who are working with the source code. And moves will not move local files that are outside version control, like the obj and debug folders. This means some garbage gets left laying around on local drives after a move and that can cause issues.</p>\r\n<p>I have never used TFS Dependency Replicator. Sounds cool. I simply manage this manually. I would have tools source in one product. It might even be considered its own product. Like this</p>\r\n<p>TOOLS<br />&nbsp;&nbsp; DEVELOPMENT<br />&nbsp;&nbsp; MAIN<br />&nbsp;&nbsp; RELEASE</p>\r\n<p>Now each consuming product will have a Tools folder underneath the MAIN branch (and by implication, under every branch off of MAIN). Like this picture in Martin's article</p>\r\n<p><a href=\"http://blog.hinshelwood.com/files/2011/05/GWB-Windows-Live-Writer-43a228bc7013_C558-image_2.png\">http://blog.hinshelwood.com/files/2011/05/GWB-Windows-Live-Writer-43a228bc7013_C558-image_2.png</a></p>\r\n<p>Under that consuming tools folder, you might have subfolders for each release. or just one for whatever version you are using. But the developer of the consuming product will put whatever they need in there when they need it. It is typically only the binary output from the desired release version of TOOLS.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2012-03-07T11:25:51.253-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

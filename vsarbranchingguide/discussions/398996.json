@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "925350",
+    "ThreadId": "398996",
+    "Html": "\r\n<p>I'm having difficulty finding any guidance on this topic.</p>\r\n<p>We have several development branches that are &quot;Done&quot;. They have served their purpose and will not&nbsp;accept new changes&nbsp;or be integrated anymore. Now what? I need their history, but I'd like to shove them into another folder to get them out of the\r\n way.</p>\r\n<p>Do you recommend moving these branches to a &quot;archive&quot; folder to get them out of the way? Is there a better solution?</p>\r\n<p>Thanks!</p>\r\n",
+    "PostedDate": "2012-10-11T09:22:46.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925419",
+    "ThreadId": "398996",
+    "Html": "<p style=\"padding-left: 30px;\">You could move them to reduce \"clutter\" in your Source Code Explorer, but existing branch visualizations, branch/merge relationships, change history, etc will not change.</p>\r\n<p style=\"padding-left: 30px;\">Regards,</p>\r\n<p style=\"padding-left: 30px;\">Bill Heys, ALM Ranger</p>",
+    "PostedDate": "2012-10-11T11:09:24.787-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925450",
+    "ThreadId": "398996",
+    "Html": "\r\n<p>Thank you for the quick reply!</p>\r\n<p>I have ultimately decided to <strong>delete the branches</strong>.&nbsp;Here is how I got there. See what you think.</p>\r\n<p>My goal:</p>\r\n<ul>\r\n<li>Remove the &quot;clutter&quot; of multiple development branches in a safe manner </li><li>Keep version history </li></ul>\r\n<p>I found more information and did some of my own testing on our test TFS instance and found these three possibilities:</p>\r\n<ul>\r\n<li>Cloaking the branch\r\n<ul>\r\n<li>Pros - Hides the unneeded branches and keeps history </li><li>Cons - Specific to a workspace. Every developer would have to do this themselves.\r\n</li></ul>\r\n</li><li>Move branch to an &quot;archive&quot; folder\r\n<ul>\r\n<li>Pros - Clears up the clutter for everyone </li><li>Cons\r\n<ul>\r\n<li>Not easily reversed (just in case) </li><li>Creates a complicated changeset (a line for each file and folder) </li><li>Comes with its own trickiness if you ever have to merge to it (best discussion here\r\n<a href=\"http://blogs.msdn.com/b/chandrur/archive/2010/06/09/renaming-branches-in-tfs-2010.aspx\" target=\"_blank\">\r\nRenaming branches in TFS 2010</a>) </li></ul>\r\n</li></ul>\r\n</li><li>Delete the branch\r\n<ul>\r\n<li>Pros\r\n<ul>\r\n<li>very easy </li><li>easily reversed </li><li>creates a simple changeset (one line in it) </li></ul>\r\n</li><li>Cons\r\n<ul>\r\n<li>The word &quot;Delete&quot; is scary </li><li>Any others? </li></ul>\r\n</li></ul>\r\n</li></ul>\r\n<p>What do you think?</p>\r\n<p>If I find out more I'll try to post. Here are some more links discussing the topic, but not a lot of extra information there:</p>\r\n<p style=\"padding-left:30px\"><a href=\"http://stackoverflow.com/questions/650911/whats-the-best-way-to-deal-with-dead-branches-in-tfs\" target=\"_blank\">What's the best way to deal with dead branches in TFS?</a></p>\r\n<p style=\"padding-left:30px\"><a href=\"http://tfsbranchingguideii.codeplex.com/discussions/53852\" target=\"_blank\">What about &quot;closing&quot; a dev branch</a>&nbsp;- response from Bill! ;-)</p>\r\n<p style=\"padding-left:30px\"><a href=\"http://stackoverflow.com/questions/507623/orphaned-branches-in-tfs\" target=\"_blank\">Orphaned Branches in TFS</a></p>\r\n",
+    "PostedDate": "2012-10-11T11:46:55.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925460",
+    "ThreadId": "398996",
+    "Html": "<p>I forgot to mention two other benefits to deleting a branch (as Bill alluded to above):</p>\r\n<ul>\r\n<li>Branch no longer shows up as a merge option in the \"Merge Wizard\" window</li>\r\n<li>Branch does not show up in Branch Hierarchy</li>\r\n</ul>\r\n<p>I found that even though the deleted branch does not show up in the Branch Hierarchy diagram, if you track a changeset that originated in a delete branch, that branch <em>will display</em>&nbsp;while tracking the changeset.</p>",
+    "PostedDate": "2012-10-11T12:04:55.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "938228",
+    "ThreadId": "398996",
+    "Html": "<p>Bebo, are you still happy with your decision after a few weeks have passed? I'm considering deleting some of our old dev branches as well...</p>",
+    "PostedDate": "2012-11-07T15:30:25.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "938572",
+    "ThreadId": "398996",
+    "Html": "<p>Yes! The delete was clean and easy and did exactly what I expected and needed. It might have been obvious to others, but I'm timid when doing things in TFS that I'm not sure about. I've got a lot of people who would scream if I got it wrong. ;-)</p>",
+    "PostedDate": "2012-11-08T07:26:16.99-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "938859",
+    "ThreadId": "398996",
+    "Html": "If you create a sandbox project based on the real source tree, you can<br>\r\ntry out version control ideas with low risk.<br>\r\n<br>\r\nSent from my iPhone",
+    "PostedDate": "2012-11-08T16:03:03.587-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "939147",
+    "ThreadId": "398996",
+    "Html": "<p>That's right! That is basically what I do. We have a separate test instance of TFS that we try these sorts of things. That is how I was able to give as much detail as I did.</p>",
+    "PostedDate": "2012-11-09T06:55:29.24-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "942529",
+    "ThreadId": "398996",
+    "Html": "\r\n<p>David,</p>\r\n<p>That's always good advice! While I could do that and see for myself how it would work, it's hard to judge how my coworkers (who are less experienced with TFS) might see it. So I was curious if Bebo had had any negative feedback from others.</p>\r\n<p>Brian</p>\r\n",
+    "PostedDate": "2012-11-15T23:12:45.043-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

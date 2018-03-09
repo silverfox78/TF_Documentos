@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "804046",
+    "ThreadId": "346933",
+    "Html": "\r\n<p>We have been using the TSF branching guidance (Main, Dev, Release)&nbsp;quite successfully for some time now.&nbsp; Today the TFS admin decided to move all our TFS projects to a new server.&nbsp; When I look at our projects on the new server all the branches\r\n and branch relationships are gone.&nbsp; I'm not sure what he did to perform the copy but is there a way to get our relationships back?&nbsp; I found something about performing a baseless merge and then re-parenting but the re-parent dialog was always empty.</p>\r\n<p>Thanks for any help</p>\r\n",
+    "PostedDate": "2012-03-01T14:39:23.263-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

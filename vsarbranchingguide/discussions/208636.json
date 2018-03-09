@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "428562",
+    "ThreadId": "208636",
+    "Html": "<p>We have the following scenario.</p>\r\n<p>A Dev, Staging and Prod environment.&nbsp;&nbsp;&nbsp;&nbsp; When we have bugs, we fix and test them on our local environment, and then move them to Dev for system and regression testing.&nbsp;&nbsp; We then move them to Staging for testing and acceptance, and once approved by the client, we move them to Prod.&nbsp;&nbsp;&nbsp;</p>\r\n<p>We have just moved from a legacy system to the new system we built, so there are still lots of small bugs, and we usually move 2 per day.&nbsp; I think this would be considered &quot;hot fix&quot; in your terms.</p>\r\n<p>We also have &quot;modifications&quot;, which I believe are similar to your &quot;features&quot;.&nbsp;&nbsp; There are about 10 of these a year and we move them as they are completed.&nbsp;</p>\r\n<p>Should we create a new branch for each modification?&nbsp;</p>\r\n<p>We don't have a &quot;release&quot; version.&nbsp; It is just incrementally fixed, or updated with a modification.&nbsp;</p>\r\n<p>Which strategy seems right for us?&nbsp; Should we have one branch for dev, staging and prod, as well as a branch for each modification?&nbsp; I am thinking those would be 3 separate branches off of Main, and then each mod branch feeding dev?</p>\r\n<p>I feel like we are over complicating this, but we want to do it right the first time.</p>\r\n<p>Thanks for any help you can provide.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-07T16:51:21.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

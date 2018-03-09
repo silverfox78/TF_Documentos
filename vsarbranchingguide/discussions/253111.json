@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "594189",
+    "ThreadId": "253111",
+    "Html": "<p>&nbsp;</p>\n<pre><pre>I have a question regarding branching and environments.</pre>\n<pre>My team is looking at utilizing the mature branching pattern. We currently had a major release in March&nbsp;and have SP1 planned for April and SP2 planned for May.</pre>\n</pre>\n<pre><br /></pre>\n<pre>                 Main</pre>\n<pre>   -------------------------------\n   |                             |          \nDevelopment          ------Service Pack------------\n                     |           |                |\n                 March Fixes     SP1 Fixes    SP2 Fixes\n                     |            |               |\n                 March Release   SP1 Release  SP2 Release</pre>\n<pre><br /></pre>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<pre>We currently utilize three environments for testing before production.\n\nBranch            Environment\n------            -----------\nDevelopment     - DEV\nMain            - Test\nRelease Vehicle - UAT\n\nWhile testing for the SP1 release a emergency hotfix comes up. SP1 has already been deployed to UAT. A new branch is created&nbsp;</pre>\n<pre>from March Release and the fix is made.  The problem I am running into is what environment can I deploy my hotfix changes to for testing? \n</pre>",
+    "PostedDate": "2011-04-08T07:37:34.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "623942",
+    "ThreadId": "260433",
+    "Html": "\r\n<p>My company, Timinpani Software, has just released our new product, MergeMagician (http://www.mergemagician.com).&nbsp; MergeMagician can be used to automate and manage all of the patterns discussed in this document.</p>\r\n<p>MergeMagician is a process management solution that is specifically designed to make it easier to manage branches, and to automate the merge workflow between branches.&nbsp; You connect your branches together using publisher/subscriber relationships.&nbsp;\r\n The MergeMagician service then monitors your branches and repositories, and based on your connection rules, automatically instantiates merges between branches.&nbsp; Merge frequency is highly configurable; publishers and subscribers can each be of three types:\r\n continuous, scheduled, or externally triggered.&nbsp; Externally triggered is useful for either a person issuing the publish or subscribe event, or it is also useful when integrating MergeMagician with a build server.&nbsp; In the latter case, one can configure\r\n multi-stage continuous integration processes by pushing events back and forth between MergeMagician and your build server.</p>\r\n<p>Another part of the secret sauce for MergeMagician is the suspend/resume paradigm, and the web-based conflict resolution interface.&nbsp; This lets anyone on the team participate in the resolution process when merges become conflicted.</p>\r\n<p>Another way to look at it is that MergeMagician adds a form a streams-based development to TFS (stream, as in the AccuRev sense of streams ... changes from one branch can flow to other branches), except the MergeMagician publish/subscribe paradigm allows\r\n a lot more flexibility in how you connect branches together.</p>\r\n<p>Please give it a look at let me know what you think.&nbsp; http://www.mergemagician.com</p>\r\n<p>Thanks.</p>\r\n<p>- Kevin Dietz</p>\r\n",
+    "PostedDate": "2011-06-07T00:05:13.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "624366",
+    "ThreadId": "260433",
+    "Html": "<p>Hmm... The initial discussion post to this thread is close to a third party product advertisement. However the product is directly related to branching (and merging) which is fair game. As long as honest comments (good or bad) regarding MergeMagician I personally feel this is fair game. (That said I'm not a moderator and I don't know the policy details.) <br /><br />BETTER Topic name: What merge automation tools are available?</p>\r\n<p>I'm intereseted in the overall functionality described, but I can't review this product now due to several higher priorities. Sorry. Hopefully next poster will have some time and interest in sharing their independent thoughts.</p>\r\n<p>Enjoy! -<em>Zephan</em></p>",
+    "PostedDate": "2011-06-07T12:55:42.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "624380",
+    "ThreadId": "260433",
+    "Html": "<p>Zephan,</p>\r\n<p>I agree that Kevin's post is advertising his product, Merge Magician. However, I will leave the post and let others decide whether they want to invest in his tools.</p>\r\n<p>Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-06-07T13:24:30.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

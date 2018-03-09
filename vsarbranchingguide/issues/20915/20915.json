@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In the documentation, there are a difference between the diagrams for the basic plan in the cheatsheet and in the general guide (Branching and Merging Guide.pdf)\n\nThe differences are a bit confusing, and as the other guides seem to have the same figures in the cheatsheet and the general guide, we would like the same for the basic plan.",
+    "LastUpdatedDate": "2017-11-28T02:31:22.783-08:00",
+    "PlannedForRelease": "v3.2 - Version Control Guidance",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2014-04-11T03:38:41.893-07:00",
+    "Status": {
+      "Name": "Resolved",
+      "Id": 7
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Documentation (vs2012_v2.1_AllGuides)",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 20915
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This has been addressed in the refactored scenarios in v3.",
+      "PostedDate": "2014-05-01T18:10:47.697-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-28T02:31:22.783-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

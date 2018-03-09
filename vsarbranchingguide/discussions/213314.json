@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "445481",
+    "ThreadId": "213314",
+    "Html": "<p>Is there any guideline as to how the directory structure should be created on the hard drive?&nbsp; I did a quick test of a branch, and if I remember it asked me for a new disk folder for the branch. Since I'm just testing right now, I have c:\\SourceTest and c:\\SourceTestBranch.&nbsp;</p>\r\n<p>Would it be more logical to plan ahead, and create c:\\Source with two subdirectories, Main and Dev for example?&nbsp; Or is the philosophy that each developer should decide for himself where on his own disk he want to store both the Main and the Dev-Branch?&nbsp;&nbsp; By having it hierarchical like this, could a person do a &quot;Get latest&quot; of both the Main and Dev-Branch at the same time?</p>\r\n<p>What about the relationship to workspaces?&nbsp; Should I try to have just one workspace for all my branches and all my projects?&nbsp;</p>\r\n<p>Thanks,</p>\r\n<p>Neal Walters</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-05-20T09:56:06.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453075",
+    "ThreadId": "213314",
+    "Html": "<p>Neal,</p>\r\n<p>I am not sure how elaborate directory structure guidlines can be, since much depends on the structure of the underlying code, solutions, etc.</p>\r\n<p>First, let me emphasise that there is still an underlying 255 character limitation on path length imposed by the operating system. You may discover, that long file names, long branch names, and long folder names combine, after a while, to create unwieldy path names.</p>\r\n<p>I generally create a *root* folder for all my Team Projects on my local hard drive (for example, c:\\VS2010 or c:\\Projects or something similar). This will become the container folder for all of the team projects that I need to map workspaces for.</p>\r\n<p>Under this *root* folder, I generally have a folder for each Team Project (for example if I have TeamProjectABC and TeamProjectXYZ, I will have corrsponding folders c:\\VS2010\\TeamProjectABC and c:\\VS2010\\TeamProjectXYX.</p>\r\n<p>When I create a local workspace mapping for a team project I often just map the Team Project to this local folder corresponding to the TeamProject. (In fact, when I create the mapping, I can create the workspace mapping at the same time).</p>\r\n<p>After the mapping has been established, as I add a folder in Source Control Explorer (after doing a checkin), or create a branch it will create the corresponding folders on my local drive.</p>\r\n<p>Each TeamProject, presumably would have its own separate set of branches, although there are some situations where you might branch across projects.</p>\r\n<p>I think it makes sense to propose a company-wide guideline for setting up the directory structure on a developers local hard drive. I think this is better than leaving this up to individual developers to decide on their own.</p>\r\n<p>When you have a structure like this, you can do a get latest on the Team Project, and it will do a get latest of all the underlying branches. The structure on disk is does not dictate the branch hierarchy. This is why, in Source Control Explorer, you could put all the branches into a single folder on the local drive.</p>\r\n<p>When you do a branch hierachy view, you will see the branch hierachy, while in Source Control Explorer, you will see the folder/branch structure.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-06-08T09:50:59.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

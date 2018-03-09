@@ -1,0 +1,319 @@
+<div class="wikidoc"><h2>Practices at a Glance:  Reporting</h2>- <i><a href="http://blogs.msdn.com/jmeier">J.D. Meier</a>, <a href="http://jtaylorgoodlife.blogspot.com/">Jason Taylor</a>, Alex Mackman, <a href="http://prashantbansode.blogspot.com/">Prashant Bansode</a>, <a href="http://blogs.advantaje.com/blog/kevin/">Kevin Jones</a></i><br />
+<h2>Index</h2><h3>Administration</h3><ul><li><i>How to set up a report dashboard</i></li>
+<li><i>How to set permissions on reports</i></li></ul>
+
+<h3>Creation / Customization</h3><ul><li><i>How to customize an existing report</i></li>
+<li><i>How to create a new report in Visual Studio</i></li>
+<li><i>How to create a new report in Excel</i></li>
+<li><i>How to create a scheduled report snapshot</i></li>
+<li><i>How to create a report subscription</i></li>
+<li><i>How to add a new report to an existing process template</i></li></ul>
+
+<h3>Viewing </h3><ul><li><i>How to analyze the status of a project</i></li>
+<li><i>How to analyze application quality</i></li>
+<li><i>How to review remaining work</i></li>
+<li><i>How to review build status</i></li>
+<li><i>How to review bugs and test results</i></li>
+<li><i>How to review scheduled work versus actual work on an iteration</i></li>
+<li><i>How to determine the owner of the last edit on a file</i></li>
+<li><i>How to discover all the code changes made by a developer</i></li>
+<li><i>How to discover all the code changes made to a file</i></li>
+<li><i>How to discover all the code changes associated with a specific work item</i> </li>
+<li><i>How to generate code churn metrics</i></li>
+<li><i>How to generate workspace metrics such as number of files, lines of code, and number of projects</i> </li></ul>
+
+<h2>Administration</h2><ul><li><b>How to set up a report dashboard</b></li>
+<li><b>How to set permissions on reports</b></li></ul>
+
+<h3>How to Set Up a Report Dashboard</h3>Modify the team project Microsoft&#174; Office SharePoint&#174; portal site in order to create a report dashboard that enables you to display a variety of project information in one location.<br /><br />For example, a useful reporting dashboard could contain the following reports:
+<ul><li>Remaining Work</li>
+<li>Quality Indicators</li>
+<li>Bug Rates</li>
+<li>Project Velocity</li></ul>
+<br />You can add new reports to your SharePoint portal page by adding a Report Viewer Web Part for each report you want displayed on the page.<br /><br /><b>To modify the team project portal and create a reporting dashboard</b>
+<ol><li>Install the Report Viewer Web Part on your report server by using the stsadm.exe tool and RSWebParts.cab, both of which are included with SharePoint and the Report Services installation package. 
+<ol><li>STSADM.EXE can be found in the following path: C:\Program Files\Common Files\Microsoft Shared\web server extensions\60\BIN</li>
+<li>RSWebParts.Cab can be found in the following path: C:\ Program Files\Microsoft SQL Server\90\Tools\Reporting Services\SharePoint </li>
+<li>Example: STSADM.EXE -o addwppack -filename &quot;C:\ Program Files\Microsoft SQL Server\90\Tools\Reporting Services\SharePoint\RSWebParts.cab&quot; -globalinstall</li></ol></li>
+<li>In Team Explorer, right-click your project.</li>
+<li>Click <b>Show Project Portal</b>.</li>
+<li>Click <b>Modify Shared Page</b>.</li>
+<li>Point to <b>Browse</b> and click <b>Add Web Parts</b>.</li>
+<li>Click <b>Virtual Server Gallery</b>.</li>
+<li>In the <b>Web Part List</b>, select <b>Report Viewer</b>.</li>
+<li>Click <b>Add</b>.</li>
+<li>Enter the Report Manager name, such as http://&lt;<i>report server</i>&gt;/reports.</li>
+<li>Enter the path for the report you want to display, such as &lt;<i>my project</i>&gt;/Quality Indicators.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about adding a Report Viewer Web Part, see “Viewing Reports with SharePoint 2.0 Web Parts” at <a href="http://msdn2.microsoft.com/en-us/library/ms159772(SQL.90).aspx">http://msdn2.microsoft.com/en-us/library/ms159772(SQL.90).aspx</a> </li>
+<li>For more information about the team project portal, see “Using the Team Project Portal” at <a href="http://msdn2.microsoft.com/en-us/library/ms242883(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms242883(VS.80).aspx</a></li></ul>
+
+<h3>How to Set Permissions on Reports</h3>You can modify report permissions to define who can edit or view reports. You must be a member of the Microsoft SQL Server™ Reporting Services Content Manager role in order to be able to set report permissions.<br /><br /><b>To set permissions for all reports in your team project</b>
+<ol><li>In Team Explorer, expand you team project node.</li>
+<li>Right-click <b>Reports</b> and then click <b>Show Report Site</b>.</li>
+<li>Click the <b>Properties</b> tab.</li>
+<li>Click <b>Security</b>.</li>
+<li>Click <b>Edit Item Security</b>.</li>
+<li>If you want to edit security on a role that is already defined for the report, click <b>Edit</b>.</li>
+<li>If you want to define security for a role that is not listed, click <b>New Role Assignment</b>.</li></ol>
+<br /><b>To set permissions on a single report</b>
+<ol><li>In Team Explorer, expand you team project node.</li>
+<li>Right-click <b>Reports</b> and then click <b>Show Report Site</b>.</li>
+<li>On the report site, select the report for which you want to set permissions.</li>
+<li>Click the <b>Properties</b> tab.</li>
+<li>Click <b>Security</b>.</li>
+<li>Click <b>Edit Item Security</b>.</li>
+<li>If you want to edit security on a role that is already defined for the report, click <b>Edit</b>.</li>
+<li>If you want to define security for a role that is not listed, click <b>New Role Assignment</b>.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about setting report permissions, see “How to: Set Permissions for a Report” at <a href="http://msdn2.microsoft.com/en-us/library/ms181645(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181645(VS.80).aspx</a> </li></ul>
+
+<h2>Creation / Customization</h2><ul><li><b>How to customize an existing report</b></li>
+<li><b>How to create a new report in Visual Studio</b></li>
+<li><b>How to create a new report in Excel</b></li>
+<li><b>How to create a scheduled report snapshot</b></li>
+<li><b>How to create a report subscription</b></li>
+<li><b>How to add a new report to an existing process template</b></li></ul>
+
+<h3>How to Customize an Existing Report</h3>You can modify reports by using the SQL Server 2005 Reporting Services Designer inside Visual Studio (Business Intelligence Development Studio), which ships with the SQL Server 2005 client tools. Modifying an existing report is often easier than creating a new report.<br /><br /><b>To customize an existing report in TFS</b>
+<ol><li>Create a reporting project as follows:
+<ol><li>In Visual Studio, click <b>File</b>, click <b>New</b>, and then click <b>Project</b>.</li>
+<li>Select the <b>Business Intelligence Project</b> type.</li>
+<li>Select the <b>Report Server Project</b> template.</li>
+<li>Set your project’s <b>Name</b> and <b>Location</b> and then click <b>OK</b>.</li></ol></li>
+<li>Export the report you want to customize as follows:
+<ol><li>Right-click your team project and then click <b>Show Project Portal</b>.</li>
+<li>In the Quick Launch bar on the left side of the portal Web site, click <b>Reports</b>.</li>
+<li>Click the report you want to customize.</li>
+<li>Click <b>Properties</b>.</li>
+<li>Select <b>Edit</b>.</li>
+<li>Save the report .rdl file into the reporting project folder you created in step 1.</li></ol></li>
+<li>Add data sources as follows:
+<ol><li>To create the warehouse data source:
+<ol><li>In the Visual Studio Solution Explorer, right-click <b>Shared Data Sources</b> and then click <b>Add New Data Source</b>.</li>
+<li>On the <b>General</b> tab, in the <b>Name</b> text box, type <b>TfsReportDS</b> </li>
+<li>In the <b>Type</b> combo box, select <b>Microsoft SQL Server</b>.</li>
+<li>Click <b>Edit</b>.</li>
+<li>Fill in your data tier server name. </li>
+<li>Select the <b>TFSWarehouse</b> database. </li>
+<li>Click the <b>OK</b> button twice to add the data source.</li></ol></li>
+<li>To create the OLAP data source:
+<ol><li>In Solution Explorer, right-click <b>Shared Data Sources</b> and then click <b>Add New Data Source</b>.</li>
+<li>On the <b>General</b> tab, in the <b>Name</b> text box, type <b>TfsOlapReportDS</b></li>
+<li>In the <b>Type</b> combo box, select <b>Microsoft SQL Server Analysis Services</b>.</li>
+<li>Click <b>Edit</b>.</li>
+<li>Fill in your data tier server name. </li>
+<li>Select the <b>TFSWarehouse</b> database. </li>
+<li>Click the <b>OK</b> button twice to add the data source.</li></ol></li></ol></li>
+<li>Add the report to your project as follows:
+<ol><li>In Solution Explorer, right-click <b>Reports</b> and then click <b>Add-&gt;Existing Item</b>.</li>
+<li>Browse to the rdl file you exported in step 2.</li></ol></li>
+<li>Modify the report as follows:
+<ol><li>Modify query statements in the Data Pane.</li>
+<li>Drag new measures or members into the Data Pane.</li>
+<li>Modify the report layout in the Layout Pane.</li></ol></li></ol>
+<br /><b>Note:</b> Although you can use the Report Builder that is available from the team reporting site, this tool is not well supported for Visual Studio reporting scenarios and therefore is not recommended. <br />
+<h4>Additional Resources</h4><ul><li>For more information, see “How To – Customize a Report in Visual Studio Team Foundation Server” in this guide.</li></ul>
+
+<h3>How to Create a New Report in Visual Studio</h3>You can create reports by using the SQL Server 2005 Reporting Services Designer inside Visual Studio (Business Intelligence Development Studio), which ships with the SQL Server 2005 client tools. <br /><br />Create a new report if there are no existing reports that can be modified to meet your needs. Modifying an existing report is often easier than creating a new report.<br /><br /><b>To create a new report in TFS</b>
+<ol><li>Create a reporting project as follows:
+<ol><li>In Visual Studio, click <b>File</b>, click <b>New</b>, and then click <b>Project</b>.</li>
+<li>Select the <b>Business Intelligence Project</b> type.</li>
+<li>Select the <b>Report Server Project</b> template.</li>
+<li>Set your project’s <b>Name</b> and <b>Location</b> and then click <b>OK</b>.</li></ol></li>
+<li>Add data sources as follows:
+<ol><li>To create the warehouse data source:
+<ol><li>In Visual Studio Solution Explorer, right-click <b>Shared Data Sources</b> and then click <b>Add New Data Source</b>.</li>
+<li>On the <b>General</b> tab, in the <b>Name</b> text box, type <b>TfsReportDS</b> </li>
+<li>In the <b>Type</b> combo box, select <b>Microsoft SQL Server</b>.</li>
+<li>Click <b>Edit</b>.</li>
+<li>Fill in your data tier server name. </li>
+<li>Select the <b>TFSWarehouse</b> database. </li>
+<li>Click the <b>OK</b> button twice to add the data source.</li></ol></li>
+<li>To create the Online Analytical Processing (OLAP) data source:
+<ol><li>In Solution Explorer, right-click <b>Shared Data Sources</b> and then click <b>Add New Data Source</b>.</li>
+<li>On the <b>General</b> tab, in the <b>Name</b> text box, type <b>TfsOlapReportDS</b> </li>
+<li>In the <b>Type</b> combo box, select <b>Microsoft SQL Server Analysis Services</b>.</li>
+<li>Click <b>Edit</b>.</li>
+<li>Fill in your data tier server name. </li>
+<li>Select the <b>TFSWarehouse</b> database. </li>
+<li>Click the <b>OK</b> button twice to add the data source.</li></ol></li></ol></li>
+<li>Create a new report as follows:
+<ol><li>In Solution Explorer, right-click <b>Reports</b>, point to <b>Add</b>,** and then click* New Item*.</li>
+<li>Select the <b>Report</b> template.</li>
+<li>Name the report and then click <b>OK</b>.</li></ol></li>
+<li>Modify the report as follows:
+<ol><li>If the Report Designer does not open automatically, open the report for modification by double-clicking it in Solution Explorer.</li>
+<li>In the <b>Dataset</b> drop-down list, select <b>&lt;New Dataset...&gt;</b>.</li>
+<li>Name the dataset; for example TestDataSet.</li>
+<li>Select <b>TFSOlapReportDS (shared)</b>.</li>
+<li>Click <b>OK</b>.</li>
+<li>Click the ellipsis (...<b>)</b> button next to <b>Build</b> (just below the <b>Dataset</b> drop-down list), and then select <b>Team System</b>.</li></ol></li></ol>
+<br />You can now modify your report by dragging measures and dimensions from the <b>Dataset</b> tree into the Query Pane and Filter Pane.** You can modify the report’s layout by clicking the <b>Layout</b> tab. You can preview your report by clicking the <b>Preview</b> tab.<br /><br /><b>Note:</b> Although you** can use the Report Builder that is available from the team reporting site, this tool is not well supported for Visual Studio reporting scenarios and therefore is not recommended. <br />
+<h4>Additional Resources</h4><ul><li>For more information, see “How To – Create a Custom Report for Visual Studio Team Foundation Server” in this guide.</li></ul>
+
+<h3>How to Create a New Report in Excel</h3>You can create ad-hoc reports by connecting Microsoft Office Excel&#174; directly to the TFS Reporting OLAP cube. By using Excel, you can display report data in the form of pivot tables or pivot charts.<br /><br /><b>To create an Excel pivot table report</b>
+<ol><li>Ensure that you have the Microsoft SQL Server 2005 Analysis Services 9.0 OLE DB Provider installed. You can install it from <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=d09c1d60-a13c-4479-9b91-9e8b9d835cdc">http://www.microsoft.com/downloads/details.aspx?FamilyID=d09c1d60-a13c-4479-9b91-9e8b9d835cdc</a> </li>
+<li>Start Excel.</li>
+<li>Select the worksheet to which you want to add the pivot table report.</li>
+<li>On the <b>Data</b> menu, select <b>PivotTable</b> <b>and</b> <b>PivotChart Report</b>.</li>
+<li>Select <b>External Data Source</b>.</li>
+<li>Click <b>Next</b>.</li>
+<li>Click <b>Get Data</b>.</li>
+<li>Click the <b>OLAP Cubes</b> tab.</li>
+<li>Select <b>&lt;New Data Source&gt;</b> and then click <b>OK</b>.</li>
+<li>Enter a name for the data source.</li>
+<li>Select the Microsoft SQL Server 2005 Analysis Services 9.0 OLE DB provider.</li>
+<li>Click <b>Connect</b>.</li>
+<li>Select <b>Analysis Server</b>.</li>
+<li>Enter the name of your reporting server; for example, TFSRTM.</li>
+<li>Click <b>Next</b>.</li>
+<li>Select <b>TFSWarehouse</b> and then click <b>Finish</b>.</li>
+<li>Select the cube from which you want to build a report (e.g., Code Churn, Work Items, and Test Result) and then click <b>OK</b>.</li>
+<li>Click <b>OK</b> again to return to the Pivot Table and Pivot Chart Wizard.</li>
+<li>Click <b>Finish</b> to add the pivot table to the worksheet.</li></ol>
+<br />Use the <b>PivotTable Field List</b> to drag and drop columns and measures into the pivot table. For example, to see a line count for each Team Project on your server:
+<ol><li>Choose the <b>Code Churn</b> cube in step 17 above.</li>
+<li>Drag <b>TeamProject.TeamProject</b> into the <b>Column Fields</b> section of the pivot table. </li>
+<li>Drag <b>Total Lines</b> into the <b>Data Items</b> section of the pivot table. </li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about using Excel to create ad-hoc reports, see “Using Microsoft Excel for Team Foundation Server Reporting” at <a href="http://msdn2.microsoft.com/en-us/library/ms244713(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms244713(VS.80).aspx</a> </li>
+<li>Install the Microsoft SQL Server 2005 Analysis Services 9.0 OLE DB Provider from <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=d09c1d60-a13c-4479-9b91-9e8b9d835cdc">http://www.microsoft.com/downloads/details.aspx?FamilyID=d09c1d60-a13c-4479-9b91-9e8b9d835cdc</a> </li></ul>
+
+<h3>How to Create a Scheduled Report Snapshot</h3>You can use scheduled report snapshots to better understand trends over time, or to remember important data points throughout the duration of your project.<br /><br /><b>To create a scheduled report snapshot</b>
+<ol><li>In Team Explorer, right-click <b>Reports</b> for your team project, and then click <b>Show Report Site</b>.</li>
+<li>Open a report from the report site.</li>
+<li>Click the <b>Properties</b> tab.</li>
+<li>Click the <b>History</b> link.</li>
+<li>Set up a schedule for when you want the snapshot to run.</li></ol>
+<br />After the schedule has been set up, you can find the snapshots on the <b>History</b> tab for that report. You can also create manual snapshots on the <b>History</b> tab.<br />
+<h3>How to Create a Report Subscription</h3>You can use report subscriptions to generate reports and export them to a file share for further use. You can set the subscription to overwrite old reports, or you can build a set of reports over time to view snapshots of project data.<br /><br /><b>To create a report subscription</b>
+<ol><li>In Team Explorer, right-click <b>Reports</b> for your team project, and then click <b>Show Report Site</b>.</li>
+<li>Open a report from the report site.</li>
+<li>Click the <b>Subscriptions</b> tab.</li>
+<li>Click <b>New Subscription</b> to create the report subscription.</li></ol>
+
+<h3>How to Add a New Report to an Existing Process Template</h3>You can use the Process Editor tool, available with the latest version of the Team Foundation Server Power Tool, to add new reports to an existing process template. You can download the Team Foundation Server Power Tool from <a href="http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx">http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx</a>. <br /><br /><b>To add new reports</b>
+<ol><li>Download the process template that most closely meets your requirements as follows: 
+<ol><li>In Visual Studio, click <b>Team</b> and then select <b>Team Foundation Server Settings</b>.</li>
+<li>Click <b>Process Template Manager</b>.</li>
+<li>In the <b>Process Template Manager</b> dialog box, select the process template you want to modify, and then click <b>Download</b>.</li>
+<li>In the <b>Download Process Template</b> dialog box, select the folder location on your local drive, and then click <b>Save</b>.</li></ol></li>
+<li>Open the Process Template in the Process Editor as follows:
+<ol><li>In Visual Studio, click the <b>Team</b> menu.</li>
+<li>Click <b>Process Editor</b>, and then click <b>Open Process Template</b>. </li>
+<li>In the <b>Open Process Template fileset</b> dialog box, navigate to the downloaded process template and then click <b>Open</b>. This opens the ProcessTemplate.xml file in Visual Studio.</li>
+<li>Set the <b>Name</b> of the methodology to which you are applying customizations.</li></ol></li>
+<li>In the Process Template Explorer, click <b>Reports</b>. </li>
+<li>On the toolbar, click <b>Add</b>.</li>
+<li>In the <b>Report</b> dialog box, on the <b>Report Detail</b> tab, enter a name for the report. </li>
+<li>Browse to the .rdl file you want to add in the <b>File Name</b> field. Leave the other fields unchanged and do not make any changes to the data on the <b>Properties</b> and* Parameters* tabs.</li>
+<li>On the <b>DataSources</b> tab, enter the appropriate data sources. The default data** sources for process templates shipped with TFS are /TfsOlapReportDS and /TfsReportDS.</li>
+<li>Click <b>OK</b>.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>You can download the Team Foundation Server Power Tool from <a href="http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx">http://msdn2.microsoft.com/en-us/vstudio/aa718351.aspx</a> </li>
+<li>For more information about using the Process Editor tool for customizing work item types, see “How To – Customize a Process Template in Visual Studio Team Foundation Server” in this guide.</li></ul>
+
+<h2>Viewing</h2><ul><li><b>How to analyze the status of a project</b></li>
+<li><b>How to analyze application quality</b></li>
+<li><b>How to review remaining work</b></li>
+<li><b>How to review build status</b></li>
+<li><b>How to review bugs and test results</b></li>
+<li><b>How to review scheduled work versus actual work on an iteration</b></li>
+<li><b>How to determine the owner of the last edit on a file</b></li>
+<li><b>How to discover all the code changes made by a developer</b></li>
+<li><b>How to discover all the code changes made to a file</b></li>
+<li><b>How to discover all the code changes associated with a specific work item</b> </li>
+<li><b>How to generate code churn metrics</b></li>
+<li><b>How to generate workspace metrics such as number of files, lines of code, and number of projects</b> </li></ul>
+
+<h3>How to Analyze the Status of a Project</h3>You can use the Velocity report to analyze the status of a project.<br /><br /><b>To review application status</b>
+<ol><li>In Team Explorer, expand your team project node, right-click <b>Reports</b>, and then click <b>Show Report Site</b>.</li>
+<li>On the report site, select the <b>Velocity</b> report. </li></ol>
+<br />This report shows how quickly the team is completing work and indicates rates of change from day to day.<br />
+<h3>How to Analyze Application Quality</h3>You can use the Quality Indicators report to analyze application quality.<br /><br /><b>To analyze application quality</b>
+<ol><li>In Team Explorer, expand your team project node, right-click <b>Reports</b>, and then select <b>Show Report Site</b>.</li>
+<li>On the report site, select the <b>Quality Indicators</b> report. </li></ol>
+<br />This report collects test results, bugs, code coverage, and code churn into a single report that you can use to track project health. <br />
+<h3>How to Review Remaining Work</h3>You can use the Remaining Work report to review remaining work.<br /><br /><b>To review the remaining work</b>
+<ol><li>In Team Explorer, expand your team project node, right-click <b>Reports</b>, and then select <b>Show Report Site</b>.</li>
+<li>On the report site, select the <b>Remaining Work</b> report. </li></ol>
+<br />This report shows work that is remaining, resolved, and closed over time. By projecting remaining work trends forward, you can predict the point at which you will be code complete.<br />
+<h3>How to Review Build Status</h3>If you are using the Microsoft Solution Framework (MSF) for CMMI&#174; (MS CMMI) process template, you can view the Builds report in order to see BVT results.<br /><br /><b>To review build status</b>
+<ol><li>In Team Explorer, expand your team project node.</li>
+<li>Right-click <b>Reports</b> and then click <b>Show Report Site</b>.</li>
+<li>In the report site, select the <b>Builds</b> report.</li></ol>
+<br />This report provides a list of available builds and includes build quality and other detailed information. <br />
+<h3>How to Review Bugs and Test Results</h3>You can use the Bugs by Priority report to review bugs. This report shows you the rate of high-priority bugs found versus low-priority bugs.<br /><br />You can use the Quality Indicators report to view test results, bugs, code coverage, and code churn in a single report.<br /><br /><b>To view either the Bugs by Priority or Quality Indicators report</b>
+<ol><li>In Team Explorer, expand your team project node.</li>
+<li>Right-click <b>Reports</b> and then click <b>Show Report Site</b>.</li>
+<li>Select the <b>Bugs by Priority</b> report to review bugs, or select the <b>Quality Indicators</b> report to view test results.</li></ol>
+
+<h3>How to Review Scheduled Work versus Actual Work on an Iteration</h3>You can use the Unplanned Work report to review scheduled work versus actual work. This report charts total work versus remaining work and distinguishes planned from unplanned tasks.<br /><br /><b>To view the Unplanned Work report</b>
+<ol><li>In Team Explorer, expand your team project node.</li>
+<li>Right-click <b>Reports</b> and then click <b>Show Report Site</b>.</li>
+<li>In the report site, select the <b>Unplanned Work</b> report.</li></ol>
+
+<h3>How to Determine the Owner of the Last Edit on a File</h3>You can use source file history from Source Control Explorer to determine the owner of the last edit on a file.<br /><br /><b>To determine who made the last edit on a file</b>
+<ol><li>In Source Control Explorer, select the file of interest.</li>
+<li>Right-click the file and then click <b>View History</b>.</li>
+<li>In the History pane, review change history, including the owner.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about Source Control Explorer, see “Using Source Control Explorer” at <a href="http://msdn2.microsoft.com/en-us/library/ms181370(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181370(VS.80).aspx</a>++ </li></ul>
+
+<h3>How to Discover All the Code Changes Made by a Developer</h3>You can use the <b>TF History</b> command to find all the code changes in your project that have been made by a specific developer.<br /><br />For example, the following command shows you all changes made by the user Mario:<br /><br /><span class="codeInline"> tf history $/ /r  /user:Mario </span><br /><br />In the preceding example, $/ is used to search the entire repository. You can replace this with $/TeamProjectName to restrict your search to a specific team project.<br />
+<h4>Additional Resources</h4><ul><li>For more information about the* TF History* command, see “History Command” at <a href="http://msdn2.microsoft.com/en-us/library/yxtbh4yh(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/yxtbh4yh(VS.80).aspx</a> </li></ul>
+
+<h3>How to Discover All the Code Changes Made to a File</h3>You can use source file history from Source Control Explorer to determine the changes made to a file.<br /><br /><b>To determine all changes made to a file</b>
+<ol><li>In Source Control Explorer, select the file of interest.</li>
+<li>Right-click the file and then click <b>View History</b>.</li>
+<li>In the History pane, review change history to see all changes that have been applied to this file.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about Source Control Explorer, see “Using Source Control Explorer” at <a href="http://msdn2.microsoft.com/en-us/library/ms181370(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181370(VS.80).aspx</a>++ </li></ul>
+
+<h3>How to Discover All the Code Changes Associated with a Specific Work Item </h3>If a work item has been associated with a set of code changes at the time of check-in, you can view these changes from the work item <b>Links</b> tab.<br /><br /><b>To view code changes associated with a work item</b>
+<ol><li>Open the work item in question.</li>
+<li>Click the <b>Links</b> tab. If a changeset is associated with this work item, it will be listed in the Links pane in the work item.</li>
+<li>Double-click the linked changeset to view the files and comments that were checked in.</li></ol>
+
+<h4>Additional Resources</h4><ul><li>For more information about changesets, see “Working with Source Control Changesets” at <a href="http://msdn2.microsoft.com/en-us/library/ms181408(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms181408(VS.80).aspx</a> </li></ul>
+
+<h3>How to Generate Code Churn Metrics</h3>You can use the Quality Indicators report to view code churn details.<br /><br /><b>To view the Quality Indicators report</b>
+<ol><li>In Team Explorer, expand your team project node.</li>
+<li>Right-click <b>Reports</b> and then click <b>Show Report Site</b>.</li>
+<li>Select the <b>Quality Indicators</b> report.</li></ol>
+<br />This report collects test results, bugs, code coverage, and code churn into a single report that you can use to track project health. <br /><br />Alternatively, you use Excel to generate a report on code churn. To learn more, see “How to Create a New Report in Excel” in this document.<br />
+<h3>How to Generate Workspace Metrics Such as Number of Files, Lines of Code, and Number of Projects </h3>Create reports on various workspace metrics by connecting Excel directly to the TFS Reporting OLAP cube. By using Excel, you can display report data in the form of pivot tables or pivot charts.<br /><br /><b>To create an Excel pivot table report</b>
+<ol><li>Ensure that you have the Microsoft SQL Server 2005 Analysis Services 9.0 OLE DB Provider installed. You can install it from <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=d09c1d60-a13c-4479-9b91-9e8b9d835cdc">http://www.microsoft.com/downloads/details.aspx?FamilyID=d09c1d60-a13c-4479-9b91-9e8b9d835cdc</a> </li>
+<li>Start Excel.</li>
+<li>Select the worksheet to which you want to add the pivot table report.</li>
+<li>On the <b>Data</b> menu, select <b>PivotTable</b> <b>and</b> <b>PivotChart Report</b>.</li>
+<li>Select <b>External Data Source</b>.</li>
+<li>Click <b>Next</b>.</li>
+<li>Click <b>Get Data</b>.</li>
+<li>Click the <b>OLAP Cubes</b> tab.</li>
+<li>Select <b>&lt;New Data Source&gt;</b> and then click <b>OK</b>.</li>
+<li>Enter a name for the data source.</li>
+<li>Select the Microsoft SQL Server 2005 Analysis Services 9.0 OLE DB provider.</li>
+<li>Click <b>Connect</b>.</li>
+<li>Select <b>Analysis Server</b>.</li>
+<li>Enter the name of your reporting server; for example, TFSRTM.</li>
+<li>Click <b>Next</b>.</li>
+<li>Select <b>TFSWarehouse</b> and then click <b>Finish</b>.</li>
+<li>Select the <b>Code Churn</b> cube from which to build a report, and then click <b>OK</b>.</li>
+<li>Click <b>OK</b> again to return to the Pivot Table and Pivot Chart Wizard.</li>
+<li>Click <b>Finish</b> to add the pivot table to the worksheet.</li></ol>
+<br />You can use the <b>PivotTable Field List</b> to drag and drop columns and measures into the pivot table.  <br /><br /><b>To view a file count for each team project on your server</b>
+<ol><li>Drag <b>TeamProject.TeamProject</b> into the <b>Page Fields</b> section of the pivot table. </li>
+<li>Drag <b>File Name.FilePath</b> into the <b>Row Fields</b> section of the pivot table.</li>
+<li>Use the <b>Team Project</b> drop-down list in the <b>Page Fields</b> section of the pivot table to filter each team project.</li></ol>
+Note the number of rows displayed. This will give you your file count.<br /><br /><b>To view a line count for each team project on your server</b>
+<ol><li>Drag <b>TeamProject.TeamProject</b> into the <b>Column Fields</b> section of the pivot table. </li>
+<li>Drag <b>Total Lines</b> into the <b>Data Items</b> section of the pivot table. </li></ol>
+<br /><b>To view a team project count for your server</b>
+<ul><li>Drag <b>TeamProject.TeamProject</b> into the <b>Row Fields</b> section of the pivot table. </li></ul>
+Note the number of rows displayed. This will give you your project count.<br />
+<h4>Additional Resources</h4><ul><li>For more information about using Excel to create ad-hoc reports, see “Using Microsoft Excel for Team Foundation Server Reporting” at <a href="http://msdn2.microsoft.com/en-us/library/ms244713(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms244713(VS.80).aspx</a> </li>
+<li>Install the Microsoft SQL Server 2005 Analysis Services 9.0 OLE DB Provider from <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=d09c1d60-a13c-4479-9b91-9e8b9d835cdc">http://www.microsoft.com/downloads/details.aspx?FamilyID=d09c1d60-a13c-4479-9b91-9e8b9d835cdc</a> </li></ul>
+
+<h2>Team Foundation Reporting Resources</h2><ul><li>For more information on reporting, see “Team Foundation Server Reporting” at <a href="http://msdn2.microsoft.com/en-us/library/ms194922(VS.80).aspx">http://msdn2.microsoft.com/en-us/library/ms194922(VS.80).aspx</a></li></ul></div><div class="ClearBoth"></div>

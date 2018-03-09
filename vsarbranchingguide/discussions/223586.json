@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "480583",
+    "ThreadId": "223586",
+    "Html": "<p>Our development team has been running into pain with Merging .sln and project files using the standard branching plan from the rangers guidance. We've found an excellent forum post that goes into great technical details around the issue. I'd like to see the ranger guidance include this as a topic/solution.</p>\r\n<p><a href=\"http://social.msdn.microsoft.com/Forums/en-US/tfsversioncontrol/thread/4dfcf6df-c80f-49aa-acbc-660558e4556b\">http://social.msdn.microsoft.com/Forums/en-US/tfsversioncontrol/thread/4dfcf6df-c80f-49aa-acbc-660558e4556b</a></p>",
+    "PostedDate": "2010-08-14T12:07:08.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "482392",
+    "ThreadId": "223586",
+    "Html": "<p>Allen,</p>\r\n<p>Thanks for your suggestion. We will certainly consider this in our upcoming revisions.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-08-19T09:21:06.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

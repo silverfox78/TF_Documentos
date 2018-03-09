@@ -1,0 +1,122 @@
+[
+  {
+    "Id": "714815",
+    "ThreadId": "283610",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>We are looking at using a branch by release strategy with a SP and hotfix branch.</p>\r\n<p>As I understand it we should make any V1 hotfixes and then merge them back into MAIN through the SP branch.</p>\r\n<p>How would we go about integrating these V1&nbsp;hotfixes into a release V2 branch which is already in production?</p>\r\n<p>Main may well have features pending for V3 so we can't create a new branch from that.</p>\r\n<p>Thanks.</p>\r\n<p>Mark</p>\r\n",
+    "PostedDate": "2011-12-20T06:15:18.037-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "714837",
+    "ThreadId": "283610",
+    "Html": "\r\n<div dir=\"ltr\" align=\"left\"><span><font size=\"2\" face=\"Arial\">This question was raised and discussed here:</font></span></div>\r\n<div dir=\"ltr\" align=\"left\"><span><font size=\"2\" face=\"Arial\"></font></span></div>\r\n<div dir=\"ltr\" align=\"left\"><span><font size=\"2\" face=\"Arial\"><a href=\"http://social.msdn.microsoft.com/Forums/en-US/tfsversioncontrol/thread/44f4319b-30f4-41dd-bdc7-3c87ddaa334b\">http://social.msdn.microsoft.com/Forums/en-US/tfsversioncontrol/thread/44f4319b-30f4-41dd-bdc7-3c87ddaa334b</a></font></span></div>\r\n<div dir=\"ltr\" align=\"left\"><span><font size=\"2\" face=\"Arial\"></font></span></div>\r\n<div dir=\"ltr\" align=\"left\"><span><font size=\"2\" face=\"Arial\">I don't feel a satisfactory conclusion was reached but you may find the discussion useful.</font></span></div>\r\n<div dir=\"ltr\" align=\"left\"><span><font size=\"2\" face=\"Arial\"></font></span></div>\r\n<div dir=\"ltr\" align=\"left\"><span><font size=\"2\" face=\"Arial\">Sincerely,</font></span></div>\r\n<div dir=\"ltr\" align=\"left\"><span><font size=\"2\" face=\"Arial\">John Boncek</font></span></div>\r\n<br>\r\n<div dir=\"ltr\" lang=\"en-us\" align=\"left\">\r\n<hr tabindex=\"-1\">\r\n<font size=\"2\" face=\"Tahoma\"><b>From:</b> foz1284 [email removed] <br>\r\n<b>Sent:</b> Tuesday, December 20, 2011 8:15 AM<br>\r\n<b>To:</b> Boncek, John<br>\r\n<b>Subject:</b> Merging HotFix V1.01 into Release 2 [TFSBranchingGuideIII:283610]<br>\r\n</font><br>\r\n</div>\r\n<div></div>\r\n<p>From: foz1284</p>\r\n<div id=\"ThreadNotificationPostBody\">\r\n<p>Hi,</p>\r\n<p>We are looking at using a branch by release strategy with a SP and hotfix branch.</p>\r\n<p>As I understand it we should make any V1 hotfixes and then merge them back into MAIN through the SP branch.</p>\r\n<p>How would we go about integrating these V1 hotfixes into a release V2 branch which is already in production?</p>\r\n<p>Main may well have features pending for V3 so we can't create a new branch from that.</p>\r\n<p>Thanks.</p>\r\n<p>Mark</p>\r\n</div>\r\n",
+    "PostedDate": "2011-12-20T06:40:43.353-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "714842",
+    "ThreadId": "283610",
+    "Html": "<p>Thanks, Very useful information, think I'll have to read up on baseless merges, I've not come across the concept before...</p>",
+    "PostedDate": "2011-12-20T06:53:12.133-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "714880",
+    "ThreadId": "283610",
+    "Html": "<p>A baseless merge may be the best alternative here, since you do not want to merge (FI) &nbsp;Main, which is being used to stabilize vNext (V3) code, into any prior release branch(es) for vCurrent (V2)&nbsp;or vCurrent -1 (V1).</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-12-20T08:07:29.743-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "714939",
+    "ThreadId": "283610",
+    "Html": "<p>Hi Bill,</p>\r\n<p>Just added this comment to let you&nbsp;know that I posted a few questions/comments to your useful comments on <a href=\"http://social.msdn.microsoft.com/Forums/en-US/tfsversioncontrol/thread/44f4319b-30f4-41dd-bdc7-3c87ddaa334b\">http://social.msdn.microsoft.com/Forums/en-US/tfsversioncontrol/thread/44f4319b-30f4-41dd-bdc7-3c87ddaa334b</a>&nbsp;(because you wrote that you don't track that forum).</p>\r\n<p>Best regards,</p>\r\n<p>Jul</p>",
+    "PostedDate": "2011-12-20T09:34:51.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "714940",
+    "ThreadId": "283610",
+    "Html": "<p>Mark, can you confirm your requirements so I understand your scenario well?</p>\r\n<ul>\r\n<li>You have multiple customers using your product in production, and they may be on different versions at the same time.</li>\r\n<li>You want to support these customers and thus support hotfixes to multiple versions in a given time period.</li>\r\n<li>You want to easily merge a hot fix made in one release into another as well as into dev so all currently active and future releases receive the benefit of the hotfix.</li>\r\n</ul>\r\n<p>And I have a few questions:</p>\r\n<ol>\r\n<li>How many different versions of your product in being used&nbsp;at one time? </li>\r\n<li>How many different versions do you intend to support at one time? (you suggested at least two. I'm trying to find out how far back and expensive you are going on this)</li>\r\n<li>How much hotfix activity do you have? </li>\r\n<li>What is your current branch plan and approach to hot fixes? </li>\r\n<li>Given that context and process, what is your dissatisfaction and reason for considering a change?</li>\r\n</ol>\r\n<p>The answers are important. Different answers suggest different choices. Branch plans are all about tradeoffs.</p>\r\n<p>From John, you have already heard the suggestion to consider baseless merges as well as the cascading release branches. If you do explore baseless merges, be sure that you are using Visual Studio 2010 SP1 as there are baseless merge improvements in SP1 (see <a href=\"http://blogs.msdn.com/b/buckh/archive/2011/02/06/improvements-to-baseless-merge-in-tfs-2010-sp1.aspx\"><span style=\"color: windowtext;\">http://blogs.msdn.com/b/buckh/archive/2011/02/06/improvements-to-baseless-merge-in-tfs-2010-sp1.aspx</span></a>). Baseless merges are described in the TFS Branching Guidance Q&amp;A that is available in the Downloads section.&nbsp; I don&rsquo;t know whether this technique is a good fit until I learn more.</p>",
+    "PostedDate": "2011-12-20T09:38:19.66-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "714987",
+    "ThreadId": "283610",
+    "Html": "<p>As I recently indicated on another thread, merging changes made to V1 code into V2 code that has already been released may be troublesome. While a baseless merge might work to move a fix from V1 Hotfix to V2 Hotifx, you may also want to consider simply coding the fix in both the V1 HotFix branch AND the V2 Hotfix branch. You don't want to introduce a regression by doing the baseless merge without fully understanding the differences between V1 and V2</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-12-20T10:54:45.7-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "715011",
+    "ThreadId": "283610",
+    "Html": "<p>Bill &gt;&gt; Another post in <a href=\"http://social.msdn.microsoft.com/Forums/en-US/tfsversioncontrol/thread/44f4319b-30f4-41dd-bdc7-3c87ddaa334b\">http://social.msdn.microsoft.com/Forums/en-US/tfsversioncontrol/thread/44f4319b-30f4-41dd-bdc7-3c87ddaa334b</a>&nbsp;:-)</p>",
+    "PostedDate": "2011-12-20T11:36:55.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "715171",
+    "ThreadId": "283610",
+    "Html": "<p>Thanks all, in response to Davids Questions...</p>\r\n<p>We're currently not yet in production but will be shortly I've been tasked with sorting out our best approach.</p>\r\n<p>We are a 2-Developer start-up but possibly expanding soon so must be ready to accomodate this.</p>\r\n<p>Currently we are using tfs but not using branching at all and are both checking into Main, QA builds are also being taken from main.</p>\r\n<p>Since we are not yet live we obviously will start out with just V1 but I am just trying to think ahead and I would expect to be supporting around 3 versions, possibly even more, some of our customers will consist of large organisations who'se IT departments might not be wanting to do a new version on our expected 3 month release cycle. I dont personally know the Support life for each version but I would expect it to be maybe 2 years at a guess, therefor that would be 8 versions old? - possibly we might go down the route of a long term support version thus reducing the number of currently supported versions(an Idea I've just had)</p>\r\n<p>I cant really tell you how much hotfix activity we will have.</p>\r\n<p>Thanks,</p>\r\n<p>Mark</p>",
+    "PostedDate": "2011-12-20T17:34:04.537-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "715225",
+    "ThreadId": "283610",
+    "Html": "<p>Congratulations for planning ahead. I wish more people would think that way. And you have my best wishes on your startup. I've been involved in several. They can be exciting.</p>\r\n<p>I recommend you keep your branching plan as simple as possible. There are many reasons that simplicity is good: easier to teach new developers, fewer mistakes, speedier development due to less merging hassle.</p>\r\n<p>What would the simplest possible branch plan be? That would be the Basic Branch Plan described in the TFS branching guidance. Despite its name, do not underestimate the power of this branching plan. It provides for a separate release branch for each release, which fits your circumstance very well. It also provides for a development branch, where you and the other developers can develop software. Since you currently have just two developers, you may not feel the need for this separate development branch at this time. But as your team grows, this improves your ability to establish quality gates to ensure that code is of acceptable quality before it is merged back into main for QA testing. The decision of whether to have a separate development branch or check into main has been controversial. If you are curious about that decision point, I would direct you to an article I wrote on the subject at <a href=\"http://codecontracts.info/2011/11/21/branching-and-merging-strategies\">http://codecontracts.info/2011/11/21/branching-and-merging-strategies</a>.</p>\r\n<p>If you do read about the basic branch plan, please disregard the sentence that says \"and then RELEASE branch access permissions are set to read only.\" In the basic branch plan, I believe you are actually expected to use the release branch for making minor defect repairs. If you set it to read-only, you cannot use it to make fixes.</p>\r\n<p>I know this plan does not include a service pack or hot fix branch as you originally suggested. But you may not need them. Whether or not you need these extra layers may depend upon your expected deployment technique for releasing hot fixes, and whether you want to be able to isolate hot fixes. If you are Microsoft, and you are distributing the Windows operating system to millions of customers all around the world, then the ability to develop and test isolated hot fixes, or to develop and release service packs as interim products between major releases, makes sense. If you are deploying a single website, or a desktop Windows application that is relatively small and installs fairly quickly, then it may make more sense to simply perform defect repairs in the appropriate release branch and release an entirely new version of your product from that release branch.</p>\r\n<p>Let me offer you one more enticement to consider the simpler basic branch plan: you can start by having a simple Release1 branch for your first release. If that provides you with an adequate platform to support your customers on version 1, then you have made a good choice. If you find that your production support needs require a more sophisticated branch plan, then you can establish a more advanced branch design (like the Standard, Advanced, or Mature branch plans in the Guidance) when you set up the release branch for version 2. In other words, I cannot see how choosing the simpler approach will back you into a corner that you are going to to regret.</p>\r\n<p><span style=\"font-family: Segoe UI;\">\r\n<p>Regarding the issue of how to propagate defect repairs to other release branches: I certainly favor the suggestion made by Bill Heys, which was to simply make the changes manually in each release. If you are ever faced with a defect repair that is fairly complex, and you find it onerous to reproduce it manually in other releases, then you should reconsider your decision to treat it like a hot fix instead of a defect repair to be handled in the mainstream of development. After all, if the fix is highly complex, merging tools are not going to protect you from the inherent risk of introducing complex changes that work in one version into another version where they may not work.</p>\r\n<p>Speaking of making fixes in several releases leads me to my last comment: I want to point out that your support costs will be proportional to the number of obsolete versions you try to maintain. You indicated that some organizations may not want to accept your new releases every three months. That is fine. They might prefer to upgrade on an annual or biannual basis. But that does not mean that you need to make a legal commitment to provide them with hot fixes on their obsolete versions. Instead, you could do what most software firms do - make defect repairs as quickly as possible, and issue incremental releases to those who want them. Anyone who has an older version, and who wants the benefits of the fix simply have to upgrade to get it. Can you imagine Microsoft setting our expectations that they would continue to issue hot fixes to repair defects and security flaws found in Internet Explorer version 2? Or Windows 3.1? Don't get me wrong. I'm not opposed to you providing a premium level of service. That would differentiate you from any competitors for sure. But as I indicated earlier, there are economic reasons why most software firms set limits on the number of previous versions that will support. Most software firms have limited financial resources, and they focus them on making defect repairs and functional enhancements in the upcoming version in order to maximize the value they deliver to their customers. Unless you are operating on a different economic model (and you might be), I think you will come to the same conclusion. And this is one area where you COULD make a decision you would regret later. If you write a license or public marketing materials that indicate you intend to provide support for all previous versions or all versions up to two years old or something like that, then you may have a legal obligation to deliver on that. And it will be hard to take it back later. I'm just sayin'.</p>\r\n</span></p>",
+    "PostedDate": "2011-12-20T20:18:15.967-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "715456",
+    "ThreadId": "283610",
+    "Html": "<p>I take strong exception to the comment:</p>\r\n<p style=\"padding-left: 30px;\">\"If you do read about the basic branch plan, please disregard the sentence that says \"and then RELEASE branch access permissions are set to read only.\" In the basic branch plan, I believe you are actually expected to use the release branch for making minor defect repairs. If you set it to read-only, you cannot use it to make fixes\"</p>\r\n<p>The Basic (release) branch plan is primarily only intended to be used where there is NO need for post-release servicing (hot fixes and / or service packs). If you intend to make \"minor defect repairs\" to released code, or want to allow for this possibility, then you should consider moving to the Standard (release) branch plan. This plan adds a servicing branch for post-release hot fixes or bug fixes. At the same time it allow for a read-only copy of the code as it was released to customers (which often is a requirement for auditing).</p>\r\n<p>Regards,<br />Bill Heys<br />VS ALM Ranger</p>",
+    "PostedDate": "2011-12-21T06:57:31.51-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "715556",
+    "ThreadId": "283610",
+    "Html": "<p>Sorry about that. I clearly misunderstood the intent of the Basic plan.&nbsp; Thanks for educating me on that.&nbsp; Apparently it was intended exactly as written.</p>\r\n<p>So I retract my statement, and instead, I am suggesting he follow the Standard Branch Plan.&nbsp;</p>\r\n<p>But one thing still puzzles me about these plans: You say \"it allows for a read-only copy of the code as it was released to customers (which often is a requirement for auditing).\" which makes total sense. But what if you do NOT have auditors requiring this. Is there a practical reason why I need to devote an entire branch to preserving the original release?</p>\r\n<p>If I do not ahve this requirement, and there is no scenario that can be described that warns me to avoid this, then I do not want to lock down the branch. And instead, I will use it for making, testing, and distributing versions with hot fixes.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-12-21T09:14:39.607-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "715669",
+    "ThreadId": "283610",
+    "Html": "<p>David,</p>\r\n<p>I don't think you *neccessarily* have to create an *extra* read-only branch if you will never use it. Even though the incremental cost of this new branch is rather minimal. Only metadata is stored for each file in the branch (not file content) when it is initially created. Only if a file is changed in branch will a copy of the content be made as part of the reverse *deltafication process*.</p>\r\n<p>The key point is for people to *understand* what they are doing, what choices they have, and why these choices are offered. Everyone should naturally adapt the recommendations for their own needs.</p>\r\n<p>I have a co-worker who believed he could simplify the branching guidance into a simple flow chart. I debated the shortcomings of a simple decision tree which was not specialized for a particular situation. He responded that the customer could only understand flow charts. Sometimes I have wondered if the consultant could only explain using a flow chart. &lt;sigh&gt;</p>\r\n<p>Regards,<br />Bill Heys</p>\r\n<p>&nbsp;</p>\r\n<p>Regards,<br />Bill</p>",
+    "PostedDate": "2011-12-21T11:50:44.72-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "715743",
+    "ThreadId": "283610",
+    "Html": "\r\n<div>&quot; ... could only explain using a flow chart.&quot; (laughing). Yes, that would simplify my life. No more messy disagreements.\r\n</div>\r\n<div></div>\r\n<div>Your comment about &quot;understanding&quot; reminds me that not only will a prospective team leader want to understand the guidance, but once they have chosen an approach, it is important to document what the branches mean, why they were chosen, and how they are\r\n intended to be used. This is to help their team understand how to operate in common scenarios (End of sprint, deploy to QA, time for release, bug fix, ...)</div>\r\n<div></div>\r\n<div>I love using the sample diagrams and plans included in the PowerPoint template (TFS Branching Guide - Diagrams 2010_20100330.pptx) to produce a customized document. I use the standard plans as a starting point, and add common branch and merge points to\r\n illustrate common scenarios. Then I walk through this with clients. I'm really glad you included that in the guidance package.\r\n</div>\r\n<div>David<br>\r\n</div>\r\n<div>On Wed, Dec 21, 2011 at 1:50 PM, wheys <span dir=\"ltr\">&lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt;</span> wrote:<br>\r\n<blockquote style=\"margin:0px 0px 0px 0.8ex; padding-left:1ex; border-left-color:rgb(204,204,204); border-left-width:1px; border-left-style:solid\">\r\n<div>\r\n<p>From: wheys</p>\r\n<div>\r\n<p>David,</p>\r\n<p>I don't think you *neccessarily* have to create an *extra* read-only branch if you will never use it. Even though the incremental cost of this new branch is rather minimal. Only metadata is stored for each file in the branch (not file content) when it is\r\n initially created. Only if a file is changed in branch will a copy of the content be made as part of the reverse *deltafication process*.</p>\r\n<p>The key point is for people to *understand* what they are doing, what choices they have, and why these choices are offered. Everyone should naturally adapt the recommendations for their own needs.</p>\r\n<p>I have a co-worker who believed he could simplify the branching guidance into a simple flow chart. I debated the shortcomings of a simple decision tree which was not specialized for a particular situation. He responded that the customer could only understand\r\n flow charts. Sometimes I have wondered if the consultant could only explain using a flow chart. &lt;sigh&gt;</p>\r\n<p>Regards,<br>\r\nBill Heys</p>\r\n<p></p>\r\n<p>Regards,<br>\r\nBill</p>\r\n</div>\r\n<div>\r\n<div>\r\n<p>Read the <a href=\"http://tfsbranchingguideiii.codeplex.com/discussions/283610#post715669\" target=\"_blank\">\r\nfull discussion online</a>.</p>\r\n<p>To add a post to this discussion, reply to this email (<a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com?subject=[TFSBranchingGuideIII:283610]\" target=\"_blank\">TFSBranchingGuideIII@discussions.codeplex.com</a>)</p>\r\n<p>To start a new discussion for this project, email <a href=\"mailto:TFSBranchingGuideIII@discussions.codeplex.com\" target=\"_blank\">\r\nTFSBranchingGuideIII@discussions.codeplex.com</a></p>\r\n<p>You are receiving this email because you subscribed to this discussion on CodePlex. You can\r\n<a href=\"https://tfsbranchingguideiii.codeplex.com/subscriptions/thread/project/edit\" target=\"_blank\">\r\nunsubscribe or change your settings</a> on codePlex.com.</p>\r\n<p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at\r\n<a href=\"http://codeplex.com\" target=\"_blank\">codeplex.com</a></p>\r\n</div>\r\n</div>\r\n</div>\r\n</blockquote>\r\n</div>\r\n<br>\r\n<br clear=\"all\">\r\n<br>\r\n-- <br>\r\n<div>David Kreth Allen</div>\r\n<div>612-374-1119</div>\r\n<div><a href=\"http://codecontracts.info\" target=\"_blank\">http://codecontracts.info</a></div>\r\n<div></div>\r\n<div><font style=\"background-color:rgb(255,204,255)\">“Instead of complaining that the rose bush is full of thorns, be happy the thorn bush has roses.” -Proverb</font></div>\r\n<br>\r\n",
+    "PostedDate": "2011-12-21T13:46:23.353-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "778100",
+    "ThreadId": "283610",
+    "Html": "<p>Based on your below need I came across a company called Timpani Software on this forum with a product called merge magician that may be able to help you out.&nbsp; I downloaded their 30 day evaluation license to do&nbsp;just what your asking about above.</p>\r\n<p><a href=\"http://www.timpanisoftware.com\">www.timpanisoftware.com</a></p>\r\n<p>&nbsp;</p>\r\n<li>You want to easily merge a hot fix made in one release into another as well as into dev so all currently active and future releases receive the benefit of the hotfix. </li>",
+    "PostedDate": "2012-02-18T14:59:58.63-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

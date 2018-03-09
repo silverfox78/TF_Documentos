@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "redundant now",
+    "ClosedDate": "2013-11-30T07:55:40.073-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am looking at page 11 of file HOL_Quick_Start_Basic_Branch_Plan_2010_v1.pdf of Branching and Merging Guidance for 2010.\n \nIt is section Scenario #2: Concurrent Hotfix, Service Pack, and vNext, Figure 8. Concurrent Hotfix, Service Pack, and vNext.\n \nI think the figure is missing Reverse Integration steps both from Dev to Main, and from RTM->HF->SP->Main.\n \nSecond one is even mentioned at page 17: “Changes should be merged (RI) in from RTM->HF->SP->Main only.”\n \nIssue submitted directly to Willy-Peter Schaub",
+    "LastUpdatedDate": "2013-11-30T07:55:40.073-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2010-03-29T08:34:15.37-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "Quick Start - Basic Branch Plan HOL question",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12348
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

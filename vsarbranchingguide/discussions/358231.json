@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "844364",
+    "ThreadId": "358231",
+    "Html": "\r\n<p>Hi all!</p>\r\n<p>I have a problem which I'll describe very shortly. I have a project with 2 branches now and each one has its own build definition. May be anybody knows how to divide associated changeset by branches, because TFS default build process template associates\r\n all the changesets to successful build of every my branch.</p>\r\n<p>When I ask how I mean that is there any way without coding my own custom activities and so on. I have seen VersionControlServer.QueryHistory method on MSDN&nbsp;<a href=\"http://msdn.microsoft.com/en-us/library/bb138961(v=vs.100).aspx\">http://msdn.microsoft.com/en-us/library/bb138961(v=vs.100).aspx</a>.\r\n And I can see that it takes the path in source control repository to find the changesets. And as I've understood standard activity&nbsp;AssociateChangesetsAndWorkItems uses that method and takes the whole project path while I need only part of the project\r\n repository. But&nbsp;AssociateChangesetsAndWorkItems has no way to manage it, so now I think the only way is to code my own activity and to provide each build definition with a subpath to search. I don't like this solution so I hope somebody can help me to\r\n find better solution.</p>\r\n<p>Thank you very much!</p>\r\n",
+    "PostedDate": "2012-06-04T05:46:57.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "844450",
+    "ThreadId": "358231",
+    "Html": "<p>Maybe I'm misunderstanding the question, but are you asking how to see just the associated changesets for your particular branch in your build summary and reports?&nbsp; Check your workspace mapping for your build, just make sure you are mapping to the branch itself for each of your builds, and not the root of the team project.&nbsp; Then when you run your build you should only see the associated changesets for that particular branch.&nbsp; (not something in some other area of version control)</p>\r\n<p>If I'm misunderstanding your questions, please let me know and we can go from there :).</p>\r\n<p>&nbsp;</p>\r\n<p>Mike Learned.</p>",
+    "PostedDate": "2012-06-04T08:44:00.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "844525",
+    "ThreadId": "358231",
+    "Html": "<p>Thank you Mike for quick reply.</p>\r\n<p>I'll refine my question. I have a folder/branch structure like this:</p>\r\n<ul>\r\n<li>root\r\n<ul>\r\n<li>shared_project1</li>\r\n<li>shared_project2</li>\r\n<li>branches\r\n<ul>\r\n<li>branch1</li>\r\n<li>branch2</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n<p>So as you can see I have some projects shared between my branches which I prefer not to branch because they have their own branching and release strategy. And when I build this project using Team Build I have just the same workspace for both branches, but I have 2 different solutions for each branch and reference that solution files from build definition which actually are the same. So branches share the same workspace but each have its own solution file which collects all the projects (shared and private for branch). And of course when I build each build definition I have shared list of associated work items.</p>\r\n<p>If this approach is wrong I'm ready to change it for a better one, but give me a hint how.</p>\r\n<p>Thank you very much.</p>",
+    "PostedDate": "2012-06-04T10:27:57.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "845644",
+    "ThreadId": "358231",
+    "Html": "<p>Right so that structure works fine, but in your build definition you need to make your worksapce map just to \"branch1\" as an example (not branches or above) if you want the associated changesets to work correctly.&nbsp; There would also be other ramifications have having your workspace mapping \"too high\" such as gated check-in and CI issues if you were using those as well.&nbsp; Also it is bringing down more data to the build server each time causing network perf overhead, etc...based on your mapping.&nbsp; The developer workspaces won't matter for this, I'm talking about the build definition workspace.</p>\r\n<p>Only map your build definitions workspaces to the node (no higher or lower) for the solution(s) you intend to build.&nbsp; The option to choose the correct solution is just telling the build to build that particular one, but you are fooling the system in other ways I mention above.</p>\r\n<p>I assume there is no need to build branch1 and branch2 at the same time?&nbsp; If there was then I would map to the branches folder above, but would have to live with the things I mention above about associated changesets, gated, CI, etc.</p>\r\n<p>Does it make sense?</p>",
+    "PostedDate": "2012-06-06T10:19:30.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "845649",
+    "ThreadId": "358231",
+    "Html": "<p>I should also mention about your \"sharing\"....&nbsp; is the solution in branch1 or branch2 relying on a shared_project1 or shared_project2 as a project reference to do a build?&nbsp; Or are you building the output and referencing it like a DLL or something with a file reference?&nbsp; BTW in the guide we talk about \"Sharing Resources\" in TFS.&nbsp; The Beta has some coverage, and it will be refined in the RC.</p>\r\n<p>If you are using like project references, and those projects \"shared_project1\" etc are living in the same solution as branch1 solution then yes we need to reconsider the structures and strategy perhaps.</p>",
+    "PostedDate": "2012-06-06T10:23:34.157-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "845669",
+    "ThreadId": "358231",
+    "Html": "<p>Mike, thank you very much for your attention to my problem.</p>\r\n<p>Of course there is no need to build branches together.&nbsp;Actually I've asked the same question at Microsoft's social at&nbsp;<a href=\"http://social.msdn.microsoft.com/Forums/en-US/tfsbuild/thread/9c8337b1-4d8d-4572-a39a-5e516d177984/#1de7ea7d-4aae-43f1-8dcd-3296268f2f22\"><a href=\"http://social.msdn.microsoft.com/Forums/en-US/tfsbuild/thread/9c8337b1-4d8d-4572-a39a-5e516d177984/\">http://social.msdn.microsoft.com/Forums/en-US/tfsbuild/thread/9c8337b1-4d8d-4572-a39a-5e516d177984/</a>&nbsp;</a></p>\r\n<p>The solution mentioned there is suitable for me and I've alredy marked it as helpful. The deсision is to \"cloak\" unused folder (unused branch in our case) and then everything works fine. And all the issues you mentioned (network load for example) are also addressed very well with that decision. One of the powerful goals of this approach is that changesets in shared projects are associated during the build of both branches. But private changes are associated only to particular branch.</p>\r\n<p>I haven't understood how the problem correlates to gated check-in and CI? I'll be very glad if you make it clear.</p>\r\n<p>To continue discussion I can tell that my shared projects are built during the build of other non-shared dependent projects and then I yield binaries and use them in the build of dependent projects. All is done via MSBuild and works perfect. I use no project references, I build shared projects directly from MSBuild script because it is more suitable as I think in my situation.</p>\r\n<p>What is BTW?</p>\r\n<p>Thank you in advance.</p>",
+    "PostedDate": "2012-06-06T11:05:20.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "846577",
+    "ThreadId": "358231",
+    "Html": "\r\n<p>The problem with CI and Gated check-in is again all based on workspace mappings.&nbsp; If you for example had a mapping for build definition of $/TeamProject&nbsp; then every check-in under that team project would get kicked off for CI or be monitored for\r\n Gated check-in, when you might&nbsp;want just some single branch to be so for that build def.&nbsp; Never map any higher or lower than needed for your build.</p>\r\n<p>&quot;BTW&quot; = By the way&nbsp; :).</p>\r\n",
+    "PostedDate": "2012-06-08T06:38:46.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

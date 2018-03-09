@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "507463",
+    "ThreadId": "230970",
+    "Html": "<p>Thanks for creating the branching plan documents they have been a tremendous help.&nbsp; I did have one question about the basic branching plan that is confusing me.&nbsp; In the quick start when changes are FI'd from Main to Release it indicates to label the Release branch.&nbsp; However, in the Main Branching guide (page 6) it indicates that a new Release branch should be created for each product release.&nbsp; So I'm not entirely clear on which one to follow.&nbsp; I'm not sure I'm ready for the Standard Branch plan but what I'd like to do is as follows:&nbsp;</p>\r\n<p>1. Create initial release.</p>\r\n<p>2. Any bug fixes in the initial release would be made in the release branch and RI'd back to Main and FI'd into Dev</p>\r\n<p>3. After any new features are developed and RI'd from Dev into Main, FI Main into a new Release branch so I'd have a Release 1.0 branch and a Release 2.0 branch for example.</p>\r\n<p>Am I on the right track?</p>\r\n<p>Thanks</p>",
+    "PostedDate": "2010-10-14T15:10:12.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "507468",
+    "ThreadId": "230970",
+    "Html": "<p>You are absolutely on the right track.</p>\r\n<p>From my perspective, contradictions between the Main guide and the Quick Start need to be corrected in the next release. But for now, the Main Guide is usually more accurate. I will note, that the two documents are not necessarily in conflict on this point. I might help to Label the Release branch immediately after it is created. Changes made to fix bugs after the release could be made after the Release branch is labeled. You are correct, however that each new release of the product should cause a new Release branch to be created.</p>\r\n<p>Regards,</p>\r\n<p>Bill</p>",
+    "PostedDate": "2010-10-14T15:19:19.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "507726",
+    "ThreadId": "230970",
+    "Html": "<p>Thanks for the reply and clarification.&nbsp; So I will create a new branch for every significant release and any bug fixes to an existing release would result in a label change to the release branch the bug fix was made in?</p>",
+    "PostedDate": "2010-10-15T05:39:39.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "507734",
+    "ThreadId": "230970",
+    "Html": "<p>Yes.</p>\r\n<p>A difference between the basic plan and the standard plan is how you deal with hotfixes. There really is not a good place to make hot fix changes in the basic plan. The standard plan introduces a hotfix branch in addition to the release branch. The hotfix branch is between Main and Release. The concept here is that when you want to ship a new release, you create both the hotfix and the release branches at the same time. The Release&nbsp; branch is often made read-only - so you have a copy of the code you actually release. After the release, you make hot fix changes in the hotfix branch. This plan keeps hot fixes separate from the released code. You can still label the code but it creates a separate place where post-release hot fix changes are made. With the basic plan, when you implement a hot fix change, you no longer have a copy of the code you originally shipped for the release.</p>\r\n<p>Regards,<br>Bill</p>",
+    "PostedDate": "2010-10-15T05:52:09.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "507767",
+    "ThreadId": "230970",
+    "Html": "<p>One more question.&nbsp; The projects I'm working on are primarily internal web applications that are accessible on the corporate intranet.&nbsp; Say I have released the application to production and find that there is a typo in some html or a bug in some javascript that is preventing someone from saving a record.&nbsp; It would seem like having a hotfix branch between main and release might be overkill.&nbsp; In this scenario would you typically make these changes in the release branch, deploy the fix and RI back to main or would you still recommend having that hot fix layer which would simply keep the originally released code pure.</p>\r\n<p>thanks again for all the replies and useful info.</p>",
+    "PostedDate": "2010-10-15T06:49:05.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "507774",
+    "ThreadId": "230970",
+    "Html": "<p>I don't view the hotfix branch between Main and Release as overkill. When we talk about the cost of branching, the primary cost is in meging and resolving merge conflicts. If this was on the development side, I would be hestitant to add a new layer between Main and Dev Branches, since it effectively doubles the merging required to move code from Dev to Main or Main to Dev. But on the release side it is a somewhat different picture. Whether you do your hotfix in the Release branch directly or in a separate hotfix branch you have the same merge effort to get this change into the Main branch. The overhead, from a TFS perspective of having this read-only snapshot Release branch is quite minimal. TFS essentially keeps a delta of what is changed in a file. So when you create a new branch, there is no delta - yet. Since the release branch is not going to have any changes made to it, and will be read-only, it adds minimal overhead to TFS.</p>\r\n<p>One thing to understand about labels - they are not immutable. So they are useful for marking milestones. But the contents of a label can be changed or updated after the label is made. From an auditing perspective, if you are required to have a copy of the code *as released* using lables is less reliable than having a read-only branch to preserve a specific state of the code.</p>\r\n<p>Regards,<br>Bill Heys<br>VS ALM Ranger</p>",
+    "PostedDate": "2010-10-15T07:02:04.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "507788",
+    "ThreadId": "230970",
+    "Html": "<p>Thanks for the prompt replies,&nbsp; it's most appreciated.&nbsp;&nbsp;&nbsp;Just so I am clear on the hot fix or servicing branch.&nbsp; When I am ready to release I would create a hotfix branch off of main and then create a release branch off of hotfix and set the release branch to read-only thus preserving an original copy.&nbsp; Then any subsequent&nbsp;post-release changes&nbsp;would be made in the hot fix branch and RI'd back to Main.&nbsp; Would I label the hotfix branch after each change or would I need to create another branch off of hotfix to preserve each hotfix change?</p>",
+    "PostedDate": "2010-10-15T07:26:23.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "509649",
+    "ThreadId": "230970",
+    "Html": "<p>Yes, it seems you are very clear. Labeling the hotfix branch after each fix&nbsp;might be a good idea. Generally speaking we advised preserving the state of each major or significant release, but I don't think it is necessary to snapshot a read-only branch for each hotfix.</p>\r\n<p>Regards,<br>Bill Heys <br>VS ALM Ranger</p>",
+    "PostedDate": "2010-10-19T15:51:24.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "509682",
+    "ThreadId": "230970",
+    "Html": "<p>According to Microsoft's PSS group whenever they do a QFE (Quick Fix Engineering) hotfix they freeze the code for that hotfix and make it read only.&nbsp;</p>\r\n<p>We've found that our policy is that once a hotfix has passed the right quality gates and is pushed to production, 24 hours later we change the permissions in TFS so that the specific hotfix&nbsp;branch itself is marked readonly to the developer and often we remove even that (as the only time we find issues with hotfixes is when we encounter a bug from a hotfix and we have to branch from the read only version of the previous hotfix to a new branch where we can correct the bug and ship a new version(usually unlikely but it does happen).</p>",
+    "PostedDate": "2010-10-19T16:48:02.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "510046",
+    "ThreadId": "230970",
+    "Html": "<p>Thanks again for the replies.&nbsp;&nbsp;A new question crossed my mind about coordination between the Dev branch for new enhancement and the servicing branches.&nbsp; We currently have development, stage and production databases.&nbsp; Both the Dev and Maintenance branches point to the Development database.&nbsp; I'm running across a situation where the Development branch is making changes to the development database that may cause the servicing branch to not work if it is pointing to the development database as well.&nbsp; An easy solution would be to point the servicing branch to stage or production but that doesn't feel right if someone is working in the servicing branch developing a fix to a bug.&nbsp; Any ideas on best practice in this type of scenario or is pointing it to stage or production the best way to handle it?</p>",
+    "PostedDate": "2010-10-20T10:18:53.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

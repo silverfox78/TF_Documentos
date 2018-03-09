@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "MSF for CMMI actually does not include scenario work item types, only agile does. I double checked the MSF guidance, the template, and a CMMI project just to be sure. Then I asked the MSF team, to be sure again, and they confirmed that scenario is not included in CMMI.\n\nPerhaps you are using a customized version of CMMI?",
+    "ClosedDate": "2007-09-04T15:59:56.743-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The work item types for CMMI mentioned in the guide doesn't include scenarios. The current msf for CMMI process's template does includes them on their work item types. In fact, they are pretty vital on the process.",
+    "LastUpdatedDate": "2013-05-16T04:06:34.01-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "TFSGuide",
+    "ReportedDate": "2007-07-10T20:48:17.037-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "MSF for CMMI should include scenarios",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 2804
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "MSF for CMMI actually does not include scenario work item types, only agile does. I double checked the MSF guidance, the template, and a CMMI project just to be sure. Then I asked the MSF team, to be sure again, and they confirmed that scenario is not included in CMMI.\r\n\r\nPerhaps you are using a customized version of CMMI?",
+      "PostedDate": "2007-09-04T15:59:39.417-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2007-09-04T15:59:56.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:44:22.907-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:06:34.01-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

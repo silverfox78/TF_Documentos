@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1256625",
+    "ThreadId": "548773",
+    "Html": "How do you create the branching image in the pdf? I tried searching in Visio and Word but can't find a template. I want to create my own image so other people in the department can understand our branching strategy.\r<br />\n<br />\nCan you share a word or visio file?<br />\n",
+    "PostedDate": "2014-06-16T03:56:18.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1256649",
+    "ThreadId": "548773",
+    "Html": "If you download the Rangers_vsarVersionControlGuide_vs2013_Everything.zip, you will find a PowerPoint file with a variety of branching illustrations.<br />\n",
+    "PostedDate": "2014-06-16T05:41:26.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1256920",
+    "ThreadId": "548773",
+    "Html": "Thank you! I didn't saw that one. I guess I was blind at the moment I searched for it...<br />\n",
+    "PostedDate": "2014-06-16T23:48:18.777-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1426381",
+    "ThreadId": "548773",
+    "Html": "Hi i could not locate the zip file &quot;Rangers_vsarVersionControlGuide_vs2013_Everything.zip&quot; under downloads option.  all i could find is &quot;Rangers_vsarVersionControlGuide_v3.2_Everything&quot;.   in case i am referring to wrong file then can you past url to download the right one.\r<br />\n<br />\ni could find &quot;TFS Version Control Part 1 - Branching Strategies&quot;  where in i can see many branching techiques   my query is does these branching techniques holds good for SVN as well.  or do you have any other file/documents specific to SVN<br />\n",
+    "PostedDate": "2015-05-19T07:24:21.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1426384",
+    "ThreadId": "548773",
+    "Html": "The file &quot;Rangers_vsarVersionControlGuide_v3.2_Everything.zip&quot; is the latest version. You should use that one.<br />\n",
+    "PostedDate": "2015-05-19T07:30:29.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

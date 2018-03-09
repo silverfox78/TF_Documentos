@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "990684",
+    "ThreadId": "430531",
+    "Html": "\r\n<p>If I reparent a branch to have no parent, should VS2012 display its original parent as a possible target branch in the merge wizard?</p>\r\n<p>It does and I didn't expect that, if it had truly been reparented to the root of the collection, ie. have no parent, it would show any possible target branches to merge to.</p>\r\n<p>Am I misunderstanding something here?</p>\r\n<p>Of course I'm implying here that I am using TFS2012 as my source control system.</p>\r\n<p>Thanks,</p>\r\n<p>Warwick Baker.</p>\r\n",
+    "PostedDate": "2013-01-22T22:00:40.587-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

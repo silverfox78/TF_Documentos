@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "809355",
+    "ThreadId": "348335",
+    "Html": "\r\n<p>Hi, in the document &quot;TR10_DEVHOL204_Manual_2010 v1&quot;, it is indicated &quot;</p>\r\n<p><span style=\"font-size:small\"></p>\r\n<p>The lab assumes you are using the Microsoft-provided Virtual PC image that ..... If not, you will need to&nbsp;<span style=\"font-size:small\">perform the tasks described in the Team Development Setup.doc file,</span></p>\r\n<p><span style=\"font-size:small\"><span style=\"font-size:small\">&nbsp;</span></span>Can you please point me wher IU can find this file</p>\r\n<p></p>\r\n<p></p>\r\n<p><span style=\"font-size:small\"></p>\r\n<p>&nbsp;</p>\r\n</span>\r\n<p>Thanks in advance</p>\r\n<p></p>\r\n<p></p>\r\n<p></p>\r\n</span>\r\n<p></p>\r\n<p></p>\r\n<p></p>\r\n<p></p>\r\n<p>&nbsp;</p>\r\n<p></p>\r\n<p></p>\r\n<p></p>\r\n<p></p>\r\n<p></p>\r\n<p>&nbsp;</p>\r\n<p></p>\r\n<p></p>\r\n<p></p>\r\n<p>&nbsp;</p>\r\n<p></p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-03-12T16:09:43.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "874605",
+    "ThreadId": "348335",
+    "Html": "<p>This was developed as a Microsoft-internal lab for delivery at our internal (TR) training event.</p>\r\n<p>Regards,</p>\r\n<p>Bill Heys</p>",
+    "PostedDate": "2012-07-18T14:04:38.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

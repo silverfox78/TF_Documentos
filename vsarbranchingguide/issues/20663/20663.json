@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2015-03-17T08:20:02.91-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Wrong link in the latest version of the branching & merging guide from the ALM rangers. \nOn page 27, there should be a link branch re-parenting but it goes to http://blogs.msdn.com/b/hakane/archive/2009/05/19/enable-branch-visualization-in-upgraded-team-projects-tfs-2010-beta1.aspx",
+    "LastUpdatedDate": "2015-03-17T08:20:02.91-07:00",
+    "PlannedForRelease": "v3.2 - Version Control Guidance",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "vsarbranchingguide",
+    "ReportedDate": "2014-01-23T12:42:05.653-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Incorrect URL for branch re-parenting",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 20663
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Under investigation and will be addressed with v3.0",
+      "PostedDate": "2014-05-01T18:12:03.613-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-03-17T08:20:02.91-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

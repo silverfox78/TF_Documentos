@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "0",
+    "Name": "Version Control Guidance Visuals",
+    "DevelopmentStatus": "Stable",
+    "Description": "*Welcome to the Version Control Visualizations*\n\n+Quality-Bar Details+\n* Documentation has been reviewed by Visual Studio ALM Rangers\n* Documentation has been through an independent technical review\n* Documentation has been copy-edited. \n\n+Known Issues / Bugs+\n* None",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2015-10-02T15:49:57.457-07:00",
+    "Files": [
+      {
+        "Id": "3228e5e0-a57d-46b9-adcc-f22162e2f439",
+        "FileName": "Poster - TFVC and Git.png",
+        "Url": "./0/3228e5e0-a57d-46b9-adcc-f22162e2f439",
+        "Type": "Documentation",
+        "UploadDate": "2015-07-03T14:22:12.337-07:00"
+      },
+      {
+        "Id": "958a5e20-78bc-45d6-9817-0d9841914d09",
+        "FileName": "Poster - Version Control consideration aid for TFVC vs Git.png",
+        "Url": "./0/958a5e20-78bc-45d6-9817-0d9841914d09",
+        "Type": "Documentation",
+        "UploadDate": "2015-07-03T14:22:12.43-07:00"
+      },
+      {
+        "Id": "0773bb05-fde2-4326-8f11-72630193ec29",
+        "FileName": "Poster - Git Workflows.png",
+        "Url": "./0/0773bb05-fde2-4326-8f11-72630193ec29",
+        "Type": "Documentation",
+        "UploadDate": "2015-10-02T15:48:53.017-07:00"
+      },
+      {
+        "Id": "43e88160-6a45-431c-af46-c725d1927923",
+        "FileName": "TFS Version Control Images - Illustration Collection.pptx",
+        "Url": "./0/43e88160-6a45-431c-af46-c725d1927923",
+        "Type": "Documentation",
+        "UploadDate": "2015-07-03T14:22:12.493-07:00"
+      },
+      {
+        "Id": "2c16bf42-ecf6-4ec8-86fd-728794265b17",
+        "FileName": "TFS Version Control Images - Illustration Collection Updates.pptx",
+        "Url": "./0/2c16bf42-ecf6-4ec8-86fd-728794265b17",
+        "Type": "Documentation",
+        "UploadDate": "2015-07-03T14:22:12.65-07:00"
+      },
+      {
+        "Id": "af7988b2-521c-44e8-99fa-d046ec989767",
+        "FileName": "Classic - Microsoft Team System Branching Scenarios.png",
+        "Url": "./0/af7988b2-521c-44e8-99fa-d046ec989767",
+        "Type": "Documentation",
+        "UploadDate": "2015-07-03T14:39:12.05-07:00"
+      },
+      {
+        "Id": "eb62edbb-a8cb-4758-8244-c348f501ccef",
+        "FileName": "Quick Reference Poster Originals.zip",
+        "Url": "./0/eb62edbb-a8cb-4758-8244-c348f501ccef",
+        "Type": "Documentation",
+        "UploadDate": "2015-09-24T19:47:40.56-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "1",
+    "Name": "v3.2 - Version Control Guidance",
+    "DevelopmentStatus": "Stable",
+    "Description": "*Welcome to the Version Control Guides*\n\n+What is new?+\n* A new crisper, more compact style, which is easier to consume on multiple devices without sacrificing any content.\n* Updated content aligned with the latest Visual Studio technologies and incorporating feedback from the readers of the previous releases.\n* Separate guides for Branching scenarios, TFVC Gems, Dependency Management using NuGet, and Git for the TFVC User.\n+Note+\n* Illustrations and Posters are included in the Everything Zip package\n\n+Quality-Bar Details+\n* Documentation has been reviewed by Visual Studio ALM Rangers\n* Documentation has been through an independent technical review\n* Documentation has been copy-edited. \n\n+Known Issues / Bugs+\n* Git for TFVC Users guide is a BETA Preview.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2015-10-02T15:52:46.927-07:00",
+    "Files": [
+      {
+        "Id": "a70998ac-c1d7-47f5-9705-e4ffecf59adb",
+        "FileName": "TFS Version Control Part 1 - Branching Strategies.pdf",
+        "Url": "./1/a70998ac-c1d7-47f5-9705-e4ffecf59adb",
+        "Type": "Documentation",
+        "UploadDate": "2015-03-12T15:25:08.07-07:00"
+      },
+      {
+        "Id": "96de58e2-664d-4b84-8f81-e31a36e21b42",
+        "FileName": "TFS Version Control Part 2 - TFVC Gems.pdf",
+        "Url": "./1/96de58e2-664d-4b84-8f81-e31a36e21b42",
+        "Type": "Documentation",
+        "UploadDate": "2015-03-12T15:25:08.333-07:00"
+      },
+      {
+        "Id": "72410c6a-7fe6-4bf0-bf5d-d476e68054c4",
+        "FileName": "TFS Version Control Part 3 - Dependency Management with NuGet.pdf",
+        "Url": "./1/72410c6a-7fe6-4bf0-bf5d-d476e68054c4",
+        "Type": "Documentation",
+        "UploadDate": "2015-03-12T15:25:08.63-07:00"
+      },
+      {
+        "Id": "4b40ed0f-b8fd-432b-9f47-039a52a7c628",
+        "FileName": "TFS Version Control Part 4 - Git for TFVC Users.pdf",
+        "Url": "./1/4b40ed0f-b8fd-432b-9f47-039a52a7c628",
+        "Type": "Documentation",
+        "UploadDate": "2015-07-28T08:52:05.233-07:00"
+      },
+      {
+        "Id": "66717375-37a8-41fd-acc9-698806cc4e0c",
+        "FileName": "Rangers_vsarVersionControlGuide_v3.2_Everything.zip",
+        "Url": "./1/66717375-37a8-41fd-acc9-698806cc4e0c",
+        "Type": "Documentation",
+        "UploadDate": "2015-10-02T15:51:36.41-07:00"
+      }
+    ]
+  }
+]

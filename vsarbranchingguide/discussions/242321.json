@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "551557",
+    "ThreadId": "242321",
+    "Html": "\r\n<p><strong><a href=\"http://blogs.msdn.com/b/billheys/archive/2011/01/18/branching-for-scrum.aspx\">Branching for Scrum</a></strong></p>\r\n<p><span style=\"font-size:10pt\">This article presents a perspective on Source Control Management (SCM) using Team Foundation Server (TFS) with Scrum projects. Although I start with a short overview of Scrum to lay the foundation for the concepts, the essence\r\n of this article is to present TFS Branching Concepts for Scrum projects, large and small. This article is an extension of the current Microsoft VS ALM Rangers Branching Guidance 2010, which you can download from here.</span></p>\r\n<p><span style=\"font-size:10pt\">First in a series.</span></p>\r\n<p><span style=\"font-size:10pt\">Regards,<br>\r\nBill Heys<br>\r\nVS ALM Ranger</span></p>\r\n<p><span style=\"font-size:10pt\"><br>\r\n<a href=\"http://blogs.msdn.com/b/billheys\">http://blogs.msdn.com/b/billheys</a></span></p>\r\n<p><span style=\"font-size:10pt\">&nbsp;</span></p>\r\n",
+    "PostedDate": "2011-01-18T15:07:34.183-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

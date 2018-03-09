@@ -1,0 +1,125 @@
+!!! How To: Customize a Report in Visual Studio Team Foundation Server
+- _[url:J.D. Meier|http://blogs.msdn.com/jmeier], [url:Jason Taylor|http://jtaylorgoodlife.blogspot.com/], Alex Mackman, [url:Prashant Bansode|http://prashantbansode.blogspot.com/], [url:Kevin Jones|http://blogs.advantaje.com/blog/kevin/]_
+
+!!! Applies To
+* Microsoft® Visual Studio® 2005 Team Foundation Server (TFS)
+* Microsoft Visual Studio Team System (VSTS)
+* Microsoft® SQL Server™ Reporting Services
+
+!!! Summary
+This How To article walks you through the process of customizing an existing report and then publishing it to the reporting portal in TFS.
+
+!!! Contents
+* Objectives
+* Overview
+* Summary of Steps
+* Before You Begin
+* Step 1 – Create a New Reporting Project 
+* Step 2 – Export the Report You Want to Customize
+* Step 3 – Create the Data Sources
+* Step 4 – Add the Report to Your Project
+* Step 5 – Modify the Report
+* Step 6 – Deploy the Report to Your Team Foundation Server
+* Step 7 – Test the Report
+* Additional Resources
+
+!!! Objective
+* Create a reporting project in Visual Studio.
+* Customize an existing report to meet your needs.
+* Publish the new report to the report server.
+
+!!! Overview
+The reports that ship with VSTS are SQL Server Reporting Services reports. You can amend these reports or create your own custom reports by using the SQL Server 2005 Reporting Services Designer inside Visual Studio (Business Intelligence Development Studio), which ships with the SQL Server 2005 client tools. 
+
+Customizing a report allows you to add functionality to an existing report without having to build a new report from scratch. If a report you need is similar to one that already exists, you can customize the existing report in order to save time. To customize an existing report, it must be exported from the report server, added to an existing report project in Visual Studio, and then redeployed to the reporting portal after changes are made.
+
+!!! Summary of Steps
+* Step 1 – Create a New Reporting Project 
+* Step 2 – Export the Report You Want to Customize
+* Step 3 – Create the Data Sources
+* Step 4 – Add the Report to Your Project
+* Step 5 – Modify the Report
+* Step 6 – Deploy the Report to Your Team Foundation Server
+* Step 7 – Test the Report
+
+!!! Before You Begin
+Before you can customize a report for TFS, you must ensure you have the following prerequisites in place:
+* You must have Business Intelligence Development Studio installed on the machine you will be using to customize the report.  To verify that it is installed, check Visual Studio to see if the Business Intelligence Project type is available when you create a new project.
+* Your user account must be a member of the Microsoft Analysis Server TfsWarehouseDataReaders security role on the data-tier server.
+* Your user account must have administrator rights to the TFSWarehouse database on the data tier.
+* Your user account must be a member of the SQL Server Reporting Services Publisher role on the application-tier server.
+
+!!! Step 1 – Create a New Reporting Project
+In this initial step, you create a new reporting project so that you can add an existing report to the project and then customize it. Perform the following steps to create a new reporting project in Visual Studio:
+
+# Click *File*, click *New*, and then click *Project.*
+# Select the *Business Intelligence Project* type.
+# Select the *Report Server Project* template.
+# Set your project’s *Name* and *Location* and then click *Ok*.
+
+!!! Step 2 – Export the Report You Want to Customize
+In this step, you export the report you want to customize from the project portal so you can import it into the new reporting project. Perform the following steps to export a report:
+
+# Right-click on your team project and then select *Show Project Portal*.
+# On the left side of the portal Web site, on the Quick Launch bar, click *Reports.* 
+# Click the report you want to customize.
+# Click *Properties.*
+# Select *Edit.*
+# Save the report rdl file into the reporting project folder you created in Step 1.
+
+!!! Step 3 – Create the Data Sources
+In order to edit and publish the customized report, you first need to add data sources for the TFS data warehouse and online analytical processing (OLAP) cube. After these data sources have been added to the Visual Studio project, the report can pull data from the server.
+
+*Create the warehouse data source:*
+# In the Visual Studio *Solution Explorer*, right-click *Shared Data Sources* and then click *Add New Data Source*.
+# On the *General* tab, in the *Name* text box, enter *TfsReportDS*. 
+# Select *Microsoft SQL Server* from the *Type* combo box.
+# Click the *Edit…* button.
+# Fill in your data tier server name. 
+# Select the *TFSWarehouse* database. 
+# Click *OK* button twice to add the data source.
+
+*Create the OLAP data source:*
+# In *Solution Explorer*, right-click *Shared Data Sources* and then click *Add New Data Source*.
+# On the *General* tab, in the *Name* text box, enter *TfsOlapReportDS*. 
+# Select *Microsoft SQL Server Analysis Services* from the *Type* combo box.
+# Click the *Edit…* button.
+# Fill in your data tier server name. 
+# Select the *TFSWarehouse* database. 
+# Click *OK* button twice to add the data source.
+
+!!! Step 4 – Add the Report to Your Project
+Now that the data sources have been added to your project, you can add the report that you exported in Step 2: 
+
+# In *Solution Explorer*, right-click *Reports*,** click**  *Add*, and then click* Existing Item...*
+# Browse to the rdl file you exported in Step 2
+
+!!! Step 5 – Modify the Report
+Now that you have added the report to your project you can make modifications in order to customize the report for your specific needs.  To open the report for modification, double-click the report in the *Solution Explorer*. After you have opened the report you can make modifications such as:
+
+* Modify query statements in the *Data Pane*.
+* Drag new measures or members into the *Data Pane*.
+* Modify the report layout in the *Layout Pane*.
+
+!!! Step 6 – Deploy the Report to Your Team Foundation Server
+After you’ve made modifications to the report, you can deploy it to your team project’s reporting portal by using the following steps:
+# In the *Solution Explorer*, right-click the report project and then click *Properties*.
+# Ensure *OverwriteDataSources* is set to *false*.
+# Modify *TargetDataSourceFolder* to reflect your team project name; for example: *TargetDataSourceFolder* = TestProject.
+# Modify *TargetReportFolder* to reflect your team project name; for example:* TargetDataSourceFolder* = TestProject.
+# Modify *TargetDataSourceFolder* _to http://<data-tier servername>/reportserver_; for example: *TargetDataSourceFolder* = http://tfsrtm/reportserver.
+# Click *OK.*
+# In the *Solution Explorer*, right-click on the rdl file and then click *Deploy.*
+# Observe the *Output Pane* to verify successful completion.
+
+!!! Step 7 – Test the Report
+Now that you have successfully customized your report and deployed it to your TFS server, perform the following steps to test the report:
+# In *Team Explorer* expand you team project node, right-click on *Reports* and then click *Show Report Site.*
+# On the report site select the report you just deployed.
+# Verify that the report runs correctly.
+
+!!! Additional Resources
+* For more tutorials explaining how to work with reporting projects, see “Reporting Services Tutorials” at [url:http://msdn2.microsoft.com/en-us/library/ms170246.aspx] 
+* For the Microsoft MSDN® article on editing reports, see “How to: Edit Reports in Report Designer” at [url:http://msdn2.microsoft.com/en-us/library/ms244655(VS.80).aspx] 
+* For more information on security roles in the data-tier, see “Securing Access Through Analysis Services” at [url:http://msdn2.microsoft.com/en-us/library/ms174839.aspx] 
+* For more information on security roles in the application tier, see “Securing Reporting Services” at [url:http://msdn2.microsoft.com/en-us/library/ms157198.aspx]

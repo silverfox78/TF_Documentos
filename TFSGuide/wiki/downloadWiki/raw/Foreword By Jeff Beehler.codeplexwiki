@@ -1,0 +1,19 @@
+!!! Foreword By Jeff Beehler
+
+Before we released Microsoft® Visual Studio® 2005 Team Foundation Server (TFS), we first used it to develop TFS. For the final 18 months of the project, we used it extensively to manage the development life cycle of our project, a practice commonly known as “dogfooding.” Through this dogfooding, we learned a lot about the powerful system that we were creating. We certainly found and fixed many quality issues so that the resulting product was much more stable and performed better than we could have achieved otherwise. But perhaps more importantly, we learned about ways to best use (and not use) the tools we were creating. This experience, in conjunction with feedback from our customers on their practices, forms the basis for this guide.  
+
+At first glance, one might expect this information to be included with or to replace the product documentation. In fact, at one time, I held that belief as well. However, as I’ve worked closely with J.D. Meier and the other authors of this guide, it’s become clear to me that this split is both natural and important. I think the best way to describe it is to compare the two guides to your car’s owner's manual and a driver's guide ― you need both, but for different reasons. Traditionally, the product team has focused on product documentation and left the guidance aspect to others. While we still depend on others to help us out here, we're starting to invest more of our time and energy in the guidance portion because we realize how important it is to the successful adoption of our product and its role in increasing overall customer satisfaction. 
+
+Like a car, TFS is a powerful tool that can take you and your team nearly anywhere you want to go; this guide can help you get there. Every team approaches TFS somewhat differently depending on its particular needs and history. For this reason, we’ve written this guide in such a way as to allow you either to read it from cover to cover if you want the full picture, or to dive into specific topics as your needs dictate.  
+
+Customer feedback led us to write this guide in the first place, and it continues to play an important role in helping set our direction and how we achieve our objectives. We’re convinced that close community involvement in projects such as these helps make the content more useful and ultimately more successful than if we wrote it in a vacuum. With this in mind, real users helped us determine what to write about, what best practices to recommend, and how to organize the content. However, our collective job is not finished. Please help us continue to improve this guide, and let us know what else needs to be covered. The surface area of TFS is so broad that sometimes it’s overwhelming even for us. With your input, we can help our customers make the best use of the tools we’ve developed. 
+
+We designed TFS to bring teams together to deliver great software. By dogfooding TFS, we brought our teams together and I hope you’ll agree that the result is a great product. This guide can help you and your team to also realize this vision with your next project.  
+
+All the best!
+
+*Jeff Beehler*
+*Chief of Staff, Visual Studio Team System*
+*July, 2007*
+
+_Jeff Beehler is the Team System Chief of Staff.  After graduating from the University of Colorado, he began his career at Microsoft in 1990, working on early versions of Visual C++.  In 1996, he left Microsoft to pursue other interests including consulting, teaching elementary school and starting a family.  He returned to Microsoft in 2003 to work on Visual Studio Team System where he is involved with many aspects of the project from planning to execution to release.  He’s an avid dogfooder of all parts of Team System to help him do his job better. Outside of work, Jeff enjoys spending time with his family, taking pictures and playing outdoors in the great Northwest._
